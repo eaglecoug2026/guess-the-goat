@@ -409,7 +409,7 @@ Backend changes ship **before** the client code that depends on them. The client
 | # | Item | Owner | Default |
 |---|---|---|---|
 | O-1 | Review and approve this document | ChatGPT, then Peter | (blocks the build) |
-| O-2 | Puzzle #1 launch date (`config.launch_date`) | Peter | The first day after step 5 passes |
+| O-2 | Puzzle #1 launch date (`config.launch_date`) | Peter | **Done 2026-11-25:** launched the same day, ahead of step 5 (D-27). #1 is GOAT action movie star |
 | O-3 | Contact email for privacy, deletion and corrections | Peter | **Done 2026-11-25:** info@intellismartstaffing.com |
 | O-4 | Enable GitHub Pages: Settings → Pages → `main`, `/` root | Peter or ChatGPT | **Done 2026-11-25:** live at https://eaglecoug2026.github.io/guess-the-goat/ (Peter asked to go live early, ahead of steps 2–4) |
 | O-5 | Deliver ChatGPT's `categories.json` (36 categories) into the repo or chat | Peter | **Done 2026-11-25:** pasted in 3 batches, kept in `content/batches/` |
