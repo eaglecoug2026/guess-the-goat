@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The GOAT</title>
+<meta name="description" content="Guess the crowd's greatest of all time. A new GOAT debate every day, plus your Hot Take Score.">
+<meta property="og:title" content="The GOAT">
+<meta property="og:description" content="Guess the crowd's greatest of all time. A new GOAT debate every day.">
+<meta property="og:image" content="https://eaglecoug2026.github.io/guess-the-goat/icon-512.png">
+<meta name="theme-color" content="#f6c519">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="The GOAT">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: a loud, cheeky game-show debate
+   IDEA a stadium scoreboard on a trophy-gold wall, with a crowned goat mascot
+   PICTURE the black scoreboard of five guess slots, lit by how close each guess got
+   COLOUR trophy gold ground, scoreboard black, cream cards, red accent, heat colours for rank
+   TYPE Anton display + Inter text
+   LAYOUT laptop: board left, crowd panel right; phone: header, board, picks, panel */
+:root{color-scheme:light;--bg:#f6c519;--ink:#141210;--card:#fffdf6;--board:#18140f;--slot:#2a241c;--red:#e5372b;--ok:#22b36a;--hot:#ff7a1a;--warm:#ffd23d;--cool:#7cc0ff;--off:#5a5247;--mute:#6b5a1c}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.band{padding-left:max(4vw,16px);padding-right:max(4vw,16px)}
+.top{display:flex;align-items:center;gap:14px;padding-top:16px;padding-bottom:8px;max-width:1240px;margin:0 auto;flex-wrap:wrap}
+.top svg{width:60px;height:60px;flex:none}
+.word{font:44px/1 Anton,Impact,sans-serif;letter-spacing:.01em;margin:0}
+.stats{margin-left:auto;display:flex;gap:8px}
+.stat{background:var(--ink);color:var(--card);border-radius:10px;padding:6px 12px;text-align:center;line-height:1.15}
+.stat b{display:block;font:22px/1.1 Anton,Impact,sans-serif}
+.stat span{font-size:13px;opacity:.8}
+.cats{display:flex;gap:8px;flex-wrap:wrap;max-width:1240px;margin:6px auto 0;padding-bottom:14px}
+.teamhd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;width:100%;margin-bottom:2px}
+.team{font:26px/1 Anton,Impact,sans-serif;background:var(--ink);color:var(--bg);padding:6px 12px;border-radius:8px}
+.tsub{font-weight:600;font-size:15px}
+.teamhd .sm{margin-left:auto}
+.cat{min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:600}
+.cat[aria-pressed=true]{background:var(--ink);color:var(--card)}
+.cat small{font-weight:400;opacity:.75;margin-left:6px;font-size:13px}
+.wrap{max-width:1240px;margin:0 auto;padding-bottom:40px;display:grid;gap:20px;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start}
+.board{background:var(--board);color:#fff6dc;border-radius:22px;padding:clamp(18px,3vw,28px);box-shadow:0 8px 0 #0004}
+.tag{color:var(--warm);font-weight:600;font-size:14px;margin:0 0 4px}
+h1{font:clamp(30px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 16px;text-wrap:balance;letter-spacing:.005em}
+.slots{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.slot{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 10px 8px 14px;border-radius:12px;background:var(--slot);border:2px dashed #ffffff22}
+.slot .n{font:20px/1 Anton,Impact,sans-serif;opacity:.45;width:1.1em;flex:none}
+.slot .nm{font-weight:600;font-size:17px;flex:1}
+.slot .bd{font-weight:800;font-size:14px;padding:6px 10px;border-radius:8px;white-space:nowrap;color:var(--ink)}
+.slot.f{border-style:solid;border-color:transparent}
+.slot.f{animation:flip .45s ease-out}
+@keyframes flip{from{transform:rotateX(80deg);opacity:0}to{transform:none;opacity:1}}
+.t0{background:var(--ok)}.t1{background:var(--hot)}.t2{background:var(--warm)}.t3{background:var(--cool)}.t4{background:#8a8275;color:#fff6dc}
+.slot.f.win{background:#123d27;border-color:var(--ok)}
+.clues{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.clues li{background:#fff6dc;color:var(--ink);border-radius:10px;padding:9px 12px;font-size:16px;display:flex;gap:10px}
+.clues li b{font:16px/1.5 Anton,Impact,sans-serif;color:var(--red);flex:none}
+.clues li.lock{background:transparent;color:#fff6dc99;border:2px dashed #ffffff22}
+.play{margin-top:18px}
+.play label{display:block;font-weight:600;margin-bottom:6px}
+#q{width:100%;font-size:17px;padding:12px 14px;border-radius:12px;border:2px solid #fff6dc55;background:#0d0b08;color:#fff6dc;min-height:48px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;max-height:236px;overflow:auto;padding:2px}
+.chip{min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid #fff6dc;background:transparent;color:#fff6dc;font-weight:600;font-size:15px}
+.chip:hover{background:#fff6dc;color:var(--ink)}
+.none{opacity:.7;font-size:15px;margin:8px 0 0}
+.side{display:grid;gap:16px}
+.panel{background:var(--card);border-radius:22px;padding:clamp(18px,3vw,24px);border:3px solid var(--ink)}
+.panel h2{font:28px/1.05 Anton,Impact,sans-serif;margin:0 0 8px;letter-spacing:.01em}
+.panel p{margin:0 0 10px}
+.hero{display:flex;gap:14px;align-items:center}
+.hero svg{width:120px;height:120px;flex:none}
+.key{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;font-size:15px;margin-top:10px}
+.key i{width:26px;height:18px;border-radius:5px;display:block;border:1px solid #0003}
+.bars{display:grid;gap:5px;margin:10px 0 4px}
+.bar{display:grid;grid-template-columns:1.6em minmax(0,1fr) 3.2em;gap:8px;align-items:center;font-size:15px}
+.bar .r{font:16px/1 Anton,Impact,sans-serif;color:var(--mute)}
+.bar .tr{position:relative;background:#f1e7c8;border-radius:6px;height:30px;overflow:hidden}
+.bar .fl{position:absolute;inset:0 auto 0 0;background:#e3cf8a;border-radius:6px}
+.bar .lb{position:relative;padding:0 8px;line-height:30px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;font-weight:600}
+.bar .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.bar.me .fl{background:var(--red)}.bar.me .lb{color:#fff}
+.bar.gs .tr{box-shadow:inset 0 0 0 2px var(--ink)}
+.pick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pk{min-height:44px;padding:8px 12px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:600;font-size:15px}
+.pk:hover{background:var(--ink);color:var(--card)}
+.meter{position:relative;height:22px;border-radius:999px;background:linear-gradient(90deg,#7cc0ff,#ffd23d 50%,#ff7a1a 75%,#e5372b);margin:14px 0 6px;border:2px solid var(--ink)}
+.meter span{position:absolute;top:-8px;width:8px;height:34px;background:var(--ink);border-radius:4px;transform:translateX(-50%);border:2px solid var(--card)}
+.scale{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.big{font:clamp(48px,8vw,72px)/1 Anton,Impact,sans-serif;margin:4px 0 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{min-height:46px;padding:10px 18px;border-radius:12px;border:0;background:var(--red);color:#fff;font-weight:800}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+#share{width:100%;margin-top:10px;font:15px/1.4 Inter,sans-serif;padding:10px;border-radius:10px;border:2px solid var(--ink);display:none;min-height:110px}
+.note{font-size:13px;color:var(--mute);margin-top:8px}
+.comm{max-width:1240px;margin:0 auto;padding-bottom:48px;display:grid;gap:20px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.comm-h{max-width:1240px;margin:0 auto;padding-top:8px}
+.comm-h h2{font:clamp(30px,4vw,40px)/1.05 Anton,Impact,sans-serif;margin:0 0 4px}
+.comm-h p{margin:0 0 16px;max-width:62ch}
+.fld{display:block;margin-bottom:12px}
+.fld span{display:block;font-weight:600;margin-bottom:4px}
+.fld small{font-weight:400;color:var(--mute)}
+.fld input,.fld textarea,.ed textarea{width:100%;font:16px/1.4 Inter,sans-serif;padding:10px 12px;border-radius:10px;border:2px solid var(--ink);background:#fff;color:var(--ink)}
+.fld textarea,.ed textarea{min-height:84px;resize:vertical}
+.msg{font-size:15px;margin:8px 0 0;font-weight:600}
+.msg.bad{color:var(--red)}
+.sg{list-style:none;margin:8px 0 0;padding:0}
+.sg li{border-top:2px solid #14121014;padding:10px 0;display:grid;gap:4px}
+.sg .hd{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sg .nm{font-weight:800;font-size:17px}
+.sg .op{font-size:14px;color:#4a4130}
+.st{font-size:13px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.st.pending{background:#ffe9a3}.st.added{background:#bfeccf}.st.dismissed{background:#e6e0d2;color:#5a5247}
+.sm{min-height:44px;padding:8px 14px;border-radius:10px;border:2px solid var(--ink);background:transparent;font-weight:700;font-size:15px}
+.sm.go{background:var(--ink);color:var(--card)}
+.ed{display:grid;gap:8px;margin-top:6px}
+.vote p{margin:0 0 12px;color:#fff6dcdd}
+.mine{background:#fff6dc;color:var(--ink);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-weight:600}
+.chip.on{background:var(--warm);color:var(--ink);border-color:var(--warm)}
+.foot{border-top:3px solid var(--ink);padding-top:18px;padding-bottom:28px}
+.footin{max-width:1240px;margin:0 auto;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+.footin p{margin:0}
+@media(max-width:860px){.wrap,.comm{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.word{font-size:36px}.top svg{width:48px;height:48px}.stats{margin-left:0;width:100%}.stat{flex:1}.hero svg{width:84px;height:84px}}
+@media(prefers-reduced-motion:reduce){.slot.f{animation:none}}
+</style>
+</head>
+<body style="padding-top:env(safe-area-inset-top)">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="goat" viewBox="0 0 120 120">
+    <path d="M40 40 C22 30 14 14 26 6 C24 18 34 26 46 32Z" fill="#c9b98f" stroke="#141210" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M80 40 C98 30 106 14 94 6 C96 18 86 26 74 32Z" fill="#c9b98f" stroke="#141210" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M44 22 L50 8 L60 18 L70 8 L76 22 Z" fill="#f6c519" stroke="#141210" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="60" cy="17" r="3" fill="#e5372b"/>
+    <ellipse cx="22" cy="52" rx="16" ry="7" transform="rotate(18 22 52)" fill="#fffdf6" stroke="#141210" stroke-width="3"/>
+    <ellipse cx="98" cy="52" rx="16" ry="7" transform="rotate(-18 98 52)" fill="#fffdf6" stroke="#141210" stroke-width="3"/>
+    <path d="M36 40 Q60 26 84 40 L80 82 Q60 98 40 82 Z" fill="#fffdf6" stroke="#141210" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M66 32 Q78 34 84 40 L80 82 Q72 90 64 92 Q74 70 66 32Z" fill="#ece5d2"/>
+    <ellipse cx="60" cy="80" rx="15" ry="10" fill="#f3c9b8" stroke="#141210" stroke-width="3"/>
+    <ellipse cx="54" cy="79" rx="2.2" ry="3" fill="#141210"/><ellipse cx="66" cy="79" rx="2.2" ry="3" fill="#141210"/>
+    <ellipse cx="47" cy="56" rx="7" ry="6" fill="#f6c519" stroke="#141210" stroke-width="2.5"/>
+    <ellipse cx="73" cy="56" rx="7" ry="6" fill="#f6c519" stroke="#141210" stroke-width="2.5"/>
+    <rect x="42" y="54.5" width="10" height="3" rx="1.5" fill="#141210"/><rect x="68" y="54.5" width="10" height="3" rx="1.5" fill="#141210"/>
+    <path d="M52 92 L60 114 L68 92 Q60 96 52 92Z" fill="#fffdf6" stroke="#141210" stroke-width="3" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<header class="top band">
+  <svg role="img" aria-label="Goat mascot wearing a crown"><use href="#goat"/></svg>
+  <p class="word">THE GOAT</p>
+  <div class="stats" aria-label="Your daily stats">
+    <div class="stat"><b id="sStreak">0</b><span>Streak</span></div>
+    <div class="stat"><b id="sPlayed">0</b><span>Played</span></div>
+    <div class="stat"><b id="sWin">0%</b><span>Win rate</span></div>
+  </div>
+</header>
+<nav class="cats band" id="cats" aria-label="Categories"></nav>
+
+<main class="wrap band">
+  <section class="board" aria-live="polite">
+    <p class="tag" id="tag">Daily GOAT</p>
+    <h1 id="title">Who does the crowd crown?</h1>
+    <ol class="slots" id="slots"></ol>
+    <ul class="clues" id="clues"></ul>
+    <div class="play" id="play">
+      <label for="q">Make a guess. Tap a name or type to filter.</label>
+      <input id="q" type="text" autocomplete="off" placeholder="Search contenders">
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="vote" id="vote" hidden></div>
+  </section>
+  <aside class="side" id="side"></aside>
+</main>
+
+<section aria-labelledby="commTitle">
+  <div class="comm-h band">
+    <h2 id="commTitle">Pitch the next GOAT debate</h2>
+    <p>Suggest a category. Once it's approved, it joins the lineup as a crowd vote, and the votes build its first real ranking.</p>
+    <p class="msg" id="dbMsg">Connecting to the suggestion box…</p>
+  </div>
+  <div class="comm band">
+    <div class="panel">
+      <h2>Suggest a category</h2>
+      <form id="sForm" novalidate>
+        <label class="fld"><span>Category</span><input id="sName" maxlength="60" placeholder="e.g. Board game" required></label>
+        <label class="fld"><span>Contenders <small>optional, separated by commas</small></span><textarea id="sOpts" maxlength="700" placeholder="Catan, Monopoly, Chess, Scrabble, Clue"></textarea></label>
+        <button class="btn" id="sBtn" type="submit">Send suggestion</button>
+        <p class="msg" id="sMsg" role="status"></p>
+      </form>
+      <h2 style="margin-top:18px;font-size:22px">Your suggestions</h2>
+      <ul class="sg" id="mine"></ul>
+    </div>
+    <div class="panel">
+      <h2 id="qTitle">Up next from players</h2>
+      <p id="qNote">Suggestions waiting for a decision from the game's owner.</p>
+      <ul class="sg" id="queue"></ul>
+    </div>
+  </div>
+</section>
+<footer class="band foot"><div class="footin"><div id="ownerBox"></div><p>The GOAT · Crowd numbers in the built-in categories are sample data for now.</p></div></footer>
+
+<script>
+{
+const CATS=[
+ {id:'thanks',label:'Thanksgiving side',title:'GOAT Thanksgiving side dish',
+  opts:[['Stuffing',24],['Mashed potatoes',19],['Mac and cheese',12],['Sweet potato casserole',9],['Green bean casserole',8],['Cranberry sauce',7],['Dinner rolls',6],['Cornbread',4],['Gravy',3],['Corn pudding',2],['Brussels sprouts',0],['Collard greens',0],['Deviled eggs',0],['Roasted carrots',0],['Squash casserole',0],['Waldorf salad',0]],
+  clues:['Carb-forward and usually savory.','Bread is the backbone.','Celery, onion and sage are classic add-ins.','Plenty of families call it dressing.']},
+ {id:'nba',label:'NBA player',title:'GOAT NBA player',
+  opts:[['Michael Jordan',38],['LeBron James',29],['Kareem Abdul-Jabbar',9],['Magic Johnson',6],['Kobe Bryant',5],['Bill Russell',3],['Larry Bird',3],['Wilt Chamberlain',2],['Tim Duncan',2],['Stephen Curry',2],["Shaquille O'Neal",0],['Hakeem Olajuwon',0],['Kevin Durant',0],['Nikola Jokić',0],['Giannis Antetokounmpo',0],['Kevin Garnett',0]],
+  clues:['Did most of his damage in the 1980s and 1990s.','Six titles, and never lost in the Finals.','Finals MVP every time he got there.','Spent most of his career in Chicago.']},
+ {id:'rap',label:'Rapper',title:'GOAT rapper',
+  opts:[['Tupac Shakur',17],['Jay-Z',16],['The Notorious B.I.G.',15],['Eminem',14],['Kendrick Lamar',13],['Nas',7],['Lil Wayne',5],['Drake',4],['André 3000',3],['Snoop Dogg',2],['Rakim',0],['Ice Cube',0],['Nicki Minaj',0],['Missy Elliott',0],['J. Cole',0],['Lauryn Hill',0]],
+  clues:['Broke through in the early 1990s.','Repped the West Coast, though born in New York.','Also acted, starring in Juice.','Dropped All Eyez on Me in 1996.']},
+ {id:'villain',label:'Movie villain',title:'GOAT movie villain',
+  opts:[['Darth Vader',26],['The Joker',20],['Hannibal Lecter',14],['Thanos',8],['Hans Gruber',7],['Anton Chigurh',6],['Nurse Ratched',5],['The Wicked Witch of the West',4],['Agent Smith',3],['Lord Voldemort',3],['Freddy Krueger',0],['HAL 9000',0],['Annie Wilkes',0],['Michael Myers',0],['Bane',0],['Scar',0]],
+  clues:['First hit the screen in the 1970s.','His breathing is as famous as his voice.','Voiced by James Earl Jones.','Has the most famous family twist in film.']},
+ {id:'pizza',label:'Pizza topping',title:'GOAT pizza topping',
+  opts:[['Pepperoni',36],['Sausage',13],['Mushrooms',11],['Extra cheese',8],['Bacon',7],['Onions',5],['Pineapple',5],['Green peppers',4],['Black olives',3],['Jalapeños',3],['Ham',0],['Spinach',0],['Anchovies',0],['Chicken',0],['Fresh basil',0],['Hot honey',0]],
+  clues:['It is a meat.','Cured, a little smoky, a little spicy.','Curls into tiny cups in a hot oven.',"America's most-ordered topping by a mile."]},
+ {id:'sitcom',label:'Sitcom',title:'GOAT sitcom',
+  opts:[['Seinfeld',22],['The Office',21],['Friends',15],['Parks and Recreation',8],['The Simpsons',7],['Cheers',6],['Curb Your Enthusiasm',5],["It's Always Sunny in Philadelphia",5],['Arrested Development',4],['M*A*S*H',3],['Frasier',0],['The Fresh Prince of Bel-Air',0],['Brooklyn Nine-Nine',0],['Modern Family',0],['Abbott Elementary',0],['Schitt’s Creek',0]],
+  clues:['Ran for nine seasons in the 1990s.','Pitched as a show about nothing.','Lives mostly in a New York apartment and a diner.','Its finale sent the whole gang to jail.']},
+ {id:'game',label:'Video game',title:'GOAT video game',
+  opts:[['Zelda: Ocarina of Time',18],['Super Mario Bros.',16],['Tetris',14],['Minecraft',12],['The Witcher 3',7],['Red Dead Redemption 2',7],['Grand Theft Auto V',6],['Elden Ring',5],['Super Mario 64',5],['Halo: Combat Evolved',4],['Pac-Man',0],['Street Fighter II',0],['Skyrim',0],['Half-Life 2',0],['Pokémon Red and Blue',0],['The Last of Us',0]],
+  clues:['Released in 1998.','A fantasy adventure on the Nintendo 64.','You travel through time to save a kingdom.','Starring a hero named Link.']},
+ {id:'fries',label:'Fast food fries',title:'GOAT fast food fries',
+  opts:[["McDonald's",34],['Chick-fil-A',15],['Five Guys',11],["Arby's curly fries",10],['In-N-Out',6],['Popeyes Cajun fries',6],["Wendy's",5],['Burger King',4],['Shake Shack',4],['Jack in the Box',3],['Checkers',0],["Culver's",0],['Whataburger',0],['Sonic',0],['Taco Bell Nacho Fries',0],['Carl’s Jr.',0]],
+  clues:['Thin and crispy, shoestring style.','At their best in the first five minutes.','Served in a red carton.','Sold under the golden arches.']},
+ {id:'cereal',label:'Breakfast cereal',title:'GOAT breakfast cereal',
+  opts:[['Cinnamon Toast Crunch',20],['Frosted Flakes',14],['Honey Nut Cheerios',13],['Lucky Charms',11],['Froot Loops',9],["Cap'n Crunch",8],["Reese's Puffs",7],['Cocoa Puffs',5],['Frosted Mini-Wheats',4],['Rice Krispies',3],['Corn Flakes',0],['Raisin Bran',0],['Fruity Pebbles',0],['Apple Jacks',0],['Honey Bunches of Oats',0],['Special K',0]],
+  clues:['Sweet, and it changes the milk.','Little squares, not flakes or loops.','Leaves a sugary dust at the bottom of the bowl.','Cinnamon and sugar on every square.']},
+ {id:'tennis',label:'Tennis player',title:'GOAT tennis player',
+  opts:[['Novak Djokovic',30],['Serena Williams',24],['Roger Federer',20],['Rafael Nadal',12],['Steffi Graf',4],['Martina Navratilova',3],['Rod Laver',2],['Pete Sampras',2],['Björn Borg',1],['Billie Jean King',1],['Andre Agassi',0],['Chris Evert',0],['Carlos Alcaraz',0],['Jannik Sinner',0],['Venus Williams',0],['Monica Seles',0]],
+  clues:['Turned pro in 2003.','Famous for sliding into the splits on hard courts.',"Holds the men's record for Grand Slam singles titles.",'Born in Belgrade, Serbia.']},
+ {id:'candy',label:'Candy bar',title:'GOAT candy bar',
+  opts:[["Reese's Peanut Butter Cups",22],['Snickers',20],['Kit Kat',15],['Twix',12],['Milky Way',6],['3 Musketeers',5],['Butterfinger',5],["Hershey's Milk Chocolate",4],['Almond Joy',3],['Baby Ruth',2],['Mounds',0],['PayDay',0],['Crunch',0],['Heath',0],['Whatchamacallit',0],['Mr. Goodbar',0]],
+  clues:['Chocolate on the outside.','Not technically a bar at all.','Comes two to a pack in fluted paper cups.','Peanut butter is the filling.']},
+ {id:'boxer',label:'Boxer',title:'GOAT boxer',
+  opts:[['Muhammad Ali',41],['Mike Tyson',14],['Floyd Mayweather Jr.',11],['Sugar Ray Robinson',10],['Manny Pacquiao',6],['Joe Louis',5],['Sugar Ray Leonard',4],['Rocky Marciano',3],['Canelo Álvarez',2],['Roberto Durán',2],['George Foreman',0],['Joe Frazier',0],['Evander Holyfield',0],['Lennox Lewis',0],['Jack Dempsey',0],['Terence Crawford',0]],
+  clues:['A heavyweight of the 1960s and 70s.','Won Olympic gold in Rome in 1960.','Changed his name in 1964.','Fought the Rumble in the Jungle and the Thrilla in Manila.']}
+];
+const MAX=5;
+const pad=n=>String(n).padStart(2,'0');
+const now=new Date();
+const dateKey=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+const dayNum=Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/864e5);
+const dailyIdx=(now.getMonth()===10&&now.getDate()>=20)?0:dayNum%CATS.length;
+const dailyId=CATS[dailyIdx].id;
+const dateLabel=now.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+for(const c of CATS){const ranked=c.opts.map((o,i)=>({i,p:o[1]})).filter(o=>o.p>0).sort((a,b)=>b.p-a.p);c.rank={};ranked.forEach((o,k)=>c.rank[o.i]=k+1);c.top=ranked;c.alpha=c.opts.map((o,i)=>i).sort((a,b)=>c.opts[a][0].localeCompare(c.opts[b][0]))}
+
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let state;
+let stats=store.get('goat-stats')||{played:0,wins:0,streak:0,last:null,lastWin:null};
+
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+let db=null,uid=null,owner=false,dbState='loading',comm=[],sugg=[],dismissed=[],tally={},myVotes={},busy=false,editing=null;
+const allCats=()=>CATS.concat(comm);
+const cat=()=>allCats().find(c=>c.id===state.cat)||CATS[dailyIdx];
+const game=c=>state.g[c.id]||(state.g[c.id]={guesses:[],pick:null});
+const won=(c,g)=>g.guesses.includes(c.answer??0);
+const done=(c,g)=>won(c,g)||g.guesses.length>=MAX;
+const tier=(c,i)=>{const r=c.rank[i];if(r===1)return 0;if(!r)return 4;if(r<=3)return 1;if(r<=6)return 2;return 3};
+const EMO=['🟩','🟧','🟨','🟦','⬛'];
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const hotScore=(c,i)=>{const p=c.opts[i][1],top=c.top[0].p;return Math.round(100*(1-p/top))};
+const hotLabel=s=>s===0?'Consensus king':s<=40?'Mild take':s<=75?'Spicy take':s<100?'Hot take':'Certified contrarian';
+function save(){store.set('goat-'+dateKey,state)}
+
+function record(c,g){
+  if(c.id!==dailyId||stats.last===dateKey)return;
+  const y=new Date(now);y.setDate(y.getDate()-1);
+  const yKey=`${y.getFullYear()}-${pad(y.getMonth()+1)}-${pad(y.getDate())}`;
+  stats.played++;
+  if(won(c,g)){stats.wins++;stats.streak=stats.lastWin===yKey?stats.streak+1:1;stats.lastWin=dateKey}else stats.streak=0;
+  stats.last=dateKey;store.set('goat-stats',stats);
+}
+
+function renderCats(){
+  const cur=cat().id;
+  if(!Array.isArray(state.deck)||state.deck.length!==8||!state.deck.every(id=>CATS.some(c=>c.id===id)))state.deck=deal();
+  const deck=state.deck.map(id=>CATS.find(c=>c.id===id));
+  $('cats').innerHTML=`<div class="teamhd"><span class="team">Team GOAT</span><span class="tsub">8 random categories. Pick one to play.</span><button class="sm" id="shuffle">Shuffle</button></div>`+deck.map(c=>{const g=state.g[c.id];const d=g&&done(c,g);return `<button class="cat" data-c="${c.id}" aria-pressed="${c.id===cur}">${c.label}<small>${c.id===dailyId?'Today':d?(won(c,g)?'Solved':'Missed'):'Practice'}</small></button>`}).join('')
+   +comm.map(c=>`<button class="cat" data-c="${esc(c.id)}" aria-pressed="${c.id===cur}">${esc(c.label)}<small>${myVotes[c.id]?'Voted':'Crowd vote'}</small></button>`).join('');
+}
+
+function deal(){
+  const rest=CATS.filter(c=>c.id!==dailyId).map(c=>c.id);
+  for(let i=rest.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[rest[i],rest[j]]=[rest[j],rest[i]]}
+  return [dailyId,...rest.slice(0,7)];
+}
+
+function renderVote(){
+  const c=cat(),mine=myVotes[c.id];
+  $('tag').textContent='Crowd vote · new category';
+  $('title').textContent=c.title;
+  $('vote').innerHTML=`<p>Brand new category, so there's no crowd ranking to guess yet. Cast your vote and help build it.</p>
+   ${mine?`<div class="mine">Your vote: ${esc(mine)}. Tap another name to switch.</div>`:''}
+   <div class="chips" style="max-height:none">${c.opts.map((o,i)=>`<button class="chip ${o===mine?'on':''}" data-v="${i}">${esc(o)}</button>`).join('')}</div>
+   `;
+}
+
+function renderBoard(fresh){
+  const c=cat(),isV=!!c.comm;
+  $('slots').hidden=isV;$('clues').hidden=isV;$('vote').hidden=!isV;
+  if(isV){$('play').style.display='none';renderVote();return}
+  const g=game(c),fin=done(c,g);
+  $('tag').textContent=c.id===dailyId?`Daily GOAT · ${dateLabel}`:'Practice round';
+  $('title').textContent=c.title;
+  let rows='';
+  for(let k=0;k<MAX;k++){
+    const i=g.guesses[k];
+    if(i===undefined){rows+=`<li class="slot"><span class="n">${k+1}</span><span class="nm" style="opacity:.4">${k===g.guesses.length&&!fin?'Your guess':'·'}</span></li>`;continue}
+    const t=tier(c,i),r=c.rank[i];
+    const bd=t===0?'GOAT!':r?`#${r} · ${c.opts[i][1]}%`:'Not top 10';
+    rows+=`<li class="slot f ${t===0?'win':''}" style="${k===fresh?'':'animation:none'}"><span class="n">${k+1}</span><span class="nm">${c.opts[i][0]}</span><span class="bd t${t}">${bd}</span></li>`;
+  }
+  $('slots').innerHTML=rows;
+  const misses=g.guesses.filter(i=>i!==0).length;
+  const show=fin?4:Math.min(4,1+misses);
+  $('clues').innerHTML=c.clues.map((t,k)=>k<show?`<li><b>Clue ${k+1}</b><span>${t}</span></li>`:`<li class="lock"><b style="color:inherit">Clue ${k+1}</b><span>Unlocks after miss ${k}</span></li>`).join('');
+  $('play').style.display=fin?'none':'';
+  renderChips();
+}
+
+function renderChips(){
+  const c=cat(),g=game(c),f=norm($('q').value.trim());
+  const list=c.alpha.filter(i=>!g.guesses.includes(i)&&norm(c.opts[i][0]).includes(f));
+  $('chips').innerHTML=list.length?list.map(i=>`<button class="chip" data-i="${i}">${c.opts[i][0]}</button>`).join(''):`<p class="none">No contender by that name in this prototype's list.</p>`;
+  return list;
+}
+
+function renderSide(){
+  const c=cat();
+  if(c.comm){
+    const t=tally[c.id]||{},total=Object.values(t).reduce((a,b)=>a+b,0);
+    const rows=c.opts.map(o=>({o,n:t[o]||0})).sort((a,b)=>b.n-a.n);
+    const max=Math.max(1,...rows.map(r=>r.n));
+    $('side').innerHTML=`<div class="panel"><h2>${total?`${esc(rows[0].o)} leads`:'No votes yet'}</h2><p>${total} vote${total===1?'':'s'} so far. The ranking updates live as people vote.</p>
+     <div class="bars">${rows.map((r,k)=>`<div class="bar ${r.o===myVotes[c.id]?'me':''}"><span class="r">${k+1}</span><span class="tr"><span class="fl" style="width:${(r.n/max*100).toFixed(1)}%"></span><span class="lb">${esc(r.o)}</span></span><span class="v">${total?Math.round(r.n/total*100):0}%</span></div>`).join('')}</div>
+     <p class="note">Added from a player suggestion. Once enough votes are in, it can graduate into a daily guessing round.</p></div>`;
+    return;
+  }
+  const g=game(c),fin=done(c,g);
+  if(!fin){
+    $('side').innerHTML=`<div class="panel"><div class="hero"><svg aria-hidden="true"><use href="#goat"/></svg><div><h2>Find the crowd's #1</h2><p>Five guesses. Each miss shows where your pick landed in the crowd's top 10 and unlocks a new clue.</p></div></div>
+    <div class="key"><i class="t0"></i><span>The crowd's GOAT</span><i class="t1"></i><span>Ranked #2 to #3, red hot</span><i class="t2"></i><span>Ranked #4 to #6, warm</span><i class="t3"></i><span>Ranked #7 to #10, cold</span><i class="t4"></i><span>Outside the top 10</span></div>
+    <p class="note">After the reveal you name your own GOAT and get a Hot Take Score. Crowd votes here are sample data for this prototype.</p></div>`;
+    return;
+  }
+  const w=won(c,g),n=g.guesses.length,top=c.top[0].p;
+  const bars=c.top.map((o,k)=>`<div class="bar ${g.pick===o.i?'me':''} ${g.guesses.includes(o.i)?'gs':''}"><span class="r">${k+1}</span><span class="tr"><span class="fl" style="width:${(o.p/top*100).toFixed(1)}%"></span><span class="lb">${c.opts[o.i][0]}</span></span><span class="v">${o.p}%</span></div>`).join('');
+  let pickHtml;
+  if(g.pick===null){
+    pickHtml=`<h2 style="margin-top:16px">Who's your GOAT?</h2><p>Forget the crowd. Pick yours to get your Hot Take Score.</p><div class="pick">${c.alpha.map(i=>`<button class="pk" data-p="${i}">${c.opts[i][0]}</button>`).join('')}</div>`;
+  }else{
+    const s=hotScore(c,g.pick),p=c.opts[g.pick][1];
+    pickHtml=`<h2 style="margin-top:18px">Hot Take Score</h2><p class="big">${s}</p><p><b>${hotLabel(s)}.</b> You picked ${c.opts[g.pick][0]}, ${p?`backed by ${p}% of the crowd`:'who missed the crowd top 10 entirely'}.</p>
+    <div class="meter" aria-hidden="true"><span style="left:${Math.max(2,Math.min(98,s))}%"></span></div><div class="scale"><span>With the crowd</span><span>Contrarian</span></div>
+    <div class="row"><button class="btn" id="copy">Copy my result</button><button class="btn ghost" id="repick">Change pick</button>${nextCat()?`<button class="btn ghost" id="next">Play ${nextCat().label}</button>`:''}</div>
+    <textarea id="share" readonly aria-label="Shareable result"></textarea>`;
+  }
+  $('side').innerHTML=`<div class="panel"><h2>${w?`Found it in ${n}`:`The GOAT was ${c.opts[0][0]}`}</h2><p>${w?`${c.opts[0][0]} tops the crowd with ${c.opts[0][1]}% of votes.`:`Five swings, no crown. ${c.opts[0][0]} took ${c.opts[0][1]}% of votes.`} Outlined bars are your guesses.</p>
+  <div class="bars">${bars}</div><p class="note">Crowd votes are sample data for this prototype.</p>${pickHtml}</div>`;
+}
+
+function nextCat(){const c=cat();return CATS.find(x=>x.id!==c.id&&!(state.g[x.id]&&done(x,state.g[x.id])))}
+
+function shareText(){
+  const c=cat(),g=game(c),s=hotScore(c,g.pick);
+  return `THE GOAT · ${c.label}${c.id===dailyId?' · '+dateLabel:''}\n${g.guesses.map(i=>EMO[tier(c,i)]).join('')} ${won(c,g)?g.guesses.length:'X'}/${MAX}\nMy GOAT: ${c.opts[g.pick][0]}\nHot Take Score: ${s} (${hotLabel(s)})`;
+}
+
+function render(fresh){renderCats();renderBoard(fresh);renderSide()}
+
+function guess(i){
+  const c=cat(),g=game(c);if(done(c,g)||g.guesses.includes(i))return;
+  g.guesses.push(i);$('q').value='';
+  if(done(c,g))record(c,g);
+  updStats();save();render(g.guesses.length-1);
+}
+function updStats(){$('sStreak').textContent=stats.streak;$('sPlayed').textContent=stats.played;$('sWin').textContent=(stats.played?Math.round(stats.wins/stats.played*100):0)+'%'}
+
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.c){state.cat=t.dataset.c;$('q').value='';save();render();return}
+  if(t.dataset.i!==undefined){guess(+t.dataset.i);return}
+  if(t.dataset.v!==undefined){vote(+t.dataset.v);return}
+  if(t.id==='shuffle'){state.deck=deal();save();renderCats();return}
+  if(t.dataset.act){review(t.dataset.act,t.dataset.k);return}
+  if(t.dataset.p!==undefined){game(cat()).pick=+t.dataset.p;save();renderSide();return}
+  if(t.id==='repick'){game(cat()).pick=null;save();renderSide();return}
+  if(t.id==='next'){state.cat=nextCat().id;save();render();window.scrollTo({top:0,behavior:'smooth'});return}
+  if(t.id==='copy'){
+    const txt=shareText(),box=$('share');
+    const fallback=()=>{box.style.display='block';box.value=txt;box.select();t.textContent='Select and copy below'};
+    try{navigator.clipboard.writeText(txt).then(()=>{t.textContent='Copied!';setTimeout(()=>t.textContent='Copy my result',1800)},fallback)}catch(err){fallback()}
+  }
+});
+$('q').addEventListener('input',renderChips);
+$('q').addEventListener('keydown',e=>{if(e.key==='Enter'){const l=renderChips();const f=norm($('q').value.trim());const exact=l.find(i=>norm(cat().opts[i][0])===f);if(exact!==undefined)guess(exact);else if(l.length===1)guess(l[0])}});
+
+/* ---------- community: suggestions, review, votes (Supabase) ---------- */
+const SB='https://mzlbnsibalthsycmvshm.supabase.co',KEY='sb_publishable_1RuU3_8Jetrt6mrdl6-05g_y1XG5n54';
+const parseOpts=s=>{const seen=new Set();return String(s||'').split(/[,\n]/).map(x=>x.trim().slice(0,40)).filter(x=>x&&!seen.has(x.toLowerCase())&&seen.add(x.toLowerCase())).slice(0,16)};
+const stLabel={pending:'Waiting',added:'In the game',dismissed:'Passed'};
+const ERR={duplicate:'Someone already suggested that one.',too_many:'That’s 10 suggestions today. Come back tomorrow.',queue_full:'The suggestion box is full right now.',bad_name:'Give the category a name first.',need_four:'Add at least 4 contenders so the vote means something.',not_owner:'That passphrase didn’t work.',bad_pick:'That contender isn’t in this vote anymore.'};
+const errText=e=>ERR[e&&e.message]||'That didn’t save. Check your connection and try again.';
+const newId=()=>{try{return crypto.randomUUID()}catch(e){return 'v'+Date.now().toString(36)+Math.random().toString(36).slice(2,12)}};
+uid=store.get('goat-voter');if(!uid){uid=newId();store.set('goat-voter',uid)}
+let mineIds=store.get('goat-mine')||[],pass=store.get('goat-owner')||'',ownerForm=false;
+myVotes=store.get('goat-myvotes')||{};
+
+async function api(path,body){
+  const r=await fetch(SB+'/rest/v1/'+path,{method:body?'POST':'GET',headers:{apikey:KEY,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
+  const txt=await r.text();let data=null;try{data=txt?JSON.parse(txt):null}catch(e){}
+  if(!r.ok)throw {message:(data&&data.message)||'http_'+r.status};
+  return data;
+}
+const rpc=(fn,body)=>api('rpc/'+fn,body);
+
+function renderCommunity(){
+  const m=$('dbMsg');
+  m.className='msg'+(dbState==='slow'?' bad':'');
+  m.textContent=dbState==='loading'?'Connecting to the suggestion box…':dbState==='slow'?"Can't reach the suggestion box right now. We'll keep trying.":owner?'Signed in as the owner. The review queue on the right is yours to run.':'';
+  const can=dbState==='ready';
+  $('sBtn').disabled=!can||busy;$('sName').disabled=!can;$('sOpts').disabled=!can;
+  const mine=sugg.filter(s=>mineIds.includes(s.k)).sort((a,b)=>b.at-a.at);
+  $('mine').innerHTML=mine.length?mine.map(s=>`<li><div class="hd"><span class="nm">${esc(s.name)}</span><span class="st ${s.status}">${stLabel[s.status]}</span></div>${s.opts.length?`<span class="op">${esc(s.opts.join(', '))}</span>`:''}</li>`).join(''):'<li><span class="op">Nothing sent yet. Your ideas show up here with their status.</span></li>';
+  $('qTitle').textContent=owner?'Review queue':'Up next from players';
+  $('qNote').textContent=owner?'Add a suggestion to put it in the game as a crowd vote. It needs at least 4 contenders, and you can edit them first.':'Suggestions waiting for a decision from the game’s owner.';
+  const pend=sugg.filter(s=>s.status==='pending').sort((a,b)=>a.at-b.at);
+  let html=pend.map(s=>{
+    const open=owner&&editing===s.k;
+    return `<li><div class="hd"><span class="nm">${esc(s.name)}</span><span class="st pending">Waiting</span></div>${s.opts.length?`<span class="op">${esc(s.opts.join(', '))}</span>`:'<span class="op">No contenders listed</span>'}
+     ${owner?(open?`<div class="ed"><label class="fld" style="margin:0"><span>Contenders for the vote</span><textarea id="ed-${esc(s.k)}">${esc(s.opts.join(', '))}</textarea></label><div class="row" style="margin:0"><button class="sm go" data-act="approve" data-k="${esc(s.k)}">Add to game</button><button class="sm" data-act="cancel" data-k="${esc(s.k)}">Cancel</button></div><p class="msg bad" id="em-${esc(s.k)}"></p></div>`:`<div class="row" style="margin-top:4px"><button class="sm go" data-act="edit" data-k="${esc(s.k)}">Review and add</button><button class="sm" data-act="dismiss" data-k="${esc(s.k)}">Dismiss</button></div>`):''}</li>`}).join('');
+  if(!pend.length)html='<li><span class="op">The queue is empty. New suggestions land here.</span></li>';
+  if(owner&&comm.length)html+=`<li><span class="nm" style="font-size:15px">Live in the game</span></li>`+comm.map(c=>`<li><div class="hd"><span class="nm">${esc(c.label)}</span><span class="st added">In the game</span><button class="sm" data-act="remove" data-k="${esc(c.rid)}">Remove</button></div></li>`).join('');
+  $('queue').innerHTML=html;
+  $('ownerBox').innerHTML=owner?`<span>Owner mode is on.</span> <button class="sm" data-act="signout">Sign out</button>`:ownerForm?`<form id="oForm" class="row" style="margin:0;align-items:center"><label class="fld" style="margin:0;flex:1"><span>Owner passphrase</span><input id="oPass" type="password" autocomplete="current-password"></label><button class="sm go" type="submit" style="align-self:end">Sign in</button><button class="sm" type="button" data-act="ocancel" style="align-self:end">Cancel</button></form><p class="msg bad" id="oMsg"></p>`:`<button class="sm" data-act="owner">Owner sign-in</button>`;
+}
+
+async function write(fn,msgEl){
+  if(busy)return false;busy=true;renderCommunity();
+  try{await fn();return true}catch(e){if(msgEl){msgEl.className='msg bad';msgEl.textContent=errText(e)}return false}
+  finally{busy=false;renderCommunity()}
+}
+
+$('sForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const name=$('sName').value.trim().replace(/\s+/g,' '),opts=parseOpts($('sOpts').value),m=$('sMsg');
+  if(name.length<2){m.className='msg bad';m.textContent=ERR.bad_name;return}
+  let id=null;
+  const ok=await write(async()=>{id=await rpc('suggest',{p_voter:uid,p_name:name,p_opts:opts})},m);
+  if(ok){if(id){mineIds=[...mineIds,id].slice(-50);store.set('goat-mine',mineIds)}$('sName').value='';$('sOpts').value='';m.className='msg';m.textContent=`Sent. “${name}” is in the queue.`;load()}
+});
+
+document.addEventListener('submit',async e=>{
+  if(e.target.id!=='oForm')return;e.preventDefault();
+  const p=$('oPass').value.trim();if(!p)return;
+  let ok=false;try{ok=await rpc('check_owner',{p_pass:p})}catch(err){}
+  if(ok===true){pass=p;owner=true;ownerForm=false;store.set('goat-owner',p);renderCommunity()}else{$('oMsg').textContent=ERR.not_owner}
+});
+
+async function review(act,k){
+  if(act==='owner'){ownerForm=true;renderCommunity();setTimeout(()=>$('oPass')&&$('oPass').focus(),0);return}
+  if(act==='ocancel'){ownerForm=false;renderCommunity();return}
+  if(act==='signout'){owner=false;pass='';try{localStorage.removeItem('goat-owner')}catch(e){}renderCommunity();return}
+  if(act==='edit'){editing=k;renderCommunity();return}
+  if(act==='cancel'){editing=null;renderCommunity();return}
+  if(!owner)return;
+  if(act==='dismiss')await write(()=>rpc('review_suggestion',{p_pass:pass,p_id:k,p_action:'dismiss',p_opts:[]}));
+  if(act==='remove')await write(()=>rpc('remove_category',{p_pass:pass,p_id:k}));
+  if(act==='approve'){
+    const opts=parseOpts(($('ed-'+k)||{}).value),em=$('em-'+k);
+    if(opts.length<4){if(em)em.textContent=ERR.need_four;return}
+    if(await write(()=>rpc('review_suggestion',{p_pass:pass,p_id:k,p_action:'add',p_opts:opts}),em))editing=null;
+  }
+  load();
+}
+
+async function vote(i){
+  const c=cat();if(!c.comm||busy)return;
+  const pick=c.opts[i];if(!pick||myVotes[c.id]===pick)return;
+  const prev=myVotes[c.id];
+  if(prev&&tally[c.id]&&tally[c.id][prev])tally[c.id][prev]--;
+  (tally[c.id]=tally[c.id]||{})[pick]=(tally[c.id][pick]||0)+1;
+  myVotes={...myVotes,[c.id]:pick};render();
+  const ok=await write(()=>rpc('cast_vote',{p_voter:uid,p_category:c.rid,p_pick:pick}));
+  if(ok)store.set('goat-myvotes',myVotes);else{if(prev)myVotes[c.id]=prev;else delete myVotes[c.id]}
+  load();
+}
+
+let loading=false;
+async function load(){
+  if(loading)return;loading=true;
+  try{
+    const [cats,sug,votes]=await Promise.all([
+      api('categories?select=id,name,opts,suggestion_id,created_at&order=created_at.asc'),
+      api('suggestions?select=id,name,opts,status,created_at&order=created_at.desc&limit=300'),
+      api('votes?select=category_id,pick&limit=20000')]);
+    comm=(cats||[]).filter(r=>r&&typeof r.name==='string'&&Array.isArray(r.opts)).map(r=>({id:'c-'+r.id,rid:r.id,label:r.name.slice(0,60),title:'GOAT '+r.name.slice(0,60).toLowerCase(),comm:true,opts:r.opts.filter(o=>typeof o==='string').slice(0,16),from:r.suggestion_id}));
+    sugg=(sug||[]).filter(r=>r&&typeof r.name==='string').map(r=>({k:r.id,name:r.name.slice(0,60),opts:Array.isArray(r.opts)?r.opts.filter(o=>typeof o==='string'):[],status:stLabel[r.status]?r.status:'pending',at:Date.parse(r.created_at)||0}));
+    const t={};for(const v of votes||[]){if(!v||typeof v.pick!=='string')continue;const k='c-'+v.category_id;(t[k]=t[k]||{})[v.pick]=(t[k][v.pick]||0)+1}
+    if(!busy)tally=t;
+    db='supabase';dbState='ready';
+  }catch(e){if(dbState!=='ready')dbState='slow'}
+  finally{loading=false}
+  render();renderCommunity();
+}
+
+function start(){
+  const saved=store.get('goat-'+dateKey);
+  state=(saved&&saved.g)?saved:{cat:dailyId,g:{}};
+  if(!state.cat)state.cat=dailyId;
+  if(pass)rpc('check_owner',{p_pass:pass}).then(ok=>{owner=ok===true;if(!owner){pass='';try{localStorage.removeItem('goat-owner')}catch(e){}}renderCommunity()}).catch(()=>{});
+  updStats();render();renderCommunity();load();
+  setInterval(()=>{if(!document.hidden)load()},20000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
+}
+start();
+}
+</script>
+</body>
+</html>
