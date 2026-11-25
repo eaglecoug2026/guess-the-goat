@@ -526,6 +526,7 @@ var retryTimer = null, retryStep = 0;
 var view = { type: 'daily' };
 var rounds = {};            // practice rounds by slug (this visit only)
 var deck = null;
+var deckFromServer = false; // false while the deck was dealt from the bundled fallback
 var includePick = false;
 
 function k() { return Number(config.k) > 0 ? Number(config.k) : 100; }
@@ -656,7 +657,12 @@ function loadCatalog() {
     serverCatalog = rows.filter(function (c) {
       return c && typeof c.slug === 'string' && typeof c.name === 'string' && Array.isArray(c.ranking) && (c.kind === 'daily' || c.kind === 'vote');
     });
-    if (deck && deck.some(function (s) { return !findCat(s); })) deck = null;
+    // Re-deal once the server list arrives: a deck dealt from the bundled fallback would otherwise stick
+    // whenever the server list contains all of the bundled categories.
+    if (deck && (!deckFromServer || deck.some(function (s) { return !findCat(s); }))) {
+      deck = dealDeck();
+      if (view.type === 'practice' && findCat(view.slug) && deck.indexOf(view.slug) < 0) deck[deck.length - 1] = view.slug;
+    }
     render();
   }, function () { if (serverCatalog === null) { track('offline', { what: 'catalog' }); render(); } });
 }
@@ -864,6 +870,7 @@ function nextPractice() {
 function dealDeck() {
   var l = catalogList().filter(function (c) { return practiceable(c) && !(daily && c.slug === daily.slug); }).map(function (c) { return c.slug; });
   for (var i = l.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = l[i]; l[i] = l[j]; l[j] = t; }
+  deckFromServer = serverCatalog !== null;
   return l.slice(0, 8);
 }
 function renderMore() {

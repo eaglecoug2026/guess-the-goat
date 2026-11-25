@@ -21,6 +21,7 @@ export function createBackend(opts = {}) {
     offline: false,     // every request fails at the network level
     failNext: {},       // fn -> number of upcoming calls that fail with a network error
     block: new Set(),   // function names that fail at the network level
+    // opts.delay: { fn: ms } holds that function's response back
     nextId: 1
   };
 
@@ -119,6 +120,7 @@ export function createBackend(opts = {}) {
       const path = url.pathname.replace('/rest/v1/', '');
       const fn = path.startsWith('rpc/') ? path.slice(4) : path;
       s.calls.push(fn);
+      if (opts.delay && opts.delay[fn]) await new Promise(r => setTimeout(r, opts.delay[fn]));
       if (s.offline || s.block.has(fn) || (s.failNext[fn] > 0 && s.failNext[fn]--)) return route.abort('internetdisconnected');
       if (req.headers().apikey !== 'sb_publishable_1RuU3_8Jetrt6mrdl6-05g_y1XG5n54') return route.fulfill({ status: 401, json: { message: 'bad key' } });
       if (fn === 'config') {
