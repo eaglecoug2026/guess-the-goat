@@ -61,9 +61,9 @@ end $$;
 
 -- ---------- repeat window, pool exhaustion
 select pg_temp.ok('2099-03-02 -> test-b (test-a used in the last 30)', (public.freeze_puzzle('2099-03-02') ->> 'slug') = 'test-b');
-select pg_temp.ok('2099-03-03 -> pool exhausted, least recently used test-a',
-  (public.freeze_puzzle('2099-03-03') ->> 'slug') = 'test-a'
-  and exists (select 1 from public.ops_log where kind = 'pool_exhausted' and detail ->> 'date' = '2099-03-03'));
+-- (A function's writes are invisible to the rest of the same statement, so freeze first, then check.)
+select pg_temp.ok('2099-03-03 -> pool exhausted, least recently used test-a', (public.freeze_puzzle('2099-03-03') ->> 'slug') = 'test-a');
+select pg_temp.ok('pool_exhausted logged', exists (select 1 from public.ops_log where kind = 'pool_exhausted' and detail ->> 'date' = '2099-03-03'));
 select pg_temp.ok('snapshot uses the blended #1 at freeze time (A2, community tier, 500 votes, A2 clues)',
   (select answer = 'A2' and tier = 'community' and total_votes = 500 and clues = pg_temp.clues('A2') -> 'A2'
      from public.daily_puzzles where puzzle_date = '2099-03-03'));
@@ -73,25 +73,24 @@ select pg_temp.ok('seasonal and vote categories are never picked from the pool',
 -- ---------- schedule overrides
 insert into public.schedule (puzzle_date, slug, note) values ('2099-03-04', 'test-s', 'halloween test'), ('2099-03-05', 'test-c', 'no clues');
 select pg_temp.ok('schedule row wins (seasonal test-s on 2099-03-04)', (public.freeze_puzzle('2099-03-04') ->> 'slug') = 'test-s');
-select pg_temp.ok('scheduled category whose #1 lacks clues is skipped and logged',
-  (public.freeze_puzzle('2099-03-05') ->> 'slug') <> 'test-c'
-  and exists (select 1 from public.ops_log where kind = 'schedule_skipped' and detail ->> 'slug' = 'test-c'
-                and detail ->> 'reason' = 'needs_clues'));
+select pg_temp.ok('scheduled category whose #1 lacks clues is skipped', (public.freeze_puzzle('2099-03-05') ->> 'slug') <> 'test-c');
+select pg_temp.ok('schedule_skipped logged (needs_clues)', exists (select 1 from public.ops_log where kind = 'schedule_skipped'
+  and detail ->> 'slug' = 'test-c' and detail ->> 'reason' = 'needs_clues'));
 
 -- ---------- clue mismatch from votes: test-b's blended #1 becomes B4 (no clues)
 insert into public.catalog_votes (slug, player, pick)
   select 'test-b', 'bplayer-' || lpad(g::text, 6, '0'), 'B4' from generate_series(1, 300) g;
-select pg_temp.ok('test-b skipped once its #1 (B4) has no clues',
-  (public.freeze_puzzle('2099-03-06') ->> 'slug') <> 'test-b'
-  and (select needs_clues from public.catalog where slug = 'test-b'));
+select pg_temp.ok('test-b skipped once its #1 (B4) has no clues', (public.freeze_puzzle('2099-03-06') ->> 'slug') <> 'test-b');
+select pg_temp.ok('test-b now flagged needs_clues', (select needs_clues from public.catalog where slug = 'test-b'));
 
 -- ---------- immutability (as postgres, i.e. even with table privileges)
 select pg_temp.ok('UPDATE of a published puzzle fails', pg_temp.err($q$update public.daily_puzzles set answer = 'X' where puzzle_date = '2099-03-01'$q$) = 'immutable');
 select pg_temp.ok('UPDATE of ranking fails', pg_temp.err($q$update public.daily_puzzles set ranking = '[]' where puzzle_date = '2099-03-01'$q$) = 'immutable');
 select pg_temp.ok('DELETE of a published puzzle fails', pg_temp.err($q$delete from public.daily_puzzles where puzzle_date = '2099-03-01'$q$) = 'immutable');
 select pg_temp.ok('TRUNCATE fails', pg_temp.err('truncate public.daily_puzzles') = 'immutable');
-select pg_temp.ok('correction_note may be set', pg_temp.err($q$update public.daily_puzzles set correction_note = 'Fixed a clue' where puzzle_date = '2099-03-01'$q$) = 'ok'
-  and (select correction_note from public.daily_puzzles where puzzle_date = '2099-03-01') = 'Fixed a clue');
+select pg_temp.ok('correction_note may be set', pg_temp.err($q$update public.daily_puzzles set correction_note = 'Fixed a clue' where puzzle_date = '2099-03-01'$q$) = 'ok');
+select pg_temp.ok('correction_note stored, snapshot unchanged',
+  (select correction_note = 'Fixed a clue' and answer = 'A1' from public.daily_puzzles where puzzle_date = '2099-03-01'));
 
 -- ---------- freeze horizon (>= 48 h) with a mocked UTC date
 select pg_temp.ok('freeze_upcoming(2099-04-10) freezes 2099-04-09 .. 2099-04-13', public.freeze_upcoming('2099-04-10') = 5,
@@ -103,9 +102,8 @@ select pg_temp.ok('freeze_upcoming is idempotent', public.freeze_upcoming('2099-
 
 -- ---------- nothing eligible
 update public.catalog set active = false where slug like 'test-%';
-select pg_temp.ok('no eligible category: null + freeze_failed logged',
-  public.freeze_puzzle('2099-05-01') is null
-  and exists (select 1 from public.ops_log where kind = 'freeze_failed' and detail ->> 'date' = '2099-05-01'));
+select pg_temp.ok('no eligible category: freeze returns null', public.freeze_puzzle('2099-05-01') is null);
+select pg_temp.ok('freeze_failed logged', exists (select 1 from public.ops_log where kind = 'freeze_failed' and detail ->> 'date' = '2099-05-01'));
 update public.catalog set active = true where slug in ('test-a','test-s','test-v');
 
 -- ---------- anon
