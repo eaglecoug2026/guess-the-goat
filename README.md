@@ -21,23 +21,30 @@ Guess the crowd's greatest of all time.
 ## How it's built
 
 - One static page (`index.html`) served by GitHub Pages. There's no build step.
-- Suggestions, votes and added categories live in the Supabase project **The GOAT** (Intellismart org).
-  - The public key in the page can only read, and can only write through validated database functions (`suggest`, `cast_vote`).
-  - Owner actions (`review_suggestion`, `remove_category`) require the owner passphrase.
+- Back end: the Supabase project **The GOAT**. The page uses only the publishable key, and every write goes through a validated database function. Migrations, rollback scripts and SQL tests are in `supabase/`.
+- Daily puzzles are frozen in the database ahead of time, so everyone gets the same puzzle for a date and a published puzzle never changes.
 - Installable on phones: Share → Add to Home Screen gives a full-screen app with its own icon.
 
 ## Owner tools
 
-Use **Owner sign-in** at the bottom of the page. Owner mode turns on the review queue, where you can add, edit, dismiss or remove categories.
+Use **Owner sign-in** at the bottom of the page. A signed-in session lasts 12 hours and is kept only in that browser tab. The owner panel has the review queue, live categories, the needs-clues list, the 30-day schedule, today's stats, corrections, player data deletion, and sign out everywhere.
 
 To change the passphrase, run this in the Supabase SQL editor:
 
 ```sql
-update public.owner_secret
-set pass_hash = extensions.crypt('your-new-passphrase', extensions.gen_salt('bf', 10))
-where id = 1;
+update public.secrets
+set value = extensions.crypt('your-new-passphrase', extensions.gen_salt('bf', 10))
+where key = 'owner_pass_hash';
 ```
 
-## Editing categories
+## Tests
 
-Built-in categories are in the `CATS` array near the top of the script in `index.html`. Each one has 16 contenders, crowd percentages for the top 10, and 4 clues ordered from vague to obvious. The crowd numbers are sample data for now.
+```
+npm install
+npx playwright install chromium webkit
+npm test
+```
+
+- `tests/unit`: ranking math, tiers, Hot Take, puzzle numbers across DST, streaks and share text (Node, no browser).
+- `tests/e2e`: Playwright in Chromium and WebKit at 390×844 and 1280×900, against an in-memory stand-in for the database (`tests/e2e/mock.mjs`). They never touch the live project.
+- SQL tests for the database are in `supabase/tests`.

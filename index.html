@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The GOAT</title>
 <meta name="description" content="Guess the crowd's greatest of all time. A new GOAT debate every day, plus your Hot Take Score.">
 <meta property="og:title" content="The GOAT">
@@ -22,65 +22,74 @@
 <style>
 /* VOICE occasion: a loud, cheeky game-show debate
    IDEA a stadium scoreboard on a trophy-gold wall, with a crowned goat mascot
-   PICTURE the black scoreboard of five guess slots, lit by how close each guess got
-   COLOUR trophy gold ground, scoreboard black, cream cards, red accent, heat colours for rank
+   PICTURE the black scoreboard of five guess slots, each lit and labeled by how close the guess got
+   COLOUR trophy gold ground, scoreboard black, cream cards; tier colours step in brightness as well as hue
    TYPE Anton display + Inter text
-   LAYOUT laptop: board left, crowd panel right; phone: header, board, picks, panel */
-:root{color-scheme:light;--bg:#f6c519;--ink:#141210;--card:#fffdf6;--board:#18140f;--slot:#2a241c;--red:#e5372b;--ok:#22b36a;--hot:#ff7a1a;--warm:#ffd23d;--cool:#7cc0ff;--off:#5a5247;--mute:#6b5a1c}
+   LAYOUT laptop: board left, result panel right; phone: header, board, result, more GOATs, suggestions, footer */
+:root{color-scheme:light;--bg:#f6c519;--ink:#141210;--card:#fffdf6;--board:#18140f;--slot:#2a241c;--red:#b8261c;--mute:#4f4110;
+  --goat:#2fbf71;--hot:#b4410c;--warm:#ffd23d;--cool:#4f8fdc;--out:#c9c2b4}
 *{box-sizing:border-box;min-width:0}
 html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
-button{font:inherit;color:inherit;cursor:pointer}
-button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:2px}
-.band{padding-left:max(4vw,16px);padding-right:max(4vw,16px)}
-.top{display:flex;align-items:center;gap:14px;padding-top:16px;padding-bottom:8px;max-width:1240px;margin:0 auto;flex-wrap:wrap}
-.top .logo{width:60px;height:60px;flex:none}
-.word{font:44px/1 Anton,Impact,sans-serif;letter-spacing:.01em;margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+a{color:inherit;text-decoration-thickness:2px;text-underline-offset:3px}
+button,select{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px #fff6dc}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.band{padding-left:max(4vw,16px,env(safe-area-inset-left));padding-right:max(4vw,16px,env(safe-area-inset-right))}
+.inner{max-width:1240px;margin:0 auto}
+.top{display:flex;align-items:center;gap:12px;padding-top:14px;padding-bottom:10px;flex-wrap:wrap}
+.top .logo{width:56px;height:56px;flex:none}
+.word{font:42px/1 Anton,Impact,sans-serif;letter-spacing:.01em;margin:0}
 .stats{margin-left:auto;display:flex;gap:8px}
-.stat{background:var(--ink);color:var(--card);border-radius:10px;padding:6px 12px;text-align:center;line-height:1.15}
-.stat b{display:block;font:22px/1.1 Anton,Impact,sans-serif}
-.stat span{font-size:13px;opacity:.8}
-.cats{display:flex;gap:8px;flex-wrap:wrap;max-width:1240px;margin:6px auto 0;padding-bottom:14px}
-.teamhd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;width:100%;margin-bottom:2px}
-.team{font:26px/1 Anton,Impact,sans-serif;background:var(--ink);color:var(--bg);padding:6px 12px;border-radius:8px}
-.tsub{font-weight:600;font-size:15px}
-.teamhd .sm{margin-left:auto}
-.cat{min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:600}
-.cat[aria-pressed=true]{background:var(--ink);color:var(--card)}
-.cat small{font-weight:400;opacity:.75;margin-left:6px;font-size:13px}
-.wrap{max-width:1240px;margin:0 auto;padding-bottom:40px;display:grid;gap:20px;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start}
-.board{background:var(--board);color:#fff6dc;border-radius:22px;padding:clamp(18px,3vw,28px);box-shadow:0 8px 0 #0004}
-.tag{color:var(--warm);font-weight:600;font-size:14px;margin:0 0 4px}
-h1{font:clamp(30px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 16px;text-wrap:balance;letter-spacing:.005em}
+.stat{background:var(--ink);color:var(--card);border-radius:10px;padding:5px 12px;text-align:center;line-height:1.15;min-width:64px}
+.stat b{display:block;font:21px/1.1 Anton,Impact,sans-serif}
+.stat span{font-size:13px;color:#e9e1c8}
+.howto,.newday{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border:3px solid var(--ink);border-radius:14px;padding:8px 8px 8px 14px;margin:0 auto 12px;font-weight:600}
+.howto span,.newday span{flex:1}
+.wrap{display:grid;gap:20px;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start;padding-bottom:28px}
+.board{background:var(--board);color:#fff6dc;border-radius:22px;padding:clamp(16px,3vw,28px);box-shadow:0 8px 0 #0004;scroll-margin-top:12px}
+.thead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.tag{color:var(--warm);font-weight:600;font-size:14px;margin:0;flex:1}
+.thead .sm{border-color:#fff6dc;min-height:44px}
+h1{font:clamp(28px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 6px;text-wrap:balance;letter-spacing:.005em}
+.disc{margin:0 0 14px;font-size:14px;color:#e9e1c8}
+.corr{margin:0 0 12px;background:#fff6dc;color:var(--ink);border-radius:10px;padding:8px 12px;font-size:15px;font-weight:600}
+.notice{background:#fff6dc;color:var(--ink);border-radius:12px;padding:10px 12px;margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .slots{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.slot{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 10px 8px 14px;border-radius:12px;background:var(--slot);border:2px dashed #ffffff22}
-.slot .n{font:20px/1 Anton,Impact,sans-serif;opacity:.45;width:1.1em;flex:none}
+.slot{display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 10px 8px 14px;border-radius:12px;background:var(--slot);border:2px dashed #ffffff30}
+.slot .n{font:20px/1 Anton,Impact,sans-serif;color:#a69f8e;width:1.1em;flex:none}
 .slot .nm{font-weight:600;font-size:17px;flex:1}
+.slot .nm.dim{color:#a69f8e}
 .slot .bd{font-weight:800;font-size:14px;padding:6px 10px;border-radius:8px;white-space:nowrap;color:var(--ink)}
-.slot.f{border-style:solid;border-color:transparent}
-.slot.f{animation:flip .45s ease-out}
+.slot.f{border-style:solid;border-color:transparent;animation:flip .45s ease-out}
 @keyframes flip{from{transform:rotateX(80deg);opacity:0}to{transform:none;opacity:1}}
-.t0{background:var(--ok)}.t1{background:var(--hot)}.t2{background:var(--warm)}.t3{background:var(--cool)}.t4{background:#8a8275;color:#fff6dc}
-.slot.f.win{background:#123d27;border-color:var(--ok)}
-.clues{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.t0{background:var(--goat)}.t1{background:var(--hot);color:#fff!important}.t2{background:var(--warm)}.t3{background:var(--cool)}.t4{background:var(--out)}
+.slot.f.win{background:#123d27;border-color:var(--goat)}
+.clues{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px}
 .clues li{background:#fff6dc;color:var(--ink);border-radius:10px;padding:9px 12px;font-size:16px;display:flex;gap:10px}
 .clues li b{font:16px/1.5 Anton,Impact,sans-serif;color:var(--red);flex:none}
-.clues li.lock{background:transparent;color:#fff6dc99;border:2px dashed #ffffff22}
-.play{margin-top:18px}
+.clues li.lock{background:transparent;color:#bdb5a1;border:2px dashed #ffffff30}
+.clues li.lock b{color:inherit}
+.play{margin-top:16px}
 .play label{display:block;font-weight:600;margin-bottom:6px}
-#q{width:100%;font-size:17px;padding:12px 14px;border-radius:12px;border:2px solid #fff6dc55;background:#0d0b08;color:#fff6dc;min-height:48px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;max-height:236px;overflow:auto;padding:2px}
+#q{width:100%;font-size:17px;padding:12px 14px;border-radius:12px;border:2px solid #fff6dc77;background:#0d0b08;color:#fff6dc;min-height:48px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;max-height:236px;overflow:auto;padding:4px}
+.chips.open{max-height:none}
 .chip{min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid #fff6dc;background:transparent;color:#fff6dc;font-weight:600;font-size:15px}
-.chip:hover{background:#fff6dc;color:var(--ink)}
-.none{opacity:.7;font-size:15px;margin:8px 0 0}
+.chip:hover,.chip.on{background:#fff6dc;color:var(--ink)}
+.none{color:#d8d0bb;font-size:15px;margin:8px 0 0}.none.dark{color:var(--ink)}
+.vote p{margin:0 0 12px;color:#e9e1c8}
+.mine{background:#fff6dc;color:var(--ink);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-weight:600}
 .side{display:grid;gap:16px}
-.panel{background:var(--card);border-radius:22px;padding:clamp(18px,3vw,24px);border:3px solid var(--ink)}
+.panel{background:var(--card);border-radius:22px;padding:clamp(16px,3vw,24px);border:3px solid var(--ink);scroll-margin-top:12px}
 .panel h2{font:28px/1.05 Anton,Impact,sans-serif;margin:0 0 8px;letter-spacing:.01em}
+.panel h2.mt{margin-top:22px;font-size:24px}
 .panel p{margin:0 0 10px}
 .hero{display:flex;gap:14px;align-items:center}
-.hero .logo{width:120px;height:120px;flex:none}
-.key{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;font-size:15px;margin-top:10px}
-.key i{width:26px;height:18px;border-radius:5px;display:block;border:1px solid #0003}
+.hero .logo{width:110px;height:110px;flex:none}
+.key{list-style:none;padding:0;display:grid;gap:6px;font-size:15px;margin:12px 0 0}
+.key li{display:flex;gap:10px;align-items:center}
+.key i{width:26px;height:18px;border-radius:5px;display:block;border:1px solid #0004;flex:none}
 .bars{display:grid;gap:5px;margin:10px 0 4px}
 .bar{display:grid;grid-template-columns:1.6em minmax(0,1fr) 3.2em;gap:8px;align-items:center;font-size:15px}
 .bar .r{font:16px/1 Anton,Impact,sans-serif;color:var(--mute)}
@@ -92,426 +101,1073 @@ h1{font:clamp(30px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 16px;text
 .bar.gs .tr{box-shadow:inset 0 0 0 2px var(--ink)}
 .pick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .pk{min-height:44px;padding:8px 12px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:600;font-size:15px}
-.pk:hover{background:var(--ink);color:var(--card)}
-.meter{position:relative;height:22px;border-radius:999px;background:linear-gradient(90deg,#7cc0ff,#ffd23d 50%,#ff7a1a 75%,#e5372b);margin:14px 0 6px;border:2px solid var(--ink)}
+.pk:hover,.pk.on{background:var(--ink);color:var(--card)}
+.meter{position:relative;height:22px;border-radius:999px;background:linear-gradient(90deg,#4f8fdc,#ffd23d 50%,#e8772e 75%,#b8261c);margin:14px 0 6px;border:2px solid var(--ink)}
 .meter span{position:absolute;top:-8px;width:8px;height:34px;background:var(--ink);border-radius:4px;transform:translateX(-50%);border:2px solid var(--card)}
 .scale{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
 .big{font:clamp(48px,8vw,72px)/1 Anton,Impact,sans-serif;margin:4px 0 0}
 .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .btn{min-height:46px;padding:10px 18px;border-radius:12px;border:0;background:var(--red);color:#fff;font-weight:800}
 .btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
-#share{width:100%;margin-top:10px;font:15px/1.4 Inter,sans-serif;padding:10px;border-radius:10px;border:2px solid var(--ink);display:none;min-height:110px}
+.tog{display:flex;gap:10px;align-items:center;min-height:44px;font-weight:600}
+.tog input{width:22px;height:22px;accent-color:var(--ink)}
+.tog small{font-weight:400;color:var(--mute)}
+#shareBox{width:100%;margin-top:10px;font:15px/1.4 Inter,sans-serif;padding:10px;border-radius:10px;border:2px solid var(--ink);min-height:120px}
 .note{font-size:13px;color:var(--mute);margin-top:8px}
-.comm{max-width:1240px;margin:0 auto;padding-bottom:48px;display:grid;gap:20px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
-.comm-h{max-width:1240px;margin:0 auto;padding-top:8px}
-.comm-h h2{font:clamp(30px,4vw,40px)/1.05 Anton,Impact,sans-serif;margin:0 0 4px}
+.sgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:6px 0}
+.sgrid div{background:#f1e7c8;border-radius:10px;padding:6px 4px;text-align:center}
+.sgrid b{display:block;font:24px/1.1 Anton,Impact,sans-serif}
+.sgrid span{font-size:12px;color:var(--mute)}
+.dist{display:grid;grid-template-columns:1.2em minmax(0,1fr) 2.2em;gap:8px;align-items:center;font-size:14px;margin:3px 0;font-weight:600}
+.dt{background:#f1e7c8;border-radius:5px;height:18px;overflow:hidden}
+.dt span{display:block;height:100%;background:var(--ink);border-radius:5px;min-width:3px}
+.more{padding-bottom:20px}
+.teamhd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.teamhd h2{font:clamp(28px,4vw,36px)/1.05 Anton,Impact,sans-serif;margin:0}
+.teamhd .sm{margin-left:auto}
+.tsub{font-weight:600;font-size:15px;margin:0 0 10px}
+.cats{display:flex;gap:8px;flex-wrap:wrap}
+.cat{min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:600}
+.cat[aria-pressed=true]{background:var(--ink);color:var(--card)}
+.cat small{font-weight:400;margin-left:6px;font-size:13px}
+.comm{display:grid;gap:20px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;padding-bottom:40px}
+.comm-h h2{font:clamp(28px,4vw,40px)/1.05 Anton,Impact,sans-serif;margin:8px 0 4px}
 .comm-h p{margin:0 0 16px;max-width:62ch}
 .fld{display:block;margin-bottom:12px}
 .fld span{display:block;font-weight:600;margin-bottom:4px}
 .fld small{font-weight:400;color:var(--mute)}
-.fld input,.fld textarea,.ed textarea{width:100%;font:16px/1.4 Inter,sans-serif;padding:10px 12px;border-radius:10px;border:2px solid var(--ink);background:#fff;color:var(--ink)}
-.fld textarea,.ed textarea{min-height:84px;resize:vertical}
+.fld input,.fld textarea,select{width:100%;font:16px/1.4 Inter,sans-serif;padding:10px 12px;border-radius:10px;border:2px solid var(--ink);background:#fff;color:var(--ink);min-height:44px}
+.fld textarea{min-height:84px;resize:vertical}
 .msg{font-size:15px;margin:8px 0 0;font-weight:600}
-.msg.bad{color:var(--red)}
+.msg.bad{color:var(--red)}.msg.ok{color:#14532d}
+.board .msg{color:#fff6dc}.board .msg.bad{color:#ffb4a8}
 .sg{list-style:none;margin:8px 0 0;padding:0}
 .sg li{border-top:2px solid #14121014;padding:10px 0;display:grid;gap:4px}
 .sg .hd{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .sg .nm{font-weight:800;font-size:17px}
 .sg .op{font-size:14px;color:#4a4130}
+.sg .hd .sm{margin-left:auto}
+.sched{grid-template-columns:5em minmax(0,1fr) auto!important;align-items:center}
+.sched .dte{font-weight:800}
 .st{font-size:13px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}
-.st.pending{background:#ffe9a3}.st.added{background:#bfeccf}.st.dismissed{background:#e6e0d2;color:#5a5247}
+.st.pending{background:#ffe9a3}.st.added{background:#bfeccf}.st.dismissed{background:#e6e0d2;color:#4a4130}
 .sm{min-height:44px;padding:8px 14px;border-radius:10px;border:2px solid var(--ink);background:transparent;font-weight:700;font-size:15px}
 .sm.go{background:var(--ink);color:var(--card)}
-.ed{display:grid;gap:8px;margin-top:6px}
-.vote p{margin:0 0 12px;color:#fff6dcdd}
-.mine{background:#fff6dc;color:var(--ink);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-weight:600}
-.chip.on{background:var(--warm);color:var(--ink);border-color:var(--warm)}
+.owner{padding-bottom:40px}
+.owner .grid{display:grid;gap:20px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.oform{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap}
+.oform .fld{margin:0;flex:1;min-width:200px}
+.oform .msg{width:100%;margin:0}
 .foot{border-top:3px solid var(--ink);padding-top:18px;padding-bottom:28px}
-.footin{max-width:1240px;margin:0 auto;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+.footin{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px}
 .footin p{margin:0}
-@media(max-width:860px){.wrap,.comm{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:600px){.word{font-size:36px}.top .logo{width:48px;height:48px}.stats{margin-left:0;width:100%}.stat{flex:1}.hero .logo{width:84px;height:84px}}
+.yid{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:#fff6dc;padding:2px 6px;border-radius:6px;user-select:all;word-break:break-all}
+[hidden]{display:none!important}
+@media(max-width:860px){.wrap,.comm,.owner .grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.word{font-size:34px}.top{gap:10px;padding-top:10px;padding-bottom:8px}.top .logo{width:44px;height:44px}.stats{margin-left:0;width:100%}.stat{flex:1;padding:3px 8px}.stat b{font-size:18px}
+  .hero .logo{width:76px;height:76px}.slot{min-height:48px}.sgrid b{font-size:20px}.wrap{gap:16px}}
 @media(prefers-reduced-motion:reduce){.slot.f{animation:none}}
 </style>
 </head>
-<body style="padding-top:env(safe-area-inset-top)">
+<body>
 
-<header class="top band">
-  <img class="logo" src="logo.png" width="60" height="60" alt="Goat mascot wearing a crown and sunglasses">
+<header class="band"><div class="inner top">
+  <img class="logo" src="logo.png" width="56" height="56" alt="The GOAT: a goat in a crown and sunglasses">
   <p class="word">THE GOAT</p>
   <div class="stats" aria-label="Your daily stats">
     <div class="stat"><b id="sStreak">0</b><span>Streak</span></div>
     <div class="stat"><b id="sPlayed">0</b><span>Played</span></div>
     <div class="stat"><b id="sWin">0%</b><span>Win rate</span></div>
   </div>
-</header>
-<nav class="cats band" id="cats" aria-label="Categories"></nav>
+</div></header>
 
-<main class="wrap band">
-  <section class="board" aria-live="polite">
-    <p class="tag" id="tag">Daily GOAT</p>
-    <h1 id="title">Who does the crowd crown?</h1>
-    <ol class="slots" id="slots"></ol>
-    <ul class="clues" id="clues"></ul>
-    <div class="play" id="play">
-      <label for="q">Make a guess. Tap a name or type to filter.</label>
-      <input id="q" type="text" autocomplete="off" placeholder="Search contenders">
-      <div class="chips" id="chips"></div>
-    </div>
-    <div class="vote" id="vote" hidden></div>
-  </section>
-  <aside class="side" id="side"></aside>
-</main>
-
-<section aria-labelledby="commTitle">
-  <div class="comm-h band">
-    <h2 id="commTitle">Pitch the next GOAT debate</h2>
-    <p>Suggest a category. Once it's approved, it joins the lineup as a crowd vote, and the votes build its first real ranking.</p>
-    <p class="msg" id="dbMsg">Connecting to the suggestion box…</p>
+<main class="band"><div class="inner">
+  <p class="howto" id="howto" hidden><span>Find the crowd’s #1 in 5 guesses. Misses show how close you got.</span><button class="sm" id="howtoX">Got it</button></p>
+  <p class="newday" id="newday" role="status" hidden><span>A new GOAT is ready.</span><button class="sm go" id="newdayBtn">Play it</button></p>
+  <div class="wrap">
+    <section class="board" id="board" aria-labelledby="title">
+      <div class="thead"><p class="tag" id="tag">Daily GOAT</p><button class="sm" id="toDaily" hidden>Today’s GOAT</button></div>
+      <h1 id="title">Loading today’s GOAT…</h1>
+      <p class="disc" id="disc"></p>
+      <p class="corr" id="corr" hidden></p>
+      <div class="notice" id="notice" hidden></div>
+      <ol class="slots" id="slots" aria-label="Your guesses"></ol>
+      <p class="sr" id="live" aria-live="polite"></p>
+      <ul class="clues" id="clues" aria-label="Clues"></ul>
+      <div class="play" id="play" hidden>
+        <label for="q">Make a guess. Tap a name or type to filter.</label>
+        <input id="q" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search contenders">
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="vote" id="vote" hidden></div>
+    </section>
+    <aside class="side" id="side" aria-label="Results"></aside>
   </div>
-  <div class="comm band">
+</div></main>
+
+<section class="band more" aria-labelledby="moreTitle"><div class="inner">
+  <div class="teamhd"><h2 id="moreTitle">More GOATs to play</h2><button class="sm" id="shuffle">Shuffle</button></div>
+  <p class="tsub">Practice rounds and crowd votes. They don’t count toward your daily streak. <span id="ptally"></span></p>
+  <nav class="cats" id="cats" aria-label="More categories"></nav>
+</div></section>
+
+<section class="band" aria-labelledby="commTitle"><div class="inner">
+  <div class="comm-h"><h2 id="commTitle">Pitch the next GOAT debate</h2>
+    <p>Suggest a category. If it’s approved, it joins the lineup as a crowd vote, and the votes build its first real ranking.</p></div>
+  <div class="comm">
     <div class="panel">
       <h2>Suggest a category</h2>
       <form id="sForm" novalidate>
         <label class="fld"><span>Category</span><input id="sName" maxlength="60" placeholder="e.g. Board game" required></label>
-        <label class="fld"><span>Contenders <small>optional, separated by commas</small></span><textarea id="sOpts" maxlength="700" placeholder="Catan, Monopoly, Chess, Scrabble, Clue"></textarea></label>
+        <label class="fld"><span>Contenders <small>optional, up to 16, separated by commas</small></span><textarea id="sOpts" maxlength="800" placeholder="Catan, Monopoly, Chess, Scrabble, Clue"></textarea></label>
         <button class="btn" id="sBtn" type="submit">Send suggestion</button>
-        <p class="msg" id="sMsg" role="status"></p>
+        <p class="msg" id="sMsg" role="status" aria-live="polite"></p>
       </form>
-      <h2 style="margin-top:18px;font-size:22px">Your suggestions</h2>
-      <ul class="sg" id="mine"></ul>
     </div>
     <div class="panel">
-      <h2 id="qTitle">Up next from players</h2>
-      <p id="qNote">Suggestions waiting for a decision from the game's owner.</p>
-      <ul class="sg" id="queue"></ul>
+      <h2>Your suggestions</h2>
+      <ul class="sg" id="mine"></ul>
     </div>
   </div>
-</section>
-<footer class="band foot"><div class="footin"><div id="ownerBox"></div><p>The GOAT · Crowd numbers in the built-in categories are sample data for now. · <a href="privacy.html">Privacy</a></p></div></footer>
+</div></section>
 
-<script>
-{
-const CATS=[
- {id:'thanks',label:'Thanksgiving side',title:'GOAT Thanksgiving side dish',
-  opts:[['Stuffing',24],['Mashed potatoes',19],['Mac and cheese',12],['Sweet potato casserole',9],['Green bean casserole',8],['Cranberry sauce',7],['Dinner rolls',6],['Cornbread',4],['Gravy',3],['Corn pudding',2],['Brussels sprouts',0],['Collard greens',0],['Deviled eggs',0],['Roasted carrots',0],['Squash casserole',0],['Waldorf salad',0]],
-  clues:['Carb-forward and usually savory.','Bread is the backbone.','Celery, onion and sage are classic add-ins.','Plenty of families call it dressing.']},
- {id:'nba',label:'NBA player',title:'GOAT NBA player',
-  opts:[['Michael Jordan',38],['LeBron James',29],['Kareem Abdul-Jabbar',9],['Magic Johnson',6],['Kobe Bryant',5],['Bill Russell',3],['Larry Bird',3],['Wilt Chamberlain',2],['Tim Duncan',2],['Stephen Curry',2],["Shaquille O'Neal",0],['Hakeem Olajuwon',0],['Kevin Durant',0],['Nikola Jokić',0],['Giannis Antetokounmpo',0],['Kevin Garnett',0]],
-  clues:['Did most of his damage in the 1980s and 1990s.','Six titles, and never lost in the Finals.','Finals MVP every time he got there.','Spent most of his career in Chicago.']},
- {id:'rap',label:'Rapper',title:'GOAT rapper',
-  opts:[['Tupac Shakur',17],['Jay-Z',16],['The Notorious B.I.G.',15],['Eminem',14],['Kendrick Lamar',13],['Nas',7],['Lil Wayne',5],['Drake',4],['André 3000',3],['Snoop Dogg',2],['Rakim',0],['Ice Cube',0],['Nicki Minaj',0],['Missy Elliott',0],['J. Cole',0],['Lauryn Hill',0]],
-  clues:['Broke through in the early 1990s.','Repped the West Coast, though born in New York.','Also acted, starring in Juice.','Dropped All Eyez on Me in 1996.']},
- {id:'villain',label:'Movie villain',title:'GOAT movie villain',
-  opts:[['Darth Vader',26],['The Joker',20],['Hannibal Lecter',14],['Thanos',8],['Hans Gruber',7],['Anton Chigurh',6],['Nurse Ratched',5],['The Wicked Witch of the West',4],['Agent Smith',3],['Lord Voldemort',3],['Freddy Krueger',0],['HAL 9000',0],['Annie Wilkes',0],['Michael Myers',0],['Bane',0],['Scar',0]],
-  clues:['First hit the screen in the 1970s.','His breathing is as famous as his voice.','Voiced by James Earl Jones.','Has the most famous family twist in film.']},
- {id:'pizza',label:'Pizza topping',title:'GOAT pizza topping',
-  opts:[['Pepperoni',36],['Sausage',13],['Mushrooms',11],['Extra cheese',8],['Bacon',7],['Onions',5],['Pineapple',5],['Green peppers',4],['Black olives',3],['Jalapeños',3],['Ham',0],['Spinach',0],['Anchovies',0],['Chicken',0],['Fresh basil',0],['Hot honey',0]],
-  clues:['It is a meat.','Cured, a little smoky, a little spicy.','Curls into tiny cups in a hot oven.',"America's most-ordered topping by a mile."]},
- {id:'sitcom',label:'Sitcom',title:'GOAT sitcom',
-  opts:[['Seinfeld',22],['The Office',21],['Friends',15],['Parks and Recreation',8],['The Simpsons',7],['Cheers',6],['Curb Your Enthusiasm',5],["It's Always Sunny in Philadelphia",5],['Arrested Development',4],['M*A*S*H',3],['Frasier',0],['The Fresh Prince of Bel-Air',0],['Brooklyn Nine-Nine',0],['Modern Family',0],['Abbott Elementary',0],['Schitt’s Creek',0]],
-  clues:['Ran for nine seasons in the 1990s.','Pitched as a show about nothing.','Lives mostly in a New York apartment and a diner.','Its finale sent the whole gang to jail.']},
- {id:'game',label:'Video game',title:'GOAT video game',
-  opts:[['Zelda: Ocarina of Time',18],['Super Mario Bros.',16],['Tetris',14],['Minecraft',12],['The Witcher 3',7],['Red Dead Redemption 2',7],['Grand Theft Auto V',6],['Elden Ring',5],['Super Mario 64',5],['Halo: Combat Evolved',4],['Pac-Man',0],['Street Fighter II',0],['Skyrim',0],['Half-Life 2',0],['Pokémon Red and Blue',0],['The Last of Us',0]],
-  clues:['Released in 1998.','A fantasy adventure on the Nintendo 64.','You travel through time to save a kingdom.','Starring a hero named Link.']},
- {id:'fries',label:'Fast food fries',title:'GOAT fast food fries',
-  opts:[["McDonald's",34],['Chick-fil-A',15],['Five Guys',11],["Arby's curly fries",10],['In-N-Out',6],['Popeyes Cajun fries',6],["Wendy's",5],['Burger King',4],['Shake Shack',4],['Jack in the Box',3],['Checkers',0],["Culver's",0],['Whataburger',0],['Sonic',0],['Taco Bell Nacho Fries',0],['Carl’s Jr.',0]],
-  clues:['Thin and crispy, shoestring style.','At their best in the first five minutes.','Served in a red carton.','Sold under the golden arches.']},
- {id:'cereal',label:'Breakfast cereal',title:'GOAT breakfast cereal',
-  opts:[['Cinnamon Toast Crunch',20],['Frosted Flakes',14],['Honey Nut Cheerios',13],['Lucky Charms',11],['Froot Loops',9],["Cap'n Crunch",8],["Reese's Puffs",7],['Cocoa Puffs',5],['Frosted Mini-Wheats',4],['Rice Krispies',3],['Corn Flakes',0],['Raisin Bran',0],['Fruity Pebbles',0],['Apple Jacks',0],['Honey Bunches of Oats',0],['Special K',0]],
-  clues:['Sweet, and it changes the milk.','Little squares, not flakes or loops.','Leaves a sugary dust at the bottom of the bowl.','Cinnamon and sugar on every square.']},
- {id:'tennis',label:'Tennis player',title:'GOAT tennis player',
-  opts:[['Novak Djokovic',30],['Serena Williams',24],['Roger Federer',20],['Rafael Nadal',12],['Steffi Graf',4],['Martina Navratilova',3],['Rod Laver',2],['Pete Sampras',2],['Björn Borg',1],['Billie Jean King',1],['Andre Agassi',0],['Chris Evert',0],['Carlos Alcaraz',0],['Jannik Sinner',0],['Venus Williams',0],['Monica Seles',0]],
-  clues:['Turned pro in 2003.','Famous for sliding into the splits on hard courts.',"Holds the men's record for Grand Slam singles titles.",'Born in Belgrade, Serbia.']},
- {id:'candy',label:'Candy bar',title:'GOAT candy bar',
-  opts:[["Reese's Peanut Butter Cups",22],['Snickers',20],['Kit Kat',15],['Twix',12],['Milky Way',6],['3 Musketeers',5],['Butterfinger',5],["Hershey's Milk Chocolate",4],['Almond Joy',3],['Baby Ruth',2],['Mounds',0],['PayDay',0],['Crunch',0],['Heath',0],['Whatchamacallit',0],['Mr. Goodbar',0]],
-  clues:['Chocolate on the outside.','Not technically a bar at all.','Comes two to a pack in fluted paper cups.','Peanut butter is the filling.']},
- {id:'boxer',label:'Boxer',title:'GOAT boxer',
-  opts:[['Muhammad Ali',41],['Mike Tyson',14],['Floyd Mayweather Jr.',11],['Sugar Ray Robinson',10],['Manny Pacquiao',6],['Joe Louis',5],['Sugar Ray Leonard',4],['Rocky Marciano',3],['Canelo Álvarez',2],['Roberto Durán',2],['George Foreman',0],['Joe Frazier',0],['Evander Holyfield',0],['Lennox Lewis',0],['Jack Dempsey',0],['Terence Crawford',0]],
-  clues:['A heavyweight of the 1960s and 70s.','Won Olympic gold in Rome in 1960.','Changed his name in 1964.','Fought the Rumble in the Jungle and the Thrilla in Manila.']}
-];
-const MAX=5;
-const pad=n=>String(n).padStart(2,'0');
-const now=new Date();
-const dateKey=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
-const dayNum=Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/864e5);
-const dailyIdx=(now.getMonth()===10&&now.getDate()>=20)?0:dayNum%CATS.length;
-const dailyId=CATS[dailyIdx].id;
-const dateLabel=now.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-for(const c of CATS){const ranked=c.opts.map((o,i)=>({i,p:o[1]})).filter(o=>o.p>0).sort((a,b)=>b.p-a.p);c.rank={};ranked.forEach((o,k)=>c.rank[o.i]=k+1);c.top=ranked;c.alpha=c.opts.map((o,i)=>i).sort((a,b)=>c.opts[a][0].localeCompare(c.opts[b][0]))}
+<section class="band owner" id="ownerPanel" aria-labelledby="ownerTitle" hidden><div class="inner">
+  <div class="comm-h"><h2 id="ownerTitle">Owner</h2><p class="msg" id="ownerMsg" role="status" aria-live="polite"></p></div>
+  <div class="grid">
+    <div class="panel"><h2>Today</h2><div id="oStats"></div>
+      <h2 class="mt">Review queue</h2><ul class="sg" id="oQueue"></ul>
+      <h2 class="mt">Needs clues</h2><ul class="sg" id="oNeeds"></ul>
+      <h2 class="mt">Correction for today’s puzzle</h2>
+      <label class="fld"><span>Shown under today’s puzzle. Leave blank to clear.</span><textarea id="oCorr" maxlength="500"></textarea></label>
+      <button class="sm go" data-own="correct">Save correction</button>
+    </div>
+    <div class="panel"><h2>Live categories</h2><ul class="sg" id="oLive"></ul>
+      <h2 class="mt">Schedule, next 30 days</h2><ul class="sg" id="oSched"></ul>
+      <h2 class="mt">Delete a player’s data</h2>
+      <label class="fld"><span>Player ID from the request</span><input id="oPlayer" maxlength="64" autocomplete="off"></label>
+      <button class="sm" data-own="delplayer">Delete their data</button>
+      <div class="row"><button class="sm" data-own="signout">Sign out</button><button class="sm" data-own="revokeall">Sign out everywhere</button></div>
+    </div>
+  </div>
+</div></section>
 
-const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-let state;
-let stats=store.get('goat-stats')||{played:0,wins:0,streak:0,last:null,lastWin:null};
+<footer class="band foot"><div class="inner footin">
+  <div id="ownerBox"></div>
+  <p><a href="privacy.html">Privacy</a> · Your data: player ID <span class="yid" id="yourId"></span></p>
+</div></footer>
 
-const $=id=>document.getElementById(id);
-const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-let db=null,uid=null,owner=false,dbState='loading',comm=[],sugg=[],dismissed=[],tally={},myVotes={},busy=false,editing=null;
-const allCats=()=>CATS.concat(comm);
-const cat=()=>allCats().find(c=>c.id===state.cat)||CATS[dailyIdx];
-const game=c=>state.g[c.id]||(state.g[c.id]={guesses:[],pick:null});
-const won=(c,g)=>g.guesses.includes(c.answer??0);
-const done=(c,g)=>won(c,g)||g.guesses.length>=MAX;
-const tier=(c,i)=>{const r=c.rank[i];if(r===1)return 0;if(!r)return 4;if(r<=3)return 1;if(r<=6)return 2;return 3};
-const EMO=['🟩','🟧','🟨','🟦','⬛'];
-const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-const hotScore=(c,i)=>{const p=c.opts[i][1],top=c.top[0].p;return Math.round(100*(1-p/top))};
-const hotLabel=s=>s===0?'Consensus king':s<=40?'Mild take':s<=75?'Spicy take':s<100?'Hot take':'Certified contrarian';
-function save(){store.set('goat-'+dateKey,state)}
+<script type="application/json" id="bundled-catalog">[{"slug":"thanksgiving-side","name":"Thanksgiving side","title":"GOAT Thanksgiving side dish","kind":"daily","season":null,"opts":[{"name":"Stuffing","est":0.24},{"name":"Mashed potatoes","est":0.19},{"name":"Mac and cheese","est":0.12},{"name":"Sweet potato casserole","est":0.09},{"name":"Green bean casserole","est":0.08},{"name":"Cranberry sauce","est":0.07},{"name":"Dinner rolls","est":0.06},{"name":"Cornbread","est":0.04},{"name":"Gravy","est":0.03},{"name":"Corn pudding","est":0.02},{"name":"Brussels sprouts","est":0},{"name":"Collard greens","est":0},{"name":"Deviled eggs","est":0},{"name":"Roasted carrots","est":0},{"name":"Squash casserole","est":0},{"name":"Waldorf salad","est":0}],"clues":{"Stuffing":["Carb-forward and usually savory.","Bread is the backbone.","Celery, onion and sage are classic add-ins.","Plenty of families call it dressing."]}},{"slug":"nba-player","name":"NBA player","title":"GOAT NBA player","kind":"daily","season":null,"opts":[{"name":"Michael Jordan","est":0.38},{"name":"LeBron James","est":0.29},{"name":"Kareem Abdul-Jabbar","est":0.09},{"name":"Magic Johnson","est":0.06},{"name":"Kobe Bryant","est":0.05},{"name":"Bill Russell","est":0.03},{"name":"Larry Bird","est":0.03},{"name":"Wilt Chamberlain","est":0.02},{"name":"Tim Duncan","est":0.02},{"name":"Stephen Curry","est":0.02},{"name":"Shaquille O'Neal","est":0},{"name":"Hakeem Olajuwon","est":0},{"name":"Kevin Durant","est":0},{"name":"Nikola Jokić","est":0},{"name":"Giannis Antetokounmpo","est":0},{"name":"Kevin Garnett","est":0}],"clues":{"Michael Jordan":["Did most of his damage in the 1980s and 1990s.","Six titles, and never lost in the Finals.","Finals MVP every time he got there.","Spent most of his career in Chicago."]}},{"slug":"rapper","name":"Rapper","title":"GOAT rapper","kind":"daily","season":null,"opts":[{"name":"Tupac Shakur","est":0.17},{"name":"Jay-Z","est":0.16},{"name":"The Notorious B.I.G.","est":0.15},{"name":"Eminem","est":0.14},{"name":"Kendrick Lamar","est":0.13},{"name":"Nas","est":0.07},{"name":"Lil Wayne","est":0.05},{"name":"Drake","est":0.04},{"name":"André 3000","est":0.03},{"name":"Snoop Dogg","est":0.02},{"name":"Rakim","est":0},{"name":"Ice Cube","est":0},{"name":"Nicki Minaj","est":0},{"name":"Missy Elliott","est":0},{"name":"J. Cole","est":0},{"name":"Lauryn Hill","est":0}],"clues":{"Tupac Shakur":["Broke through in the early 1990s.","Repped the West Coast, though born in New York.","Also acted, starring in Juice.","Dropped All Eyez on Me in 1996."]}},{"slug":"movie-villain","name":"Movie villain","title":"GOAT movie villain","kind":"daily","season":null,"opts":[{"name":"Darth Vader","est":0.26},{"name":"The Joker","est":0.2},{"name":"Hannibal Lecter","est":0.14},{"name":"Thanos","est":0.08},{"name":"Hans Gruber","est":0.07},{"name":"Anton Chigurh","est":0.06},{"name":"Nurse Ratched","est":0.05},{"name":"The Wicked Witch of the West","est":0.04},{"name":"Agent Smith","est":0.03},{"name":"Lord Voldemort","est":0.03},{"name":"Freddy Krueger","est":0},{"name":"HAL 9000","est":0},{"name":"Annie Wilkes","est":0},{"name":"Michael Myers","est":0},{"name":"Bane","est":0},{"name":"Scar","est":0}],"clues":{"Darth Vader":["First hit the screen in the 1970s.","His breathing is as famous as his voice.","Voiced by James Earl Jones.","Has the most famous family twist in film."]}},{"slug":"pizza-topping","name":"Pizza topping","title":"GOAT pizza topping","kind":"daily","season":null,"opts":[{"name":"Pepperoni","est":0.36},{"name":"Sausage","est":0.13},{"name":"Mushrooms","est":0.11},{"name":"Extra cheese","est":0.08},{"name":"Bacon","est":0.07},{"name":"Onions","est":0.05},{"name":"Pineapple","est":0.05},{"name":"Green peppers","est":0.04},{"name":"Black olives","est":0.03},{"name":"Jalapeños","est":0.03},{"name":"Ham","est":0},{"name":"Spinach","est":0},{"name":"Anchovies","est":0},{"name":"Chicken","est":0},{"name":"Fresh basil","est":0},{"name":"Hot honey","est":0}],"clues":{"Pepperoni":["It is a meat.","Cured, a little smoky, a little spicy.","Curls into tiny cups in a hot oven.","America's most-ordered topping by a mile."]}},{"slug":"sitcom","name":"Sitcom","title":"GOAT sitcom","kind":"daily","season":null,"opts":[{"name":"Seinfeld","est":0.22},{"name":"The Office","est":0.21},{"name":"Friends","est":0.15},{"name":"Parks and Recreation","est":0.08},{"name":"The Simpsons","est":0.07},{"name":"Cheers","est":0.06},{"name":"Curb Your Enthusiasm","est":0.05},{"name":"It's Always Sunny in Philadelphia","est":0.05},{"name":"Arrested Development","est":0.04},{"name":"M*A*S*H","est":0.03},{"name":"Frasier","est":0},{"name":"The Fresh Prince of Bel-Air","est":0},{"name":"Brooklyn Nine-Nine","est":0},{"name":"Modern Family","est":0},{"name":"Abbott Elementary","est":0},{"name":"Schitt’s Creek","est":0}],"clues":{"Seinfeld":["Ran for nine seasons in the 1990s.","Pitched as a show about nothing.","Lives mostly in a New York apartment and a diner.","Its finale sent the whole gang to jail."]}},{"slug":"video-game","name":"Video game","title":"GOAT video game","kind":"daily","season":null,"opts":[{"name":"Zelda: Ocarina of Time","est":0.18},{"name":"Super Mario Bros.","est":0.16},{"name":"Tetris","est":0.14},{"name":"Minecraft","est":0.12},{"name":"The Witcher 3","est":0.07},{"name":"Red Dead Redemption 2","est":0.07},{"name":"Grand Theft Auto V","est":0.06},{"name":"Elden Ring","est":0.05},{"name":"Super Mario 64","est":0.05},{"name":"Halo: Combat Evolved","est":0.04},{"name":"Pac-Man","est":0},{"name":"Street Fighter II","est":0},{"name":"Skyrim","est":0},{"name":"Half-Life 2","est":0},{"name":"Pokémon Red and Blue","est":0},{"name":"The Last of Us","est":0}],"clues":{"Zelda: Ocarina of Time":["Released in 1998.","A fantasy adventure on the Nintendo 64.","You travel through time to save a kingdom.","Starring a hero named Link."]}},{"slug":"fast-food-fries","name":"Fast food fries","title":"GOAT fast food fries","kind":"daily","season":null,"opts":[{"name":"McDonald's","est":0.34},{"name":"Chick-fil-A","est":0.15},{"name":"Five Guys","est":0.11},{"name":"Arby's curly fries","est":0.1},{"name":"In-N-Out","est":0.06},{"name":"Popeyes Cajun fries","est":0.06},{"name":"Wendy's","est":0.05},{"name":"Burger King","est":0.04},{"name":"Shake Shack","est":0.04},{"name":"Jack in the Box","est":0.03},{"name":"Checkers","est":0},{"name":"Culver's","est":0},{"name":"Whataburger","est":0},{"name":"Sonic","est":0},{"name":"Taco Bell Nacho Fries","est":0},{"name":"Carl’s Jr.","est":0}],"clues":{"McDonald's":["Thin and crispy, shoestring style.","At their best in the first five minutes.","Served in a red carton.","Sold under the golden arches."]}},{"slug":"breakfast-cereal","name":"Breakfast cereal","title":"GOAT breakfast cereal","kind":"daily","season":null,"opts":[{"name":"Cinnamon Toast Crunch","est":0.2},{"name":"Frosted Flakes","est":0.14},{"name":"Honey Nut Cheerios","est":0.13},{"name":"Lucky Charms","est":0.11},{"name":"Froot Loops","est":0.09},{"name":"Cap'n Crunch","est":0.08},{"name":"Reese's Puffs","est":0.07},{"name":"Cocoa Puffs","est":0.05},{"name":"Frosted Mini-Wheats","est":0.04},{"name":"Rice Krispies","est":0.03},{"name":"Corn Flakes","est":0},{"name":"Raisin Bran","est":0},{"name":"Fruity Pebbles","est":0},{"name":"Apple Jacks","est":0},{"name":"Honey Bunches of Oats","est":0},{"name":"Special K","est":0}],"clues":{"Cinnamon Toast Crunch":["Sweet, and it changes the milk.","Little squares, not flakes or loops.","Leaves a sugary dust at the bottom of the bowl.","Cinnamon and sugar on every square."]}},{"slug":"tennis-player","name":"Tennis player","title":"GOAT tennis player","kind":"daily","season":null,"opts":[{"name":"Novak Djokovic","est":0.3},{"name":"Serena Williams","est":0.24},{"name":"Roger Federer","est":0.2},{"name":"Rafael Nadal","est":0.12},{"name":"Steffi Graf","est":0.04},{"name":"Martina Navratilova","est":0.03},{"name":"Rod Laver","est":0.02},{"name":"Pete Sampras","est":0.02},{"name":"Björn Borg","est":0.01},{"name":"Billie Jean King","est":0.01},{"name":"Andre Agassi","est":0},{"name":"Chris Evert","est":0},{"name":"Carlos Alcaraz","est":0},{"name":"Jannik Sinner","est":0},{"name":"Venus Williams","est":0},{"name":"Monica Seles","est":0}],"clues":{"Novak Djokovic":["Turned pro in 2003.","Famous for sliding into the splits on hard courts.","Holds the men's record for Grand Slam singles titles.","Born in Belgrade, Serbia."]}},{"slug":"candy-bar","name":"Candy bar","title":"GOAT candy bar","kind":"daily","season":null,"opts":[{"name":"Reese's Peanut Butter Cups","est":0.22},{"name":"Snickers","est":0.2},{"name":"Kit Kat","est":0.15},{"name":"Twix","est":0.12},{"name":"Milky Way","est":0.06},{"name":"3 Musketeers","est":0.05},{"name":"Butterfinger","est":0.05},{"name":"Hershey's Milk Chocolate","est":0.04},{"name":"Almond Joy","est":0.03},{"name":"Baby Ruth","est":0.02},{"name":"Mounds","est":0},{"name":"PayDay","est":0},{"name":"Crunch","est":0},{"name":"Heath","est":0},{"name":"Whatchamacallit","est":0},{"name":"Mr. Goodbar","est":0}],"clues":{"Reese's Peanut Butter Cups":["Chocolate on the outside.","Not technically a bar at all.","Comes two to a pack in fluted paper cups.","Peanut butter is the filling."]}},{"slug":"boxer","name":"Boxer","title":"GOAT boxer","kind":"daily","season":null,"opts":[{"name":"Muhammad Ali","est":0.41},{"name":"Mike Tyson","est":0.14},{"name":"Floyd Mayweather Jr.","est":0.11},{"name":"Sugar Ray Robinson","est":0.1},{"name":"Manny Pacquiao","est":0.06},{"name":"Joe Louis","est":0.05},{"name":"Sugar Ray Leonard","est":0.04},{"name":"Rocky Marciano","est":0.03},{"name":"Canelo Álvarez","est":0.02},{"name":"Roberto Durán","est":0.02},{"name":"George Foreman","est":0},{"name":"Joe Frazier","est":0},{"name":"Evander Holyfield","est":0},{"name":"Lennox Lewis","est":0},{"name":"Jack Dempsey","est":0},{"name":"Terence Crawford","est":0}],"clues":{"Muhammad Ali":["A heavyweight of the 1960s and 70s.","Won Olympic gold in Rome in 1960.","Changed his name in 1964.","Fought the Rumble in the Jungle and the Thrilla in Manila."]}}]</script>
+<script id="goat-core">
+var GoatCore = (function () {
+  'use strict';
+  var MAX = 5;
+  var TIER_WORDS = ['GOAT', 'Hot', 'Warm', 'Cold', 'Not top 10'];
+  var EMOJI = ['🟩', '🟧', '🟨', '🟦', '⬛'];
 
-function record(c,g){
-  if(c.id!==dailyId||stats.last===dateKey)return;
-  const y=new Date(now);y.setDate(y.getDate()-1);
-  const yKey=`${y.getFullYear()}-${pad(y.getMonth()+1)}-${pad(y.getDate())}`;
-  stats.played++;
-  if(won(c,g)){stats.wins++;stats.streak=stats.lastWin===yKey?stats.streak+1:1;stats.lastWin=dateKey}else stats.streak=0;
-  stats.last=dateKey;store.set('goat-stats',stats);
-}
+  // ---------- dates (local calendar dates as 'YYYY-MM-DD'; all math via Date.UTC, never 24h steps)
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function localDate(d) { d = d || new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function isDate(s) { return typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s); }
+  function utcOf(s) { var p = s.split('-'); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
+  function daysBetween(a, b) { return Math.round((utcOf(b) - utcOf(a)) / 864e5); }
+  function addDays(s, n) { var t = new Date(utcOf(s) + n * 864e5); return t.getUTCFullYear() + '-' + pad(t.getUTCMonth() + 1) + '-' + pad(t.getUTCDate()); }
+  function puzzleNo(date, launch) { return isDate(date) && isDate(launch) ? daysBetween(launch, date) + 1 : null; }
+  function dateLabel(s) { return new Date(utcOf(s)).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }); }
 
-function renderCats(){
-  const cur=cat().id;
-  if(!Array.isArray(state.deck)||state.deck.length!==8||!state.deck.every(id=>CATS.some(c=>c.id===id)))state.deck=deal();
-  const deck=state.deck.map(id=>CATS.find(c=>c.id===id));
-  $('cats').innerHTML=`<div class="teamhd"><span class="team">Team GOAT</span><span class="tsub">8 random categories. Pick one to play.</span><button class="sm" id="shuffle">Shuffle</button></div>`+deck.map(c=>{const g=state.g[c.id];const d=g&&done(c,g);return `<button class="cat" data-c="${c.id}" aria-pressed="${c.id===cur}">${c.label}<small>${c.id===dailyId?'Today':d?(won(c,g)?'Solved':'Missed'):'Practice'}</small></button>`}).join('')
-   +comm.map(c=>`<button class="cat" data-c="${esc(c.id)}" aria-pressed="${c.id===cur}">${esc(c.label)}<small>${myVotes[c.id]?'Voted':'Crowd vote'}</small></button>`).join('');
-}
-
-function deal(){
-  const rest=CATS.filter(c=>c.id!==dailyId).map(c=>c.id);
-  for(let i=rest.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[rest[i],rest[j]]=[rest[j],rest[i]]}
-  return [dailyId,...rest.slice(0,7)];
-}
-
-function renderVote(){
-  const c=cat(),mine=myVotes[c.id];
-  $('tag').textContent='Crowd vote · new category';
-  $('title').textContent=c.title;
-  $('vote').innerHTML=`<p>Brand new category, so there's no crowd ranking to guess yet. Cast your vote and help build it.</p>
-   ${mine?`<div class="mine">Your vote: ${esc(mine)}. Tap another name to switch.</div>`:''}
-   <div class="chips" style="max-height:none">${c.opts.map((o,i)=>`<button class="chip ${o===mine?'on':''}" data-v="${i}">${esc(o)}</button>`).join('')}</div>
-   `;
-}
-
-function renderBoard(fresh){
-  const c=cat(),isV=!!c.comm;
-  $('slots').hidden=isV;$('clues').hidden=isV;$('vote').hidden=!isV;
-  if(isV){$('play').style.display='none';renderVote();return}
-  const g=game(c),fin=done(c,g);
-  $('tag').textContent=c.id===dailyId?`Daily GOAT · ${dateLabel}`:'Practice round';
-  $('title').textContent=c.title;
-  let rows='';
-  for(let k=0;k<MAX;k++){
-    const i=g.guesses[k];
-    if(i===undefined){rows+=`<li class="slot"><span class="n">${k+1}</span><span class="nm" style="opacity:.4">${k===g.guesses.length&&!fin?'Your guess':'·'}</span></li>`;continue}
-    const t=tier(c,i),r=c.rank[i];
-    const bd=t===0?'GOAT!':r?`#${r} · ${c.opts[i][1]}%`:'Not top 10';
-    rows+=`<li class="slot f ${t===0?'win':''}" style="${k===fresh?'':'animation:none'}"><span class="n">${k+1}</span><span class="nm">${c.opts[i][0]}</span><span class="bd t${t}">${bd}</span></li>`;
+  // ---------- ranking (HANDOFF §3): b = (v + k·e) / (V + k); sort b desc, e desc, name (code point order)
+  function cmpName(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
+  function blendRanking(opts, counts, k) {
+    k = k > 0 ? k : 100;
+    counts = counts || {};
+    var rows = (opts || []).map(function (o) {
+      return { name: String(o.name), est: Number(o.est) || 0, votes: Math.max(0, Math.floor(Number(counts[o.name]) || 0)) };
+    });
+    var V = rows.reduce(function (t, r) { return t + r.votes; }, 0);
+    rows.forEach(function (r) { r.blended = (r.votes + k * r.est) / (V + k); });
+    rows.sort(function (a, b) { return b.blended - a.blended || b.est - a.est || cmpName(a.name, b.name); });
+    rows.forEach(function (r, i) { r.rank = i + 1; r.blended = Math.round(r.blended * 1e6) / 1e6; });
+    return { k: k, total_votes: V, ranking: rows };
   }
-  $('slots').innerHTML=rows;
-  const misses=g.guesses.filter(i=>i!==0).length;
-  const show=fin?4:Math.min(4,1+misses);
-  $('clues').innerHTML=c.clues.map((t,k)=>k<show?`<li><b>Clue ${k+1}</b><span>${t}</span></li>`:`<li class="lock"><b style="color:inherit">Clue ${k+1}</b><span>Unlocks after miss ${k}</span></li>`).join('');
-  $('play').style.display=fin?'none':'';
-  renderChips();
+  function tierName(total, tiers) {
+    tiers = Array.isArray(tiers) ? tiers : [1, 500];
+    return total < tiers[0] ? 'estimated' : total < tiers[1] ? 'blended' : 'community';
+  }
+  function disclosure(tier, total) {
+    var n = Number(total) || 0, v = n.toLocaleString('en-US') + (n === 1 ? ' vote' : ' votes');
+    if (tier === 'community') return 'Community ranking · ' + v + ' (includes estimated weighting)';
+    if (tier === 'blended') return 'Blended community ranking · ' + v;
+    return 'Estimated ranking';
+  }
+
+  // ---------- guess feedback
+  function tierOf(entry) {
+    if (!entry || !(entry.blended > 0) || entry.rank > 10) return 4;
+    if (entry.rank === 1) return 0;
+    if (entry.rank <= 3) return 1;
+    if (entry.rank <= 6) return 2;
+    return 3;
+  }
+  function pct(b) { return Math.round((Number(b) || 0) * 100); }
+  function badge(entry) {
+    var t = tierOf(entry), p = pct(entry.blended);
+    if (t === 4) return '#' + entry.rank + ' · Not top 10' + (p > 0 ? ' · ' + p + '%' : '');
+    return '#' + entry.rank + ' · ' + TIER_WORDS[t] + ' · ' + p + '%';
+  }
+  function hotTake(bPick, bTop) {
+    bPick = Number(bPick) || 0; bTop = Number(bTop) || 0;
+    if (bPick <= 0 || bTop <= 0) return 100;
+    if (bPick >= bTop) return 0;
+    return Math.round(100 * (1 - bPick / bTop));
+  }
+  function hotLabel(s) { return s === 0 ? 'Consensus king' : s <= 40 ? 'Mild take' : s <= 75 ? 'Spicy take' : s < 100 ? 'Hot take' : 'Certified contrarian'; }
+
+  // ---------- streak (HANDOFF §3, §8): consecutive won dates; excused dates never break it
+  function newStats() { return { played: 0, wins: 0, streak: 0, maxStreak: 0, lastWin: null, lastPlayed: null, dist: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, X: 0 } }; }
+  function normStats(s) {
+    var n = newStats();
+    if (!s || typeof s !== 'object') return n;
+    ['played', 'wins', 'streak', 'maxStreak'].forEach(function (k) { n[k] = Math.max(0, Math.floor(Number(s[k]) || 0)); });
+    n.maxStreak = Math.max(n.maxStreak, n.streak);
+    n.lastWin = isDate(s.lastWin) ? s.lastWin : null;
+    n.lastPlayed = isDate(s.lastPlayed) ? s.lastPlayed : isDate(s.last) ? s.last : null;
+    if (s.dist && typeof s.dist === 'object') Object.keys(n.dist).forEach(function (k) { n.dist[k] = Math.max(0, Math.floor(Number(s.dist[k]) || 0)); });
+    return n;
+  }
+  function streakAlive(lastWin, today, excused) {
+    if (!lastWin) return false;
+    var gap = daysBetween(lastWin, today);
+    if (gap <= 1) return gap >= 0;
+    var ex = excused || [];
+    for (var i = 1; i < gap; i++) if (ex.indexOf(addDays(lastWin, i)) < 0) return false;
+    return true;
+  }
+  function displayStreak(stats, today, excused) { return streakAlive(stats.lastWin, today, excused) ? stats.streak : 0; }
+  function applyResult(stats, date, won, guesses, excused) {
+    var s = normStats(stats);
+    if (s.lastPlayed === date) return s;
+    s.played++;
+    if (won) {
+      s.wins++;
+      s.streak = (s.lastWin && s.lastWin !== date && streakAlive(s.lastWin, date, excused) ? s.streak : 0) + 1;
+      s.maxStreak = Math.max(s.maxStreak, s.streak);
+      s.lastWin = date;
+      s.dist[Math.min(MAX, Math.max(1, guesses))]++;
+    } else {
+      s.streak = 0;
+      s.dist.X++;
+    }
+    s.lastPlayed = date;
+    return s;
+  }
+
+  // ---------- share (HANDOFF §7, D-18): spoiler-free unless the pick is included
+  function shareText(o) {
+    var grid = o.tiers.map(function (t) { return EMOJI[t]; }).join('');
+    var line2 = grid + ' ' + (o.won ? o.tiers.length : 'X') + '/' + MAX + (o.score === null || o.score === undefined ? '' : ' · Hot Take ' + o.score);
+    var lines = ['THE GOAT #' + o.no + ' 🐐', line2];
+    if (o.includePick && o.pick) lines.push('My GOAT: ' + o.pick);
+    lines.push("Can you find today's GOAT? " + o.url + '?r=' + o.ref);
+    return lines.join('\n');
+  }
+
+  // ---------- ids
+  function uuid() {
+    try { if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
+    var b = new Uint8Array(16);
+    try { crypto.getRandomValues(b); } catch (e) { for (var i = 0; i < 16; i++) b[i] = Math.floor(Math.random() * 256); }
+    b[6] = (b[6] & 15) | 64; b[8] = (b[8] & 63) | 128;
+    var h = Array.prototype.map.call(b, function (x) { return (x + 256).toString(16).slice(1); }).join('');
+    return h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' + h.slice(16, 20) + '-' + h.slice(20);
+  }
+  function refCode() {
+    var a = 'abcdefghijklmnopqrstuvwxyz0123456789', b = new Uint8Array(8), s = '';
+    try { crypto.getRandomValues(b); } catch (e) { for (var i = 0; i < 8; i++) b[i] = Math.floor(Math.random() * 256); }
+    for (var j = 0; j < 8; j++) s += a[b[j] % 36];
+    return s;
+  }
+  function isRef(s) { return typeof s === 'string' && /^[a-z0-9]{8}$/.test(s); }
+
+  // ---------- text helpers
+  function norm(s) { return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function parseOpts(s) {
+    var seen = {};
+    return String(s || '').split(/[,\n]/).map(function (x) { return x.trim().replace(/\s+/g, ' '); })
+      .filter(function (x) { var k = x.toLowerCase(); if (!x || seen[k]) return false; seen[k] = 1; return true; });
+  }
+
+  return {
+    MAX: MAX, TIER_WORDS: TIER_WORDS, EMOJI: EMOJI,
+    localDate: localDate, isDate: isDate, daysBetween: daysBetween, addDays: addDays, puzzleNo: puzzleNo, dateLabel: dateLabel,
+    blendRanking: blendRanking, tierName: tierName, disclosure: disclosure,
+    tierOf: tierOf, pct: pct, badge: badge, hotTake: hotTake, hotLabel: hotLabel,
+    newStats: newStats, normStats: normStats, streakAlive: streakAlive, displayStreak: displayStreak, applyResult: applyResult,
+    shareText: shareText, uuid: uuid, refCode: refCode, isRef: isRef, norm: norm, parseOpts: parseOpts
+  };
+})();
+</script>
+<script>
+(function () {
+'use strict';
+var G = GoatCore, MAX = G.MAX;
+var SB = 'https://mzlbnsibalthsycmvshm.supabase.co', KEY = 'sb_publishable_1RuU3_8Jetrt6mrdl6-05g_y1XG5n54';
+var $ = function (id) { return document.getElementById(id); };
+var esc = function (v) { return String(v == null ? '' : v).replace(/[&<>"']/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]; }); };
+
+// ---------------------------------------------------------------- storage
+var store = {
+  get: function (k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+  set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+  del: function (k) { try { localStorage.removeItem(k); } catch (e) {} },
+  keys: function () { var a = []; try { for (var i = 0; i < localStorage.length; i++) a.push(localStorage.key(i)); } catch (e) {} return a; }
+};
+var sess = {
+  get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+  set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} },
+  del: function (k) { try { sessionStorage.removeItem(k); } catch (e) {} }
+};
+
+// Identity: goat-player (migrated from goat-voter) and goat-ref.
+var firstVisit = false;
+var player = store.get('goat-player');
+if (typeof player !== 'string' || player.length < 8 || player.length > 64) {
+  var old = store.get('goat-voter');
+  player = typeof old === 'string' && old.length >= 8 && old.length <= 64 ? old : G.uuid();
+  firstVisit = typeof old !== 'string';
+  store.set('goat-player', player);
+}
+var myRef = store.get('goat-ref');
+if (!G.isRef(myRef)) { myRef = G.refCode(); store.set('goat-ref', myRef); }
+// Old prototype keys: the passphrase must never stay in the browser; the rest are superseded.
+['goat-voter', 'goat-owner', 'goat-mine', 'goat-myvotes'].forEach(store.del);
+store.keys().forEach(function (k) { if (/^goat-\d{4}-\d{2}-\d{2}$/.test(k)) store.del(k); });
+
+var stats = G.normStats(store.get('goat-stats'));
+var practice = store.get('goat-practice') || { played: 0, won: 0 };
+var excused = (store.get('goat-excused') || []).filter(G.isDate).slice(-60);
+var myVotes = store.get('goat-votes') || {};
+
+// ---------------------------------------------------------------- API
+function apiError(code) { var e = new Error(code); e.code = code; return e; }
+function api(path, body, opts) {
+  opts = opts || {};
+  var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  var timer = ctl ? setTimeout(function () { ctl.abort(); }, opts.timeout || 12000) : null;
+  return fetch(SB + '/rest/v1/' + path, {
+    method: body === undefined ? 'GET' : 'POST',
+    headers: { apikey: KEY, 'Content-Type': 'application/json' },
+    body: body === undefined ? undefined : JSON.stringify(body),
+    signal: ctl ? ctl.signal : undefined,
+    keepalive: !!opts.keepalive
+  }).then(function (r) {
+    return r.text().then(function (txt) {
+      var data = null; try { data = txt ? JSON.parse(txt) : null; } catch (e) {}
+      if (!r.ok) {
+        var m = data && data.message;
+        if (r.status === 404 && data && data.code === 'PGRST202') throw apiError('missing');
+        throw apiError(m && /^[a-z_]{3,20}$/.test(m) ? m : 'http_' + r.status);
+      }
+      return data;
+    });
+  }, function () { throw apiError('network'); }).finally(function () { if (timer) clearTimeout(timer); });
+}
+function rpc(fn, body, opts) { return api('rpc/' + fn, body || {}, opts); }
+
+var ERR = {
+  rate_limited: 'Too many requests from your network. Try again in a little while.',
+  duplicate: 'Someone already suggested that one.',
+  bad_input: 'Check what you entered and try again.',
+  bad_pick: "That contender isn’t in this category anymore.",
+  disabled: 'This is paused for the moment. Try again later.',
+  not_owner: 'Your owner session expired. Sign in again.',
+  network: "Can’t reach the server. Check your connection and try again.",
+  missing: "This isn’t available yet."
+};
+function errText(e) { return ERR[e && e.code] || "That didn’t go through. Try again in a moment."; }
+
+// ---------------------------------------------------------------- analytics (§9): queued, deduped by event_id, never blocks the UI
+var Q_KEY = 'goat-events-queue', flushTimer = null, flushing = false;
+function track(event, props, puzzleNo) {
+  if (config.analytics_enabled === false) return;
+  var q = store.get(Q_KEY) || [];
+  var e = { event_id: G.uuid(), at: new Date().toISOString(), player: player, event: event, ref: myRef, props: props || {} };
+  if (puzzleNo) e.puzzle_no = puzzleNo;
+  q.push(e);
+  store.set(Q_KEY, q.slice(-200));
+  clearTimeout(flushTimer);
+  flushTimer = setTimeout(flush, 1500);
+}
+function flush(keepalive) {
+  if (flushing) return;
+  if (config.analytics_enabled === false) { store.del(Q_KEY); return; }
+  var q = store.get(Q_KEY) || [];
+  if (!q.length) return;
+  var batch = q.slice(0, 50), ids = batch.map(function (e) { return e.event_id; });
+  flushing = true;
+  rpc('track', { p_events: batch }, { keepalive: !!keepalive }).then(function () { return true; }, function (e) {
+    return e.code === 'bad_input' || e.code === 'disabled';
+  }).then(function (drop) {
+    flushing = false;
+    if (!drop) return;
+    var rest = (store.get(Q_KEY) || []).filter(function (e) { return ids.indexOf(e.event_id) < 0; });
+    store.set(Q_KEY, rest);
+    if (rest.length && !keepalive) flushTimer = setTimeout(flush, 500);
+  });
 }
 
-function renderChips(){
-  const c=cat(),g=game(c),f=norm($('q').value.trim());
-  const list=c.alpha.filter(i=>!g.guesses.includes(i)&&norm(c.opts[i][0]).includes(f));
-  $('chips').innerHTML=list.length?list.map(i=>`<button class="chip" data-i="${i}">${c.opts[i][0]}</button>`).join(''):`<p class="none">No contender by that name in this prototype's list.</p>`;
+// ---------------------------------------------------------------- data
+var config = {}, configLoaded = false;
+var bundled = [];
+try { bundled = JSON.parse($('bundled-catalog').textContent) || []; } catch (e) { bundled = []; }
+var serverCatalog = null; // null = not loaded yet
+var today = G.localDate();
+var daily = null;           // frozen snapshot for `today`
+var dailyStatus = 'loading';// loading | ready | prelaunch | unavailable
+var retryTimer = null, retryStep = 0;
+var view = { type: 'daily' };
+var rounds = {};            // practice rounds by slug (this visit only)
+var deck = null;
+var includePick = false;
+
+function k() { return Number(config.k) > 0 ? Number(config.k) : 100; }
+function catalogList() {
+  var server = serverCatalog || [];
+  var have = {};
+  server.forEach(function (c) { have[c.slug] = true; });
+  var useBundled = !server.some(function (c) { return c.kind === 'daily'; });
+  return server.concat(useBundled ? bundled.filter(function (c) { return !have[c.slug]; }).map(function (c) {
+    var r = G.blendRanking(c.opts, {}, k());
+    return { slug: c.slug, name: c.name, title: c.title, kind: c.kind || 'daily', opts: c.opts, clues: c.clues || {}, k: r.k, total_votes: 0, ranking: r.ranking, tier: 'estimated', bundled: true };
+  }) : []);
+}
+function findCat(slug) { var l = catalogList(); for (var i = 0; i < l.length; i++) if (l[i].slug === slug) return l[i]; return null; }
+function practiceable(c) {
+  if (!c || c.kind !== 'daily' || !Array.isArray(c.ranking) || !c.ranking.length) return false;
+  var cl = c.clues && c.clues[c.ranking[0].name];
+  return Array.isArray(cl) && cl.length === 4;
+}
+
+// ---------------------------------------------------------------- rounds
+function dailyKey(no) { return 'goat-daily-' + no; }
+function blankGame() { return { guesses: [], pick: null, pickState: null, pickCode: null, recorded: false, started: false }; }
+function dailyRound() {
+  if (!daily) return null;
+  return {
+    kind: 'daily', slug: daily.slug, name: daily.name, title: daily.title, no: daily.puzzle_no, date: daily.puzzle_date,
+    ranking: daily.ranking, answer: daily.answer, clues: daily.clues, tier: daily.tier, total: daily.total_votes,
+    note: daily.correction_note, voteable: true
+  };
+}
+function dailyGame() {
+  var g = store.get(dailyKey(daily.puzzle_no));
+  if (!g || !Array.isArray(g.guesses)) g = blankGame();
+  return g;
+}
+function saveDaily(g) { store.set(dailyKey(daily.puzzle_no), g); }
+function practiceRound(slug) {
+  if (rounds[slug]) return rounds[slug];
+  var c = findCat(slug);
+  if (!practiceable(c)) return null;
+  var top = c.ranking[0].name;
+  rounds[slug] = {
+    r: { kind: 'practice', slug: c.slug, name: c.name, title: c.title, ranking: c.ranking, answer: top, clues: c.clues[top], tier: c.tier, total: c.total_votes, voteable: !c.bundled },
+    g: blankGame()
+  };
+  track('practice_start', { slug: c.slug });
+  return rounds[slug];
+}
+function current() {
+  if (view.type === 'practice') { var p = practiceRound(view.slug); if (p) return p; view = { type: 'daily' }; }
+  if (view.type === 'daily' && dailyStatus === 'ready') return { r: dailyRound(), g: dailyGame() };
+  return null;
+}
+function saveCurrent(cur) { if (cur.r.kind === 'daily') saveDaily(cur.g); }
+function entry(r, name) { for (var i = 0; i < r.ranking.length; i++) if (r.ranking[i].name === name) return r.ranking[i]; return null; }
+function won(cur) { return cur.g.guesses.indexOf(cur.r.answer) >= 0; }
+function done(cur) { return won(cur) || cur.g.guesses.length >= MAX; }
+function alpha(r) { return r.ranking.map(function (e) { return e.name; }).sort(function (a, b) { return a.localeCompare(b); }); }
+
+// ---------------------------------------------------------------- loading
+function loadConfig() {
+  return api('config?select=key,value').then(function (rows) {
+    var c = {};
+    (rows || []).forEach(function (r) { if (r && typeof r.key === 'string') c[r.key] = r.value; });
+    config = c; configLoaded = true;
+  }, function () { configLoaded = false; });
+}
+function prelaunch(date) {
+  var l = config.launch_date;
+  return configLoaded && (!G.isDate(l) || date < l);
+}
+function validSnapshot(d, date) {
+  return d && typeof d === 'object' && d.puzzle_date === date && Number.isInteger(d.puzzle_no) && typeof d.answer === 'string' &&
+    Array.isArray(d.ranking) && d.ranking.length >= 4 && Array.isArray(d.clues) && d.clues.length === 4 && typeof d.title === 'string';
+}
+function cachePrune() {
+  store.keys().forEach(function (key) {
+    var m = /^goat-puzzle-(\d{4}-\d{2}-\d{2})$/.exec(key);
+    if (m && G.daysBetween(m[1], today) > 3) store.del(key);
+  });
+}
+function loadDaily(date) {
+  clearTimeout(retryTimer);
+  var cached = store.get('goat-puzzle-' + date);
+  if (validSnapshot(cached, date)) {
+    daily = cached; dailyStatus = 'ready'; today = date; render();
+    // A correction note can be added after publication; refresh it quietly.
+    rpc('get_daily', { p_date: date }).then(function (d) {
+      if (validSnapshot(d, date) && d.correction_note !== cached.correction_note) { store.set('goat-puzzle-' + date, d); if (today === date) { daily = d; render(); } }
+    }, function () {});
+    return Promise.resolve();
+  }
+  return rpc('get_daily', { p_date: date }).then(function (d) {
+    if (validSnapshot(d, date)) {
+      store.set('goat-puzzle-' + date, d); cachePrune();
+      daily = d; dailyStatus = 'ready'; today = date; retryStep = 0;
+      render(); return;
+    }
+    return (configLoaded ? Promise.resolve() : loadConfig()).then(function () {
+      today = date;
+      if (prelaunch(date)) { daily = null; dailyStatus = 'prelaunch'; startPrelaunchPractice(); render(); return; }
+      unavailable(date);
+    });
+  }, function () {
+    track('offline', { what: 'daily' });
+    unavailable(date);
+  });
+}
+function unavailable(date) {
+  daily = null; dailyStatus = 'unavailable'; today = date;
+  if (excused.indexOf(date) < 0) { excused.push(date); excused = excused.slice(-60); store.set('goat-excused', excused); }
+  render();
+  var waits = [5, 15, 30];
+  var wait = (retryStep < waits.length ? waits[retryStep] : 60) * 1000;
+  retryStep++;
+  retryTimer = setTimeout(function () { if (dailyStatus === 'unavailable' && today === date) loadDaily(date); }, wait);
+}
+function startPrelaunchPractice() {
+  if (view.type !== 'daily') return;
+  var l = catalogList().filter(practiceable);
+  if (!l.length) return;
+  view = { type: 'practice', slug: l[Math.floor(Math.random() * l.length)].slug, auto: true };
+}
+function loadCatalog() {
+  return rpc('get_catalog').then(function (rows) {
+    if (!Array.isArray(rows)) return;
+    serverCatalog = rows.filter(function (c) {
+      return c && typeof c.slug === 'string' && typeof c.name === 'string' && Array.isArray(c.ranking) && (c.kind === 'daily' || c.kind === 'vote');
+    });
+    if (deck && deck.some(function (s) { return !findCat(s); })) deck = null;
+    render();
+  }, function () { if (serverCatalog === null) { track('offline', { what: 'catalog' }); render(); } });
+}
+function loadMine() {
+  return rpc('my_suggestions', { p_player: player }).then(function (rows) { mine = Array.isArray(rows) ? rows : []; renderSuggest(); }, function () {});
+}
+
+// ---------------------------------------------------------------- render: header + board
+function renderStats() {
+  $('sStreak').textContent = G.displayStreak(stats, today, excused);
+  $('sPlayed').textContent = stats.played;
+  $('sWin').textContent = (stats.played ? Math.round(stats.wins / stats.played * 100) : 0) + '%';
+}
+
+function render(fresh) {
+  renderStats();
+  var cur = current();
+  var board = $('board');
+  board.classList.toggle('isvote', view.type === 'vote');
+  $('toDaily').hidden = view.type === 'daily' || (dailyStatus !== 'ready' && dailyStatus !== 'unavailable');
+  renderNotice();
+  if (view.type === 'vote') { renderVoteBoard(); renderMore(); return; }
+  $('vote').hidden = true;
+  if (!cur) { renderEmptyBoard(); renderMore(); return; }
+  var r = cur.r, g = cur.g, fin = done(cur);
+  $('tag').textContent = r.kind === 'daily' ? 'Daily GOAT #' + r.no + ' · ' + G.dateLabel(r.date) : 'Practice round';
+  $('title').textContent = r.title;
+  $('disc').textContent = G.disclosure(r.tier, r.total);
+  $('corr').hidden = !r.note;
+  $('corr').textContent = r.note ? 'Correction: ' + r.note : '';
+  var rows = '';
+  for (var i = 0; i < MAX; i++) {
+    var name = g.guesses[i];
+    if (name === undefined) {
+      rows += '<li class="slot"><span class="n">' + (i + 1) + '</span><span class="nm dim">' + (i === g.guesses.length && !fin ? 'Your guess' : '·') + '</span></li>';
+      continue;
+    }
+    var e = entry(r, name) || { rank: 99, blended: 0 }, t = G.tierOf(e);
+    rows += '<li class="slot f' + (t === 0 ? ' win' : '') + '"' + (i === fresh ? '' : ' style="animation:none"') + '><span class="n">' + (i + 1) +
+      '</span><span class="nm">' + esc(name) + '</span><span class="bd t' + t + '">' + esc(G.badge(e)) + '</span></li>';
+  }
+  $('slots').innerHTML = rows;
+  $('slots').hidden = false;
+  var misses = g.guesses.filter(function (n) { return n !== r.answer; }).length;
+  var show = fin ? 4 : Math.min(4, 1 + misses);
+  $('clues').hidden = false;
+  $('clues').innerHTML = r.clues.map(function (c, i) {
+    return i < show ? '<li><b>Clue ' + (i + 1) + '</b><span>' + esc(c) + '</span></li>'
+      : '<li class="lock"><b>Clue ' + (i + 1) + '</b><span>Unlocks after miss ' + i + '</span></li>';
+  }).join('');
+  $('play').hidden = fin;
+  if (!fin) renderChips();
+  renderSide(cur);
+  renderMore();
+}
+
+function renderNotice() {
+  var n = $('notice'), html = '';
+  if (dailyStatus === 'prelaunch') {
+    var l = config.launch_date;
+    html = '<b>' + (G.isDate(l) ? 'Daily GOAT #1 starts ' + esc(G.dateLabel(l)) + '.' : 'Daily GOAT #1 starts soon.') + '</b> Until then, every round is practice.';
+  } else if (dailyStatus === 'unavailable' && view.type === 'daily') {
+    html = "<b>Today’s GOAT can’t load right now. We’ll keep trying.</b>" + (catalogList().some(practiceable) ? ' <button class="sm go" id="practiceNow">Play a practice round</button>' : '');
+  } else if (dailyStatus === 'unavailable') {
+    html = "Today’s GOAT can’t load right now. We’ll keep trying.";
+  }
+  n.hidden = !html;
+  n.innerHTML = html;
+}
+
+function renderEmptyBoard() {
+  $('tag').textContent = 'Daily GOAT';
+  $('title').textContent = dailyStatus === 'loading' ? "Loading today’s GOAT…" : dailyStatus === 'prelaunch' ? 'Warm up for the first Daily GOAT' : "Today’s GOAT is on its way";
+  $('disc').textContent = '';
+  $('corr').hidden = true;
+  $('slots').hidden = true; $('clues').hidden = true; $('play').hidden = true;
+  renderHowSide();
+}
+
+function renderChips() {
+  var cur = current(); if (!cur) return [];
+  var f = G.norm($('q').value.trim());
+  var list = alpha(cur.r).filter(function (n) { return cur.g.guesses.indexOf(n) < 0 && G.norm(n).indexOf(f) >= 0; });
+  $('chips').innerHTML = list.length ? list.map(function (n) { return '<button class="chip" data-guess="' + esc(n) + '">' + esc(n) + '</button>'; }).join('')
+    : '<p class="none">No contender by that name in this category.</p>';
   return list;
 }
 
-function renderSide(){
-  const c=cat();
-  if(c.comm){
-    const t=tally[c.id]||{},total=Object.values(t).reduce((a,b)=>a+b,0);
-    const rows=c.opts.map(o=>({o,n:t[o]||0})).sort((a,b)=>b.n-a.n);
-    const max=Math.max(1,...rows.map(r=>r.n));
-    $('side').innerHTML=`<div class="panel"><h2>${total?`${esc(rows[0].o)} leads`:'No votes yet'}</h2><p>${total} vote${total===1?'':'s'} so far. The ranking updates live as people vote.</p>
-     <div class="bars">${rows.map((r,k)=>`<div class="bar ${r.o===myVotes[c.id]?'me':''}"><span class="r">${k+1}</span><span class="tr"><span class="fl" style="width:${(r.n/max*100).toFixed(1)}%"></span><span class="lb">${esc(r.o)}</span></span><span class="v">${total?Math.round(r.n/total*100):0}%</span></div>`).join('')}</div>
-     <p class="note">Added from a player suggestion. Once enough votes are in, it can graduate into a daily guessing round.</p></div>`;
-    return;
+// ---------------------------------------------------------------- render: side panel
+var LEGEND = '<ul class="key" aria-label="What the colors mean">' +
+  '<li><i class="t0"></i><span><b>GOAT</b> · the crowd’s #1</span></li>' +
+  '<li><i class="t1"></i><span><b>Hot</b> · ranked #2 to #3</span></li>' +
+  '<li><i class="t2"></i><span><b>Warm</b> · ranked #4 to #6</span></li>' +
+  '<li><i class="t3"></i><span><b>Cold</b> · ranked #7 to #10</span></li>' +
+  '<li><i class="t4"></i><span><b>Not top 10</b></span></li></ul>';
+function renderHowSide() {
+  $('side').innerHTML = '<div class="panel"><div class="hero"><img class="logo" src="logo.png" width="120" height="120" alt=""><div><h2>Find the crowd’s #1</h2>' +
+    '<p>Five guesses. Each miss shows where your pick landed in the crowd’s ranking and unlocks a new clue.</p></div></div>' + LEGEND +
+    '<p class="note">After the reveal, name your own GOAT. Your pick counts as a vote and gets you a Hot Take Score.</p></div>';
+}
+function bars(r, g) {
+  var top = r.ranking[0].blended || 1;
+  return '<div class="bars">' + r.ranking.slice(0, 10).map(function (e) {
+    var cls = (g.pick === e.name ? ' me' : '') + (g.guesses.indexOf(e.name) >= 0 ? ' gs' : '');
+    return '<div class="bar' + cls + '"><span class="r">' + e.rank + '</span><span class="tr"><span class="fl" style="width:' + (e.blended / top * 100).toFixed(1) +
+      '%"></span><span class="lb">' + esc(e.name) + '</span></span><span class="v">' + G.pct(e.blended) + '%</span></div>';
+  }).join('') + '</div>';
+}
+function renderSide(cur) {
+  var r = cur.r, g = cur.g;
+  if (!done(cur)) { renderHowSide(); return; }
+  var w = won(cur), n = g.guesses.length, a = entry(r, r.answer);
+  var head = w ? 'Found it in ' + n : 'The GOAT was ' + esc(r.answer);
+  var sub = w ? esc(r.answer) + ' tops the crowd with ' + G.pct(a.blended) + '%.' : 'Five swings, no crown. ' + esc(r.answer) + ' leads with ' + G.pct(a.blended) + '%.';
+  var html = '<div class="panel"><h2>' + head + '</h2><p>' + sub + ' Outlined bars are your guesses.</p>' + bars(r, g) +
+    '<p class="note">' + esc(G.disclosure(r.tier, r.total)) + '.</p>' + pickHtml(cur);
+  if (r.kind === 'daily') html += shareHtml(cur) + statsHtml();
+  else html += '<div class="row">' + (nextPractice() ? '<button class="btn ghost" id="nextPractice">Play another</button>' : '') +
+    (dailyStatus === 'ready' ? '<button class="btn ghost" id="toDaily2">Today’s GOAT</button>' : '') + '</div>';
+  $('side').innerHTML = html + '</div>';
+}
+function pickHtml(cur) {
+  var r = cur.r, g = cur.g;
+  if (g.pick === null || g.choosing) {
+    return '<h2 class="mt">Who’s your GOAT?</h2><p>Forget the crowd. Your pick counts as a vote and gets you a Hot Take Score.</p><div class="pick">' +
+      alpha(r).map(function (n) { return '<button class="pk' + (n === g.pick ? ' on' : '') + '" data-pick="' + esc(n) + '">' + esc(n) + '</button>'; }).join('') + '</div>';
   }
-  const g=game(c),fin=done(c,g);
-  if(!fin){
-    $('side').innerHTML=`<div class="panel"><div class="hero"><img class="logo" src="logo.png" width="120" height="120" alt=""><div><h2>Find the crowd's #1</h2><p>Five guesses. Each miss shows where your pick landed in the crowd's top 10 and unlocks a new clue.</p></div></div>
-    <div class="key"><i class="t0"></i><span>The crowd's GOAT</span><i class="t1"></i><span>Ranked #2 to #3, red hot</span><i class="t2"></i><span>Ranked #4 to #6, warm</span><i class="t3"></i><span>Ranked #7 to #10, cold</span><i class="t4"></i><span>Outside the top 10</span></div>
-    <p class="note">After the reveal you name your own GOAT and get a Hot Take Score. Crowd votes here are sample data for this prototype.</p></div>`;
-    return;
+  var e = entry(r, g.pick) || { blended: 0 }, s = G.hotTake(e.blended, r.ranking[0].blended);
+  var status = '';
+  if (r.voteable) {
+    if (g.pickState === 'saving') status = '<p class="msg" role="status">Saving your pick…</p>';
+    else if (g.pickState === 'saved') status = '<p class="msg ok" role="status">Your pick counts toward the crowd ranking.</p>';
+    else if (g.pickState === 'paused') status = '<p class="msg" role="status">Voting is paused right now. Your pick is kept on this device.</p>';
+    else if (g.pickState === 'failed') status = '<p class="msg bad" role="alert">Your pick didn’t save. ' + esc(errText({ code: g.pickCode })) + ' <button class="sm" id="retryPick">Retry</button></p>';
   }
-  const w=won(c,g),n=g.guesses.length,top=c.top[0].p;
-  const bars=c.top.map((o,k)=>`<div class="bar ${g.pick===o.i?'me':''} ${g.guesses.includes(o.i)?'gs':''}"><span class="r">${k+1}</span><span class="tr"><span class="fl" style="width:${(o.p/top*100).toFixed(1)}%"></span><span class="lb">${c.opts[o.i][0]}</span></span><span class="v">${o.p}%</span></div>`).join('');
-  let pickHtml;
-  if(g.pick===null){
-    pickHtml=`<h2 style="margin-top:16px">Who's your GOAT?</h2><p>Forget the crowd. Pick yours to get your Hot Take Score.</p><div class="pick">${c.alpha.map(i=>`<button class="pk" data-p="${i}">${c.opts[i][0]}</button>`).join('')}</div>`;
-  }else{
-    const s=hotScore(c,g.pick),p=c.opts[g.pick][1];
-    pickHtml=`<h2 style="margin-top:18px">Hot Take Score</h2><p class="big">${s}</p><p><b>${hotLabel(s)}.</b> You picked ${c.opts[g.pick][0]}, ${p?`backed by ${p}% of the crowd`:'who missed the crowd top 10 entirely'}.</p>
-    <div class="meter" aria-hidden="true"><span style="left:${Math.max(2,Math.min(98,s))}%"></span></div><div class="scale"><span>With the crowd</span><span>Contrarian</span></div>
-    <div class="row"><button class="btn" id="copy">Copy my result</button><button class="btn ghost" id="repick">Change pick</button>${nextCat()?`<button class="btn ghost" id="next">Play ${nextCat().label}</button>`:''}</div>
-    <textarea id="share" readonly aria-label="Shareable result"></textarea>`;
-  }
-  $('side').innerHTML=`<div class="panel"><h2>${w?`Found it in ${n}`:`The GOAT was ${c.opts[0][0]}`}</h2><p>${w?`${c.opts[0][0]} tops the crowd with ${c.opts[0][1]}% of votes.`:`Five swings, no crown. ${c.opts[0][0]} took ${c.opts[0][1]}% of votes.`} Outlined bars are your guesses.</p>
-  <div class="bars">${bars}</div><p class="note">Crowd votes are sample data for this prototype.</p>${pickHtml}</div>`;
+  return '<h2 class="mt">Hot Take Score</h2><p class="big">' + s + '</p><p><b>' + G.hotLabel(s) + '.</b> You picked ' + esc(g.pick) +
+    (e.blended > 0 ? ', at ' + G.pct(e.blended) + '% in the crowd ranking.' : ', who missed the crowd ranking entirely.') + '</p>' +
+    '<div class="meter" aria-hidden="true"><span style="left:' + Math.max(2, Math.min(98, s)) + '%"></span></div><div class="scale"><span>With the crowd</span><span>Contrarian</span></div>' +
+    status + '<div class="row"><button class="btn ghost" id="repick">Change pick</button></div>';
+}
+function shareHtml(cur) {
+  return '<h2 class="mt">Share</h2><label class="tog"><input type="checkbox" id="incPick"' + (includePick ? ' checked' : '') + (cur.g.pick ? '' : ' disabled') +
+    '> Include my pick <small>(shows your GOAT)</small></label><div class="row"><button class="btn" id="share">Share my result</button></div>' +
+    '<p class="msg" id="shareMsg" role="status"></p><textarea id="shareBox" readonly aria-label="Your result to copy" hidden></textarea>';
+}
+function statsHtml() {
+  var d = stats.dist, max = Math.max(1, d[1], d[2], d[3], d[4], d[5], d.X);
+  var rows = ['1', '2', '3', '4', '5', 'X'].map(function (key) {
+    return '<div class="dist"><span>' + key + '</span><span class="dt"><span style="width:' + (d[key] / max * 100).toFixed(1) + '%"></span></span><span>' + d[key] + '</span></div>';
+  }).join('');
+  return '<h2 class="mt">Your stats</h2><div class="sgrid"><div><b>' + G.displayStreak(stats, today, excused) + '</b><span>Streak</span></div><div><b>' + stats.maxStreak + '</b><span>Best streak</span></div>' +
+    '<div><b>' + stats.played + '</b><span>Played</span></div><div><b>' + (stats.played ? Math.round(stats.wins / stats.played * 100) : 0) + '%</b><span>Win rate</span></div></div>' +
+    '<p class="note">Guesses to find the GOAT</p>' + rows +
+    '<p class="note">Practice rounds: ' + practice.played + ' played, ' + practice.won + ' won. They never count toward your daily stats.</p>';
 }
 
-function nextCat(){const c=cat();return CATS.find(x=>x.id!==c.id&&!(state.g[x.id]&&done(x,state.g[x.id])))}
-
-function shareText(){
-  const c=cat(),g=game(c),s=hotScore(c,g.pick);
-  return `THE GOAT · ${c.label}${c.id===dailyId?' · '+dateLabel:''}\n${g.guesses.map(i=>EMO[tier(c,i)]).join('')} ${won(c,g)?g.guesses.length:'X'}/${MAX}\nMy GOAT: ${c.opts[g.pick][0]}\nHot Take Score: ${s} (${hotLabel(s)})`;
+// ---------------------------------------------------------------- vote categories
+function renderVoteBoard() {
+  var c = findCat(view.slug);
+  if (!c || c.kind !== 'vote') { view = { type: 'daily' }; render(); return; }
+  var mine = myVotes[c.slug];
+  $('tag').textContent = 'Crowd vote';
+  $('title').textContent = c.title;
+  $('disc').textContent = (c.total_votes || 0).toLocaleString('en-US') + (c.total_votes === 1 ? ' vote' : ' votes') + ' so far';
+  $('corr').hidden = true;
+  $('slots').hidden = true; $('clues').hidden = true; $('play').hidden = true;
+  var v = $('vote'); v.hidden = false;
+  var st = voteState[c.slug] || {};
+  v.innerHTML = '<p>A player-suggested category. There’s no crowd ranking to guess yet, so cast your vote and help build it.</p>' +
+    (mine ? '<div class="mine">Your vote: ' + esc(mine) + '. Tap another name to switch.</div>' : '') +
+    (config.voting_enabled === false ? '<p class="msg">Voting is paused right now.</p>' : '') +
+    '<div class="chips open">' + c.opts.map(function (o) { return '<button class="chip' + (o.name === mine ? ' on' : '') + '" data-vote="' + esc(o.name) + '">' + esc(o.name) + '</button>'; }).join('') + '</div>' +
+    (st.failed ? '<p class="msg bad" role="alert">Your vote didn’t save. ' + esc(errText({ code: st.code })) + ' <button class="sm" id="retryVote">Retry</button></p>' : '');
+  var total = c.total_votes || 0, top = Math.max(1, c.ranking[0] ? c.ranking[0].votes : 1);
+  $('side').innerHTML = '<div class="panel"><h2>' + (total ? esc(c.ranking[0].name) + ' leads' : 'No votes yet') + '</h2><p>' + total + (total === 1 ? ' vote' : ' votes') + ' so far. The ranking updates as people vote.</p>' +
+    '<div class="bars">' + c.ranking.map(function (e) {
+      return '<div class="bar' + (e.name === mine ? ' me' : '') + '"><span class="r">' + e.rank + '</span><span class="tr"><span class="fl" style="width:' + (e.votes / top * 100).toFixed(1) + '%"></span><span class="lb">' + esc(e.name) + '</span></span><span class="v">' + (total ? Math.round(e.votes / total * 100) : 0) + '%</span></div>';
+    }).join('') + '</div><p class="note">Added from a player suggestion.</p></div>';
+}
+var voteState = {};
+function castVote(slug, pick, isRetry) {
+  var c = findCat(slug); if (!c) return;
+  var prev = myVotes[slug];
+  if (prev === pick && !isRetry) return;
+  if (config.voting_enabled === false) return;
+  myVotes[slug] = pick; voteState[slug] = { saving: true }; render();
+  rpc('cast_vote', { p_player: player, p_slug: slug, p_pick: pick }).then(function () {
+    store.set('goat-votes', myVotes); voteState[slug] = {};
+    track('pick_vote', { slug: slug, changed: !!prev && prev !== pick });
+    loadCatalog();
+  }, function (e) {
+    voteState[slug] = { failed: true, code: e.code };
+    track('vote_error', { code: e.code });
+    if (e.code === 'network') track('offline', { what: 'vote' });
+    render(); announce('Your vote didn’t save.');
+  });
 }
 
-function render(fresh){renderCats();renderBoard(fresh);renderSide()}
-
-function guess(i){
-  const c=cat(),g=game(c);if(done(c,g)||g.guesses.includes(i))return;
-  g.guesses.push(i);$('q').value='';
-  if(done(c,g))record(c,g);
-  updStats();save();render(g.guesses.length-1);
+// ---------------------------------------------------------------- more GOATs (Team GOAT)
+function nextPractice() {
+  var l = catalogList().filter(function (c) { return practiceable(c) && !(daily && c.slug === daily.slug) && (!view.slug || c.slug !== view.slug); });
+  var fresh = l.filter(function (c) { var p = rounds[c.slug]; return !p || !done(p); });
+  return fresh[0] || null;
 }
-function updStats(){$('sStreak').textContent=stats.streak;$('sPlayed').textContent=stats.played;$('sWin').textContent=(stats.played?Math.round(stats.wins/stats.played*100):0)+'%'}
+function dealDeck() {
+  var l = catalogList().filter(function (c) { return practiceable(c) && !(daily && c.slug === daily.slug); }).map(function (c) { return c.slug; });
+  for (var i = l.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = l[i]; l[i] = l[j]; l[j] = t; }
+  return l.slice(0, 8);
+}
+function renderMore() {
+  if (!deck || !deck.length || (daily && deck.indexOf(daily.slug) >= 0)) deck = dealDeck();
+  var votes = catalogList().filter(function (c) { return c.kind === 'vote'; });
+  var html = deck.map(function (slug) {
+    var c = findCat(slug); if (!c) return '';
+    var p = rounds[slug], st = p && done(p) ? (won(p) ? 'Solved' : 'Missed') : 'Practice';
+    var on = view.type === 'practice' && view.slug === slug;
+    return '<button class="cat" data-practice="' + esc(slug) + '" aria-pressed="' + on + '">' + esc(c.name) + '<small>' + st + '</small></button>';
+  }).join('') + votes.map(function (c) {
+    var on = view.type === 'vote' && view.slug === c.slug;
+    return '<button class="cat" data-votecat="' + esc(c.slug) + '" aria-pressed="' + on + '">' + esc(c.name) + '<small>' + (myVotes[c.slug] ? 'Voted' : 'Vote') + '</small></button>';
+  }).join('');
+  $('cats').innerHTML = html || '<p class="none dark">More categories are on the way.</p>';
+  $('ptally').textContent = practice.played ? 'Practice: ' + practice.played + ' played, ' + practice.won + ' won.' : '';
+}
 
-document.addEventListener('click',e=>{
-  const t=e.target.closest('button');if(!t)return;
-  if(t.dataset.c){state.cat=t.dataset.c;$('q').value='';save();render();return}
-  if(t.dataset.i!==undefined){guess(+t.dataset.i);return}
-  if(t.dataset.v!==undefined){vote(+t.dataset.v);return}
-  if(t.id==='shuffle'){state.deck=deal();save();renderCats();return}
-  if(t.dataset.act){review(t.dataset.act,t.dataset.k);return}
-  if(t.dataset.p!==undefined){game(cat()).pick=+t.dataset.p;save();renderSide();return}
-  if(t.id==='repick'){game(cat()).pick=null;save();renderSide();return}
-  if(t.id==='next'){state.cat=nextCat().id;save();render();window.scrollTo({top:0,behavior:'smooth'});return}
-  if(t.id==='copy'){
-    const txt=shareText(),box=$('share');
-    const fallback=()=>{box.style.display='block';box.value=txt;box.select();t.textContent='Select and copy below'};
-    try{navigator.clipboard.writeText(txt).then(()=>{t.textContent='Copied!';setTimeout(()=>t.textContent='Copy my result',1800)},fallback)}catch(err){fallback()}
+// ---------------------------------------------------------------- actions
+function announce(t) { var l = $('live'); l.textContent = ''; setTimeout(function () { l.textContent = t; }, 30); }
+function guess(name) {
+  var cur = current(); if (!cur || done(cur) || cur.g.guesses.indexOf(name) >= 0 || !entry(cur.r, name)) return;
+  var r = cur.r, g = cur.g;
+  if (!g.started) { g.started = true; if (r.kind === 'daily') track('game_start', {}, r.no); }
+  g.guesses.push(name);
+  $('q').value = '';
+  var e = entry(r, name);
+  announce('Guess ' + g.guesses.length + ': ' + name + ', ' + G.badge(e).replace(/#/g, 'rank ') + '.' + (name === r.answer ? ' You found the GOAT.' : done(cur) ? ' Out of guesses. The GOAT was ' + r.answer + '.' : ''));
+  if (done(cur) && !g.recorded) {
+    g.recorded = true;
+    var w = won(cur);
+    if (r.kind === 'daily') {
+      stats = G.applyResult(stats, r.date, w, g.guesses.length, excused);
+      store.set('goat-stats', stats);
+      track('game_complete', { won: w, guesses: g.guesses.length }, r.no);
+    } else {
+      practice.played++; if (w) practice.won++;
+      store.set('goat-practice', practice);
+    }
+  }
+  saveCurrent(cur);
+  render(g.guesses.length - 1);
+  if (done(cur) && window.matchMedia('(max-width: 860px)').matches) setTimeout(function () { $('side').scrollIntoView({ behavior: smooth(), block: 'start' }); }, 350);
+}
+function smooth() { return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; }
+function setPick(name, isRetry) {
+  var cur = current(); if (!cur || !done(cur) || !entry(cur.r, name)) return;
+  var r = cur.r, g = cur.g, prev = g.pickSaved || null;
+  g.choosing = false;
+  if (g.pick === name && !isRetry && g.pickState !== 'failed') { saveCurrent(cur); render(); return; }
+  g.pick = name;
+  if (!r.voteable) { g.pickState = null; saveCurrent(cur); render(); return; }
+  if (config.voting_enabled === false) { g.pickState = 'paused'; saveCurrent(cur); render(); return; }
+  g.pickState = 'saving'; g.pickCode = null; saveCurrent(cur); render();
+  rpc('cast_vote', { p_player: player, p_slug: r.slug, p_pick: name }).then(function () {
+    g.pickState = 'saved'; g.pickSaved = name; saveCurrent(cur);
+    var props = { changed: !!prev && prev !== name };
+    if (r.kind === 'daily') track('pick_vote', props, r.no); else { props.slug = r.slug; track('pick_vote', props); }
+    render();
+  }, function (e) {
+    g.pickState = e.code === 'disabled' ? 'paused' : 'failed'; g.pickCode = e.code; saveCurrent(cur);
+    track('vote_error', { code: e.code }, r.kind === 'daily' ? r.no : undefined);
+    if (e.code === 'network') track('offline', { what: 'vote' });
+    render(); announce('Your pick didn’t save.');
+  });
+}
+function doShare(btn) {
+  var cur = current(); if (!cur || cur.r.kind !== 'daily') return;
+  var r = cur.r, g = cur.g;
+  var score = g.pick ? G.hotTake((entry(r, g.pick) || {}).blended, r.ranking[0].blended) : null;
+  var text = G.shareText({
+    no: r.no, tiers: g.guesses.map(function (n) { return G.tierOf(entry(r, n)); }), won: won(cur), score: score,
+    pick: g.pick, includePick: includePick && !!g.pick, url: location.origin + location.pathname, ref: myRef
+  });
+  var spoiler = includePick && !!g.pick, msg = $('shareMsg');
+  var sent = function (method) { track('share', { method: method, spoiler: spoiler }, r.no); };
+  var manual = function () {
+    var box = $('shareBox'); box.hidden = false; box.value = text; box.focus(); box.select();
+    msg.textContent = 'Select the text below and copy it.'; sent('manual');
+  };
+  var clip = function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { msg.textContent = 'Copied. Paste it anywhere.'; sent('clipboard'); }, manual);
+    } else manual();
+  };
+  if (navigator.share) {
+    navigator.share({ text: text }).then(function () { sent('native'); }, function (e) { if (!e || e.name !== 'AbortError') clip(); });
+  } else clip();
+}
+
+document.addEventListener('click', function (ev) {
+  var t = ev.target.closest('button'); if (!t) return;
+  var d = t.dataset;
+  if (d.guess !== undefined) { guess(d.guess); return; }
+  if (d.pick !== undefined) { setPick(d.pick); return; }
+  if (d.practice !== undefined) { view = { type: 'practice', slug: d.practice }; $('q').value = ''; render(); scrollToBoard(); return; }
+  if (d.votecat !== undefined) { view = { type: 'vote', slug: d.votecat }; render(); scrollToBoard(); return; }
+  if (d.vote !== undefined) { castVote(view.slug, d.vote); return; }
+  if (d.own !== undefined) { ownerAction(d.own, d.k, t); return; }
+  switch (t.id) {
+    case 'shuffle': deck = dealDeck(); renderMore(); return;
+    case 'toDaily': case 'toDaily2': view = { type: 'daily' }; render(); scrollToBoard(); return;
+    case 'practiceNow': var n = nextPractice(); if (n) { view = { type: 'practice', slug: n.slug }; render(); } return;
+    case 'nextPractice': var p = nextPractice(); if (p) { view = { type: 'practice', slug: p.slug }; $('q').value = ''; render(); scrollToBoard(); } return;
+    case 'repick': var cur = current(); if (cur) { cur.g.choosing = true; saveCurrent(cur); render(); } return;
+    case 'retryPick': var c2 = current(); if (c2 && c2.g.pick) setPick(c2.g.pick, true); return;
+    case 'retryVote': if (myVotes[view.slug]) castVote(view.slug, myVotes[view.slug], true); return;
+    case 'share': doShare(t); return;
+    case 'howtoX': store.set('goat-howto-seen', true); $('howto').hidden = true; return;
+    case 'newdayBtn': $('newday').hidden = true; view = { type: 'daily' }; loadDaily(G.localDate()); return;
+    case 'ownerOpen': ownerForm = true; renderOwnerBox(); setTimeout(function () { var i = $('oPass'); if (i) i.focus(); }, 0); return;
+    case 'ownerCancel': ownerForm = false; renderOwnerBox(); return;
   }
 });
-$('q').addEventListener('input',renderChips);
-$('q').addEventListener('keydown',e=>{if(e.key==='Enter'){const l=renderChips();const f=norm($('q').value.trim());const exact=l.find(i=>norm(cat().opts[i][0])===f);if(exact!==undefined)guess(exact);else if(l.length===1)guess(l[0])}});
+document.addEventListener('change', function (ev) {
+  if (ev.target.id === 'incPick') { includePick = ev.target.checked; var b = $('shareBox'); if (b) b.hidden = true; }
+});
+function scrollToBoard() { $('board').scrollIntoView({ behavior: smooth(), block: 'start' }); }
+$('q').addEventListener('input', renderChips);
+$('q').addEventListener('keydown', function (e) {
+  if (e.key !== 'Enter') return;
+  var l = renderChips(), f = G.norm($('q').value.trim());
+  var exact = l.filter(function (n) { return G.norm(n) === f; })[0];
+  if (exact) guess(exact); else if (l.length === 1) guess(l[0]);
+});
 
-/* ---------- community: suggestions, review, votes (Supabase) ---------- */
-const SB='https://mzlbnsibalthsycmvshm.supabase.co',KEY='sb_publishable_1RuU3_8Jetrt6mrdl6-05g_y1XG5n54';
-const parseOpts=s=>{const seen=new Set();return String(s||'').split(/[,\n]/).map(x=>x.trim().slice(0,40)).filter(x=>x&&!seen.has(x.toLowerCase())&&seen.add(x.toLowerCase())).slice(0,16)};
-const stLabel={pending:'Waiting',added:'In the game',dismissed:'Passed'};
-const ERR={duplicate:'Someone already suggested that one.',too_many:'That’s 10 suggestions today. Come back tomorrow.',queue_full:'The suggestion box is full right now.',bad_name:'Give the category a name first.',need_four:'Add at least 4 contenders so the vote means something.',not_owner:'That passphrase didn’t work.',bad_pick:'That contender isn’t in this vote anymore.'};
-const errText=e=>ERR[e&&e.message]||'That didn’t save. Check your connection and try again.';
-const newId=()=>{try{return crypto.randomUUID()}catch(e){return 'v'+Date.now().toString(36)+Math.random().toString(36).slice(2,12)}};
-uid=store.get('goat-voter');if(!uid){uid=newId();store.set('goat-voter',uid)}
-let mineIds=store.get('goat-mine')||[],pass=store.get('goat-owner')||'',ownerForm=false;
-myVotes=store.get('goat-myvotes')||{};
-
-async function api(path,body){
-  const r=await fetch(SB+'/rest/v1/'+path,{method:body?'POST':'GET',headers:{apikey:KEY,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
-  const txt=await r.text();let data=null;try{data=txt?JSON.parse(txt):null}catch(e){}
-  if(!r.ok)throw {message:(data&&data.message)||'http_'+r.status};
-  return data;
+// ---------------------------------------------------------------- suggestions
+var mine = [], sending = false;
+var ST = { pending: 'Waiting', added: 'In the game', dismissed: 'Passed' };
+function renderSuggest() {
+  var off = config.suggestions_enabled === false;
+  $('sBtn').disabled = sending || off; $('sName').disabled = off; $('sOpts').disabled = off;
+  if (off) { $('sMsg').className = 'msg'; $('sMsg').textContent = 'Suggestions are paused for the moment.'; }
+  $('mine').innerHTML = mine.length ? mine.map(function (s) {
+    var st = ST[s.status] ? s.status : 'pending';
+    return '<li><div class="hd"><span class="nm">' + esc(s.name) + '</span><span class="st ' + st + '">' + ST[st] + '</span></div>' +
+      (Array.isArray(s.opts) && s.opts.length ? '<span class="op">' + esc(s.opts.join(', ')) + '</span>' : '') + '</li>';
+  }).join('') : '<li><span class="op">Nothing sent yet. Your ideas show up here with their status.</span></li>';
 }
-const rpc=(fn,body)=>api('rpc/'+fn,body);
-
-function renderCommunity(){
-  const m=$('dbMsg');
-  m.className='msg'+(dbState==='slow'?' bad':'');
-  m.textContent=dbState==='loading'?'Connecting to the suggestion box…':dbState==='slow'?"Can't reach the suggestion box right now. We'll keep trying.":owner?'Signed in as the owner. The review queue on the right is yours to run.':'';
-  const can=dbState==='ready';
-  $('sBtn').disabled=!can||busy;$('sName').disabled=!can;$('sOpts').disabled=!can;
-  const mine=sugg.filter(s=>mineIds.includes(s.k)).sort((a,b)=>b.at-a.at);
-  $('mine').innerHTML=mine.length?mine.map(s=>`<li><div class="hd"><span class="nm">${esc(s.name)}</span><span class="st ${s.status}">${stLabel[s.status]}</span></div>${s.opts.length?`<span class="op">${esc(s.opts.join(', '))}</span>`:''}</li>`).join(''):'<li><span class="op">Nothing sent yet. Your ideas show up here with their status.</span></li>';
-  $('qTitle').textContent=owner?'Review queue':'Up next from players';
-  $('qNote').textContent=owner?'Add a suggestion to put it in the game as a crowd vote. It needs at least 4 contenders, and you can edit them first.':'Suggestions waiting for a decision from the game’s owner.';
-  const pend=sugg.filter(s=>s.status==='pending').sort((a,b)=>a.at-b.at);
-  let html=pend.map(s=>{
-    const open=owner&&editing===s.k;
-    return `<li><div class="hd"><span class="nm">${esc(s.name)}</span><span class="st pending">Waiting</span></div>${s.opts.length?`<span class="op">${esc(s.opts.join(', '))}</span>`:'<span class="op">No contenders listed</span>'}
-     ${owner?(open?`<div class="ed"><label class="fld" style="margin:0"><span>Contenders for the vote</span><textarea id="ed-${esc(s.k)}">${esc(s.opts.join(', '))}</textarea></label><div class="row" style="margin:0"><button class="sm go" data-act="approve" data-k="${esc(s.k)}">Add to game</button><button class="sm" data-act="cancel" data-k="${esc(s.k)}">Cancel</button></div><p class="msg bad" id="em-${esc(s.k)}"></p></div>`:`<div class="row" style="margin-top:4px"><button class="sm go" data-act="edit" data-k="${esc(s.k)}">Review and add</button><button class="sm" data-act="dismiss" data-k="${esc(s.k)}">Dismiss</button></div>`):''}</li>`}).join('');
-  if(!pend.length)html='<li><span class="op">The queue is empty. New suggestions land here.</span></li>';
-  if(owner&&comm.length)html+=`<li><span class="nm" style="font-size:15px">Live in the game</span></li>`+comm.map(c=>`<li><div class="hd"><span class="nm">${esc(c.label)}</span><span class="st added">In the game</span><button class="sm" data-act="remove" data-k="${esc(c.rid)}">Remove</button></div></li>`).join('');
-  $('queue').innerHTML=html;
-  $('ownerBox').innerHTML=owner?`<span>Owner mode is on.</span> <button class="sm" data-act="signout">Sign out</button>`:ownerForm?`<form id="oForm" class="row" style="margin:0;align-items:center"><label class="fld" style="margin:0;flex:1"><span>Owner passphrase</span><input id="oPass" type="password" autocomplete="current-password"></label><button class="sm go" type="submit" style="align-self:end">Sign in</button><button class="sm" type="button" data-act="ocancel" style="align-self:end">Cancel</button></form><p class="msg bad" id="oMsg"></p>`:`<button class="sm" data-act="owner">Owner sign-in</button>`;
-}
-
-async function write(fn,msgEl){
-  if(busy)return false;busy=true;renderCommunity();
-  try{await fn();return true}catch(e){if(msgEl){msgEl.className='msg bad';msgEl.textContent=errText(e)}return false}
-  finally{busy=false;renderCommunity()}
-}
-
-$('sForm').addEventListener('submit',async e=>{
+$('sForm').addEventListener('submit', function (e) {
   e.preventDefault();
-  const name=$('sName').value.trim().replace(/\s+/g,' '),opts=parseOpts($('sOpts').value),m=$('sMsg');
-  if(name.length<2){m.className='msg bad';m.textContent=ERR.bad_name;return}
-  let id=null;
-  const ok=await write(async()=>{id=await rpc('suggest',{p_voter:uid,p_name:name,p_opts:opts})},m);
-  if(ok){if(id){mineIds=[...mineIds,id].slice(-50);store.set('goat-mine',mineIds)}$('sName').value='';$('sOpts').value='';m.className='msg';m.textContent=`Sent. “${name}” is in the queue.`;load()}
+  var name = $('sName').value.trim().replace(/\s+/g, ' '), opts = G.parseOpts($('sOpts').value), m = $('sMsg');
+  m.className = 'msg bad';
+  if (name.length < 2 || name.length > 60) { m.textContent = 'Give the category a name of 2 to 60 characters.'; return; }
+  if (opts.length > 16) { m.textContent = 'List up to 16 contenders.'; return; }
+  if (opts.some(function (o) { return o.length > 40; })) { m.textContent = 'Keep each contender to 40 characters or fewer.'; return; }
+  sending = true; renderSuggest(); m.className = 'msg'; m.textContent = 'Sending…';
+  rpc('suggest', { p_player: player, p_name: name, p_opts: opts }).then(function () {
+    $('sName').value = ''; $('sOpts').value = '';
+    m.className = 'msg ok'; m.textContent = 'Sent. “' + name + '” is waiting for review.';
+    track('suggest');
+    loadMine();
+  }, function (err) {
+    m.className = 'msg bad'; m.textContent = errText(err);
+  }).then(function () { sending = false; renderSuggest(); });
 });
 
-document.addEventListener('submit',async e=>{
-  if(e.target.id!=='oForm')return;e.preventDefault();
-  const p=$('oPass').value.trim();if(!p)return;
-  let ok=false;try{ok=await rpc('check_owner',{p_pass:p})}catch(err){}
-  if(ok===true){pass=p;owner=true;ownerForm=false;store.set('goat-owner',p);renderCommunity()}else{$('oMsg').textContent=ERR.not_owner}
+// ---------------------------------------------------------------- owner (§6.3, §7): token in sessionStorage only
+var OWNER_KEY = 'goat-owner-token', ownerForm = false, ownerNotice = '';
+var ownerData = { queue: [], needs: [], schedule: [], stats: null }, editing = null, ownerBusy = false;
+function token() { return sess.get(OWNER_KEY); }
+function renderOwnerBox() {
+  var box = $('ownerBox');
+  if (token()) { box.innerHTML = '<span>Owner mode is on.</span>'; return; }
+  box.innerHTML = ownerForm
+    ? '<form id="oForm" class="oform"><label class="fld"><span>Owner passphrase</span><input id="oPass" type="password" autocomplete="current-password" maxlength="200"></label>' +
+      '<button class="sm go" type="submit">Sign in</button><button class="sm" type="button" id="ownerCancel">Cancel</button><p class="msg bad" id="oMsg" role="alert">' + esc(ownerNotice) + '</p></form>'
+    : '<button class="sm" id="ownerOpen">Owner sign-in</button>' + (ownerNotice ? ' <span class="msg bad" role="alert">' + esc(ownerNotice) + '</span>' : '');
+}
+document.addEventListener('submit', function (e) {
+  if (e.target.id !== 'oForm') return;
+  e.preventDefault();
+  var input = $('oPass'), p = input.value; input.value = '';
+  if (!p) return;
+  rpc('owner_login', { p_pass: p }).then(function (tok) {
+    if (typeof tok !== 'string' || !tok) { ownerNotice = 'That passphrase didn’t work.'; renderOwnerBox(); return; }
+    sess.set(OWNER_KEY, tok); ownerForm = false; ownerNotice = ''; renderOwnerBox(); loadOwner();
+  }, function (err) {
+    ownerNotice = err.code === 'rate_limited' ? 'Too many sign-in attempts. Wait 15 minutes and try again.' : errText(err);
+    renderOwnerBox();
+  });
 });
-
-async function review(act,k){
-  if(act==='owner'){ownerForm=true;renderCommunity();setTimeout(()=>$('oPass')&&$('oPass').focus(),0);return}
-  if(act==='ocancel'){ownerForm=false;renderCommunity();return}
-  if(act==='signout'){owner=false;pass='';try{localStorage.removeItem('goat-owner')}catch(e){}renderCommunity();return}
-  if(act==='edit'){editing=k;renderCommunity();return}
-  if(act==='cancel'){editing=null;renderCommunity();return}
-  if(!owner)return;
-  if(act==='dismiss')await write(()=>rpc('review_suggestion',{p_pass:pass,p_id:k,p_action:'dismiss',p_opts:[]}));
-  if(act==='remove')await write(()=>rpc('remove_category',{p_pass:pass,p_id:k}));
-  if(act==='approve'){
-    const opts=parseOpts(($('ed-'+k)||{}).value),em=$('em-'+k);
-    if(opts.length<4){if(em)em.textContent=ERR.need_four;return}
-    if(await write(()=>rpc('review_suggestion',{p_pass:pass,p_id:k,p_action:'add',p_opts:opts}),em))editing=null;
+function ownerCall(fn, args) {
+  var t = token();
+  if (!t) return Promise.reject(apiError('not_owner'));
+  var body = { p_token: t }; for (var key in args) body[key] = args[key];
+  return rpc(fn, body).catch(function (e) {
+    if (e.code === 'not_owner') expireOwner();
+    throw e;
+  });
+}
+function expireOwner() {
+  sess.del(OWNER_KEY); ownerNotice = 'Your owner session expired. Sign in again.'; ownerForm = true;
+  $('ownerPanel').hidden = true; renderOwnerBox();
+}
+function loadOwner() {
+  if (!token()) { $('ownerPanel').hidden = true; return; }
+  Promise.all([ownerCall('owner_queue'), ownerCall('owner_needs_clues'), ownerCall('owner_schedule'), ownerCall('owner_stats')]).then(function (res) {
+    ownerData = { queue: res[0] || [], needs: res[1] || [], schedule: res[2] || [], stats: res[3] || null };
+    renderOwner();
+  }, function (e) { if (e.code !== 'not_owner') { $('ownerPanel').hidden = false; $('ownerMsg').textContent = errText(e); } });
+}
+function renderOwner() {
+  var p = $('ownerPanel'); p.hidden = false;
+  var s = ownerData.stats || {};
+  $('oStats').innerHTML = '<div class="sgrid"><div><b>' + (s.players || 0) + '</b><span>Players today</span></div><div><b>' + (s.completions || 0) + '</b><span>Games finished</span></div>' +
+    '<div><b>' + (s.votes || 0) + '</b><span>Votes</span></div><div><b>' + (s.shares || 0) + '</b><span>Shares</span></div></div>' +
+    ((s.top_ip_hashes || []).length ? '<p class="note">Busiest networks, last 24 hours (hashed): ' + s.top_ip_hashes.slice(0, 5).map(function (h) { return esc(String(h.ip_hash).slice(0, 8)) + ' · ' + esc(h.requests); }).join(', ') + '</p>' : '');
+  $('oQueue').innerHTML = ownerData.queue.length ? ownerData.queue.map(function (q) {
+    var open = editing === q.id, opts = Array.isArray(q.opts) ? q.opts : [];
+    return '<li><div class="hd"><span class="nm">' + esc(q.name) + '</span></div><span class="op">' + (opts.length ? esc(opts.join(', ')) : 'No contenders listed') + '</span>' +
+      (open ? '<label class="fld"><span>Contenders for the vote (4 to 16, comma separated)</span><textarea id="ed-' + esc(q.id) + '">' + esc(opts.join(', ')) + '</textarea></label>' +
+        '<div class="row"><button class="sm go" data-own="add" data-k="' + esc(q.id) + '">Add to game</button><button class="sm" data-own="cancel" data-k="' + esc(q.id) + '">Cancel</button></div>'
+        : '<div class="row"><button class="sm go" data-own="edit" data-k="' + esc(q.id) + '">Add…</button><button class="sm" data-own="dismiss" data-k="' + esc(q.id) + '">Dismiss</button></div>') + '</li>';
+  }).join('') : '<li><span class="op">The queue is empty.</span></li>';
+  var live = (serverCatalog || []);
+  $('oLive').innerHTML = live.length ? live.map(function (c) {
+    return '<li><div class="hd"><span class="nm">' + esc(c.name) + '</span><span class="st added">' + (c.kind === 'vote' ? 'Vote' : 'Daily') + '</span><button class="sm" data-own="remove" data-k="' + esc(c.slug) + '">Remove</button></div></li>';
+  }).join('') : '<li><span class="op">No categories in the database yet.</span></li>';
+  $('oNeeds').innerHTML = ownerData.needs.length ? ownerData.needs.map(function (n) {
+    return '<li><span class="nm">' + esc(n.name) + '</span><span class="op">Its #1, ' + esc(n.top) + ', has no clues, so it’s skipped for the daily.</span></li>';
+  }).join('') : '<li><span class="op">Every category’s #1 has clues.</span></li>';
+  var dailies = live.filter(function (c) { return c.kind === 'daily'; });
+  $('oSched').innerHTML = ownerData.schedule.map(function (row) {
+    var frozen = row.frozen_slug ? findCat(row.frozen_slug) : null;
+    if (row.frozen_slug) return '<li class="sched"><span class="dte">' + esc(G.dateLabel(row.date)) + '</span><span class="op">Published: ' + esc(frozen ? frozen.name : row.frozen_slug) + '</span></li>';
+    return '<li class="sched"><span class="dte">' + esc(G.dateLabel(row.date)) + '</span><label class="sr" for="sc-' + esc(row.date) + '">Category for ' + esc(row.date) + '</label><select id="sc-' + esc(row.date) + '"><option value="">Automatic</option>' +
+      dailies.map(function (c) { return '<option value="' + esc(c.slug) + '"' + (c.slug === row.slug ? ' selected' : '') + '>' + esc(c.name) + '</option>'; }).join('') +
+      '</select><button class="sm" data-own="sched" data-k="' + esc(row.date) + '">Save</button></li>';
+  }).join('');
+}
+function ownerAction(act, key, btn) {
+  if (ownerBusy) return;
+  var msg = $('ownerMsg');
+  var run = function (promise, after) {
+    ownerBusy = true; msg.className = 'msg'; msg.textContent = 'Working…';
+    return promise.then(function (res) { msg.className = 'msg ok'; msg.textContent = after || 'Done.'; loadOwner(); loadCatalog(); return { ok: true, res: res }; },
+      function (e) { if (e.code !== 'not_owner') { msg.className = 'msg bad'; msg.textContent = errText(e); } return { ok: false }; })
+      .then(function (out) { ownerBusy = false; return out; });
+  };
+  switch (act) {
+    case 'edit': editing = key; renderOwner(); return;
+    case 'cancel': editing = null; renderOwner(); return;
+    case 'dismiss': run(ownerCall('owner_review_suggestion', { p_id: key, p_action: 'dismiss', p_opts: [] }), 'Dismissed.'); return;
+    case 'add':
+      var opts = G.parseOpts(($('ed-' + key) || {}).value);
+      if (opts.length < 4 || opts.length > 16 || opts.some(function (o) { return o.length > 40; })) { msg.className = 'msg bad'; msg.textContent = 'A vote needs 4 to 16 contenders of up to 40 characters each.'; return; }
+      editing = null; run(ownerCall('owner_review_suggestion', { p_id: key, p_action: 'add', p_opts: opts }), 'Added to the game as a crowd vote.'); return;
+    case 'remove':
+      if (!window.confirm('Remove this category from the game? Its votes are kept.')) return;
+      run(ownerCall('owner_remove_category', { p_slug: key }), 'Removed.'); return;
+    case 'sched':
+      var sel = $('sc-' + key); run(ownerCall('owner_set_schedule', { p_date: key, p_slug: sel && sel.value ? sel.value : null }), 'Schedule saved.'); return;
+    case 'correct':
+      run(ownerCall('owner_set_correction', { p_date: today, p_note: $('oCorr').value }), 'Correction saved.').then(function (o) { if (o.ok) { store.del('goat-puzzle-' + today); loadDaily(today); } }); return;
+    case 'delplayer':
+      var id = $('oPlayer').value.trim();
+      if (id.length < 8 || id.length > 64) { msg.className = 'msg bad'; msg.textContent = 'Paste the player ID from the request.'; return; }
+      if (!window.confirm('Delete all votes, suggestions and events for this player ID? This can’t be undone.')) return;
+      run(ownerCall('owner_delete_player', { p_player: id }), 'Deleted.').then(function (o) { var r = o.ok && o.res; if (r) { msg.textContent = 'Deleted ' + (r.votes || 0) + ' votes, ' + (r.suggestions || 0) + ' suggestions and ' + (r.events || 0) + ' events.'; $('oPlayer').value = ''; } }); return;
+    case 'signout':
+      var t = token(); sess.del(OWNER_KEY); ownerNotice = ''; $('ownerPanel').hidden = true; renderOwnerBox();
+      if (t) rpc('owner_logout', { p_token: t }).catch(function () {}); return;
+    case 'revokeall':
+      if (!window.confirm('Sign out every owner session on every device?')) return;
+      ownerCall('owner_revoke_all', {}).then(function () { sess.del(OWNER_KEY); ownerNotice = 'Signed out everywhere.'; $('ownerPanel').hidden = true; renderOwnerBox(); },
+        function (e) { if (e.code !== 'not_owner') { msg.className = 'msg bad'; msg.textContent = errText(e); } }); return;
   }
-  load();
 }
 
-async function vote(i){
-  const c=cat();if(!c.comm||busy)return;
-  const pick=c.opts[i];if(!pick||myVotes[c.id]===pick)return;
-  const prev=myVotes[c.id];
-  if(prev&&tally[c.id]&&tally[c.id][prev])tally[c.id][prev]--;
-  (tally[c.id]=tally[c.id]||{})[pick]=(tally[c.id][pick]||0)+1;
-  myVotes={...myVotes,[c.id]:pick};render();
-  const ok=await write(()=>rpc('cast_vote',{p_voter:uid,p_category:c.rid,p_pick:pick}));
-  if(ok)store.set('goat-myvotes',myVotes);else{if(prev)myVotes[c.id]=prev;else delete myVotes[c.id]}
-  load();
+// ---------------------------------------------------------------- day rollover (§4)
+function checkDay() {
+  var t = G.localDate();
+  if (t === today) return;
+  var cur = view.type === 'daily' ? current() : null;
+  var inProgress = cur && cur.r.kind === 'daily' && cur.g.guesses.length > 0 && !done(cur);
+  if (inProgress) { $('newday').hidden = false; return; }
+  loadDaily(t);
 }
 
-let loading=false;
-async function load(){
-  if(loading)return;loading=true;
-  try{
-    const [cats,sug,votes]=await Promise.all([
-      api('categories?select=id,name,opts,suggestion_id,created_at&order=created_at.asc'),
-      api('suggestions?select=id,name,opts,status,created_at&order=created_at.desc&limit=300'),
-      api('votes?select=category_id,pick&limit=20000')]);
-    comm=(cats||[]).filter(r=>r&&typeof r.name==='string'&&Array.isArray(r.opts)).map(r=>({id:'c-'+r.id,rid:r.id,label:r.name.slice(0,60),title:'GOAT '+r.name.slice(0,60).toLowerCase(),comm:true,opts:r.opts.filter(o=>typeof o==='string').slice(0,16),from:r.suggestion_id}));
-    sugg=(sug||[]).filter(r=>r&&typeof r.name==='string').map(r=>({k:r.id,name:r.name.slice(0,60),opts:Array.isArray(r.opts)?r.opts.filter(o=>typeof o==='string'):[],status:stLabel[r.status]?r.status:'pending',at:Date.parse(r.created_at)||0}));
-    const t={};for(const v of votes||[]){if(!v||typeof v.pick!=='string')continue;const k='c-'+v.category_id;(t[k]=t[k]||{})[v.pick]=(t[k][v.pick]||0)+1}
-    if(!busy)tally=t;
-    db='supabase';dbState='ready';
-  }catch(e){if(dbState!=='ready')dbState='slow'}
-  finally{loading=false}
-  render();renderCommunity();
-}
-
-function start(){
-  const saved=store.get('goat-'+dateKey);
-  state=(saved&&saved.g)?saved:{cat:dailyId,g:{}};
-  if(!state.cat)state.cat=dailyId;
-  if(pass)rpc('check_owner',{p_pass:pass}).then(ok=>{owner=ok===true;if(!owner){pass='';try{localStorage.removeItem('goat-owner')}catch(e){}}renderCommunity()}).catch(()=>{});
-  updStats();render();renderCommunity();load();
-  setInterval(()=>{if(!document.hidden)load()},20000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
+// ---------------------------------------------------------------- start
+function start() {
+  $('yourId').textContent = player;
+  if (!store.get('goat-howto-seen')) $('howto').hidden = false;
+  render(); renderSuggest(); renderOwnerBox();
+  var params = new URLSearchParams(location.search), inRef = params.get('r');
+  if (params.has('r')) { params.delete('r'); try { history.replaceState(null, '', location.pathname + (params.toString() ? '?' + params : '') + location.hash); } catch (e) {} }
+  var refDomain = null;
+  try { if (document.referrer) { var h = new URL(document.referrer).hostname; if (h && h !== location.hostname) refDomain = h.slice(0, 100); } } catch (e) {}
+  var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  loadConfig().then(function () {
+    track('visit', { ref: G.isRef(inRef) && inRef !== myRef ? inRef : null, referrer_domain: refDomain, standalone: !!standalone, first_visit: firstVisit });
+    renderSuggest();
+    return loadCatalog();
+  }).then(function () { return loadDaily(today); }).then(function () { if (token()) loadOwner(); });
+  loadMine();
+  setInterval(function () { if (!document.hidden) { loadCatalog(); } }, 60000);
+  setInterval(function () { if (!document.hidden) checkDay(); }, 60000);
+  document.addEventListener('visibilitychange', function () { if (document.hidden) flush(true); else { checkDay(); flush(); } });
+  window.addEventListener('focus', checkDay);
+  window.addEventListener('pagehide', function () { flush(true); });
 }
 start();
-}
+})();
 </script>
 </body>
 </html>
