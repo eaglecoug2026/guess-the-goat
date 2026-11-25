@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { createBackend, PASS } from './mock.mjs';
+import { bundled } from '../unit/load-core.mjs';
 
 const NOON = d => new Date(`${d}T12:00:00-08:00`);
 const TODAY = '2027-01-10'; // puzzle #10 with launch_date 2027-01-01
@@ -359,5 +360,16 @@ test("today's category is never offered as a practice round", async ({ page }) =
   const { backend: b } = await open(page);
   await expect(page.locator('#tag')).toContainText('Daily GOAT #10');
   await expect(page.locator(`#cats [data-practice="${b.puzzles[TODAY].slug}"]`)).toHaveCount(0);
+  await expect(page.locator('#cats [data-practice]')).toHaveCount(8);
+});
+
+test('practice deck re-deals from the server list once it arrives', async ({ page }) => {
+  // The server has every bundled category plus 200 more, and answers late, so the first deck comes from the bundle.
+  const extra = Array.from({ length: 200 }, (_, i) => ({ ...bundled[1], slug: `srv-${i}`, name: `Server ${i}`, title: `GOAT server ${i}`, kind: 'daily', active: true, needs_clues: false }));
+  const backend = createBackend({ extraCatalog: extra, delay: { get_catalog: 1500 } });
+  await open(page, { backend });
+  await expect(page.locator('#cats [data-practice]')).toHaveCount(8);
+  await expect(page.locator('#cats [data-practice^="srv-"]')).toHaveCount(0);
+  await expect(page.locator('#cats [data-practice^="srv-"]').first()).toBeVisible({ timeout: 5000 });
   await expect(page.locator('#cats [data-practice]')).toHaveCount(8);
 });

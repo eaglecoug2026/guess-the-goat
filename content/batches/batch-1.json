@@ -1,0 +1,685 @@
+[
+  {
+    "id": "nfl-quarterback",
+    "label": "NFL quarterback",
+    "title": "GOAT NFL quarterback",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Tom Brady", 39],
+      ["Joe Montana", 17],
+      ["Patrick Mahomes", 13],
+      ["Peyton Manning", 10],
+      ["Aaron Rodgers", 6],
+      ["Drew Brees", 4],
+      ["Dan Marino", 4],
+      ["John Elway", 3],
+      ["Brett Favre", 2],
+      ["Steve Young", 2],
+      ["Terry Bradshaw", 0],
+      ["Roger Staubach", 0],
+      ["Johnny Unitas", 0],
+      ["Troy Aikman", 0],
+      ["Ben Roethlisberger", 0],
+      ["Kurt Warner", 0]
+    ],
+    "clues": {
+      "Tom Brady": [
+        "Played college football in Michigan.",
+        "Was selected with the 199th pick of the NFL draft.",
+        "Won championships with New England and Tampa Bay.",
+        "Finished his career with seven Super Bowl victories."
+      ],
+      "Joe Montana": [
+        "Played college football at Notre Dame.",
+        "Finished his NFL career in Kansas City.",
+        "Won three Super Bowl MVP awards.",
+        "Wore number 16 while winning four championships with San Francisco."
+      ],
+      "Patrick Mahomes": [
+        "His father played Major League Baseball.",
+        "Played college football at Texas Tech.",
+        "Was selected tenth overall in the 2017 NFL draft.",
+        "Wears number 15 for Kansas City."
+      ]
+    },
+    "sources": {
+      "Tom Brady": [
+        "https://en.wikipedia.org/wiki/Tom_Brady",
+        "https://www.pro-football-reference.com/players/B/BradTo00.htm"
+      ],
+      "Joe Montana": [
+        "https://en.wikipedia.org/wiki/Joe_Montana",
+        "https://www.profootballhof.com/players/joe-montana/"
+      ],
+      "Patrick Mahomes": [
+        "https://en.wikipedia.org/wiki/Patrick_Mahomes",
+        "https://www.pro-football-reference.com/players/M/MahoPa00.htm"
+      ]
+    }
+  },
+  {
+    "id": "rock-band",
+    "label": "Rock band",
+    "title": "GOAT Rock band",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["The Beatles", 29],
+      ["Queen", 19],
+      ["Led Zeppelin", 14],
+      ["Pink Floyd", 10],
+      ["The Rolling Stones", 8],
+      ["AC/DC", 6],
+      ["Nirvana", 5],
+      ["Eagles", 4],
+      ["Metallica", 3],
+      ["Fleetwood Mac", 2],
+      ["U2", 0],
+      ["Aerosmith", 0],
+      ["The Who", 0],
+      ["The Doors", 0],
+      ["Guns N' Roses", 0],
+      ["Journey", 0]
+    ],
+    "clues": {
+      "The Beatles": [
+        "The group formed in 1960.",
+        "Their recording career included sessions at Abbey Road Studios.",
+        "They originated in Liverpool, England.",
+        "The classic lineup included John, Paul, George and Ringo."
+      ],
+      "Queen": [
+        "The group formed in London in 1970.",
+        "Their guitarist earned a doctorate in astrophysics.",
+        "They performed at Wembley Stadium during Live Aid in 1985.",
+        "Freddie Mercury was their original lead vocalist."
+      ],
+      "Led Zeppelin": [
+        "The group formed in London in 1968.",
+        "Their original lineup consisted of four musicians.",
+        "Robert Plant was their lead vocalist.",
+        "They recorded Stairway to Heaven."
+      ]
+    },
+    "sources": {
+      "The Beatles": [
+        "https://en.wikipedia.org/wiki/The_Beatles"
+      ],
+      "Queen": [
+        "https://en.wikipedia.org/wiki/Queen_(band)",
+        "https://en.wikipedia.org/wiki/Brian_May"
+      ],
+      "Led Zeppelin": [
+        "https://en.wikipedia.org/wiki/Led_Zeppelin"
+      ]
+    }
+  },
+  {
+    "id": "burger-chain",
+    "label": "Burger chain",
+    "title": "GOAT Burger chain",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["In-N-Out", 25],
+      ["Five Guys", 19],
+      ["Shake Shack", 14],
+      ["McDonald's", 12],
+      ["Whataburger", 9],
+      ["Wendy's", 7],
+      ["Culver's", 5],
+      ["Burger King", 4],
+      ["Habit Burger", 3],
+      ["Jack in the Box", 2],
+      ["Sonic", 0],
+      ["Smashburger", 0],
+      ["White Castle", 0],
+      ["Freddy's", 0],
+      ["Carl's Jr.", 0],
+      ["Steak 'n Shake", 0]
+    ],
+    "clues": {
+      "In-N-Out": [
+        "The company was founded in 1948.",
+        "Harry and Esther Snyder started the business.",
+        "Its first location opened in Baldwin Park, California.",
+        "Animal Style and Double-Double are signature menu terms."
+      ],
+      "Five Guys": [
+        "The company started in 1986.",
+        "Its first restaurant opened in Arlington, Virginia.",
+        "Complimentary peanuts are a familiar feature of its restaurants.",
+        "Its fries are cooked in peanut oil and served in paper bags."
+      ],
+      "Shake Shack": [
+        "The business began as a food cart in 2001.",
+        "Restaurateur Danny Meyer was behind its creation.",
+        "Its first permanent location opened in Madison Square Park.",
+        "Its signature beef patties are served on potato buns."
+      ]
+    },
+    "sources": {
+      "In-N-Out": [
+        "https://en.wikipedia.org/wiki/In-N-Out_Burger",
+        "https://www.in-n-out.com/menu/not-so-secret-menu"
+      ],
+      "Five Guys": [
+        "https://en.wikipedia.org/wiki/Five_Guys"
+      ],
+      "Shake Shack": [
+        "https://en.wikipedia.org/wiki/Shake_Shack"
+      ]
+    }
+  },
+  {
+    "id": "superhero",
+    "label": "Superhero",
+    "title": "GOAT Superhero",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Batman", 30],
+      ["Spider-Man", 26],
+      ["Superman", 14],
+      ["Iron Man", 9],
+      ["Wolverine", 6],
+      ["Captain America", 4],
+      ["Thor", 4],
+      ["Wonder Woman", 3],
+      ["The Hulk", 2],
+      ["Black Panther", 2],
+      ["The Flash", 0],
+      ["Deadpool", 0],
+      ["Doctor Strange", 0],
+      ["Aquaman", 0],
+      ["Daredevil", 0],
+      ["Green Lantern", 0]
+    ],
+    "clues": {
+      "Batman": [
+        "First appeared in comic books in 1939.",
+        "Has no inherent superhuman abilities.",
+        "His fictional hometown is Gotham City.",
+        "His secret identity is Bruce Wayne."
+      ],
+      "Spider-Man": [
+        "Made his comic book debut in 1962.",
+        "Stan Lee and Steve Ditko created the original character.",
+        "His abilities include climbing walls and sensing danger.",
+        "The original character's secret identity is Peter Parker."
+      ],
+      "Superman": [
+        "Made his comic book debut in 1938.",
+        "Jerry Siegel and Joe Shuster created the character.",
+        "His fictional home planet is Krypton.",
+        "Works as a reporter under the name Clark Kent."
+      ]
+    },
+    "sources": {
+      "Batman": [
+        "https://en.wikipedia.org/wiki/Batman",
+        "https://www.dc.com/characters/batman"
+      ],
+      "Spider-Man": [
+        "https://en.wikipedia.org/wiki/Spider-Man"
+      ],
+      "Superman": [
+        "https://en.wikipedia.org/wiki/Superman",
+        "https://www.dc.com/characters/superman"
+      ]
+    }
+  },
+  {
+    "id": "movie-franchise",
+    "label": "Movie franchise",
+    "title": "GOAT Movie franchise",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Star Wars", 25],
+      ["The Lord of the Rings", 21],
+      ["Harry Potter", 17],
+      ["Marvel Cinematic Universe", 12],
+      ["Jurassic Park", 7],
+      ["James Bond", 5],
+      ["Indiana Jones", 4],
+      ["Pirates of the Caribbean", 3],
+      ["Fast & Furious", 3],
+      ["Mission: Impossible", 3],
+      ["The Matrix", 0],
+      ["Rocky", 0],
+      ["Back to the Future", 0],
+      ["The Godfather", 0],
+      ["Alien", 0],
+      ["Transformers", 0]
+    ],
+    "clues": {
+      "Star Wars": [
+        "The original film was released in 1977.",
+        "George Lucas created the franchise.",
+        "The Millennium Falcon is a spacecraft in its fictional universe.",
+        "Jedi knights use weapons called lightsabers."
+      ],
+      "The Lord of the Rings": [
+        "Its main film trilogy was released from 2001 through 2003.",
+        "Much of the trilogy was filmed in New Zealand.",
+        "Peter Jackson directed all three installments.",
+        "Frodo Baggins travels to Mount Doom."
+      ],
+      "Harry Potter": [
+        "The original film series contains eight installments.",
+        "The first installment was released in 2001.",
+        "Daniel Radcliffe plays the central character.",
+        "Much of the story takes place at Hogwarts School."
+      ]
+    },
+    "sources": {
+      "Star Wars": [
+        "https://en.wikipedia.org/wiki/Star_Wars"
+      ],
+      "The Lord of the Rings": [
+        "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)"
+      ],
+      "Harry Potter": [
+        "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)"
+      ]
+    }
+  },
+  {
+    "id": "ice-cream-flavor",
+    "label": "Ice cream flavor",
+    "title": "GOAT Ice cream flavor",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Vanilla", 27],
+      ["Chocolate", 22],
+      ["Cookies and Cream", 17],
+      ["Cookie Dough", 11],
+      ["Mint Chocolate Chip", 7],
+      ["Strawberry", 5],
+      ["Butter Pecan", 4],
+      ["Rocky Road", 3],
+      ["Pistachio", 2],
+      ["Coffee", 2],
+      ["Birthday Cake", 0],
+      ["Chocolate Peanut Butter", 0],
+      ["Mango", 0],
+      ["Salted Caramel", 0],
+      ["Neapolitan", 0],
+      ["Black Cherry", 0]
+    ],
+    "clues": {
+      "Vanilla": [
+        "Its primary flavoring comes from a flowering plant.",
+        "The flavoring plant belongs to the orchid family.",
+        "The harvested seed pods undergo a curing process.",
+        "Natural versions can contain tiny black specks from the seed pods."
+      ],
+      "Chocolate": [
+        "Its primary flavoring comes from the seeds of a tropical tree.",
+        "The flavoring ingredients can include cocoa solids.",
+        "Its characteristic color is usually brown.",
+        "It gets its signature flavor from cacao beans."
+      ],
+      "Cookies and Cream": [
+        "The flavor combines a frozen dessert with a baked confection.",
+        "It commonly contains dark pieces scattered throughout a pale base.",
+        "The added pieces are typically made from cocoa-flavored wafers.",
+        "Crushed Oreo-style sandwich biscuits are its defining ingredient."
+      ]
+    },
+    "sources": {
+      "Vanilla": [
+        "https://en.wikipedia.org/wiki/Vanilla_ice_cream",
+        "https://en.wikipedia.org/wiki/Vanilla"
+      ],
+      "Chocolate": [
+        "https://en.wikipedia.org/wiki/Chocolate_ice_cream",
+        "https://en.wikipedia.org/wiki/Theobroma_cacao"
+      ],
+      "Cookies and Cream": [
+        "https://en.wikipedia.org/wiki/Cookies_and_cream"
+      ]
+    }
+  },
+  {
+    "id": "soccer-player",
+    "label": "Soccer player",
+    "title": "GOAT Soccer player",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Lionel Messi", 39],
+      ["Cristiano Ronaldo", 32],
+      ["Pelé", 10],
+      ["Diego Maradona", 7],
+      ["Ronaldinho", 4],
+      ["Zinedine Zidane", 2],
+      ["Ronaldo Nazário", 2],
+      ["Johan Cruyff", 2],
+      ["Neymar", 1],
+      ["Thierry Henry", 1],
+      ["Kylian Mbappé", 0],
+      ["David Beckham", 0],
+      ["George Best", 0],
+      ["Franz Beckenbauer", 0],
+      ["Andrés Iniesta", 0],
+      ["Paolo Maldini", 0]
+    ],
+    "clues": {
+      "Lionel Messi": [
+        "Was born in Rosario in 1987.",
+        "Won an Olympic gold medal in 2008.",
+        "Spent the majority of his European club career at Barcelona.",
+        "Captained Argentina to victory at the 2022 FIFA World Cup."
+      ],
+      "Cristiano Ronaldo": [
+        "Was born on the Portuguese island of Madeira.",
+        "Began his senior club career at Sporting CP.",
+        "Played for Manchester United, Real Madrid and Juventus.",
+        "His famous number-seven branding is abbreviated CR7."
+      ],
+      "Pelé": [
+        "Was born in Brazil in 1940.",
+        "Joined Santos as a teenager.",
+        "Finished his club career with the New York Cosmos.",
+        "Won the FIFA World Cup in 1958, 1962 and 1970."
+      ]
+    },
+    "sources": {
+      "Lionel Messi": [
+        "https://en.wikipedia.org/wiki/Lionel_Messi"
+      ],
+      "Cristiano Ronaldo": [
+        "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+      ],
+      "Pelé": [
+        "https://en.wikipedia.org/wiki/Pel%C3%A9"
+      ]
+    }
+  },
+  {
+    "id": "soft-drink",
+    "label": "Soft drink",
+    "title": "GOAT Soft drink",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Coca-Cola", 28],
+      ["Dr Pepper", 22],
+      ["Sprite", 13],
+      ["Pepsi", 11],
+      ["Mountain Dew", 8],
+      ["Root Beer", 6],
+      ["Diet Coke", 4],
+      ["Fanta", 3],
+      ["Ginger Ale", 3],
+      ["7UP", 2],
+      ["Diet Pepsi", 0],
+      ["Sunkist", 0],
+      ["Squirt", 0],
+      ["RC Cola", 0],
+      ["Fresca", 0],
+      ["Big Red", 0]
+    ],
+    "clues": {
+      "Coca-Cola": [
+        "Its original formula dates to the nineteenth century.",
+        "A pharmacist named John Pemberton created it.",
+        "It was first served at a pharmacy in Atlanta.",
+        "Its signature branding features white cursive lettering on red."
+      ],
+      "Dr Pepper": [
+        "The beverage originated during the 1880s.",
+        "Pharmacist Charles Alderton developed it.",
+        "It originated in Waco, Texas.",
+        "Its marketing highlights a blend of 23 flavors."
+      ],
+      "Sprite": [
+        "Its American introduction occurred in 1961.",
+        "The beverage is transparent rather than dark brown.",
+        "Its standard formula contains no caffeine.",
+        "Lemon and lime are its signature flavors."
+      ]
+    },
+    "sources": {
+      "Coca-Cola": [
+        "https://en.wikipedia.org/wiki/Coca-Cola"
+      ],
+      "Dr Pepper": [
+        "https://en.wikipedia.org/wiki/Dr_Pepper"
+      ],
+      "Sprite": [
+        "https://en.wikipedia.org/wiki/Sprite_(drink)"
+      ]
+    }
+  },
+  {
+    "id": "gaming-console",
+    "label": "Gaming console",
+    "title": "GOAT Gaming console",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["PlayStation 2", 24],
+      ["Nintendo Switch", 19],
+      ["Xbox 360", 15],
+      ["Super Nintendo", 11],
+      ["PlayStation 4", 8],
+      ["Nintendo 64", 6],
+      ["PlayStation 5", 5],
+      ["Nintendo Wii", 4],
+      ["Nintendo NES", 3],
+      ["GameCube", 3],
+      ["PlayStation", 0],
+      ["Sega Genesis", 0],
+      ["Dreamcast", 0],
+      ["Xbox One", 0],
+      ["Xbox Series X", 0],
+      ["Game Boy", 0]
+    ],
+    "clues": {
+      "PlayStation 2": [
+        "Its original model was released in 2000.",
+        "It could also function as a DVD player.",
+        "Its slimmer redesigned model arrived in 2004.",
+        "Sony shipped it with the DualShock 2 controller."
+      ],
+      "Nintendo Switch": [
+        "The original model launched in March 2017.",
+        "It supports both handheld and television gameplay.",
+        "An OLED model was introduced in 2021.",
+        "Its original controllers are called Joy-Con."
+      ],
+      "Xbox 360": [
+        "It originally launched in 2005.",
+        "It used an optional motion-sensing accessory called Kinect.",
+        "Its early hardware became associated with a red ring error.",
+        "Microsoft released it between its original console and 2013 successor."
+      ]
+    },
+    "sources": {
+      "PlayStation 2": [
+        "https://en.wikipedia.org/wiki/PlayStation_2"
+      ],
+      "Nintendo Switch": [
+        "https://en.wikipedia.org/wiki/Nintendo_Switch"
+      ],
+      "Xbox 360": [
+        "https://en.wikipedia.org/wiki/Xbox_360"
+      ]
+    }
+  },
+  {
+    "id": "comedy-actor",
+    "label": "Comedy actor",
+    "title": "GOAT Comedy actor",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Jim Carrey", 25],
+      ["Robin Williams", 22],
+      ["Adam Sandler", 16],
+      ["Eddie Murphy", 12],
+      ["Will Ferrell", 8],
+      ["Steve Carell", 5],
+      ["Chris Farley", 4],
+      ["Bill Murray", 3],
+      ["Ben Stiller", 3],
+      ["John Candy", 2],
+      ["Kevin Hart", 0],
+      ["Steve Martin", 0],
+      ["Chevy Chase", 0],
+      ["Jack Black", 0],
+      ["Mike Myers", 0],
+      ["Rowan Atkinson", 0]
+    ],
+    "clues": {
+      "Jim Carrey": [
+        "Was born in Ontario, Canada.",
+        "Appeared on the sketch comedy series In Living Color.",
+        "Played the lead character in The Truman Show.",
+        "Portrayed the eccentric pet detective Ace Ventura."
+      ],
+      "Robin Williams": [
+        "Was born in Chicago in 1951.",
+        "Studied at the Juilliard School.",
+        "Won an Academy Award for Good Hunting, directed by Gus Van Sant.",
+        "Voiced the Genie in Disney's 1992 animated film Aladdin."
+      ],
+      "Adam Sandler": [
+        "Was born in Brooklyn in 1966.",
+        "Joined Saturday Night Live in 1990 as a writer.",
+        "Played the title character in Billy Madison.",
+        "Portrayed an aspiring professional golfer in Happy Gilmore."
+      ]
+    },
+    "sources": {
+      "Jim Carrey": [
+        "https://en.wikipedia.org/wiki/Jim_Carrey"
+      ],
+      "Robin Williams": [
+        "https://en.wikipedia.org/wiki/Robin_Williams"
+      ],
+      "Adam Sandler": [
+        "https://en.wikipedia.org/wiki/Adam_Sandler"
+      ]
+    }
+  },
+  {
+    "id": "board-game",
+    "label": "Board game",
+    "title": "GOAT Board game",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Monopoly", 24],
+      ["Chess", 22],
+      ["Risk", 13],
+      ["Scrabble", 11],
+      ["Catan", 8],
+      ["Clue", 7],
+      ["Ticket to Ride", 5],
+      ["Checkers", 4],
+      ["Battleship", 3],
+      ["Sorry!", 3],
+      ["Candy Land", 0],
+      ["The Game of Life", 0],
+      ["Connect Four", 0],
+      ["Backgammon", 0],
+      ["Trivial Pursuit", 0],
+      ["Stratego", 0]
+    ],
+    "clues": {
+      "Monopoly": [
+        "Parker Brothers began publishing the game in 1935.",
+        "Its origins trace back to a game designed by Elizabeth Magie.",
+        "Players can collect rent from their opponents.",
+        "Passing the GO space earns $200 in the classic edition."
+      ],
+      "Chess": [
+        "Its historical origins are associated with an ancient Indian game.",
+        "The standard playing board has 64 squares.",
+        "Each player begins with 16 pieces.",
+        "Victory occurs when the opposing king is checkmated."
+      ],
+      "Risk": [
+        "It was originally developed by a French filmmaker.",
+        "The original French version appeared in 1957.",
+        "Its classic board divides the world into 42 territories.",
+        "Players deploy armies and roll dice to conquer territories."
+      ]
+    },
+    "sources": {
+      "Monopoly": [
+        "https://en.wikipedia.org/wiki/Monopoly_(game)",
+        "https://en.wikipedia.org/wiki/Elizabeth_Magie"
+      ],
+      "Chess": [
+        "https://en.wikipedia.org/wiki/Chess",
+        "https://en.wikipedia.org/wiki/History_of_chess"
+      ],
+      "Risk": [
+        "https://en.wikipedia.org/wiki/Risk_(game)"
+      ]
+    }
+  },
+  {
+    "id": "disney-animated-movie",
+    "label": "Disney animated movie",
+    "title": "GOAT Disney animated movie",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["The Lion King", 29],
+      ["Aladdin", 18],
+      ["Beauty and the Beast", 13],
+      ["Mulan", 10],
+      ["Frozen", 8],
+      ["The Little Mermaid", 6],
+      ["Moana", 5],
+      ["Hercules", 4],
+      ["Lilo & Stitch", 4],
+      ["Tangled", 3],
+      ["Encanto", 0],
+      ["Tarzan", 0],
+      ["Pocahontas", 0],
+      ["Bambi", 0],
+      ["Snow White", 0],
+      ["Cinderella", 0]
+    ],
+    "clues": {
+      "The Lion King": [
+        "The original animated film was released in 1994.",
+        "Hans Zimmer composed its original score.",
+        "Its story unfolds in the African savanna.",
+        "Simba, Timon and Pumbaa are central characters."
+      ],
+      "Aladdin": [
+        "The original animated film premiered in 1992.",
+        "Alan Menken composed its original score.",
+        "Much of the story takes place in the fictional city of Agrabah.",
+        "A magical lamp contains a Genie voiced by Robin Williams."
+      ],
+      "Beauty and the Beast": [
+        "The original animated film was released in 1991.",
+        "It received an Academy Award nomination for Best Picture.",
+        "Its castle contains enchanted household objects that can speak.",
+        "A young woman named Belle encounters a cursed prince."
+      ]
+    },
+    "sources": {
+      "The Lion King": [
+        "https://en.wikipedia.org/wiki/The_Lion_King"
+      ],
+      "Aladdin": [
+        "https://en.wikipedia.org/wiki/Aladdin_(1992_Disney_film)"
+      ],
+      "Beauty and the Beast": [
+        "https://en.wikipedia.org/wiki/Beauty_and_the_Beast_(1991_film)"
+      ]
+    }
+  }
+]

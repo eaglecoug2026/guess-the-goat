@@ -1,0 +1,686 @@
+[
+  {
+    "id": "sneaker-brand",
+    "label": "Sneaker brand",
+    "title": "GOAT Sneaker brand",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Nike", 35],
+      ["Jordan", 23],
+      ["Adidas", 17],
+      ["New Balance", 9],
+      ["Converse", 5],
+      ["Vans", 3],
+      ["ASICS", 3],
+      ["Puma", 2],
+      ["Reebok", 2],
+      ["Hoka", 1],
+      ["Brooks", 0],
+      ["On", 0],
+      ["Skechers", 0],
+      ["Saucony", 0],
+      ["Under Armour", 0],
+      ["Fila", 0]
+    ],
+    "clues": {
+      "Nike": [
+        "The company was founded in 1964.",
+        "Its original business name was Blue Ribbon Sports.",
+        "Its name comes from the Greek goddess of victory.",
+        "Its signature logo is known as the Swoosh."
+      ],
+      "Jordan": [
+        "The original signature shoe was released in 1985.",
+        "Designer Tinker Hatfield helped develop several iconic models.",
+        "The brand originated through a partnership with a Chicago Bulls player.",
+        "Its signature Jumpman logo depicts a leaping basketball player."
+      ],
+      "Adidas": [
+        "The company was officially established in 1949.",
+        "Its headquarters are in Herzogenaurach, Germany.",
+        "Its footwear collections include Samba and Superstar.",
+        "Three parallel stripes are its signature design element."
+      ]
+    },
+    "sources": {
+      "Nike": [
+        "https://en.wikipedia.org/wiki/Nike,_Inc."
+      ],
+      "Jordan": [
+        "https://en.wikipedia.org/wiki/Air_Jordan",
+        "https://en.wikipedia.org/wiki/Jumpman_(logo)"
+      ],
+      "Adidas": [
+        "https://en.wikipedia.org/wiki/Adidas"
+      ]
+    }
+  },
+  {
+    "id": "nfl-running-back",
+    "label": "NFL running back",
+    "title": "GOAT NFL running back",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Barry Sanders", 35],
+      ["Walter Payton", 23],
+      ["Jim Brown", 14],
+      ["Emmitt Smith", 11],
+      ["Adrian Peterson", 5],
+      ["LaDainian Tomlinson", 4],
+      ["Eric Dickerson", 3],
+      ["Marshall Faulk", 2],
+      ["Bo Jackson", 2],
+      ["Gale Sayers", 1],
+      ["Marcus Allen", 0],
+      ["Earl Campbell", 0],
+      ["Tony Dorsett", 0],
+      ["Curtis Martin", 0],
+      ["Thurman Thomas", 0],
+      ["Derrick Henry", 0]
+    ],
+    "clues": {
+      "Barry Sanders": [
+        "Was born in Wichita, Kansas.",
+        "Won the Heisman Trophy at Oklahoma State in 1988.",
+        "Rushed for 2,053 yards during the 1997 NFL season.",
+        "Wore number 20 throughout his NFL career in Detroit."
+      ],
+      "Walter Payton": [
+        "Played college football at Jackson State University.",
+        "Was selected fourth overall in the 1975 NFL draft.",
+        "Finished his career with 16,726 rushing yards.",
+        "Known as Sweetness, he wore number 34 for Chicago."
+      ],
+      "Jim Brown": [
+        "Played college football and lacrosse at Syracuse University.",
+        "Led the NFL in rushing yards during eight of his nine seasons.",
+        "Retired from professional football at age 30.",
+        "Wore number 32 throughout his career with Cleveland."
+      ]
+    },
+    "sources": {
+      "Barry Sanders": [
+        "https://en.wikipedia.org/wiki/Barry_Sanders",
+        "https://www.profootballhof.com/players/barry-sanders/"
+      ],
+      "Walter Payton": [
+        "https://en.wikipedia.org/wiki/Walter_Payton",
+        "https://www.profootballhof.com/players/walter-payton/"
+      ],
+      "Jim Brown": [
+        "https://en.wikipedia.org/wiki/Jim_Brown",
+        "https://www.profootballhof.com/players/jim-brown/"
+      ]
+    }
+  },
+  {
+    "id": "pasta-dish",
+    "label": "Pasta dish",
+    "title": "GOAT Pasta dish",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Lasagna", 23],
+      ["Spaghetti and Meatballs", 21],
+      ["Fettuccine Alfredo", 17],
+      ["Carbonara", 12],
+      ["Mac and Cheese", 10],
+      ["Baked Ziti", 5],
+      ["Penne alla Vodka", 4],
+      ["Ravioli", 3],
+      ["Pesto Pasta", 3],
+      ["Linguine with Clams", 2],
+      ["Cacio e Pepe", 0],
+      ["Pasta Primavera", 0],
+      ["Cannelloni", 0],
+      ["Puttanesca", 0],
+      ["Amatriciana", 0],
+      ["Manicotti", 0]
+    ],
+    "clues": {
+      "Lasagna": [
+        "The dish has historical roots in Italian cuisine.",
+        "Some traditional versions include béchamel sauce.",
+        "It is commonly assembled in a rectangular baking dish.",
+        "Wide, flat sheets of pasta separate layers of sauce and fillings."
+      ],
+      "Spaghetti and Meatballs": [
+        "This combination is closely associated with Italian-American cuisine.",
+        "Tomato sauce commonly accompanies the dish.",
+        "Ground meat is shaped into spheres before cooking.",
+        "Long, thin noodles are topped with round portions of seasoned beef."
+      ],
+      "Fettuccine Alfredo": [
+        "The dish became associated with a restaurant in Rome.",
+        "Its American adaptations frequently include heavy cream.",
+        "The traditional sauce combines butter and Parmesan cheese.",
+        "Flat ribbon-shaped noodles are coated in a rich, pale sauce."
+      ]
+    },
+    "sources": {
+      "Lasagna": [
+        "https://en.wikipedia.org/wiki/Lasagna"
+      ],
+      "Spaghetti and Meatballs": [
+        "https://en.wikipedia.org/wiki/Spaghetti_and_meatballs"
+      ],
+      "Fettuccine Alfredo": [
+        "https://en.wikipedia.org/wiki/Fettuccine_Alfredo"
+      ]
+    }
+  },
+  {
+    "id": "plot-twist-movie",
+    "label": "Plot twist movie",
+    "title": "GOAT Plot twist movie",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["The Sixth Sense", 24],
+      ["Fight Club", 20],
+      ["The Usual Suspects", 17],
+      ["The Prestige", 11],
+      ["Shutter Island", 9],
+      ["Se7en", 6],
+      ["Memento", 4],
+      ["Gone Girl", 4],
+      ["The Others", 3],
+      ["Primal Fear", 2],
+      ["Oldboy", 0],
+      ["Arrival", 0],
+      ["Saw", 0],
+      ["The Village", 0],
+      ["Planet of the Apes", 0],
+      ["The Game", 0]
+    ],
+    "clues": {
+      "The Sixth Sense": [
+        "The movie was released in 1999.",
+        "It received six Academy Award nominations.",
+        "M. Night Shyamalan wrote and directed it.",
+        "Bruce Willis portrays a psychologist helping a boy who sees ghosts."
+      ],
+      "Fight Club": [
+        "The movie was released in 1999.",
+        "It was adapted from a novel by Chuck Palahniuk.",
+        "David Fincher directed the movie.",
+        "Brad Pitt portrays a soap salesman named Tyler Durden."
+      ],
+      "The Usual Suspects": [
+        "The movie was released in 1995.",
+        "Christopher McQuarrie won an Oscar for its screenplay.",
+        "Much of the story is presented through a police interrogation.",
+        "A mysterious criminal named Keyser Söze is central to the plot."
+      ]
+    },
+    "sources": {
+      "The Sixth Sense": [
+        "https://en.wikipedia.org/wiki/The_Sixth_Sense"
+      ],
+      "Fight Club": [
+        "https://en.wikipedia.org/wiki/Fight_Club"
+      ],
+      "The Usual Suspects": [
+        "https://en.wikipedia.org/wiki/The_Usual_Suspects"
+      ]
+    }
+  },
+  {
+    "id": "superpower",
+    "label": "Superpower",
+    "title": "GOAT Superpower",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Teleportation", 25],
+      ["Time Travel", 23],
+      ["Flight", 15],
+      ["Invisibility", 11],
+      ["Mind Reading", 8],
+      ["Super Strength", 5],
+      ["Healing Factor", 4],
+      ["Super Speed", 4],
+      ["Telekinesis", 3],
+      ["Shapeshifting", 2],
+      ["Immortality", 0],
+      ["Future Sight", 0],
+      ["Time Freeze", 0],
+      ["Weather Control", 0],
+      ["Force Fields", 0],
+      ["Water Breathing", 0]
+    ],
+    "clues": {
+      "Teleportation": [
+        "This ability is a recurring concept in science fiction.",
+        "Nightcrawler possesses a fictional version of this ability.",
+        "Transporter technology in Star Trek performs a similar function.",
+        "It allows someone to relocate without crossing the intervening space."
+      ],
+      "Time Travel": [
+        "This concept is central to many science fiction stories.",
+        "H. G. Wells published a famous novel about this concept in 1895.",
+        "Doctor Who explores this ability using the TARDIS.",
+        "It involves moving between different points in history or the future."
+      ],
+      "Flight": [
+        "Numerous fictional superheroes possess this ability.",
+        "It is one of Superman's signature abilities.",
+        "The fictional character Peter Pan also possesses it.",
+        "It allows a person to move through the air without an aircraft."
+      ]
+    },
+    "sources": {
+      "Teleportation": [
+        "https://en.wikipedia.org/wiki/Teleportation",
+        "https://en.wikipedia.org/wiki/Nightcrawler_(character)"
+      ],
+      "Time Travel": [
+        "https://en.wikipedia.org/wiki/Time_travel",
+        "https://en.wikipedia.org/wiki/TARDIS"
+      ],
+      "Flight": [
+        "https://en.wikipedia.org/wiki/Superman",
+        "https://en.wikipedia.org/wiki/Peter_Pan"
+      ]
+    }
+  },
+  {
+    "id": "fictional-character",
+    "label": "Fictional character",
+    "title": "GOAT Fictional character",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Sherlock Holmes", 19],
+      ["Darth Vader", 17],
+      ["Batman", 15],
+      ["Harry Potter", 13],
+      ["Homer Simpson", 10],
+      ["James Bond", 8],
+      ["Gandalf", 6],
+      ["Indiana Jones", 5],
+      ["Mickey Mouse", 4],
+      ["Jack Sparrow", 3],
+      ["Superman", 0],
+      ["Forrest Gump", 0],
+      ["Mario", 0],
+      ["SpongeBob", 0],
+      ["Rocky Balboa", 0],
+      ["Tony Stark", 0]
+    ],
+    "clues": {
+      "Sherlock Holmes": [
+        "The character first appeared in print in 1887.",
+        "Arthur Conan Doyle created the character.",
+        "A physician named Dr. Watson is his frequent companion.",
+        "His famous fictional address is 221B Baker Street."
+      ],
+      "Darth Vader": [
+        "The character first appeared on cinema screens in 1977.",
+        "David Prowse physically portrayed him in the original trilogy.",
+        "James Earl Jones provided his distinctive voice.",
+        "His original identity is Anakin Skywalker."
+      ],
+      "Batman": [
+        "The character made his comic book debut in 1939.",
+        "Bob Kane and Bill Finger created the character.",
+        "A butler named Alfred Pennyworth assists him.",
+        "He protects Gotham City under the secret identity of Bruce Wayne."
+      ]
+    },
+    "sources": {
+      "Sherlock Holmes": [
+        "https://en.wikipedia.org/wiki/Sherlock_Holmes"
+      ],
+      "Darth Vader": [
+        "https://en.wikipedia.org/wiki/Darth_Vader"
+      ],
+      "Batman": [
+        "https://en.wikipedia.org/wiki/Batman"
+      ]
+    }
+  },
+  {
+    "id": "best-picture-winner",
+    "label": "Best Picture winner",
+    "title": "GOAT Best Picture winner",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["The Godfather", 25],
+      ["The Lord of the Rings: The Return of the King", 20],
+      ["Forrest Gump", 15],
+      ["Gladiator", 11],
+      ["Titanic", 9],
+      ["Schindler's List", 6],
+      ["The Silence of the Lambs", 5],
+      ["The Departed", 4],
+      ["Parasite", 3],
+      ["Braveheart", 2],
+      ["Casablanca", 0],
+      ["Oppenheimer", 0],
+      ["Rocky", 0],
+      ["Unforgiven", 0],
+      ["No Country for Old Men", 0],
+      ["The Sting", 0]
+    ],
+    "clues": {
+      "The Godfather": [
+        "The movie was released in 1972.",
+        "It was adapted from a novel written by Mario Puzo.",
+        "Francis Ford Coppola directed the movie.",
+        "Marlon Brando portrays the patriarch of the Corleone family."
+      ],
+      "The Lord of the Rings: The Return of the King": [
+        "The movie was released in 2003.",
+        "It was directed by Peter Jackson.",
+        "It won all 11 Academy Awards for which it was nominated.",
+        "Frodo Baggins and Samwise Gamgee journey toward Mount Doom."
+      ],
+      "Forrest Gump": [
+        "The movie was released in 1994.",
+        "Robert Zemeckis directed the movie.",
+        "Its main character witnesses several major American historical events.",
+        "Tom Hanks portrays a man who runs across the United States."
+      ]
+    },
+    "sources": {
+      "The Godfather": [
+        "https://en.wikipedia.org/wiki/The_Godfather",
+        "https://www.oscars.org/oscars/ceremonies/1973"
+      ],
+      "The Lord of the Rings: The Return of the King": [
+        "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Return_of_the_King",
+        "https://www.oscars.org/oscars/ceremonies/2004"
+      ],
+      "Forrest Gump": [
+        "https://en.wikipedia.org/wiki/Forrest_Gump",
+        "https://www.oscars.org/oscars/ceremonies/1995"
+      ]
+    }
+  },
+  {
+    "id": "bbq-food",
+    "label": "BBQ food",
+    "title": "GOAT BBQ food",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Smoked Brisket", 27],
+      ["Baby Back Ribs", 22],
+      ["Pulled Pork", 16],
+      ["Cheeseburger", 12],
+      ["BBQ Chicken", 7],
+      ["Steak", 5],
+      ["Sausage", 4],
+      ["Burnt Ends", 3],
+      ["Hot Dog", 2],
+      ["Grilled Shrimp", 2],
+      ["Grilled Salmon", 0],
+      ["Pork Belly", 0],
+      ["Tri-Tip", 0],
+      ["Turkey Leg", 0],
+      ["Chicken Skewers", 0],
+      ["Grilled Corn", 0]
+    ],
+    "clues": {
+      "Smoked Brisket": [
+        "The cut contains substantial connective tissue.",
+        "Traditional barbecue preparation requires prolonged low-temperature cooking.",
+        "It is a signature component of Central Texas barbecue.",
+        "The beef cut comes from the lower chest of the animal."
+      ],
+      "Baby Back Ribs": [
+        "This cut contains curved bones with meat between them.",
+        "It is commonly prepared with dry seasoning or barbecue sauce.",
+        "It comes from the upper rib cage of a pig near the spine.",
+        "Its bones are shorter than those found in traditional spareribs."
+      ],
+      "Pulled Pork": [
+        "The dish is associated with barbecue traditions in the American South.",
+        "Shoulder meat is commonly used for its preparation.",
+        "Long cooking breaks down connective tissue and softens the meat.",
+        "The finished meat is shredded into strands and often served on a bun."
+      ]
+    },
+    "sources": {
+      "Smoked Brisket": [
+        "https://en.wikipedia.org/wiki/Brisket",
+        "https://en.wikipedia.org/wiki/Texas_barbecue"
+      ],
+      "Baby Back Ribs": [
+        "https://en.wikipedia.org/wiki/Pork_ribs"
+      ],
+      "Pulled Pork": [
+        "https://en.wikipedia.org/wiki/Pulled_pork"
+      ]
+    }
+  },
+  {
+    "id": "romantic-movie",
+    "label": "Romantic movie",
+    "title": "GOAT Romantic movie",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["The Notebook", 26],
+      ["Titanic", 23],
+      ["Pretty Woman", 13],
+      ["When Harry Met Sally", 10],
+      ["Pride & Prejudice", 8],
+      ["Ghost", 6],
+      ["Dirty Dancing", 5],
+      ["La La Land", 4],
+      ["Notting Hill", 3],
+      ["Sleepless in Seattle", 2],
+      ["Before Sunrise", 0],
+      ["10 Things I Hate About You", 0],
+      ["Love Actually", 0],
+      ["Crazy Rich Asians", 0],
+      ["The Princess Bride", 0],
+      ["A Walk to Remember", 0]
+    ],
+    "clues": {
+      "The Notebook": [
+        "The movie was released in 2004.",
+        "Nick Cassavetes directed this literary adaptation.",
+        "It was adapted from a novel written by Nicholas Sparks.",
+        "Ryan Gosling and Rachel McAdams portray Noah and Allie."
+      ],
+      "Titanic": [
+        "The movie was released in 1997.",
+        "James Cameron wrote and directed the movie.",
+        "It won 11 Academy Awards.",
+        "Leonardo DiCaprio and Kate Winslet portray Jack and Rose."
+      ],
+      "Pretty Woman": [
+        "The movie was released in 1990.",
+        "Garry Marshall directed the movie.",
+        "Much of the story takes place in Beverly Hills.",
+        "Richard Gere and Julia Roberts portray Edward and Vivian."
+      ]
+    },
+    "sources": {
+      "The Notebook": [
+        "https://en.wikipedia.org/wiki/The_Notebook"
+      ],
+      "Titanic": [
+        "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
+        "https://www.oscars.org/oscars/ceremonies/1998"
+      ],
+      "Pretty Woman": [
+        "https://en.wikipedia.org/wiki/Pretty_Woman"
+      ]
+    }
+  },
+  {
+    "id": "super-bowl-snack",
+    "label": "Super Bowl snack",
+    "title": "GOAT Super Bowl snack",
+    "kind": "daily",
+    "season": "super-bowl",
+    "opts": [
+      ["Buffalo Wings", 30],
+      ["Nachos", 20],
+      ["Pizza", 17],
+      ["Chips and Guacamole", 10],
+      ["Sliders", 7],
+      ["Buffalo Chicken Dip", 5],
+      ["Mozzarella Sticks", 4],
+      ["Pigs in a Blanket", 3],
+      ["Potato Skins", 2],
+      ["Pretzels", 2],
+      ["Quesadillas", 0],
+      ["Jalapeño Poppers", 0],
+      ["Onion Rings", 0],
+      ["Meatballs", 0],
+      ["Popcorn", 0],
+      ["Cheese and Crackers", 0]
+    ],
+    "clues": {
+      "Buffalo Wings": [
+        "The modern dish is commonly associated with the Anchor Bar.",
+        "Celery and blue cheese dressing are traditional accompaniments.",
+        "A classic coating combines cayenne-based hot sauce and butter.",
+        "It traditionally uses the drumette and flat sections of a chicken."
+      ],
+      "Nachos": [
+        "The original dish originated in Mexico in the 1940s.",
+        "Ignacio Anaya is credited with creating the original version.",
+        "Jalapeños and melted cheese were among the original toppings.",
+        "The ingredients are served over crisp triangular tortilla pieces."
+      ],
+      "Pizza": [
+        "The modern version is associated with Naples, Italy.",
+        "It is traditionally baked at a high temperature.",
+        "Tomato sauce and mozzarella are common ingredients.",
+        "A round flat dough base is typically divided into triangular slices."
+      ]
+    },
+    "sources": {
+      "Buffalo Wings": [
+        "https://en.wikipedia.org/wiki/Buffalo_wing"
+      ],
+      "Nachos": [
+        "https://en.wikipedia.org/wiki/Nachos"
+      ],
+      "Pizza": [
+        "https://en.wikipedia.org/wiki/Pizza"
+      ]
+    }
+  },
+  {
+    "id": "horror-movie",
+    "label": "Horror movie",
+    "title": "GOAT Horror movie",
+    "kind": "daily",
+    "season": "halloween",
+    "opts": [
+      ["The Exorcist", 23],
+      ["Halloween", 21],
+      ["The Shining", 17],
+      ["Alien", 11],
+      ["Psycho", 8],
+      ["A Nightmare on Elm Street", 6],
+      ["Scream", 5],
+      ["The Texas Chain Saw Massacre", 4],
+      ["The Conjuring", 3],
+      ["Hereditary", 2],
+      ["The Ring", 0],
+      ["Get Out", 0],
+      ["The Thing", 0],
+      ["It", 0],
+      ["The Blair Witch Project", 0],
+      ["Insidious", 0]
+    ],
+    "clues": {
+      "The Exorcist": [
+        "The movie was released in 1973.",
+        "William Friedkin directed the movie.",
+        "It was adapted from a novel written by William Peter Blatty.",
+        "Linda Blair portrays a young girl named Regan MacNeil."
+      ],
+      "Halloween": [
+        "The original movie was released in 1978.",
+        "John Carpenter directed the movie and composed its score.",
+        "Jamie Lee Curtis made her feature film debut in it.",
+        "Laurie Strode encounters a masked figure named Michael Myers."
+      ],
+      "The Shining": [
+        "The movie was released in 1980.",
+        "It was adapted from a Stephen King novel.",
+        "Stanley Kubrick directed the movie.",
+        "Jack Nicholson portrays a winter caretaker at the Overlook Hotel."
+      ]
+    },
+    "sources": {
+      "The Exorcist": [
+        "https://en.wikipedia.org/wiki/The_Exorcist_(film)"
+      ],
+      "Halloween": [
+        "https://en.wikipedia.org/wiki/Halloween_(1978_film)"
+      ],
+      "The Shining": [
+        "https://en.wikipedia.org/wiki/The_Shining_(film)"
+      ]
+    }
+  },
+  {
+    "id": "christmas-movie",
+    "label": "Christmas movie",
+    "title": "GOAT Christmas movie",
+    "kind": "daily",
+    "season": "christmas",
+    "opts": [
+      ["Home Alone", 27],
+      ["Elf", 22],
+      ["National Lampoon's Christmas Vacation", 15],
+      ["Die Hard", 11],
+      ["It's a Wonderful Life", 8],
+      ["How the Grinch Stole Christmas", 6],
+      ["A Christmas Story", 4],
+      ["The Polar Express", 3],
+      ["Love Actually", 2],
+      ["The Santa Clause", 2],
+      ["Klaus", 0],
+      ["The Holiday", 0],
+      ["White Christmas", 0],
+      ["Scrooged", 0],
+      ["Miracle on 34th Street", 0],
+      ["Jingle All the Way", 0]
+    ],
+    "clues": {
+      "Home Alone": [
+        "The movie was released in 1990.",
+        "John Hughes wrote the screenplay.",
+        "Joe Pesci and Daniel Stern portray a pair of burglars.",
+        "Macaulay Culkin portrays an eight-year-old accidentally left behind."
+      ],
+      "Elf": [
+        "The movie was released in 2003.",
+        "Jon Favreau directed the movie.",
+        "Much of the story takes place in New York City.",
+        "Will Ferrell portrays Buddy, a human raised at the North Pole."
+      ],
+      "National Lampoon's Christmas Vacation": [
+        "The movie was released in 1989.",
+        "John Hughes wrote the screenplay.",
+        "Randy Quaid portrays a character known as Cousin Eddie.",
+        "Chevy Chase portrays Clark Griswold struggling with festive decorations."
+      ]
+    },
+    "sources": {
+      "Home Alone": [
+        "https://en.wikipedia.org/wiki/Home_Alone"
+      ],
+      "Elf": [
+        "https://en.wikipedia.org/wiki/Elf_(film)"
+      ],
+      "National Lampoon's Christmas Vacation": [
+        "https://en.wikipedia.org/wiki/National_Lampoon%27s_Christmas_Vacation"
+      ]
+    }
+  }
+]

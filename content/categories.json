@@ -1,0 +1,5030 @@
+[
+  {
+    "id": "thanksgiving-side",
+    "label": "Thanksgiving side",
+    "title": "GOAT Thanksgiving side dish",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Stuffing",
+        24
+      ],
+      [
+        "Mashed potatoes",
+        19
+      ],
+      [
+        "Mac and cheese",
+        12
+      ],
+      [
+        "Sweet potato casserole",
+        9
+      ],
+      [
+        "Green bean casserole",
+        8
+      ],
+      [
+        "Cranberry sauce",
+        7
+      ],
+      [
+        "Dinner rolls",
+        6
+      ],
+      [
+        "Cornbread",
+        4
+      ],
+      [
+        "Gravy",
+        3
+      ],
+      [
+        "Corn pudding",
+        2
+      ],
+      [
+        "Brussels sprouts",
+        0
+      ],
+      [
+        "Collard greens",
+        0
+      ],
+      [
+        "Deviled eggs",
+        0
+      ],
+      [
+        "Roasted carrots",
+        0
+      ],
+      [
+        "Squash casserole",
+        0
+      ],
+      [
+        "Waldorf salad",
+        0
+      ]
+    ],
+    "clues": {
+      "Stuffing": [
+        "Carb-forward and usually savory.",
+        "Bread is the backbone.",
+        "Celery, onion and sage are classic add-ins.",
+        "Plenty of families call it dressing."
+      ],
+      "Mashed potatoes": [
+        "Usually the starchiest thing on the plate.",
+        "Butter and milk or cream get worked in.",
+        "Best made with russets or Yukon Golds.",
+        "Whipped smooth or left a little lumpy, then scooped."
+      ],
+      "Mac and cheese": [
+        "A Southern holiday must-have, baked in a casserole dish.",
+        "Often finished with a crunchy, browned top.",
+        "Starts with elbow-shaped pasta.",
+        "Smothered in a sharp cheddar sauce."
+      ]
+    },
+    "sources": {
+      "Stuffing": [
+        "https://en.wikipedia.org/wiki/Stuffing"
+      ],
+      "Mashed potatoes": [
+        "https://en.wikipedia.org/wiki/Mashed_potato"
+      ],
+      "Mac and cheese": [
+        "https://en.wikipedia.org/wiki/Macaroni_and_cheese"
+      ]
+    }
+  },
+  {
+    "id": "nba-player",
+    "label": "NBA player",
+    "title": "GOAT NBA player",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Michael Jordan",
+        38
+      ],
+      [
+        "LeBron James",
+        29
+      ],
+      [
+        "Kareem Abdul-Jabbar",
+        9
+      ],
+      [
+        "Magic Johnson",
+        6
+      ],
+      [
+        "Kobe Bryant",
+        5
+      ],
+      [
+        "Bill Russell",
+        3
+      ],
+      [
+        "Larry Bird",
+        3
+      ],
+      [
+        "Wilt Chamberlain",
+        2
+      ],
+      [
+        "Tim Duncan",
+        2
+      ],
+      [
+        "Stephen Curry",
+        2
+      ],
+      [
+        "Shaquille O'Neal",
+        0
+      ],
+      [
+        "Hakeem Olajuwon",
+        0
+      ],
+      [
+        "Kevin Durant",
+        0
+      ],
+      [
+        "Nikola Jokić",
+        0
+      ],
+      [
+        "Giannis Antetokounmpo",
+        0
+      ],
+      [
+        "Kevin Garnett",
+        0
+      ]
+    ],
+    "clues": {
+      "Michael Jordan": [
+        "Did most of his damage in the 1980s and 1990s.",
+        "Six titles, and never lost in the Finals.",
+        "Finals MVP every time he got there.",
+        "Spent most of his career in Chicago."
+      ],
+      "LeBron James": [
+        "Went straight to the NBA from high school in 2003.",
+        "Won titles with three different franchises.",
+        "Became the NBA's all-time leading scorer in 2023.",
+        "Grew up in Akron, Ohio, and was called the Chosen One as a teen."
+      ],
+      "Kareem Abdul-Jabbar": [
+        "Changed his name in 1971, the year he won his first title.",
+        "Won three straight college titles at UCLA.",
+        "Won six titles: one in Milwaukee, five with the Lakers.",
+        "Famous for an unstoppable shot called the skyhook."
+      ]
+    },
+    "sources": {
+      "Michael Jordan": [
+        "https://en.wikipedia.org/wiki/Michael_Jordan"
+      ],
+      "LeBron James": [
+        "https://en.wikipedia.org/wiki/LeBron_James"
+      ],
+      "Kareem Abdul-Jabbar": [
+        "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar"
+      ]
+    }
+  },
+  {
+    "id": "rapper",
+    "label": "Rapper",
+    "title": "GOAT rapper",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Tupac Shakur",
+        17
+      ],
+      [
+        "Jay-Z",
+        16
+      ],
+      [
+        "The Notorious B.I.G.",
+        15
+      ],
+      [
+        "Eminem",
+        14
+      ],
+      [
+        "Kendrick Lamar",
+        13
+      ],
+      [
+        "Nas",
+        7
+      ],
+      [
+        "Lil Wayne",
+        5
+      ],
+      [
+        "Drake",
+        4
+      ],
+      [
+        "André 3000",
+        3
+      ],
+      [
+        "Snoop Dogg",
+        2
+      ],
+      [
+        "Rakim",
+        0
+      ],
+      [
+        "Ice Cube",
+        0
+      ],
+      [
+        "Nicki Minaj",
+        0
+      ],
+      [
+        "Missy Elliott",
+        0
+      ],
+      [
+        "J. Cole",
+        0
+      ],
+      [
+        "Lauryn Hill",
+        0
+      ]
+    ],
+    "clues": {
+      "Tupac Shakur": [
+        "Broke through in the early 1990s.",
+        "Repped the West Coast, though born in New York.",
+        "Also acted, starring in Juice.",
+        "Dropped All Eyez on Me in 1996."
+      ],
+      "Jay-Z": [
+        "Grew up in the Marcy Houses in Brooklyn.",
+        "Co-founded Roc-A-Fella Records.",
+        "His debut album, Reasonable Doubt, came out in 1996.",
+        "Married to Beyoncé."
+      ],
+      "The Notorious B.I.G.": [
+        "Signed to Sean Combs's Bad Boy Records.",
+        "His debut album, Ready to Die, came out in 1994.",
+        "Killed in Los Angeles in 1997, at age 24.",
+        "Had hits with Juicy and Hypnotize."
+      ]
+    },
+    "sources": {
+      "Tupac Shakur": [
+        "https://en.wikipedia.org/wiki/Tupac_Shakur"
+      ],
+      "Jay-Z": [
+        "https://en.wikipedia.org/wiki/Jay-Z"
+      ],
+      "The Notorious B.I.G.": [
+        "https://en.wikipedia.org/wiki/The_Notorious_B.I.G."
+      ]
+    }
+  },
+  {
+    "id": "movie-villain",
+    "label": "Movie villain",
+    "title": "GOAT movie villain",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Darth Vader",
+        26
+      ],
+      [
+        "The Joker",
+        20
+      ],
+      [
+        "Hannibal Lecter",
+        14
+      ],
+      [
+        "Thanos",
+        8
+      ],
+      [
+        "Hans Gruber",
+        7
+      ],
+      [
+        "Anton Chigurh",
+        6
+      ],
+      [
+        "Nurse Ratched",
+        5
+      ],
+      [
+        "The Wicked Witch of the West",
+        4
+      ],
+      [
+        "Agent Smith",
+        3
+      ],
+      [
+        "Lord Voldemort",
+        3
+      ],
+      [
+        "Freddy Krueger",
+        0
+      ],
+      [
+        "HAL 9000",
+        0
+      ],
+      [
+        "Annie Wilkes",
+        0
+      ],
+      [
+        "Michael Myers",
+        0
+      ],
+      [
+        "Bane",
+        0
+      ],
+      [
+        "Scar",
+        0
+      ]
+    ],
+    "clues": {
+      "Darth Vader": [
+        "First hit the screen in the 1970s.",
+        "His breathing is as famous as his voice.",
+        "Voiced by James Earl Jones.",
+        "Has the most famous family twist in film."
+      ],
+      "The Joker": [
+        "First appeared in comics in 1940.",
+        "Played on film by Jack Nicholson, Joaquin Phoenix and others.",
+        "Heath Ledger won a posthumous Oscar for the role.",
+        "Batman's grinning arch-enemy."
+      ],
+      "Hannibal Lecter": [
+        "Created by novelist Thomas Harris.",
+        "A brilliant psychiatrist who is also a cannibal.",
+        "Talks through glass with FBI trainee Clarice Starling.",
+        "Anthony Hopkins won an Oscar playing him."
+      ]
+    },
+    "sources": {
+      "Darth Vader": [
+        "https://en.wikipedia.org/wiki/Darth_Vader"
+      ],
+      "The Joker": [
+        "https://en.wikipedia.org/wiki/Joker_(character)"
+      ],
+      "Hannibal Lecter": [
+        "https://en.wikipedia.org/wiki/Hannibal_Lecter"
+      ]
+    }
+  },
+  {
+    "id": "pizza-topping",
+    "label": "Pizza topping",
+    "title": "GOAT pizza topping",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Pepperoni",
+        36
+      ],
+      [
+        "Sausage",
+        13
+      ],
+      [
+        "Mushrooms",
+        11
+      ],
+      [
+        "Extra cheese",
+        8
+      ],
+      [
+        "Bacon",
+        7
+      ],
+      [
+        "Onions",
+        5
+      ],
+      [
+        "Pineapple",
+        5
+      ],
+      [
+        "Green peppers",
+        4
+      ],
+      [
+        "Black olives",
+        3
+      ],
+      [
+        "Jalapeños",
+        3
+      ],
+      [
+        "Ham",
+        0
+      ],
+      [
+        "Spinach",
+        0
+      ],
+      [
+        "Anchovies",
+        0
+      ],
+      [
+        "Chicken",
+        0
+      ],
+      [
+        "Fresh basil",
+        0
+      ],
+      [
+        "Hot honey",
+        0
+      ]
+    ],
+    "clues": {
+      "Pepperoni": [
+        "It is a meat.",
+        "Cured, a little smoky, a little spicy.",
+        "Curls into tiny cups in a hot oven.",
+        "America's most-ordered topping by a mile."
+      ],
+      "Sausage": [
+        "It's a meat.",
+        "Often Italian-style, seasoned with fennel.",
+        "Usually crumbled on, not sliced.",
+        "Seasoned ground pork, sometimes sold in links."
+      ],
+      "Mushrooms": [
+        "Not a meat, and not a plant either.",
+        "Usually white button or cremini.",
+        "Sliced thin, they shrink and turn earthy in the oven.",
+        "It's a fungus."
+      ]
+    },
+    "sources": {
+      "Pepperoni": [
+        "https://en.wikipedia.org/wiki/Pepperoni"
+      ],
+      "Sausage": [
+        "https://en.wikipedia.org/wiki/Italian_sausage"
+      ],
+      "Mushrooms": [
+        "https://en.wikipedia.org/wiki/Edible_mushroom"
+      ]
+    }
+  },
+  {
+    "id": "sitcom",
+    "label": "Sitcom",
+    "title": "GOAT sitcom",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Seinfeld",
+        22
+      ],
+      [
+        "The Office",
+        21
+      ],
+      [
+        "Friends",
+        15
+      ],
+      [
+        "Parks and Recreation",
+        8
+      ],
+      [
+        "The Simpsons",
+        7
+      ],
+      [
+        "Cheers",
+        6
+      ],
+      [
+        "Curb Your Enthusiasm",
+        5
+      ],
+      [
+        "It's Always Sunny in Philadelphia",
+        5
+      ],
+      [
+        "Arrested Development",
+        4
+      ],
+      [
+        "M*A*S*H",
+        3
+      ],
+      [
+        "Frasier",
+        0
+      ],
+      [
+        "The Fresh Prince of Bel-Air",
+        0
+      ],
+      [
+        "Brooklyn Nine-Nine",
+        0
+      ],
+      [
+        "Modern Family",
+        0
+      ],
+      [
+        "Abbott Elementary",
+        0
+      ],
+      [
+        "Schitt’s Creek",
+        0
+      ]
+    ],
+    "clues": {
+      "Seinfeld": [
+        "Ran for nine seasons in the 1990s.",
+        "Pitched as a show about nothing.",
+        "Lives mostly in a New York apartment and a diner.",
+        "Its finale sent the whole gang to jail."
+      ],
+      "The Office": [
+        "An American remake of a British show.",
+        "Ran on NBC from 2005 to 2013.",
+        "Shot like a documentary, with talking-head interviews.",
+        "Set at a paper company in Scranton, Pennsylvania."
+      ],
+      "Friends": [
+        "Ran on NBC from 1994 to 2004.",
+        "Six main cast members, all in their twenties at the start.",
+        "They hang out at a coffee shop called Central Perk.",
+        "Ross and Rachel were on a break."
+      ]
+    },
+    "sources": {
+      "Seinfeld": [
+        "https://en.wikipedia.org/wiki/Seinfeld"
+      ],
+      "The Office": [
+        "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)"
+      ],
+      "Friends": [
+        "https://en.wikipedia.org/wiki/Friends"
+      ]
+    }
+  },
+  {
+    "id": "video-game",
+    "label": "Video game",
+    "title": "GOAT video game",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Zelda: Ocarina of Time",
+        18
+      ],
+      [
+        "Super Mario Bros.",
+        16
+      ],
+      [
+        "Tetris",
+        14
+      ],
+      [
+        "Minecraft",
+        12
+      ],
+      [
+        "The Witcher 3",
+        7
+      ],
+      [
+        "Red Dead Redemption 2",
+        7
+      ],
+      [
+        "Grand Theft Auto V",
+        6
+      ],
+      [
+        "Elden Ring",
+        5
+      ],
+      [
+        "Super Mario 64",
+        5
+      ],
+      [
+        "Halo: Combat Evolved",
+        4
+      ],
+      [
+        "Pac-Man",
+        0
+      ],
+      [
+        "Street Fighter II",
+        0
+      ],
+      [
+        "Skyrim",
+        0
+      ],
+      [
+        "Half-Life 2",
+        0
+      ],
+      [
+        "Pokémon Red and Blue",
+        0
+      ],
+      [
+        "The Last of Us",
+        0
+      ]
+    ],
+    "clues": {
+      "Zelda: Ocarina of Time": [
+        "Released in 1998.",
+        "A fantasy adventure on the Nintendo 64.",
+        "You jump seven years ahead to save a kingdom.",
+        "Starring a hero named Link."
+      ],
+      "Super Mario Bros.": [
+        "Released in Japan in 1985.",
+        "Came bundled with many NES consoles.",
+        "World 1-1 is one of the most famous levels ever made.",
+        "A plumber rescues Princess Toadstool from Bowser."
+      ],
+      "Tetris": [
+        "Created in the Soviet Union in 1984.",
+        "Came bundled with the original Game Boy.",
+        "No characters and no story, just falling shapes.",
+        "Clear lines by fitting four-block pieces together."
+      ]
+    },
+    "sources": {
+      "Zelda: Ocarina of Time": [
+        "https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Ocarina_of_Time"
+      ],
+      "Super Mario Bros.": [
+        "https://en.wikipedia.org/wiki/Super_Mario_Bros."
+      ],
+      "Tetris": [
+        "https://en.wikipedia.org/wiki/Tetris"
+      ]
+    }
+  },
+  {
+    "id": "fast-food-fries",
+    "label": "Fast food fries",
+    "title": "GOAT fast food fries",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "McDonald's",
+        34
+      ],
+      [
+        "Chick-fil-A",
+        15
+      ],
+      [
+        "Five Guys",
+        11
+      ],
+      [
+        "Arby's curly fries",
+        10
+      ],
+      [
+        "In-N-Out",
+        6
+      ],
+      [
+        "Popeyes Cajun fries",
+        6
+      ],
+      [
+        "Wendy's",
+        5
+      ],
+      [
+        "Burger King",
+        4
+      ],
+      [
+        "Shake Shack",
+        4
+      ],
+      [
+        "Jack in the Box",
+        3
+      ],
+      [
+        "Checkers",
+        0
+      ],
+      [
+        "Culver's",
+        0
+      ],
+      [
+        "Whataburger",
+        0
+      ],
+      [
+        "Sonic",
+        0
+      ],
+      [
+        "Taco Bell Nacho Fries",
+        0
+      ],
+      [
+        "Carl’s Jr.",
+        0
+      ]
+    ],
+    "clues": {
+      "McDonald's": [
+        "Thin and crispy, shoestring style.",
+        "At their best in the first five minutes.",
+        "Served in a red carton.",
+        "Sold under the golden arches."
+      ],
+      "Chick-fil-A": [
+        "Cooked in canola oil.",
+        "Cut in a crisscross grid pattern.",
+        "Waffle fries, with lots of crispy edges.",
+        "The chain is closed on Sundays."
+      ],
+      "Five Guys": [
+        "Cut fresh in the restaurant from whole potatoes.",
+        "Comes Cajun or regular.",
+        "Cooked in peanut oil.",
+        "An extra scoop gets dumped into the bag."
+      ]
+    },
+    "sources": {
+      "McDonald's": [
+        "https://en.wikipedia.org/wiki/McDonald%27s"
+      ],
+      "Chick-fil-A": [
+        "https://en.wikipedia.org/wiki/Chick-fil-A"
+      ],
+      "Five Guys": [
+        "https://en.wikipedia.org/wiki/Five_Guys"
+      ]
+    }
+  },
+  {
+    "id": "breakfast-cereal",
+    "label": "Breakfast cereal",
+    "title": "GOAT breakfast cereal",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Cinnamon Toast Crunch",
+        20
+      ],
+      [
+        "Frosted Flakes",
+        14
+      ],
+      [
+        "Honey Nut Cheerios",
+        13
+      ],
+      [
+        "Lucky Charms",
+        11
+      ],
+      [
+        "Froot Loops",
+        9
+      ],
+      [
+        "Cap'n Crunch",
+        8
+      ],
+      [
+        "Reese's Puffs",
+        7
+      ],
+      [
+        "Cocoa Puffs",
+        5
+      ],
+      [
+        "Frosted Mini-Wheats",
+        4
+      ],
+      [
+        "Rice Krispies",
+        3
+      ],
+      [
+        "Corn Flakes",
+        0
+      ],
+      [
+        "Raisin Bran",
+        0
+      ],
+      [
+        "Fruity Pebbles",
+        0
+      ],
+      [
+        "Apple Jacks",
+        0
+      ],
+      [
+        "Honey Bunches of Oats",
+        0
+      ],
+      [
+        "Special K",
+        0
+      ]
+    ],
+    "clues": {
+      "Cinnamon Toast Crunch": [
+        "Sweet, and it changes the milk.",
+        "Little squares, not flakes or loops.",
+        "Leaves a sugary dust at the bottom of the bowl.",
+        "Every square is dusted with sugar and spice."
+      ],
+      "Frosted Flakes": [
+        "Introduced in 1952.",
+        "Made by Kellogg's.",
+        "Sugar-coated corn.",
+        "Tony the Tiger says they're great."
+      ],
+      "Honey Nut Cheerios": [
+        "Introduced in 1979.",
+        "Made by General Mills.",
+        "A sweeter take on a classic oat cereal.",
+        "Its mascot is a bee named Buzz."
+      ]
+    },
+    "sources": {
+      "Cinnamon Toast Crunch": [
+        "https://en.wikipedia.org/wiki/Cinnamon_Toast_Crunch"
+      ],
+      "Frosted Flakes": [
+        "https://en.wikipedia.org/wiki/Frosted_Flakes"
+      ],
+      "Honey Nut Cheerios": [
+        "https://en.wikipedia.org/wiki/Cheerios"
+      ]
+    }
+  },
+  {
+    "id": "tennis-player",
+    "label": "Tennis player",
+    "title": "GOAT tennis player",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Novak Djokovic",
+        30
+      ],
+      [
+        "Serena Williams",
+        24
+      ],
+      [
+        "Roger Federer",
+        20
+      ],
+      [
+        "Rafael Nadal",
+        12
+      ],
+      [
+        "Steffi Graf",
+        4
+      ],
+      [
+        "Martina Navratilova",
+        3
+      ],
+      [
+        "Rod Laver",
+        2
+      ],
+      [
+        "Pete Sampras",
+        2
+      ],
+      [
+        "Björn Borg",
+        1
+      ],
+      [
+        "Billie Jean King",
+        1
+      ],
+      [
+        "Andre Agassi",
+        0
+      ],
+      [
+        "Chris Evert",
+        0
+      ],
+      [
+        "Carlos Alcaraz",
+        0
+      ],
+      [
+        "Jannik Sinner",
+        0
+      ],
+      [
+        "Venus Williams",
+        0
+      ],
+      [
+        "Monica Seles",
+        0
+      ]
+    ],
+    "clues": {
+      "Novak Djokovic": [
+        "Turned pro in 2003.",
+        "Famous for sliding into the splits on hard courts.",
+        "Holds the men's record for Grand Slam singles titles.",
+        "Born in Belgrade, Serbia."
+      ],
+      "Serena Williams": [
+        "Turned pro in 1995.",
+        "Won the 2017 Australian Open while pregnant.",
+        "Won 23 Grand Slam singles titles.",
+        "Often played doubles with her sister Venus."
+      ],
+      "Roger Federer": [
+        "Born in Basel in 1981.",
+        "Played his last match at the 2022 Laver Cup.",
+        "Won eight Wimbledon singles titles.",
+        "Swiss, with a famous one-handed backhand."
+      ]
+    },
+    "sources": {
+      "Novak Djokovic": [
+        "https://en.wikipedia.org/wiki/Novak_Djokovic"
+      ],
+      "Serena Williams": [
+        "https://en.wikipedia.org/wiki/Serena_Williams"
+      ],
+      "Roger Federer": [
+        "https://en.wikipedia.org/wiki/Roger_Federer"
+      ]
+    }
+  },
+  {
+    "id": "candy-bar",
+    "label": "Candy bar",
+    "title": "GOAT candy bar",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Reese's Peanut Butter Cups",
+        22
+      ],
+      [
+        "Snickers",
+        20
+      ],
+      [
+        "Kit Kat",
+        15
+      ],
+      [
+        "Twix",
+        12
+      ],
+      [
+        "Milky Way",
+        6
+      ],
+      [
+        "3 Musketeers",
+        5
+      ],
+      [
+        "Butterfinger",
+        5
+      ],
+      [
+        "Hershey's Milk Chocolate",
+        4
+      ],
+      [
+        "Almond Joy",
+        3
+      ],
+      [
+        "Baby Ruth",
+        2
+      ],
+      [
+        "Mounds",
+        0
+      ],
+      [
+        "PayDay",
+        0
+      ],
+      [
+        "Crunch",
+        0
+      ],
+      [
+        "Heath",
+        0
+      ],
+      [
+        "Whatchamacallit",
+        0
+      ],
+      [
+        "Mr. Goodbar",
+        0
+      ]
+    ],
+    "clues": {
+      "Reese's Peanut Butter Cups": [
+        "Chocolate on the outside.",
+        "Not technically a bar at all.",
+        "Comes two to a pack in fluted paper liners.",
+        "Orange wrapper, salty-sweet filling, made by Hershey."
+      ],
+      "Snickers": [
+        "Introduced by Mars in 1930.",
+        "Named after a horse the Mars family owned.",
+        "Nougat, caramel and peanuts in milk chocolate.",
+        "Its ads say you're not you when you're hungry."
+      ],
+      "Kit Kat": [
+        "First sold in England in 1935.",
+        "Made by Hershey in the United States.",
+        "Crisp wafer fingers covered in chocolate.",
+        "Its slogan tells you to have a break."
+      ]
+    },
+    "sources": {
+      "Reese's Peanut Butter Cups": [
+        "https://en.wikipedia.org/wiki/Reese%27s_Peanut_Butter_Cups"
+      ],
+      "Snickers": [
+        "https://en.wikipedia.org/wiki/Snickers"
+      ],
+      "Kit Kat": [
+        "https://en.wikipedia.org/wiki/Kit_Kat"
+      ]
+    }
+  },
+  {
+    "id": "boxer",
+    "label": "Boxer",
+    "title": "GOAT boxer",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Muhammad Ali",
+        41
+      ],
+      [
+        "Mike Tyson",
+        14
+      ],
+      [
+        "Floyd Mayweather Jr.",
+        11
+      ],
+      [
+        "Sugar Ray Robinson",
+        10
+      ],
+      [
+        "Manny Pacquiao",
+        6
+      ],
+      [
+        "Joe Louis",
+        5
+      ],
+      [
+        "Sugar Ray Leonard",
+        4
+      ],
+      [
+        "Rocky Marciano",
+        3
+      ],
+      [
+        "Canelo Álvarez",
+        2
+      ],
+      [
+        "Roberto Durán",
+        2
+      ],
+      [
+        "George Foreman",
+        0
+      ],
+      [
+        "Joe Frazier",
+        0
+      ],
+      [
+        "Evander Holyfield",
+        0
+      ],
+      [
+        "Lennox Lewis",
+        0
+      ],
+      [
+        "Jack Dempsey",
+        0
+      ],
+      [
+        "Terence Crawford",
+        0
+      ]
+    ],
+    "clues": {
+      "Muhammad Ali": [
+        "A heavyweight of the 1960s and 70s.",
+        "Won Olympic gold in Rome in 1960.",
+        "Changed his name in 1964.",
+        "Fought the Rumble in the Jungle and the Thrilla in Manila."
+      ],
+      "Mike Tyson": [
+        "Trained as a teenager by Cus D'Amato.",
+        "Became the youngest heavyweight champion, at 20.",
+        "Lost to Buster Douglas in Tokyo in 1990.",
+        "Bit an opponent's ear in a 1997 title fight."
+      ],
+      "Floyd Mayweather Jr.": [
+        "Won a bronze medal at the 1996 Olympics.",
+        "Beat Conor McGregor in a 2017 boxing match.",
+        "Retired with a 50-0 professional record.",
+        "Nicknamed Money."
+      ]
+    },
+    "sources": {
+      "Muhammad Ali": [
+        "https://en.wikipedia.org/wiki/Muhammad_Ali"
+      ],
+      "Mike Tyson": [
+        "https://en.wikipedia.org/wiki/Mike_Tyson"
+      ],
+      "Floyd Mayweather Jr.": [
+        "https://en.wikipedia.org/wiki/Floyd_Mayweather_Jr."
+      ]
+    }
+  },
+  {
+    "id": "nfl-quarterback",
+    "label": "NFL quarterback",
+    "title": "GOAT NFL quarterback",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Joe Montana",
+        39
+      ],
+      [
+        "Tom Brady",
+        17
+      ],
+      [
+        "Patrick Mahomes",
+        13
+      ],
+      [
+        "Peyton Manning",
+        10
+      ],
+      [
+        "Aaron Rodgers",
+        6
+      ],
+      [
+        "Drew Brees",
+        4
+      ],
+      [
+        "Dan Marino",
+        4
+      ],
+      [
+        "John Elway",
+        3
+      ],
+      [
+        "Brett Favre",
+        2
+      ],
+      [
+        "Steve Young",
+        2
+      ],
+      [
+        "Terry Bradshaw",
+        0
+      ],
+      [
+        "Roger Staubach",
+        0
+      ],
+      [
+        "Johnny Unitas",
+        0
+      ],
+      [
+        "Troy Aikman",
+        0
+      ],
+      [
+        "Ben Roethlisberger",
+        0
+      ],
+      [
+        "Kurt Warner",
+        0
+      ]
+    ],
+    "clues": {
+      "Joe Montana": [
+        "Played college football at Notre Dame.",
+        "Finished his NFL career in Kansas City.",
+        "Won three Super Bowl MVP awards.",
+        "Wore number 16 while winning four championships with San Francisco."
+      ],
+      "Tom Brady": [
+        "Played college football in Michigan.",
+        "Was selected with the 199th pick of the NFL draft.",
+        "Won championships with New England and Tampa Bay.",
+        "Finished his career with seven Super Bowl victories."
+      ],
+      "Patrick Mahomes": [
+        "His father played Major League Baseball.",
+        "Played college football at Texas Tech.",
+        "Was selected tenth overall in the 2017 NFL draft.",
+        "Wears number 15 for Kansas City."
+      ]
+    },
+    "sources": {
+      "Joe Montana": [
+        "https://en.wikipedia.org/wiki/Joe_Montana",
+        "https://www.profootballhof.com/players/joe-montana/"
+      ],
+      "Tom Brady": [
+        "https://en.wikipedia.org/wiki/Tom_Brady",
+        "https://www.pro-football-reference.com/players/B/BradTo00.htm"
+      ],
+      "Patrick Mahomes": [
+        "https://en.wikipedia.org/wiki/Patrick_Mahomes",
+        "https://www.pro-football-reference.com/players/M/MahoPa00.htm"
+      ]
+    }
+  },
+  {
+    "id": "rock-band",
+    "label": "Rock band",
+    "title": "GOAT rock band",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "The Beatles",
+        29
+      ],
+      [
+        "Queen",
+        19
+      ],
+      [
+        "Led Zeppelin",
+        14
+      ],
+      [
+        "Pink Floyd",
+        10
+      ],
+      [
+        "The Rolling Stones",
+        8
+      ],
+      [
+        "AC/DC",
+        6
+      ],
+      [
+        "Nirvana",
+        5
+      ],
+      [
+        "Eagles",
+        4
+      ],
+      [
+        "Metallica",
+        3
+      ],
+      [
+        "Fleetwood Mac",
+        2
+      ],
+      [
+        "U2",
+        0
+      ],
+      [
+        "Aerosmith",
+        0
+      ],
+      [
+        "The Who",
+        0
+      ],
+      [
+        "The Doors",
+        0
+      ],
+      [
+        "Guns N' Roses",
+        0
+      ],
+      [
+        "Journey",
+        0
+      ]
+    ],
+    "clues": {
+      "The Beatles": [
+        "The group formed in 1960.",
+        "Their recording career included sessions at Abbey Road Studios.",
+        "They originated in Liverpool, England.",
+        "The classic lineup included John, Paul, George and Ringo."
+      ],
+      "Queen": [
+        "The group formed in London in 1970.",
+        "Their guitarist earned a doctorate in astrophysics.",
+        "They performed at Wembley Stadium during Live Aid in 1985.",
+        "Freddie Mercury was their original lead vocalist."
+      ],
+      "Led Zeppelin": [
+        "The group formed in London in 1968.",
+        "Their original lineup consisted of four musicians.",
+        "Robert Plant was their lead vocalist.",
+        "They recorded Stairway to Heaven."
+      ]
+    },
+    "sources": {
+      "The Beatles": [
+        "https://en.wikipedia.org/wiki/The_Beatles"
+      ],
+      "Queen": [
+        "https://en.wikipedia.org/wiki/Queen_(band)",
+        "https://en.wikipedia.org/wiki/Brian_May"
+      ],
+      "Led Zeppelin": [
+        "https://en.wikipedia.org/wiki/Led_Zeppelin"
+      ]
+    }
+  },
+  {
+    "id": "burger-chain",
+    "label": "Burger chain",
+    "title": "GOAT burger chain",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "In-N-Out",
+        25
+      ],
+      [
+        "Five Guys",
+        19
+      ],
+      [
+        "Shake Shack",
+        14
+      ],
+      [
+        "McDonald's",
+        12
+      ],
+      [
+        "Whataburger",
+        9
+      ],
+      [
+        "Wendy's",
+        7
+      ],
+      [
+        "Culver's",
+        5
+      ],
+      [
+        "Burger King",
+        4
+      ],
+      [
+        "Habit Burger",
+        3
+      ],
+      [
+        "Jack in the Box",
+        2
+      ],
+      [
+        "Sonic",
+        0
+      ],
+      [
+        "Smashburger",
+        0
+      ],
+      [
+        "White Castle",
+        0
+      ],
+      [
+        "Freddy's",
+        0
+      ],
+      [
+        "Carl's Jr.",
+        0
+      ],
+      [
+        "Steak 'n Shake",
+        0
+      ]
+    ],
+    "clues": {
+      "In-N-Out": [
+        "The company was founded in 1948.",
+        "Harry and Esther Snyder started the business.",
+        "Its first location opened in Baldwin Park, California.",
+        "Animal Style and Double-Double are signature menu terms."
+      ],
+      "Five Guys": [
+        "The company started in 1986.",
+        "Its first restaurant opened in Arlington, Virginia.",
+        "Complimentary peanuts are a familiar feature of its restaurants.",
+        "Its fries are cooked in peanut oil and served in paper bags."
+      ],
+      "Shake Shack": [
+        "The business began as a food cart in 2001.",
+        "Restaurateur Danny Meyer was behind its creation.",
+        "Its first permanent location opened in Madison Square Park.",
+        "Its signature beef patties are served on potato buns."
+      ]
+    },
+    "sources": {
+      "In-N-Out": [
+        "https://en.wikipedia.org/wiki/In-N-Out_Burger",
+        "https://www.in-n-out.com/menu/not-so-secret-menu"
+      ],
+      "Five Guys": [
+        "https://en.wikipedia.org/wiki/Five_Guys"
+      ],
+      "Shake Shack": [
+        "https://en.wikipedia.org/wiki/Shake_Shack"
+      ]
+    }
+  },
+  {
+    "id": "superhero",
+    "label": "Superhero",
+    "title": "GOAT superhero",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Batman",
+        30
+      ],
+      [
+        "Spider-Man",
+        26
+      ],
+      [
+        "Superman",
+        14
+      ],
+      [
+        "Iron Man",
+        9
+      ],
+      [
+        "Wolverine",
+        6
+      ],
+      [
+        "Captain America",
+        4
+      ],
+      [
+        "Thor",
+        4
+      ],
+      [
+        "Wonder Woman",
+        3
+      ],
+      [
+        "The Hulk",
+        2
+      ],
+      [
+        "Black Panther",
+        2
+      ],
+      [
+        "The Flash",
+        0
+      ],
+      [
+        "Deadpool",
+        0
+      ],
+      [
+        "Doctor Strange",
+        0
+      ],
+      [
+        "Aquaman",
+        0
+      ],
+      [
+        "Daredevil",
+        0
+      ],
+      [
+        "Green Lantern",
+        0
+      ]
+    ],
+    "clues": {
+      "Batman": [
+        "First appeared in comic books in 1939.",
+        "Has no inherent superhuman abilities.",
+        "His fictional hometown is Gotham City.",
+        "His secret identity is Bruce Wayne."
+      ],
+      "Spider-Man": [
+        "Made his comic book debut in 1962.",
+        "Stan Lee and Steve Ditko created the original character.",
+        "His abilities include climbing walls and sensing danger.",
+        "The original character's secret identity is Peter Parker."
+      ],
+      "Superman": [
+        "Made his comic book debut in 1938.",
+        "Jerry Siegel and Joe Shuster created the character.",
+        "His fictional home planet is Krypton.",
+        "Works as a reporter under the name Clark Kent."
+      ]
+    },
+    "sources": {
+      "Batman": [
+        "https://en.wikipedia.org/wiki/Batman",
+        "https://www.dc.com/characters/batman"
+      ],
+      "Spider-Man": [
+        "https://en.wikipedia.org/wiki/Spider-Man"
+      ],
+      "Superman": [
+        "https://en.wikipedia.org/wiki/Superman",
+        "https://www.dc.com/characters/superman"
+      ]
+    }
+  },
+  {
+    "id": "movie-franchise",
+    "label": "Movie franchise",
+    "title": "GOAT movie franchise",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Star Wars",
+        25
+      ],
+      [
+        "The Lord of the Rings",
+        21
+      ],
+      [
+        "Harry Potter",
+        17
+      ],
+      [
+        "Marvel Cinematic Universe",
+        12
+      ],
+      [
+        "Jurassic Park",
+        7
+      ],
+      [
+        "James Bond",
+        5
+      ],
+      [
+        "Indiana Jones",
+        4
+      ],
+      [
+        "Pirates of the Caribbean",
+        3
+      ],
+      [
+        "Fast & Furious",
+        3
+      ],
+      [
+        "Mission: Impossible",
+        3
+      ],
+      [
+        "The Matrix",
+        0
+      ],
+      [
+        "Rocky",
+        0
+      ],
+      [
+        "Back to the Future",
+        0
+      ],
+      [
+        "The Godfather",
+        0
+      ],
+      [
+        "Alien",
+        0
+      ],
+      [
+        "Transformers",
+        0
+      ]
+    ],
+    "clues": {
+      "Star Wars": [
+        "The original film was released in 1977.",
+        "George Lucas created the franchise.",
+        "The Millennium Falcon is a spacecraft in its fictional universe.",
+        "Jedi knights use weapons called lightsabers."
+      ],
+      "The Lord of the Rings": [
+        "Its main film trilogy was released from 2001 through 2003.",
+        "Much of the trilogy was filmed in New Zealand.",
+        "Peter Jackson directed all three installments.",
+        "Frodo Baggins travels to Mount Doom."
+      ],
+      "Harry Potter": [
+        "The original film series contains eight installments.",
+        "The first installment was released in 2001.",
+        "Daniel Radcliffe plays the central character.",
+        "Much of the story takes place at Hogwarts School."
+      ]
+    },
+    "sources": {
+      "Star Wars": [
+        "https://en.wikipedia.org/wiki/Star_Wars"
+      ],
+      "The Lord of the Rings": [
+        "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)"
+      ],
+      "Harry Potter": [
+        "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)"
+      ]
+    }
+  },
+  {
+    "id": "ice-cream-flavor",
+    "label": "Ice cream flavor",
+    "title": "GOAT ice cream flavor",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Vanilla",
+        27
+      ],
+      [
+        "Chocolate",
+        22
+      ],
+      [
+        "Cookies and Cream",
+        17
+      ],
+      [
+        "Cookie Dough",
+        11
+      ],
+      [
+        "Mint Chocolate Chip",
+        7
+      ],
+      [
+        "Strawberry",
+        5
+      ],
+      [
+        "Butter Pecan",
+        4
+      ],
+      [
+        "Rocky Road",
+        3
+      ],
+      [
+        "Pistachio",
+        2
+      ],
+      [
+        "Coffee",
+        2
+      ],
+      [
+        "Birthday Cake",
+        0
+      ],
+      [
+        "Chocolate Peanut Butter",
+        0
+      ],
+      [
+        "Mango",
+        0
+      ],
+      [
+        "Salted Caramel",
+        0
+      ],
+      [
+        "Neapolitan",
+        0
+      ],
+      [
+        "Black Cherry",
+        0
+      ]
+    ],
+    "clues": {
+      "Vanilla": [
+        "Its primary flavoring comes from a flowering plant.",
+        "The flavoring plant belongs to the orchid family.",
+        "The harvested seed pods undergo a curing process.",
+        "Natural versions can contain tiny black specks from the seed pods."
+      ],
+      "Chocolate": [
+        "Its primary flavoring comes from the seeds of a tropical tree.",
+        "The flavoring ingredients can include cocoa solids.",
+        "Its characteristic color is usually brown.",
+        "It gets its signature flavor from cacao beans."
+      ],
+      "Cookies and Cream": [
+        "The flavor combines a frozen dessert with a baked confection.",
+        "It commonly contains dark pieces scattered throughout a pale base.",
+        "The added pieces are typically made from cocoa-flavored wafers.",
+        "Crushed Oreo-style sandwich biscuits are its defining ingredient."
+      ]
+    },
+    "sources": {
+      "Vanilla": [
+        "https://en.wikipedia.org/wiki/Vanilla_ice_cream",
+        "https://en.wikipedia.org/wiki/Vanilla"
+      ],
+      "Chocolate": [
+        "https://en.wikipedia.org/wiki/Chocolate_ice_cream",
+        "https://en.wikipedia.org/wiki/Theobroma_cacao"
+      ],
+      "Cookies and Cream": [
+        "https://en.wikipedia.org/wiki/Cookies_and_cream"
+      ]
+    }
+  },
+  {
+    "id": "soccer-player",
+    "label": "Soccer player",
+    "title": "GOAT soccer player",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Lionel Messi",
+        39
+      ],
+      [
+        "Cristiano Ronaldo",
+        32
+      ],
+      [
+        "Pelé",
+        10
+      ],
+      [
+        "Diego Maradona",
+        7
+      ],
+      [
+        "Ronaldinho",
+        4
+      ],
+      [
+        "Zinedine Zidane",
+        2
+      ],
+      [
+        "Ronaldo Nazário",
+        2
+      ],
+      [
+        "Johan Cruyff",
+        2
+      ],
+      [
+        "Neymar",
+        1
+      ],
+      [
+        "Thierry Henry",
+        1
+      ],
+      [
+        "Kylian Mbappé",
+        0
+      ],
+      [
+        "David Beckham",
+        0
+      ],
+      [
+        "George Best",
+        0
+      ],
+      [
+        "Franz Beckenbauer",
+        0
+      ],
+      [
+        "Andrés Iniesta",
+        0
+      ],
+      [
+        "Paolo Maldini",
+        0
+      ]
+    ],
+    "clues": {
+      "Lionel Messi": [
+        "Was born in Rosario in 1987.",
+        "Won an Olympic gold medal in 2008.",
+        "Spent the majority of his European club career at Barcelona.",
+        "Captained Argentina to victory at the 2022 FIFA World Cup."
+      ],
+      "Cristiano Ronaldo": [
+        "Was born on the Portuguese island of Madeira.",
+        "Began his senior club career at Sporting CP.",
+        "Played for Manchester United, Real Madrid and Juventus.",
+        "His famous number-seven branding is abbreviated CR7."
+      ],
+      "Pelé": [
+        "Was born in Brazil in 1940.",
+        "Joined Santos as a teenager.",
+        "Finished his club career with the New York Cosmos.",
+        "Won the FIFA World Cup in 1958, 1962 and 1970."
+      ]
+    },
+    "sources": {
+      "Lionel Messi": [
+        "https://en.wikipedia.org/wiki/Lionel_Messi"
+      ],
+      "Cristiano Ronaldo": [
+        "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+      ],
+      "Pelé": [
+        "https://en.wikipedia.org/wiki/Pel%C3%A9"
+      ]
+    }
+  },
+  {
+    "id": "soft-drink",
+    "label": "Soft drink",
+    "title": "GOAT soft drink",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Coca-Cola",
+        28
+      ],
+      [
+        "Dr Pepper",
+        22
+      ],
+      [
+        "Sprite",
+        13
+      ],
+      [
+        "Pepsi",
+        11
+      ],
+      [
+        "Mountain Dew",
+        8
+      ],
+      [
+        "Root Beer",
+        6
+      ],
+      [
+        "Diet Coke",
+        4
+      ],
+      [
+        "Fanta",
+        3
+      ],
+      [
+        "Ginger Ale",
+        3
+      ],
+      [
+        "7UP",
+        2
+      ],
+      [
+        "Diet Pepsi",
+        0
+      ],
+      [
+        "Sunkist",
+        0
+      ],
+      [
+        "Squirt",
+        0
+      ],
+      [
+        "RC Cola",
+        0
+      ],
+      [
+        "Fresca",
+        0
+      ],
+      [
+        "Big Red",
+        0
+      ]
+    ],
+    "clues": {
+      "Coca-Cola": [
+        "Its original formula dates to the nineteenth century.",
+        "A pharmacist named John Pemberton created it.",
+        "It was first served at a pharmacy in Atlanta.",
+        "Its signature branding features white cursive lettering on red."
+      ],
+      "Dr Pepper": [
+        "The beverage originated during the 1880s.",
+        "Pharmacist Charles Alderton developed it.",
+        "It originated in Waco, Texas.",
+        "Its marketing highlights a blend of 23 flavors."
+      ],
+      "Sprite": [
+        "Its American introduction occurred in 1961.",
+        "The beverage is transparent rather than dark brown.",
+        "Its standard formula contains no caffeine.",
+        "Lemon and lime are its signature flavors."
+      ]
+    },
+    "sources": {
+      "Coca-Cola": [
+        "https://en.wikipedia.org/wiki/Coca-Cola"
+      ],
+      "Dr Pepper": [
+        "https://en.wikipedia.org/wiki/Dr_Pepper"
+      ],
+      "Sprite": [
+        "https://en.wikipedia.org/wiki/Sprite_(drink)"
+      ]
+    }
+  },
+  {
+    "id": "gaming-console",
+    "label": "Gaming console",
+    "title": "GOAT gaming console",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "PlayStation 2",
+        24
+      ],
+      [
+        "Nintendo Switch",
+        19
+      ],
+      [
+        "Xbox 360",
+        15
+      ],
+      [
+        "Super Nintendo",
+        11
+      ],
+      [
+        "PlayStation 4",
+        8
+      ],
+      [
+        "Nintendo 64",
+        6
+      ],
+      [
+        "PlayStation 5",
+        5
+      ],
+      [
+        "Nintendo Wii",
+        4
+      ],
+      [
+        "Nintendo NES",
+        3
+      ],
+      [
+        "GameCube",
+        3
+      ],
+      [
+        "PlayStation",
+        0
+      ],
+      [
+        "Sega Genesis",
+        0
+      ],
+      [
+        "Dreamcast",
+        0
+      ],
+      [
+        "Xbox One",
+        0
+      ],
+      [
+        "Xbox Series X",
+        0
+      ],
+      [
+        "Game Boy",
+        0
+      ]
+    ],
+    "clues": {
+      "PlayStation 2": [
+        "Its original model was released in 2000.",
+        "It could also function as a DVD player.",
+        "Its slimmer redesigned model arrived in 2004.",
+        "Sony shipped it with the DualShock 2 controller."
+      ],
+      "Nintendo Switch": [
+        "The original model launched in March 2017.",
+        "It supports both handheld and television gameplay.",
+        "An OLED model was introduced in 2021.",
+        "Its original controllers are called Joy-Con."
+      ],
+      "Xbox 360": [
+        "It originally launched in 2005.",
+        "It used an optional motion-sensing accessory called Kinect.",
+        "Its early hardware became associated with a red ring error.",
+        "Microsoft released it between its original console and 2013 successor."
+      ]
+    },
+    "sources": {
+      "PlayStation 2": [
+        "https://en.wikipedia.org/wiki/PlayStation_2"
+      ],
+      "Nintendo Switch": [
+        "https://en.wikipedia.org/wiki/Nintendo_Switch"
+      ],
+      "Xbox 360": [
+        "https://en.wikipedia.org/wiki/Xbox_360"
+      ]
+    }
+  },
+  {
+    "id": "comedy-actor",
+    "label": "Comedy actor",
+    "title": "GOAT comedy actor",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Jim Carrey",
+        25
+      ],
+      [
+        "Robin Williams",
+        22
+      ],
+      [
+        "Adam Sandler",
+        16
+      ],
+      [
+        "Eddie Murphy",
+        12
+      ],
+      [
+        "Will Ferrell",
+        8
+      ],
+      [
+        "Steve Carell",
+        5
+      ],
+      [
+        "Chris Farley",
+        4
+      ],
+      [
+        "Bill Murray",
+        3
+      ],
+      [
+        "Ben Stiller",
+        3
+      ],
+      [
+        "John Candy",
+        2
+      ],
+      [
+        "Kevin Hart",
+        0
+      ],
+      [
+        "Steve Martin",
+        0
+      ],
+      [
+        "Chevy Chase",
+        0
+      ],
+      [
+        "Jack Black",
+        0
+      ],
+      [
+        "Mike Myers",
+        0
+      ],
+      [
+        "Rowan Atkinson",
+        0
+      ]
+    ],
+    "clues": {
+      "Jim Carrey": [
+        "Was born in Ontario, Canada.",
+        "Appeared on the sketch comedy series In Living Color.",
+        "Played the lead character in The Truman Show.",
+        "Portrayed the eccentric pet detective Ace Ventura."
+      ],
+      "Robin Williams": [
+        "Was born in Chicago in 1951.",
+        "Studied at the Juilliard School.",
+        "Won an Oscar for Good Will Hunting, directed by Gus Van Sant.",
+        "Voiced the Genie in Disney's 1992 animated film Aladdin."
+      ],
+      "Adam Sandler": [
+        "Was born in Brooklyn in 1966.",
+        "Joined Saturday Night Live in 1990 as a writer.",
+        "Played the title character in Billy Madison.",
+        "Portrayed an aspiring professional golfer in Happy Gilmore."
+      ]
+    },
+    "sources": {
+      "Jim Carrey": [
+        "https://en.wikipedia.org/wiki/Jim_Carrey"
+      ],
+      "Robin Williams": [
+        "https://en.wikipedia.org/wiki/Robin_Williams"
+      ],
+      "Adam Sandler": [
+        "https://en.wikipedia.org/wiki/Adam_Sandler"
+      ]
+    }
+  },
+  {
+    "id": "board-game",
+    "label": "Board game",
+    "title": "GOAT board game",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Monopoly",
+        24
+      ],
+      [
+        "Chess",
+        22
+      ],
+      [
+        "Risk",
+        13
+      ],
+      [
+        "Scrabble",
+        11
+      ],
+      [
+        "Catan",
+        8
+      ],
+      [
+        "Clue",
+        7
+      ],
+      [
+        "Ticket to Ride",
+        5
+      ],
+      [
+        "Checkers",
+        4
+      ],
+      [
+        "Battleship",
+        3
+      ],
+      [
+        "Sorry!",
+        3
+      ],
+      [
+        "Candy Land",
+        0
+      ],
+      [
+        "The Game of Life",
+        0
+      ],
+      [
+        "Connect Four",
+        0
+      ],
+      [
+        "Backgammon",
+        0
+      ],
+      [
+        "Trivial Pursuit",
+        0
+      ],
+      [
+        "Stratego",
+        0
+      ]
+    ],
+    "clues": {
+      "Monopoly": [
+        "Parker Brothers began publishing the game in 1935.",
+        "Its origins trace back to a game designed by Elizabeth Magie.",
+        "Players can collect rent from their opponents.",
+        "Passing the GO space earns $200 in the classic edition."
+      ],
+      "Chess": [
+        "Its historical origins are associated with an ancient Indian game.",
+        "The standard playing board has 64 squares.",
+        "Each player begins with 16 pieces.",
+        "Victory occurs when the opposing king is checkmated."
+      ],
+      "Risk": [
+        "It was originally developed by a French filmmaker.",
+        "The original French version appeared in 1957.",
+        "Its classic board divides the world into 42 territories.",
+        "Players deploy armies and roll dice to conquer territories."
+      ]
+    },
+    "sources": {
+      "Monopoly": [
+        "https://en.wikipedia.org/wiki/Monopoly_(game)",
+        "https://en.wikipedia.org/wiki/Elizabeth_Magie"
+      ],
+      "Chess": [
+        "https://en.wikipedia.org/wiki/Chess",
+        "https://en.wikipedia.org/wiki/History_of_chess"
+      ],
+      "Risk": [
+        "https://en.wikipedia.org/wiki/Risk_(game)"
+      ]
+    }
+  },
+  {
+    "id": "disney-animated-movie",
+    "label": "Disney animated movie",
+    "title": "GOAT Disney animated movie",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "The Lion King",
+        29
+      ],
+      [
+        "Aladdin",
+        18
+      ],
+      [
+        "Beauty and the Beast",
+        13
+      ],
+      [
+        "Mulan",
+        10
+      ],
+      [
+        "Frozen",
+        8
+      ],
+      [
+        "The Little Mermaid",
+        6
+      ],
+      [
+        "Moana",
+        5
+      ],
+      [
+        "Hercules",
+        4
+      ],
+      [
+        "Lilo & Stitch",
+        4
+      ],
+      [
+        "Tangled",
+        3
+      ],
+      [
+        "Encanto",
+        0
+      ],
+      [
+        "Tarzan",
+        0
+      ],
+      [
+        "Pocahontas",
+        0
+      ],
+      [
+        "Bambi",
+        0
+      ],
+      [
+        "Snow White",
+        0
+      ],
+      [
+        "Cinderella",
+        0
+      ]
+    ],
+    "clues": {
+      "The Lion King": [
+        "The original animated film was released in 1994.",
+        "Hans Zimmer composed its original score.",
+        "Its story unfolds in the African savanna.",
+        "Simba, Timon and Pumbaa are central characters."
+      ],
+      "Aladdin": [
+        "The original animated film premiered in 1992.",
+        "Alan Menken composed its original score.",
+        "Much of the story takes place in the fictional city of Agrabah.",
+        "A magical lamp contains a Genie voiced by Robin Williams."
+      ],
+      "Beauty and the Beast": [
+        "The original animated film was released in 1991.",
+        "It received an Academy Award nomination for Best Picture.",
+        "Its castle contains enchanted household objects that can speak.",
+        "A young woman named Belle encounters a cursed prince."
+      ]
+    },
+    "sources": {
+      "The Lion King": [
+        "https://en.wikipedia.org/wiki/The_Lion_King"
+      ],
+      "Aladdin": [
+        "https://en.wikipedia.org/wiki/Aladdin_(1992_Disney_film)"
+      ],
+      "Beauty and the Beast": [
+        "https://en.wikipedia.org/wiki/Beauty_and_the_Beast_(1991_film)"
+      ]
+    }
+  },
+  {
+    "id": "nfl-wide-receiver",
+    "label": "NFL wide receiver",
+    "title": "GOAT NFL wide receiver",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Jerry Rice",
+        43
+      ],
+      [
+        "Randy Moss",
+        23
+      ],
+      [
+        "Terrell Owens",
+        10
+      ],
+      [
+        "Calvin Johnson",
+        7
+      ],
+      [
+        "Larry Fitzgerald",
+        5
+      ],
+      [
+        "Marvin Harrison",
+        3
+      ],
+      [
+        "Antonio Brown",
+        3
+      ],
+      [
+        "Steve Largent",
+        2
+      ],
+      [
+        "Cris Carter",
+        2
+      ],
+      [
+        "Julio Jones",
+        2
+      ],
+      [
+        "Michael Irvin",
+        0
+      ],
+      [
+        "Tim Brown",
+        0
+      ],
+      [
+        "Davante Adams",
+        0
+      ],
+      [
+        "Tyreek Hill",
+        0
+      ],
+      [
+        "Reggie Wayne",
+        0
+      ],
+      [
+        "Andre Johnson",
+        0
+      ]
+    ],
+    "clues": {
+      "Jerry Rice": [
+        "Played college football at Mississippi Valley State.",
+        "Was selected 16th overall in the 1985 NFL draft.",
+        "Finished his NFL career with 22,895 receiving yards.",
+        "Wore number 80 while winning three titles with San Francisco."
+      ],
+      "Randy Moss": [
+        "Played college football at Marshall University.",
+        "Was selected 21st overall in the 1998 NFL draft.",
+        "Recorded 23 touchdown receptions during the 2007 season.",
+        "Wore number 84 during his original stint with Minnesota."
+      ],
+      "Terrell Owens": [
+        "Played college football at the University of Tennessee at Chattanooga.",
+        "Entered the NFL as a third-round draft pick in 1996.",
+        "Recorded nine receptions in Super Bowl XXXIX.",
+        "Was widely known by the initials T.O."
+      ]
+    },
+    "sources": {
+      "Jerry Rice": [
+        "https://en.wikipedia.org/wiki/Jerry_Rice",
+        "https://www.profootballhof.com/players/jerry-rice/"
+      ],
+      "Randy Moss": [
+        "https://en.wikipedia.org/wiki/Randy_Moss",
+        "https://www.profootballhof.com/players/randy-moss/"
+      ],
+      "Terrell Owens": [
+        "https://en.wikipedia.org/wiki/Terrell_Owens",
+        "https://www.profootballhof.com/players/terrell-owens/"
+      ]
+    }
+  },
+  {
+    "id": "potato-chip",
+    "label": "Potato chip",
+    "title": "GOAT potato chip",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Lay's Classic",
+        26
+      ],
+      [
+        "Ruffles Cheddar & Sour Cream",
+        20
+      ],
+      [
+        "Pringles Original",
+        15
+      ],
+      [
+        "Lay's BBQ",
+        11
+      ],
+      [
+        "Lay's Salt & Vinegar",
+        7
+      ],
+      [
+        "Lay's Sour Cream & Onion",
+        6
+      ],
+      [
+        "Kettle Sea Salt",
+        5
+      ],
+      [
+        "Ruffles Original",
+        4
+      ],
+      [
+        "Cape Cod Original",
+        3
+      ],
+      [
+        "Miss Vickie's Jalapeño",
+        3
+      ],
+      [
+        "Pringles Sour Cream & Onion",
+        0
+      ],
+      [
+        "Zapp's Voodoo",
+        0
+      ],
+      [
+        "Utz Original",
+        0
+      ],
+      [
+        "Lay's Dill Pickle",
+        0
+      ],
+      [
+        "Herr's BBQ",
+        0
+      ],
+      [
+        "Lay's Limón",
+        0
+      ]
+    ],
+    "clues": {
+      "Lay's Classic": [
+        "Its ingredient list includes potatoes and vegetable oil.",
+        "Salt is its primary seasoning.",
+        "Its chips have a thin, flat shape without ridges.",
+        "The standard American package is predominantly yellow."
+      ],
+      "Ruffles Cheddar & Sour Cream": [
+        "Its manufacturer is part of Frito-Lay.",
+        "The potatoes are cut into a ridged shape.",
+        "Its seasoning combines cheese and cultured dairy ingredients.",
+        "The chips have an orange coating and pronounced waves."
+      ],
+      "Pringles Original": [
+        "The product was introduced in the United States in 1968.",
+        "Each piece has a uniform saddle-like shape.",
+        "The pieces are designed to stack neatly.",
+        "Its red cylindrical container features a mustached mascot."
+      ]
+    },
+    "sources": {
+      "Lay's Classic": [
+        "https://www.lays.com/products/lays-classic-potato-chips"
+      ],
+      "Ruffles Cheddar & Sour Cream": [
+        "https://www.ruffles.com/products/ruffles-cheddar-sour-cream-potato-chips"
+      ],
+      "Pringles Original": [
+        "https://en.wikipedia.org/wiki/Pringles",
+        "https://www.pringles.com/"
+      ]
+    }
+  },
+  {
+    "id": "guitarist",
+    "label": "Guitarist",
+    "title": "GOAT guitarist",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Jimi Hendrix",
+        32
+      ],
+      [
+        "Eddie Van Halen",
+        20
+      ],
+      [
+        "Eric Clapton",
+        14
+      ],
+      [
+        "Jimmy Page",
+        11
+      ],
+      [
+        "Stevie Ray Vaughan",
+        7
+      ],
+      [
+        "David Gilmour",
+        5
+      ],
+      [
+        "Slash",
+        4
+      ],
+      [
+        "Prince",
+        3
+      ],
+      [
+        "Carlos Santana",
+        2
+      ],
+      [
+        "Brian May",
+        2
+      ],
+      [
+        "B.B. King",
+        0
+      ],
+      [
+        "Chuck Berry",
+        0
+      ],
+      [
+        "Tony Iommi",
+        0
+      ],
+      [
+        "Jeff Beck",
+        0
+      ],
+      [
+        "Mark Knopfler",
+        0
+      ],
+      [
+        "Ritchie Blackmore",
+        0
+      ]
+    ],
+    "clues": {
+      "Jimi Hendrix": [
+        "Was born in Seattle in 1942.",
+        "Served in the United States Army before achieving musical fame.",
+        "Frequently played a right-handed guitar restrung for left-handed use.",
+        "Performed the American national anthem at Woodstock in 1969."
+      ],
+      "Eddie Van Halen": [
+        "Was born in Amsterdam in 1955.",
+        "Formed a band with his brother Alex.",
+        "Frequently used a two-handed tapping technique.",
+        "Recorded the instrumental guitar showcase Eruption."
+      ],
+      "Eric Clapton": [
+        "Was born in Surrey, England, in 1945.",
+        "Was a member of the Yardbirds.",
+        "Played guitar in the rock trio Cream.",
+        "Recorded the songs Layla and Tears in Heaven."
+      ]
+    },
+    "sources": {
+      "Jimi Hendrix": [
+        "https://en.wikipedia.org/wiki/Jimi_Hendrix"
+      ],
+      "Eddie Van Halen": [
+        "https://en.wikipedia.org/wiki/Eddie_Van_Halen"
+      ],
+      "Eric Clapton": [
+        "https://en.wikipedia.org/wiki/Eric_Clapton"
+      ]
+    }
+  },
+  {
+    "id": "car-brand",
+    "label": "Car brand",
+    "title": "GOAT car brand",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Toyota",
+        25
+      ],
+      [
+        "Honda",
+        19
+      ],
+      [
+        "Porsche",
+        14
+      ],
+      [
+        "Ford",
+        11
+      ],
+      [
+        "Ferrari",
+        8
+      ],
+      [
+        "Mercedes-Benz",
+        7
+      ],
+      [
+        "BMW",
+        5
+      ],
+      [
+        "Chevrolet",
+        4
+      ],
+      [
+        "Lexus",
+        4
+      ],
+      [
+        "Lamborghini",
+        3
+      ],
+      [
+        "Audi",
+        0
+      ],
+      [
+        "Subaru",
+        0
+      ],
+      [
+        "Mazda",
+        0
+      ],
+      [
+        "Hyundai",
+        0
+      ],
+      [
+        "Volkswagen",
+        0
+      ],
+      [
+        "Nissan",
+        0
+      ]
+    ],
+    "clues": {
+      "Toyota": [
+        "The company was established in Japan in 1937.",
+        "Its industrial roots involve automatic weaving looms.",
+        "Introduced the Prius in Japan in 1997.",
+        "Its passenger car lineup includes the Camry and Corolla."
+      ],
+      "Honda": [
+        "The company was established in Japan in 1948.",
+        "Motorcycles were central to its early business.",
+        "Its passenger vehicles include the Odyssey and Pilot.",
+        "The Civic and Accord are two of its longest-running car models."
+      ],
+      "Porsche": [
+        "The company began as an engineering consultancy in 1931.",
+        "Its headquarters are in Stuttgart, Germany.",
+        "Its vehicle lineup includes the Cayenne and Taycan.",
+        "Its best-known sports car carries the model number 911."
+      ]
+    },
+    "sources": {
+      "Toyota": [
+        "https://en.wikipedia.org/wiki/Toyota",
+        "https://global.toyota/en/company/"
+      ],
+      "Honda": [
+        "https://en.wikipedia.org/wiki/Honda",
+        "https://global.honda/en/about/"
+      ],
+      "Porsche": [
+        "https://en.wikipedia.org/wiki/Porsche"
+      ]
+    }
+  },
+  {
+    "id": "steak-cut",
+    "label": "Steak cut",
+    "title": "GOAT steak cut",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Ribeye",
+        34
+      ],
+      [
+        "Filet Mignon",
+        22
+      ],
+      [
+        "New York Strip",
+        15
+      ],
+      [
+        "Porterhouse",
+        9
+      ],
+      [
+        "T-Bone",
+        6
+      ],
+      [
+        "Top Sirloin",
+        4
+      ],
+      [
+        "Picanha",
+        3
+      ],
+      [
+        "Flat Iron",
+        3
+      ],
+      [
+        "Skirt Steak",
+        2
+      ],
+      [
+        "Hanger Steak",
+        2
+      ],
+      [
+        "Flank Steak",
+        0
+      ],
+      [
+        "Tri-Tip",
+        0
+      ],
+      [
+        "Denver Steak",
+        0
+      ],
+      [
+        "Chuck Eye",
+        0
+      ],
+      [
+        "Bavette",
+        0
+      ],
+      [
+        "Round Steak",
+        0
+      ]
+    ],
+    "clues": {
+      "Ribeye": [
+        "It contains the longissimus dorsi muscle.",
+        "It often features substantial intramuscular fat.",
+        "It can be purchased with or without a bone.",
+        "It is cut from the same section used for prime rib."
+      ],
+      "Filet Mignon": [
+        "It comes from a muscle that performs relatively little work.",
+        "It is generally lean with relatively little marbling.",
+        "It is cut from the beef tenderloin.",
+        "Its name is French and it is commonly served as a thick medallion."
+      ],
+      "New York Strip": [
+        "It contains the longissimus muscle.",
+        "It is cut from the short loin.",
+        "It is also commonly called a Kansas City steak.",
+        "Its boneless form is traditionally served at American steakhouses."
+      ]
+    },
+    "sources": {
+      "Ribeye": [
+        "https://en.wikipedia.org/wiki/Rib_eye_steak"
+      ],
+      "Filet Mignon": [
+        "https://en.wikipedia.org/wiki/Filet_mignon",
+        "https://en.wikipedia.org/wiki/Beef_tenderloin"
+      ],
+      "New York Strip": [
+        "https://en.wikipedia.org/wiki/Strip_steak"
+      ]
+    }
+  },
+  {
+    "id": "tv-drama",
+    "label": "TV drama",
+    "title": "GOAT TV drama",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Breaking Bad",
+        30
+      ],
+      [
+        "The Sopranos",
+        21
+      ],
+      [
+        "Game of Thrones",
+        15
+      ],
+      [
+        "The Wire",
+        10
+      ],
+      [
+        "Better Call Saul",
+        7
+      ],
+      [
+        "Lost",
+        5
+      ],
+      [
+        "Mad Men",
+        4
+      ],
+      [
+        "Succession",
+        3
+      ],
+      [
+        "The Walking Dead",
+        3
+      ],
+      [
+        "Ozark",
+        2
+      ],
+      [
+        "True Detective",
+        0
+      ],
+      [
+        "The Crown",
+        0
+      ],
+      [
+        "24",
+        0
+      ],
+      [
+        "Prison Break",
+        0
+      ],
+      [
+        "House",
+        0
+      ],
+      [
+        "The Shield",
+        0
+      ]
+    ],
+    "clues": {
+      "Breaking Bad": [
+        "The series originally aired on AMC.",
+        "Vince Gilligan created the series.",
+        "Much of the story takes place in Albuquerque, New Mexico.",
+        "Bryan Cranston portrays chemistry teacher Walter White."
+      ],
+      "The Sopranos": [
+        "The series premiered in 1999.",
+        "David Chase created the series.",
+        "Much of the story takes place in New Jersey.",
+        "James Gandolfini portrays a mob boss who attends therapy."
+      ],
+      "Game of Thrones": [
+        "The television series premiered in 2011.",
+        "It ran for eight seasons on HBO.",
+        "It is based on novels written by George R. R. Martin.",
+        "The fictional continents include Westeros and Essos."
+      ]
+    },
+    "sources": {
+      "Breaking Bad": [
+        "https://en.wikipedia.org/wiki/Breaking_Bad"
+      ],
+      "The Sopranos": [
+        "https://en.wikipedia.org/wiki/The_Sopranos"
+      ],
+      "Game of Thrones": [
+        "https://en.wikipedia.org/wiki/Game_of_Thrones"
+      ]
+    }
+  },
+  {
+    "id": "olympic-athlete",
+    "label": "Olympic athlete",
+    "title": "GOAT Olympic athlete",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Michael Phelps",
+        35
+      ],
+      [
+        "Usain Bolt",
+        27
+      ],
+      [
+        "Simone Biles",
+        15
+      ],
+      [
+        "Carl Lewis",
+        5
+      ],
+      [
+        "Nadia Comăneci",
+        4
+      ],
+      [
+        "Jesse Owens",
+        4
+      ],
+      [
+        "Katie Ledecky",
+        3
+      ],
+      [
+        "Mark Spitz",
+        3
+      ],
+      [
+        "Jackie Joyner-Kersee",
+        2
+      ],
+      [
+        "Larisa Latynina",
+        2
+      ],
+      [
+        "Allyson Felix",
+        0
+      ],
+      [
+        "Paavo Nurmi",
+        0
+      ],
+      [
+        "Ian Thorpe",
+        0
+      ],
+      [
+        "Birgit Fischer",
+        0
+      ],
+      [
+        "Mo Farah",
+        0
+      ],
+      [
+        "Sifan Hassan",
+        0
+      ]
+    ],
+    "clues": {
+      "Michael Phelps": [
+        "Made his Olympic debut at age 15.",
+        "Was born in Baltimore, Maryland.",
+        "Won eight gold medals at the 2008 Beijing Olympics.",
+        "Finished his swimming career with 23 Olympic gold medals."
+      ],
+      "Usain Bolt": [
+        "Was born in Jamaica in 1986.",
+        "Stands approximately six feet five inches tall.",
+        "Won eight Olympic gold medals in sprint events.",
+        "Set a 100-meter world record of 9.58 seconds in 2009."
+      ],
+      "Simone Biles": [
+        "Was born in Columbus, Ohio, in 1997.",
+        "Trained in gymnastics in the Houston area.",
+        "Won the Olympic individual all-around title in 2016 and 2024.",
+        "Performed a Yurchenko double pike vault in international competition."
+      ]
+    },
+    "sources": {
+      "Michael Phelps": [
+        "https://en.wikipedia.org/wiki/Michael_Phelps",
+        "https://www.olympics.com/en/athletes/michael-phelps"
+      ],
+      "Usain Bolt": [
+        "https://en.wikipedia.org/wiki/Usain_Bolt",
+        "https://www.olympics.com/en/athletes/usain-bolt"
+      ],
+      "Simone Biles": [
+        "https://en.wikipedia.org/wiki/Simone_Biles",
+        "https://www.olympics.com/en/athletes/simone-biles"
+      ]
+    }
+  },
+  {
+    "id": "breakfast-food",
+    "label": "Breakfast food",
+    "title": "GOAT breakfast food",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Bacon",
+        22
+      ],
+      [
+        "Pancakes",
+        19
+      ],
+      [
+        "Breakfast Burrito",
+        15
+      ],
+      [
+        "French Toast",
+        12
+      ],
+      [
+        "Waffles",
+        9
+      ],
+      [
+        "Eggs Benedict",
+        7
+      ],
+      [
+        "Breakfast Sandwich",
+        6
+      ],
+      [
+        "Omelet",
+        4
+      ],
+      [
+        "Hash Browns",
+        3
+      ],
+      [
+        "Biscuits and Gravy",
+        3
+      ],
+      [
+        "Oatmeal",
+        0
+      ],
+      [
+        "Avocado Toast",
+        0
+      ],
+      [
+        "Bagel",
+        0
+      ],
+      [
+        "Sausage",
+        0
+      ],
+      [
+        "Breakfast Cereal",
+        0
+      ],
+      [
+        "Croissant",
+        0
+      ]
+    ],
+    "clues": {
+      "Bacon": [
+        "Traditional preparation involves curing meat with salt.",
+        "It can also undergo a smoking process.",
+        "American versions commonly come from pork belly.",
+        "It is frequently fried in thin strips until crisp."
+      ],
+      "Pancakes": [
+        "Versions of this dish exist in many countries.",
+        "American recipes commonly use baking powder as a leavening agent.",
+        "The batter is poured onto a hot griddle and flipped.",
+        "They are commonly served in stacks with butter and maple syrup."
+      ],
+      "Breakfast Burrito": [
+        "Modern American versions are associated with New Mexican cuisine.",
+        "Common fillings include potatoes and cheese.",
+        "Scrambled eggs are a typical ingredient.",
+        "The ingredients are wrapped together inside a flour tortilla."
+      ]
+    },
+    "sources": {
+      "Bacon": [
+        "https://en.wikipedia.org/wiki/Bacon"
+      ],
+      "Pancakes": [
+        "https://en.wikipedia.org/wiki/Pancake"
+      ],
+      "Breakfast Burrito": [
+        "https://en.wikipedia.org/wiki/Breakfast_burrito"
+      ]
+    }
+  },
+  {
+    "id": "action-movie-star",
+    "label": "Action movie star",
+    "title": "GOAT action movie star",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Arnold Schwarzenegger",
+        24
+      ],
+      [
+        "Jackie Chan",
+        20
+      ],
+      [
+        "Tom Cruise",
+        17
+      ],
+      [
+        "Sylvester Stallone",
+        13
+      ],
+      [
+        "Bruce Willis",
+        8
+      ],
+      [
+        "Keanu Reeves",
+        6
+      ],
+      [
+        "Bruce Lee",
+        5
+      ],
+      [
+        "Jason Statham",
+        3
+      ],
+      [
+        "Dwayne Johnson",
+        2
+      ],
+      [
+        "Harrison Ford",
+        2
+      ],
+      [
+        "Jean-Claude Van Damme",
+        0
+      ],
+      [
+        "Chuck Norris",
+        0
+      ],
+      [
+        "Jet Li",
+        0
+      ],
+      [
+        "Liam Neeson",
+        0
+      ],
+      [
+        "Mel Gibson",
+        0
+      ],
+      [
+        "Wesley Snipes",
+        0
+      ]
+    ],
+    "clues": {
+      "Arnold Schwarzenegger": [
+        "Was born in Austria in 1947.",
+        "Won the Mr. Olympia bodybuilding title seven times.",
+        "Served as governor of California.",
+        "Portrayed a cyborg in the 1984 film The Terminator."
+      ],
+      "Jackie Chan": [
+        "Was born in Hong Kong in 1954.",
+        "Trained at the China Drama Academy.",
+        "Starred in the 1978 martial arts film Drunken Master.",
+        "Co-starred with Chris Tucker in the Rush Hour franchise."
+      ],
+      "Tom Cruise": [
+        "Was born in Syracuse, New York, in 1962.",
+        "Starred in the 1983 film Risky Business.",
+        "Portrayed a naval aviator nicknamed Maverick.",
+        "Plays Ethan Hunt in the Mission: Impossible franchise."
+      ]
+    },
+    "sources": {
+      "Arnold Schwarzenegger": [
+        "https://en.wikipedia.org/wiki/Arnold_Schwarzenegger"
+      ],
+      "Jackie Chan": [
+        "https://en.wikipedia.org/wiki/Jackie_Chan"
+      ],
+      "Tom Cruise": [
+        "https://en.wikipedia.org/wiki/Tom_Cruise"
+      ]
+    }
+  },
+  {
+    "id": "golfer",
+    "label": "Golfer",
+    "title": "GOAT golfer",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Tiger Woods",
+        45
+      ],
+      [
+        "Jack Nicklaus",
+        29
+      ],
+      [
+        "Arnold Palmer",
+        8
+      ],
+      [
+        "Ben Hogan",
+        5
+      ],
+      [
+        "Gary Player",
+        3
+      ],
+      [
+        "Phil Mickelson",
+        3
+      ],
+      [
+        "Sam Snead",
+        2
+      ],
+      [
+        "Bobby Jones",
+        2
+      ],
+      [
+        "Rory McIlroy",
+        2
+      ],
+      [
+        "Tom Watson",
+        1
+      ],
+      [
+        "Seve Ballesteros",
+        0
+      ],
+      [
+        "Lee Trevino",
+        0
+      ],
+      [
+        "Nick Faldo",
+        0
+      ],
+      [
+        "Byron Nelson",
+        0
+      ],
+      [
+        "Walter Hagen",
+        0
+      ],
+      [
+        "Greg Norman",
+        0
+      ]
+    ],
+    "clues": {
+      "Tiger Woods": [
+        "Was born in Cypress, California, in 1975.",
+        "Attended Stanford University before turning professional.",
+        "Won the 1997 Masters by 12 strokes.",
+        "Completed a major championship comeback at Augusta in 2019."
+      ],
+      "Jack Nicklaus": [
+        "Was born in Columbus, Ohio, in 1940.",
+        "Won the U.S. Amateur championship twice.",
+        "Won 18 professional major championships.",
+        "His nickname is the Golden Bear."
+      ],
+      "Arnold Palmer": [
+        "Was born in Latrobe, Pennsylvania, in 1929.",
+        "Served in the United States Coast Guard.",
+        "Won four Masters championships between 1958 and 1964.",
+        "A drink combining iced tea and lemonade is named after him."
+      ]
+    },
+    "sources": {
+      "Tiger Woods": [
+        "https://en.wikipedia.org/wiki/Tiger_Woods"
+      ],
+      "Jack Nicklaus": [
+        "https://en.wikipedia.org/wiki/Jack_Nicklaus"
+      ],
+      "Arnold Palmer": [
+        "https://en.wikipedia.org/wiki/Arnold_Palmer",
+        "https://en.wikipedia.org/wiki/Arnold_Palmer_(drink)"
+      ]
+    }
+  },
+  {
+    "id": "cookie",
+    "label": "Cookie",
+    "title": "GOAT cookie",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Chocolate Chip",
+        35
+      ],
+      [
+        "Oreo",
+        19
+      ],
+      [
+        "Snickerdoodle",
+        12
+      ],
+      [
+        "Peanut Butter",
+        9
+      ],
+      [
+        "Oatmeal Raisin",
+        7
+      ],
+      [
+        "Sugar Cookie",
+        5
+      ],
+      [
+        "White Chocolate Macadamia",
+        4
+      ],
+      [
+        "Double Chocolate",
+        4
+      ],
+      [
+        "Shortbread",
+        3
+      ],
+      [
+        "Ginger Snap",
+        2
+      ],
+      [
+        "Fortune Cookie",
+        0
+      ],
+      [
+        "Macaron",
+        0
+      ],
+      [
+        "Biscotti",
+        0
+      ],
+      [
+        "Fig Newton",
+        0
+      ],
+      [
+        "Molasses Cookie",
+        0
+      ],
+      [
+        "Butter Cookie",
+        0
+      ]
+    ],
+    "clues": {
+      "Chocolate Chip": [
+        "Its modern American recipe originated during the 1930s.",
+        "Ruth Wakefield helped create the original version.",
+        "The recipe became associated with the Toll House Inn.",
+        "Small pieces of sweetened cocoa-based candy are mixed into the dough."
+      ],
+      "Oreo": [
+        "The original product was introduced in 1912.",
+        "It was first manufactured by the National Biscuit Company.",
+        "Its standard version contains two embossed wafers.",
+        "A white filling sits between two dark round biscuits."
+      ],
+      "Snickerdoodle": [
+        "American recipes for this treat date back to the nineteenth century.",
+        "Traditional recipes often contain cream of tartar.",
+        "The dough is commonly rolled into balls before baking.",
+        "A coating of cinnamon and granulated sweetener gives it a speckled finish."
+      ]
+    },
+    "sources": {
+      "Chocolate Chip": [
+        "https://en.wikipedia.org/wiki/Chocolate_chip_cookie"
+      ],
+      "Oreo": [
+        "https://en.wikipedia.org/wiki/Oreo"
+      ],
+      "Snickerdoodle": [
+        "https://en.wikipedia.org/wiki/Snickerdoodle"
+      ]
+    }
+  },
+  {
+    "id": "cartoon-series",
+    "label": "Cartoon series",
+    "title": "GOAT cartoon series",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "The Simpsons",
+        24
+      ],
+      [
+        "SpongeBob SquarePants",
+        21
+      ],
+      [
+        "Looney Tunes",
+        14
+      ],
+      [
+        "Tom and Jerry",
+        12
+      ],
+      [
+        "South Park",
+        8
+      ],
+      [
+        "Family Guy",
+        7
+      ],
+      [
+        "Scooby-Doo",
+        5
+      ],
+      [
+        "Avatar: The Last Airbender",
+        4
+      ],
+      [
+        "Rugrats",
+        3
+      ],
+      [
+        "Futurama",
+        2
+      ],
+      [
+        "The Flintstones",
+        0
+      ],
+      [
+        "Rick and Morty",
+        0
+      ],
+      [
+        "Batman: The Animated Series",
+        0
+      ],
+      [
+        "Teenage Mutant Ninja Turtles",
+        0
+      ],
+      [
+        "The Powerpuff Girls",
+        0
+      ],
+      [
+        "Adventure Time",
+        0
+      ]
+    ],
+    "clues": {
+      "The Simpsons": [
+        "The characters debuted in short television segments in 1987.",
+        "Matt Groening created the series.",
+        "The fictional setting is a town called Springfield.",
+        "The central household includes Homer, Marge, Bart, Lisa and Maggie."
+      ],
+      "SpongeBob SquarePants": [
+        "The series premiered on Nickelodeon in 1999.",
+        "Its creator, Stephen Hillenburg, studied marine biology.",
+        "The primary setting is an underwater city called Bikini Bottom.",
+        "The central character lives in a pineapple and works at the Krusty Krab."
+      ],
+      "Looney Tunes": [
+        "The original animated shorts began appearing in 1930.",
+        "Warner Bros. released the original theatrical cartoons.",
+        "Voice actor Mel Blanc portrayed numerous recurring characters.",
+        "Its recurring characters include Bugs Bunny and Daffy Duck."
+      ]
+    },
+    "sources": {
+      "The Simpsons": [
+        "https://en.wikipedia.org/wiki/The_Simpsons"
+      ],
+      "SpongeBob SquarePants": [
+        "https://en.wikipedia.org/wiki/SpongeBob_SquarePants",
+        "https://en.wikipedia.org/wiki/Stephen_Hillenburg"
+      ],
+      "Looney Tunes": [
+        "https://en.wikipedia.org/wiki/Looney_Tunes",
+        "https://en.wikipedia.org/wiki/Mel_Blanc"
+      ]
+    }
+  },
+  {
+    "id": "sneaker-brand",
+    "label": "Sneaker brand",
+    "title": "GOAT sneaker brand",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Nike",
+        35
+      ],
+      [
+        "Jordan",
+        23
+      ],
+      [
+        "Adidas",
+        17
+      ],
+      [
+        "New Balance",
+        9
+      ],
+      [
+        "Converse",
+        5
+      ],
+      [
+        "Vans",
+        3
+      ],
+      [
+        "ASICS",
+        3
+      ],
+      [
+        "Puma",
+        2
+      ],
+      [
+        "Reebok",
+        2
+      ],
+      [
+        "Hoka",
+        1
+      ],
+      [
+        "Brooks",
+        0
+      ],
+      [
+        "On",
+        0
+      ],
+      [
+        "Skechers",
+        0
+      ],
+      [
+        "Saucony",
+        0
+      ],
+      [
+        "Under Armour",
+        0
+      ],
+      [
+        "Fila",
+        0
+      ]
+    ],
+    "clues": {
+      "Nike": [
+        "The company was founded in 1964.",
+        "Its original business name was Blue Ribbon Sports.",
+        "Its name comes from the Greek goddess of victory.",
+        "Its signature logo is known as the Swoosh."
+      ],
+      "Jordan": [
+        "The original signature shoe was released in 1985.",
+        "Designer Tinker Hatfield helped develop several iconic models.",
+        "The brand originated through a partnership with a Chicago Bulls player.",
+        "Its signature Jumpman logo depicts a leaping basketball player."
+      ],
+      "Adidas": [
+        "The company was officially established in 1949.",
+        "Its headquarters are in Herzogenaurach, Germany.",
+        "Its footwear collections include Samba and Superstar.",
+        "Three parallel stripes are its signature design element."
+      ]
+    },
+    "sources": {
+      "Nike": [
+        "https://en.wikipedia.org/wiki/Nike,_Inc."
+      ],
+      "Jordan": [
+        "https://en.wikipedia.org/wiki/Air_Jordan",
+        "https://en.wikipedia.org/wiki/Jumpman_(logo)"
+      ],
+      "Adidas": [
+        "https://en.wikipedia.org/wiki/Adidas"
+      ]
+    }
+  },
+  {
+    "id": "nfl-running-back",
+    "label": "NFL running back",
+    "title": "GOAT NFL running back",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Barry Sanders",
+        35
+      ],
+      [
+        "Walter Payton",
+        23
+      ],
+      [
+        "Jim Brown",
+        14
+      ],
+      [
+        "Emmitt Smith",
+        11
+      ],
+      [
+        "Adrian Peterson",
+        5
+      ],
+      [
+        "LaDainian Tomlinson",
+        4
+      ],
+      [
+        "Eric Dickerson",
+        3
+      ],
+      [
+        "Marshall Faulk",
+        2
+      ],
+      [
+        "Bo Jackson",
+        2
+      ],
+      [
+        "Gale Sayers",
+        1
+      ],
+      [
+        "Marcus Allen",
+        0
+      ],
+      [
+        "Earl Campbell",
+        0
+      ],
+      [
+        "Tony Dorsett",
+        0
+      ],
+      [
+        "Curtis Martin",
+        0
+      ],
+      [
+        "Thurman Thomas",
+        0
+      ],
+      [
+        "Derrick Henry",
+        0
+      ]
+    ],
+    "clues": {
+      "Barry Sanders": [
+        "Was born in Wichita, Kansas.",
+        "Won the Heisman Trophy at Oklahoma State in 1988.",
+        "Rushed for 2,053 yards during the 1997 NFL season.",
+        "Wore number 20 throughout his NFL career in Detroit."
+      ],
+      "Walter Payton": [
+        "Played college football at Jackson State University.",
+        "Was selected fourth overall in the 1975 NFL draft.",
+        "Finished his career with 16,726 rushing yards.",
+        "Known as Sweetness, he wore number 34 for Chicago."
+      ],
+      "Jim Brown": [
+        "Played college football and lacrosse at Syracuse University.",
+        "Led the NFL in rushing yards during eight of his nine seasons.",
+        "Retired from professional football at age 30.",
+        "Wore number 32 throughout his career with Cleveland."
+      ]
+    },
+    "sources": {
+      "Barry Sanders": [
+        "https://en.wikipedia.org/wiki/Barry_Sanders",
+        "https://www.profootballhof.com/players/barry-sanders/"
+      ],
+      "Walter Payton": [
+        "https://en.wikipedia.org/wiki/Walter_Payton",
+        "https://www.profootballhof.com/players/walter-payton/"
+      ],
+      "Jim Brown": [
+        "https://en.wikipedia.org/wiki/Jim_Brown",
+        "https://www.profootballhof.com/players/jim-brown/"
+      ]
+    }
+  },
+  {
+    "id": "pasta-dish",
+    "label": "Pasta dish",
+    "title": "GOAT pasta dish",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Lasagna",
+        23
+      ],
+      [
+        "Spaghetti and Meatballs",
+        21
+      ],
+      [
+        "Fettuccine Alfredo",
+        17
+      ],
+      [
+        "Carbonara",
+        12
+      ],
+      [
+        "Mac and Cheese",
+        10
+      ],
+      [
+        "Baked Ziti",
+        5
+      ],
+      [
+        "Penne alla Vodka",
+        4
+      ],
+      [
+        "Ravioli",
+        3
+      ],
+      [
+        "Pesto Pasta",
+        3
+      ],
+      [
+        "Linguine with Clams",
+        2
+      ],
+      [
+        "Cacio e Pepe",
+        0
+      ],
+      [
+        "Pasta Primavera",
+        0
+      ],
+      [
+        "Cannelloni",
+        0
+      ],
+      [
+        "Puttanesca",
+        0
+      ],
+      [
+        "Amatriciana",
+        0
+      ],
+      [
+        "Manicotti",
+        0
+      ]
+    ],
+    "clues": {
+      "Lasagna": [
+        "The dish has historical roots in Italian cuisine.",
+        "Some traditional versions include béchamel sauce.",
+        "It is commonly assembled in a rectangular baking dish.",
+        "Wide, flat sheets of pasta separate layers of sauce and fillings."
+      ],
+      "Spaghetti and Meatballs": [
+        "This combination is closely associated with Italian-American cuisine.",
+        "Tomato sauce commonly accompanies the dish.",
+        "Ground meat is shaped into spheres before cooking.",
+        "Long, thin noodles are topped with round portions of seasoned beef."
+      ],
+      "Fettuccine Alfredo": [
+        "The dish became associated with a restaurant in Rome.",
+        "Its American adaptations frequently include heavy cream.",
+        "The traditional sauce combines butter and Parmesan cheese.",
+        "Flat ribbon-shaped noodles are coated in a rich, pale sauce."
+      ]
+    },
+    "sources": {
+      "Lasagna": [
+        "https://en.wikipedia.org/wiki/Lasagna"
+      ],
+      "Spaghetti and Meatballs": [
+        "https://en.wikipedia.org/wiki/Spaghetti_and_meatballs"
+      ],
+      "Fettuccine Alfredo": [
+        "https://en.wikipedia.org/wiki/Fettuccine_Alfredo"
+      ]
+    }
+  },
+  {
+    "id": "plot-twist-movie",
+    "label": "Plot twist movie",
+    "title": "GOAT plot twist movie",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "The Sixth Sense",
+        24
+      ],
+      [
+        "Fight Club",
+        20
+      ],
+      [
+        "The Usual Suspects",
+        17
+      ],
+      [
+        "The Prestige",
+        11
+      ],
+      [
+        "Shutter Island",
+        9
+      ],
+      [
+        "Se7en",
+        6
+      ],
+      [
+        "Memento",
+        4
+      ],
+      [
+        "Gone Girl",
+        4
+      ],
+      [
+        "The Others",
+        3
+      ],
+      [
+        "Primal Fear",
+        2
+      ],
+      [
+        "Oldboy",
+        0
+      ],
+      [
+        "Arrival",
+        0
+      ],
+      [
+        "Saw",
+        0
+      ],
+      [
+        "The Village",
+        0
+      ],
+      [
+        "Planet of the Apes",
+        0
+      ],
+      [
+        "The Game",
+        0
+      ]
+    ],
+    "clues": {
+      "The Sixth Sense": [
+        "The movie was released in 1999.",
+        "It received six Academy Award nominations.",
+        "M. Night Shyamalan wrote and directed it.",
+        "Bruce Willis portrays a psychologist helping a boy who sees ghosts."
+      ],
+      "Fight Club": [
+        "The movie was released in 1999.",
+        "It was adapted from a novel by Chuck Palahniuk.",
+        "David Fincher directed the movie.",
+        "Brad Pitt portrays a soap salesman named Tyler Durden."
+      ],
+      "The Usual Suspects": [
+        "The movie was released in 1995.",
+        "Christopher McQuarrie won an Oscar for its screenplay.",
+        "Much of the story is presented through a police interrogation.",
+        "A mysterious criminal named Keyser Söze is central to the plot."
+      ]
+    },
+    "sources": {
+      "The Sixth Sense": [
+        "https://en.wikipedia.org/wiki/The_Sixth_Sense"
+      ],
+      "Fight Club": [
+        "https://en.wikipedia.org/wiki/Fight_Club"
+      ],
+      "The Usual Suspects": [
+        "https://en.wikipedia.org/wiki/The_Usual_Suspects"
+      ]
+    }
+  },
+  {
+    "id": "superpower",
+    "label": "Superpower",
+    "title": "GOAT superpower",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Teleportation",
+        25
+      ],
+      [
+        "Time Travel",
+        23
+      ],
+      [
+        "Flight",
+        15
+      ],
+      [
+        "Invisibility",
+        11
+      ],
+      [
+        "Mind Reading",
+        8
+      ],
+      [
+        "Super Strength",
+        5
+      ],
+      [
+        "Healing Factor",
+        4
+      ],
+      [
+        "Super Speed",
+        4
+      ],
+      [
+        "Telekinesis",
+        3
+      ],
+      [
+        "Shapeshifting",
+        2
+      ],
+      [
+        "Immortality",
+        0
+      ],
+      [
+        "Future Sight",
+        0
+      ],
+      [
+        "Time Freeze",
+        0
+      ],
+      [
+        "Weather Control",
+        0
+      ],
+      [
+        "Force Fields",
+        0
+      ],
+      [
+        "Water Breathing",
+        0
+      ]
+    ],
+    "clues": {
+      "Teleportation": [
+        "This ability is a recurring concept in science fiction.",
+        "Nightcrawler possesses a fictional version of this ability.",
+        "Transporter technology in Star Trek performs a similar function.",
+        "It allows someone to relocate without crossing the intervening space."
+      ],
+      "Time Travel": [
+        "This concept is central to many science fiction stories.",
+        "H. G. Wells published a famous novel about this concept in 1895.",
+        "Doctor Who explores this ability using the TARDIS.",
+        "It involves moving between different points in history or the future."
+      ],
+      "Flight": [
+        "Numerous fictional superheroes possess this ability.",
+        "It is one of Superman's signature abilities.",
+        "The fictional character Peter Pan also possesses it.",
+        "It allows a person to move through the air without an aircraft."
+      ]
+    },
+    "sources": {
+      "Teleportation": [
+        "https://en.wikipedia.org/wiki/Teleportation",
+        "https://en.wikipedia.org/wiki/Nightcrawler_(character)"
+      ],
+      "Time Travel": [
+        "https://en.wikipedia.org/wiki/Time_travel",
+        "https://en.wikipedia.org/wiki/TARDIS"
+      ],
+      "Flight": [
+        "https://en.wikipedia.org/wiki/Superman",
+        "https://en.wikipedia.org/wiki/Peter_Pan"
+      ]
+    }
+  },
+  {
+    "id": "fictional-character",
+    "label": "Fictional character",
+    "title": "GOAT fictional character",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Sherlock Holmes",
+        19
+      ],
+      [
+        "Darth Vader",
+        17
+      ],
+      [
+        "Batman",
+        15
+      ],
+      [
+        "Harry Potter",
+        13
+      ],
+      [
+        "Homer Simpson",
+        10
+      ],
+      [
+        "James Bond",
+        8
+      ],
+      [
+        "Gandalf",
+        6
+      ],
+      [
+        "Indiana Jones",
+        5
+      ],
+      [
+        "Mickey Mouse",
+        4
+      ],
+      [
+        "Jack Sparrow",
+        3
+      ],
+      [
+        "Superman",
+        0
+      ],
+      [
+        "Forrest Gump",
+        0
+      ],
+      [
+        "Mario",
+        0
+      ],
+      [
+        "SpongeBob",
+        0
+      ],
+      [
+        "Rocky Balboa",
+        0
+      ],
+      [
+        "Tony Stark",
+        0
+      ]
+    ],
+    "clues": {
+      "Sherlock Holmes": [
+        "The character first appeared in print in 1887.",
+        "Arthur Conan Doyle created the character.",
+        "A physician named Dr. Watson is his frequent companion.",
+        "His famous fictional address is 221B Baker Street."
+      ],
+      "Darth Vader": [
+        "The character first appeared on cinema screens in 1977.",
+        "David Prowse physically portrayed him in the original trilogy.",
+        "James Earl Jones provided his distinctive voice.",
+        "His original identity is Anakin Skywalker."
+      ],
+      "Batman": [
+        "The character made his comic book debut in 1939.",
+        "Bob Kane and Bill Finger created the character.",
+        "A butler named Alfred Pennyworth assists him.",
+        "He protects Gotham City under the secret identity of Bruce Wayne."
+      ]
+    },
+    "sources": {
+      "Sherlock Holmes": [
+        "https://en.wikipedia.org/wiki/Sherlock_Holmes"
+      ],
+      "Darth Vader": [
+        "https://en.wikipedia.org/wiki/Darth_Vader"
+      ],
+      "Batman": [
+        "https://en.wikipedia.org/wiki/Batman"
+      ]
+    }
+  },
+  {
+    "id": "best-picture-winner",
+    "label": "Best Picture winner",
+    "title": "GOAT Best Picture winner",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "The Godfather",
+        25
+      ],
+      [
+        "The Lord of the Rings: The Return of the King",
+        20
+      ],
+      [
+        "Forrest Gump",
+        15
+      ],
+      [
+        "Gladiator",
+        11
+      ],
+      [
+        "Titanic",
+        9
+      ],
+      [
+        "Schindler's List",
+        6
+      ],
+      [
+        "The Silence of the Lambs",
+        5
+      ],
+      [
+        "The Departed",
+        4
+      ],
+      [
+        "Parasite",
+        3
+      ],
+      [
+        "Braveheart",
+        2
+      ],
+      [
+        "Casablanca",
+        0
+      ],
+      [
+        "Oppenheimer",
+        0
+      ],
+      [
+        "Rocky",
+        0
+      ],
+      [
+        "Unforgiven",
+        0
+      ],
+      [
+        "No Country for Old Men",
+        0
+      ],
+      [
+        "The Sting",
+        0
+      ]
+    ],
+    "clues": {
+      "The Godfather": [
+        "The movie was released in 1972.",
+        "It was adapted from a novel written by Mario Puzo.",
+        "Francis Ford Coppola directed the movie.",
+        "Marlon Brando portrays the patriarch of the Corleone family."
+      ],
+      "The Lord of the Rings: The Return of the King": [
+        "The movie was released in 2003.",
+        "It was directed by Peter Jackson.",
+        "It won all 11 Academy Awards for which it was nominated.",
+        "Frodo Baggins and Samwise Gamgee journey toward Mount Doom."
+      ],
+      "Forrest Gump": [
+        "The movie was released in 1994.",
+        "Robert Zemeckis directed the movie.",
+        "Its main character witnesses several major American historical events.",
+        "Tom Hanks portrays a man who runs across the United States."
+      ]
+    },
+    "sources": {
+      "The Godfather": [
+        "https://en.wikipedia.org/wiki/The_Godfather",
+        "https://www.oscars.org/oscars/ceremonies/1973"
+      ],
+      "The Lord of the Rings: The Return of the King": [
+        "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Return_of_the_King",
+        "https://www.oscars.org/oscars/ceremonies/2004"
+      ],
+      "Forrest Gump": [
+        "https://en.wikipedia.org/wiki/Forrest_Gump",
+        "https://www.oscars.org/oscars/ceremonies/1995"
+      ]
+    }
+  },
+  {
+    "id": "bbq-food",
+    "label": "BBQ food",
+    "title": "GOAT BBQ food",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Smoked Brisket",
+        27
+      ],
+      [
+        "Baby Back Ribs",
+        22
+      ],
+      [
+        "Pulled Pork",
+        16
+      ],
+      [
+        "Cheeseburger",
+        12
+      ],
+      [
+        "BBQ Chicken",
+        7
+      ],
+      [
+        "Steak",
+        5
+      ],
+      [
+        "Sausage",
+        4
+      ],
+      [
+        "Burnt Ends",
+        3
+      ],
+      [
+        "Hot Dog",
+        2
+      ],
+      [
+        "Grilled Shrimp",
+        2
+      ],
+      [
+        "Grilled Salmon",
+        0
+      ],
+      [
+        "Pork Belly",
+        0
+      ],
+      [
+        "Tri-Tip",
+        0
+      ],
+      [
+        "Turkey Leg",
+        0
+      ],
+      [
+        "Chicken Skewers",
+        0
+      ],
+      [
+        "Grilled Corn",
+        0
+      ]
+    ],
+    "clues": {
+      "Smoked Brisket": [
+        "The cut contains substantial connective tissue.",
+        "Traditional barbecue preparation requires prolonged low-temperature cooking.",
+        "It is a signature component of Central Texas barbecue.",
+        "The beef cut comes from the lower chest of the animal."
+      ],
+      "Baby Back Ribs": [
+        "This cut contains curved bones with meat between them.",
+        "It is commonly prepared with dry seasoning or barbecue sauce.",
+        "It comes from the upper rib cage of a pig near the spine.",
+        "Cut from the loin, its bones are shorter than the belly-side cut."
+      ],
+      "Pulled Pork": [
+        "The dish is associated with barbecue traditions in the American South.",
+        "Shoulder meat is commonly used for its preparation.",
+        "Long cooking breaks down connective tissue and softens the meat.",
+        "The finished meat is shredded into strands and often served on a bun."
+      ]
+    },
+    "sources": {
+      "Smoked Brisket": [
+        "https://en.wikipedia.org/wiki/Brisket",
+        "https://en.wikipedia.org/wiki/Texas_barbecue"
+      ],
+      "Baby Back Ribs": [
+        "https://en.wikipedia.org/wiki/Pork_ribs"
+      ],
+      "Pulled Pork": [
+        "https://en.wikipedia.org/wiki/Pulled_pork"
+      ]
+    }
+  },
+  {
+    "id": "romantic-movie",
+    "label": "Romantic movie",
+    "title": "GOAT romantic movie",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "The Notebook",
+        26
+      ],
+      [
+        "Titanic",
+        23
+      ],
+      [
+        "Pretty Woman",
+        13
+      ],
+      [
+        "When Harry Met Sally",
+        10
+      ],
+      [
+        "Pride & Prejudice",
+        8
+      ],
+      [
+        "Ghost",
+        6
+      ],
+      [
+        "Dirty Dancing",
+        5
+      ],
+      [
+        "La La Land",
+        4
+      ],
+      [
+        "Notting Hill",
+        3
+      ],
+      [
+        "Sleepless in Seattle",
+        2
+      ],
+      [
+        "Before Sunrise",
+        0
+      ],
+      [
+        "10 Things I Hate About You",
+        0
+      ],
+      [
+        "Love Actually",
+        0
+      ],
+      [
+        "Crazy Rich Asians",
+        0
+      ],
+      [
+        "The Princess Bride",
+        0
+      ],
+      [
+        "A Walk to Remember",
+        0
+      ]
+    ],
+    "clues": {
+      "The Notebook": [
+        "The movie was released in 2004.",
+        "Nick Cassavetes directed this literary adaptation.",
+        "It was adapted from a novel written by Nicholas Sparks.",
+        "Ryan Gosling and Rachel McAdams portray Noah and Allie."
+      ],
+      "Titanic": [
+        "The movie was released in 1997.",
+        "James Cameron wrote and directed the movie.",
+        "It won 11 Academy Awards.",
+        "Leonardo DiCaprio and Kate Winslet portray Jack and Rose."
+      ],
+      "Pretty Woman": [
+        "The movie was released in 1990.",
+        "Garry Marshall directed the movie.",
+        "Much of the story takes place in Beverly Hills.",
+        "Richard Gere and Julia Roberts portray Edward and Vivian."
+      ]
+    },
+    "sources": {
+      "The Notebook": [
+        "https://en.wikipedia.org/wiki/The_Notebook"
+      ],
+      "Titanic": [
+        "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
+        "https://www.oscars.org/oscars/ceremonies/1998"
+      ],
+      "Pretty Woman": [
+        "https://en.wikipedia.org/wiki/Pretty_Woman"
+      ]
+    }
+  },
+  {
+    "id": "super-bowl-snack",
+    "label": "Super Bowl snack",
+    "title": "GOAT Super Bowl snack",
+    "kind": "daily",
+    "season": "super-bowl",
+    "opts": [
+      [
+        "Buffalo Wings",
+        30
+      ],
+      [
+        "Nachos",
+        20
+      ],
+      [
+        "Pizza",
+        17
+      ],
+      [
+        "Chips and Guacamole",
+        10
+      ],
+      [
+        "Sliders",
+        7
+      ],
+      [
+        "Buffalo Chicken Dip",
+        5
+      ],
+      [
+        "Mozzarella Sticks",
+        4
+      ],
+      [
+        "Pigs in a Blanket",
+        3
+      ],
+      [
+        "Potato Skins",
+        2
+      ],
+      [
+        "Pretzels",
+        2
+      ],
+      [
+        "Quesadillas",
+        0
+      ],
+      [
+        "Jalapeño Poppers",
+        0
+      ],
+      [
+        "Onion Rings",
+        0
+      ],
+      [
+        "Meatballs",
+        0
+      ],
+      [
+        "Popcorn",
+        0
+      ],
+      [
+        "Cheese and Crackers",
+        0
+      ]
+    ],
+    "clues": {
+      "Buffalo Wings": [
+        "The modern dish is commonly associated with the Anchor Bar.",
+        "Celery and blue cheese dressing are traditional accompaniments.",
+        "A classic coating combines cayenne-based hot sauce and butter.",
+        "It traditionally uses the drumette and flat sections of a chicken."
+      ],
+      "Nachos": [
+        "The original dish originated in Mexico in the 1940s.",
+        "Ignacio Anaya is credited with creating the original version.",
+        "Jalapeños and melted cheese were among the original toppings.",
+        "The ingredients are served over crisp triangular tortilla pieces."
+      ],
+      "Pizza": [
+        "The modern version is associated with Naples, Italy.",
+        "It is traditionally baked at a high temperature.",
+        "Tomato sauce and mozzarella are common ingredients.",
+        "A round flat dough base is typically divided into triangular slices."
+      ]
+    },
+    "sources": {
+      "Buffalo Wings": [
+        "https://en.wikipedia.org/wiki/Buffalo_wing"
+      ],
+      "Nachos": [
+        "https://en.wikipedia.org/wiki/Nachos"
+      ],
+      "Pizza": [
+        "https://en.wikipedia.org/wiki/Pizza"
+      ]
+    }
+  },
+  {
+    "id": "horror-movie",
+    "label": "Horror movie",
+    "title": "GOAT horror movie",
+    "kind": "daily",
+    "season": "halloween",
+    "opts": [
+      [
+        "The Exorcist",
+        23
+      ],
+      [
+        "Halloween",
+        21
+      ],
+      [
+        "The Shining",
+        17
+      ],
+      [
+        "Alien",
+        11
+      ],
+      [
+        "Psycho",
+        8
+      ],
+      [
+        "A Nightmare on Elm Street",
+        6
+      ],
+      [
+        "Scream",
+        5
+      ],
+      [
+        "The Texas Chain Saw Massacre",
+        4
+      ],
+      [
+        "The Conjuring",
+        3
+      ],
+      [
+        "Hereditary",
+        2
+      ],
+      [
+        "The Ring",
+        0
+      ],
+      [
+        "Get Out",
+        0
+      ],
+      [
+        "The Thing",
+        0
+      ],
+      [
+        "It",
+        0
+      ],
+      [
+        "The Blair Witch Project",
+        0
+      ],
+      [
+        "Insidious",
+        0
+      ]
+    ],
+    "clues": {
+      "The Exorcist": [
+        "The movie was released in 1973.",
+        "William Friedkin directed the movie.",
+        "It was adapted from a novel written by William Peter Blatty.",
+        "Linda Blair portrays a young girl named Regan MacNeil."
+      ],
+      "Halloween": [
+        "The original movie was released in 1978.",
+        "John Carpenter directed the movie and composed its score.",
+        "Jamie Lee Curtis made her feature film debut in it.",
+        "Laurie Strode encounters a masked figure named Michael Myers."
+      ],
+      "The Shining": [
+        "The movie was released in 1980.",
+        "It was adapted from a Stephen King novel.",
+        "Stanley Kubrick directed the movie.",
+        "Jack Nicholson portrays a winter caretaker at the Overlook Hotel."
+      ]
+    },
+    "sources": {
+      "The Exorcist": [
+        "https://en.wikipedia.org/wiki/The_Exorcist_(film)"
+      ],
+      "Halloween": [
+        "https://en.wikipedia.org/wiki/Halloween_(1978_film)"
+      ],
+      "The Shining": [
+        "https://en.wikipedia.org/wiki/The_Shining_(film)"
+      ]
+    }
+  },
+  {
+    "id": "christmas-movie",
+    "label": "Christmas movie",
+    "title": "GOAT Christmas movie",
+    "kind": "daily",
+    "season": "christmas",
+    "opts": [
+      [
+        "Home Alone",
+        27
+      ],
+      [
+        "Elf",
+        22
+      ],
+      [
+        "National Lampoon's Christmas Vacation",
+        15
+      ],
+      [
+        "Die Hard",
+        11
+      ],
+      [
+        "It's a Wonderful Life",
+        8
+      ],
+      [
+        "How the Grinch Stole Christmas",
+        6
+      ],
+      [
+        "A Christmas Story",
+        4
+      ],
+      [
+        "The Polar Express",
+        3
+      ],
+      [
+        "Love Actually",
+        2
+      ],
+      [
+        "The Santa Clause",
+        2
+      ],
+      [
+        "Klaus",
+        0
+      ],
+      [
+        "The Holiday",
+        0
+      ],
+      [
+        "White Christmas",
+        0
+      ],
+      [
+        "Scrooged",
+        0
+      ],
+      [
+        "Miracle on 34th Street",
+        0
+      ],
+      [
+        "Jingle All the Way",
+        0
+      ]
+    ],
+    "clues": {
+      "Home Alone": [
+        "The movie was released in 1990.",
+        "John Hughes wrote the screenplay.",
+        "Joe Pesci and Daniel Stern portray a pair of burglars.",
+        "Macaulay Culkin portrays an eight-year-old accidentally left behind."
+      ],
+      "Elf": [
+        "The movie was released in 2003.",
+        "Jon Favreau directed the movie.",
+        "Much of the story takes place in New York City.",
+        "Will Ferrell portrays Buddy, a human raised at the North Pole."
+      ],
+      "National Lampoon's Christmas Vacation": [
+        "The movie was released in 1989.",
+        "John Hughes wrote the screenplay.",
+        "Randy Quaid portrays a character known as Cousin Eddie.",
+        "Chevy Chase portrays Clark Griswold struggling with festive decorations."
+      ]
+    },
+    "sources": {
+      "Home Alone": [
+        "https://en.wikipedia.org/wiki/Home_Alone"
+      ],
+      "Elf": [
+        "https://en.wikipedia.org/wiki/Elf_(film)"
+      ],
+      "National Lampoon's Christmas Vacation": [
+        "https://en.wikipedia.org/wiki/National_Lampoon%27s_Christmas_Vacation"
+      ]
+    }
+  }
+]
