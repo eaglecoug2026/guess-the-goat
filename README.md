@@ -13,7 +13,7 @@ Guess the crowd's greatest of all time.
 
 ## How it plays
 
-- **Daily GOAT**: one category a day. You get 5 guesses to find the crowd's #1. Each miss shows where your guess ranks in the crowd's top 10 (red hot, warm or cold) and unlocks a clue.
+- **Daily GOAT**: one category a day. You get 5 guesses to find the crowd's #1. Each miss shows where your guess ranks in the crowd's top 10 (red hot, warm or cold). No clues are shown. Names appear only once you type 2 letters, and you pick one from the list.
 - **Hot Take Score**: after the reveal, you name your own GOAT. The score runs 0–100 by how far your pick is from the crowd. Results copy out as an emoji grid for sharing.
 - **Team GOAT**: 8 random categories dealt from the pool, with a Shuffle button.
 - **Player suggestions**: anyone can suggest a category. The owner reviews them and can add them to the game as live crowd votes.

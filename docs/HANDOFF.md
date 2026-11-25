@@ -67,7 +67,8 @@ Deferred work is listed in §18.
   - #4–6 = **Warm**
   - #7–10 = **Cold**
   - otherwise **Not top 10**
-- **Clues:** clue 1 is visible at the start. Each miss unlocks the next, up to 4. All 4 show at the end. These are the answer's clue set from the snapshot.
+- **Clues:** ~~clue 1 is visible at the start. Each miss unlocks the next, up to 4.~~ Removed from the game 2026-11-25 (D-28): no clues are shown. The snapshot and catalog still carry them.
+- **Guess box (D-28):** no contender names show until the player types 2 letters. Then up to 5 names that have a word starting with those letters drop down; tap one, or use the arrow keys and Enter. A name that isn't a contender, or was already guessed, uses no guess.
 - **Estimated share** `e` = whole-percent estimate ÷ 100. Contenders outside the top 10 have `e = 0`.
 - **Blended share:** `b = (v + k·e) / (V + k)`, where `v` = the contender's real votes, `V` = the category's total real votes, and `k = config.k` (default 100). Ranks are sorted by `b` descending. Ties are broken by `e` descending, then by name.
 - **Disclosure tier,** by `V`:
@@ -344,7 +345,7 @@ Backend changes ship **before** the client code that depends on them. The client
 | Share | The default text has the puzzle number, grid, score and a URL with `?r=`, and **no answer name**. The toggle adds the pick. The native share, clipboard and textarea fallbacks all work. |
 | Analytics | Each allowlisted event lands once, even when resent. Blocking the analytics endpoint changes nothing visible in gameplay. The reporting views return the metrics in §9. |
 | Offline | With Supabase blocked: a cached daily is still playable, and an uncached daily shows the notice plus practice and never a substitute daily. The excused date doesn't break the streak. |
-| Refresh mid-game | Reloading after 2 guesses restores the 2 guesses, the unlocked clues and the remaining guesses. |
+| Refresh mid-game | Reloading after 2 guesses restores the 2 guesses and the remaining guesses. |
 | Streak | With a mocked date: skip a day → the streak shows 0 on load. A win on consecutive days → +1. An excused day → no break. |
 | Colorblind | Every guess state has a text label. Automated grayscale screenshot review confirms the states are distinguishable. |
 | Mobile layout | At 390×844, the daily board is visible without scrolling. There's no horizontal overflow at 360px. |

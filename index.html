@@ -65,14 +65,13 @@ h1{font:clamp(28px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 6px;text-
 @keyframes flip{from{transform:rotateX(80deg);opacity:0}to{transform:none;opacity:1}}
 .t0{background:var(--goat)}.t1{background:var(--hot);color:#fff!important}.t2{background:var(--warm)}.t3{background:var(--cool)}.t4{background:var(--out)}
 .slot.f.win{background:#123d27;border-color:var(--goat)}
-.clues{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px}
-.clues li{background:#fff6dc;color:var(--ink);border-radius:10px;padding:9px 12px;font-size:16px;display:flex;gap:10px}
-.clues li b{font:16px/1.5 Anton,Impact,sans-serif;color:var(--red);flex:none}
-.clues li.lock{background:transparent;color:#bdb5a1;border:2px dashed #ffffff30}
-.clues li.lock b{color:inherit}
 .play{margin-top:16px}
 .play label{display:block;font-weight:600;margin-bottom:6px}
+.ac{position:relative}
 #q{width:100%;font-size:17px;padding:12px 14px;border-radius:12px;border:2px solid #fff6dc77;background:#0d0b08;color:#fff6dc;min-height:48px}
+.sugs{position:absolute;left:0;right:0;top:100%;z-index:5;margin:4px 0 0;padding:4px;background:#fff6dc;border-radius:12px;box-shadow:0 10px 28px #000a;display:grid;gap:2px}
+.sug{min-height:44px;padding:10px 12px;border:0;border-radius:8px;background:transparent;color:var(--ink);font-weight:600;font-size:16px;text-align:left;cursor:pointer}
+.sug.on{background:var(--red);color:#fff6dc}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;max-height:236px;overflow:auto;padding:4px}
 .chips.open{max-height:none}
 .chip{min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid #fff6dc;background:transparent;color:#fff6dc;font-weight:600;font-size:15px}
@@ -193,11 +192,13 @@ h1{font:clamp(28px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 6px;text-
       <div class="notice" id="notice" hidden></div>
       <ol class="slots" id="slots" aria-label="Your guesses"></ol>
       <p class="sr" id="live" aria-live="polite"></p>
-      <ul class="clues" id="clues" aria-label="Clues"></ul>
       <div class="play" id="play" hidden>
-        <label for="q">Make a guess. Tap a name or type to filter.</label>
-        <input id="q" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search contenders">
-        <div class="chips" id="chips"></div>
+        <label for="q">Make a guess. Start typing a name.</label>
+        <div class="ac">
+          <input id="q" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="sugs" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type a name">
+          <div class="sugs" id="sugs" role="listbox" aria-label="Suggestions" hidden></div>
+        </div>
+        <p class="none" id="qMsg" hidden></p>
       </div>
       <div class="vote" id="vote" hidden></div>
     </section>
@@ -706,15 +707,8 @@ function render(fresh) {
   }
   $('slots').innerHTML = rows;
   $('slots').hidden = false;
-  var misses = g.guesses.filter(function (n) { return n !== r.answer; }).length;
-  var show = fin ? 4 : Math.min(4, 1 + misses);
-  $('clues').hidden = false;
-  $('clues').innerHTML = r.clues.map(function (c, i) {
-    return i < show ? '<li><b>Clue ' + (i + 1) + '</b><span>' + esc(c) + '</span></li>'
-      : '<li class="lock"><b>Clue ' + (i + 1) + '</b><span>Unlocks after miss ' + i + '</span></li>';
-  }).join('');
   $('play').hidden = fin;
-  if (!fin) renderChips();
+  if (!fin) renderSugs();
   renderSide(cur);
   renderMore();
 }
@@ -738,18 +732,33 @@ function renderEmptyBoard() {
   $('title').textContent = dailyStatus === 'loading' ? "Loading today’s GOAT…" : dailyStatus === 'prelaunch' ? 'Warm up for the first Daily GOAT' : "Today’s GOAT is on its way";
   $('disc').textContent = '';
   $('corr').hidden = true;
-  $('slots').hidden = true; $('clues').hidden = true; $('play').hidden = true;
+  $('slots').hidden = true; $('play').hidden = true;
   renderHowSide();
 }
 
-function renderChips() {
-  var cur = current(); if (!cur) return [];
-  var f = G.norm($('q').value.trim());
-  var list = alpha(cur.r).filter(function (n) { return cur.g.guesses.indexOf(n) < 0 && G.norm(n).indexOf(f) >= 0; });
-  $('chips').innerHTML = list.length ? list.map(function (n) { return '<button class="chip" data-guess="' + esc(n) + '">' + esc(n) + '</button>'; }).join('')
-    : '<p class="none">No contender by that name in this category.</p>';
-  return list;
+// Guess box: no names show until 2 letters are typed, then up to 5 that start a word with them.
+var SUG_MIN = 2, SUG_MAX = 5, sugAt = 0, sugList = [];
+function startsWord(name, f) {
+  var n = G.norm(name);
+  for (var i = 0; i < n.length; i++) if ((i === 0 || /[^a-z0-9]/.test(n[i - 1])) && n.substr(i, f.length) === f) return true;
+  return false;
 }
+function renderSugs() {
+  var cur = current(), q = $('q'), box = $('sugs'), msg = $('qMsg');
+  var f = G.norm(q.value.trim());
+  var all = cur && f.length >= SUG_MIN ? alpha(cur.r).filter(function (n) { return startsWord(n, f); }) : [];
+  sugList = all.filter(function (n) { return cur.g.guesses.indexOf(n) < 0; }).slice(0, SUG_MAX);
+  if (sugAt >= sugList.length) sugAt = 0;
+  box.innerHTML = sugList.map(function (n, i) {
+    return '<button type="button" tabindex="-1" class="sug' + (i === sugAt ? ' on' : '') + '" id="sug' + i + '" role="option" aria-selected="' + (i === sugAt) + '" data-guess="' + esc(n) + '">' + esc(n) + '</button>';
+  }).join('');
+  box.hidden = !sugList.length;
+  q.setAttribute('aria-expanded', String(!!sugList.length));
+  if (sugList.length) q.setAttribute('aria-activedescendant', 'sug' + sugAt); else q.removeAttribute('aria-activedescendant');
+  var m = f.length >= SUG_MIN && !sugList.length ? (all.length ? 'You already guessed that one.' : 'Not one of the contenders. Try another name.') : '';
+  msg.hidden = !m; msg.textContent = m;
+}
+function closeSugs() { sugList = []; $('sugs').hidden = true; $('q').setAttribute('aria-expanded', 'false'); $('q').removeAttribute('aria-activedescendant'); }
 
 // ---------------------------------------------------------------- render: side panel
 var LEGEND = '<ul class="key" aria-label="What the colors mean">' +
@@ -760,7 +769,7 @@ var LEGEND = '<ul class="key" aria-label="What the colors mean">' +
   '<li><i class="t4"></i><span><b>Not top 10</b></span></li></ul>';
 function renderHowSide() {
   $('side').innerHTML = '<div class="panel"><div class="hero"><img class="logo" src="logo.png" width="120" height="120" alt=""><div><h2>Find the crowd’s #1</h2>' +
-    '<p>Five guesses. Each miss shows where your pick landed in the crowd’s ranking and unlocks a new clue.</p></div></div>' + LEGEND +
+    '<p>Five guesses. Each miss shows where your pick landed in the crowd’s ranking.</p></div></div>' + LEGEND +
     '<p class="note">After the reveal, name your own GOAT. Your pick counts as a vote and gets you a Hot Take Score.</p></div>';
 }
 function bars(r, g) {
@@ -828,7 +837,7 @@ function renderVoteBoard() {
   $('title').textContent = c.title;
   $('disc').textContent = (c.total_votes || 0).toLocaleString('en-US') + (c.total_votes === 1 ? ' vote' : ' votes') + ' so far';
   $('corr').hidden = true;
-  $('slots').hidden = true; $('clues').hidden = true; $('play').hidden = true;
+  $('slots').hidden = true; $('play').hidden = true;
   var v = $('vote'); v.hidden = false;
   var st = voteState[c.slug] || {};
   v.innerHTML = '<p>A player-suggested category. There’s no crowd ranking to guess yet, so cast your vote and help build it.</p>' +
@@ -989,12 +998,21 @@ document.addEventListener('change', function (ev) {
   if (ev.target.id === 'incPick') { includePick = ev.target.checked; var b = $('shareBox'); if (b) b.hidden = true; }
 });
 function scrollToBoard() { $('board').scrollIntoView({ behavior: smooth(), block: 'start' }); }
-$('q').addEventListener('input', renderChips);
+$('q').addEventListener('input', function () { sugAt = 0; renderSugs(); });
+$('q').addEventListener('focus', renderSugs);
+$('sugs').addEventListener('mousedown', function (e) { e.preventDefault(); }); // keep the keyboard up while tapping a name
+document.addEventListener('click', function (e) { if (!e.target.closest('.ac')) closeSugs(); });
 $('q').addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') { closeSugs(); return; }
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    if (!sugList.length) return;
+    e.preventDefault();
+    sugAt = (sugAt + (e.key === 'ArrowDown' ? 1 : sugList.length - 1)) % sugList.length;
+    renderSugs(); return;
+  }
   if (e.key !== 'Enter') return;
-  var l = renderChips(), f = G.norm($('q').value.trim());
-  var exact = l.filter(function (n) { return G.norm(n) === f; })[0];
-  if (exact) guess(exact); else if (l.length === 1) guess(l[0]);
+  e.preventDefault();
+  if (sugList.length) guess(sugList[sugAt]);
 });
 
 // ---------------------------------------------------------------- suggestions

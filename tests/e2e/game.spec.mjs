@@ -17,8 +17,12 @@ async function open(page, { time = NOON(TODAY), backend = createBackend(), stora
   await page.goto(path);
   return { backend, errors };
 }
-const chip = (page, name) => page.locator('#chips').getByRole('button', { name, exact: true });
-async function guess(page, name) { await chip(page, name).click(); await expect(page.locator('#slots .slot.f .nm', { hasText: name }).first()).toBeVisible(); }
+const sug = (page, name) => page.locator('#sugs').getByRole('option', { name, exact: true });
+async function guess(page, name) {
+  await page.locator('#q').fill(name);
+  await sug(page, name).click();
+  await expect(page.locator('#slots .slot.f .nm', { hasText: name }).first()).toBeVisible();
+}
 async function playToEnd(page, b, win, date = TODAY) {
   const wrong = b.wrongFor(date, 5);
   if (win) { await guess(page, wrong[0]); await guess(page, b.answerFor(date)); }
@@ -54,19 +58,57 @@ test('daily loss: five misses reveal the answer and reset the streak', async ({ 
   await playToEnd(page, b, false);
   await expect(page.locator('#side h2').first()).toHaveText(`The GOAT was ${b.answerFor(TODAY)}`);
   await expect(page.locator('#sStreak')).toHaveText('0');
-  await expect(page.locator('#clues li.lock')).toHaveCount(0);
+  await expect(page.locator('#clues')).toHaveCount(0);
 });
 
-test('refresh mid-game restores guesses, clues and remaining guesses', async ({ page }) => {
+test('refresh mid-game restores guesses and remaining guesses', async ({ page }) => {
   const { backend: b } = await open(page);
   const [w1, w2] = b.wrongFor(TODAY, 2);
   await guess(page, w1); await guess(page, w2);
   await page.reload();
   await expect(page.locator('#slots .slot.f')).toHaveCount(2);
   await expect(page.locator('#slots .slot.f .nm')).toHaveText([w1, w2]);
-  await expect(page.locator('#clues li:not(.lock)')).toHaveCount(3);
   await expect(page.locator('#slots .slot:not(.f)')).toHaveCount(3);
-  await expect(chip(page, w1)).toHaveCount(0);
+  await page.locator('#q').fill(w1);
+  await expect(page.locator('#sugs')).toBeHidden();
+  await expect(page.locator('#qMsg')).toHaveText('You already guessed that one.');
+});
+
+test('guess box: no names until 2 letters, then pick from the list', async ({ page }) => {
+  const { backend: b } = await open(page);
+  const q = page.locator('#q'), box = page.locator('#sugs');
+  await expect(q).toBeVisible();
+  await expect(box).toBeHidden();
+  await expect(page.locator('#chips')).toHaveCount(0);
+  await q.focus();
+  await expect(box).toBeHidden();
+  const answer = b.answerFor(TODAY);
+  await q.fill(answer.slice(0, 1));
+  await expect(box).toBeHidden();
+  await q.fill(answer.slice(0, 2));
+  await expect(box).toBeVisible();
+  const shown = await box.getByRole('option').allTextContents();
+  expect(shown).toContain(answer);
+  expect(shown.length).toBeLessThanOrEqual(5);
+  const fold = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const pre = fold(answer.slice(0, 2));
+  for (const n of shown) expect(fold(n).split(/[^a-z0-9]+/).some(w => w.startsWith(pre))).toBe(true);
+  await expect(q).toHaveAttribute('aria-expanded', 'true');
+  await expect(box.locator('.sug.on')).toHaveText(shown[0]);
+  await q.press('Escape');
+  await expect(box).toBeHidden();
+  await q.fill('zzqx');
+  await expect(box).toBeHidden();
+  await expect(page.locator('#qMsg')).toHaveText('Not one of the contenders. Try another name.');
+  await q.press('Enter');
+  await expect(page.locator('#slots .slot.f')).toHaveCount(0);
+  await q.fill(answer.slice(0, 2));
+  const i = shown.indexOf(answer);
+  for (let k = 0; k < i; k++) await q.press('ArrowDown');
+  await expect(box.locator('.sug.on')).toHaveText(answer);
+  await q.press('Enter');
+  await expect(page.locator('#slots .slot.f .nm').first()).toHaveText(answer);
+  await expect(page.locator('#side h2').first()).toHaveText('Found it in 1');
 });
 
 test('personal pick is a vote: pick, change, fail and retry without duplicates', async ({ page }) => {
@@ -272,8 +314,9 @@ test('practice rounds never change daily stats', async ({ page }) => {
   const { backend: b } = await open(page);
   await page.locator('#cats [data-practice]').first().click();
   await expect(page.locator('#tag')).toHaveText('Practice round');
-  const names = await page.locator('#chips button').allTextContents();
-  for (const n of names.slice(0, 5)) { if (await page.locator('#play').isHidden()) break; await chip(page, n).click(); }
+  const title = await page.locator('#title').textContent();
+  const names = bundled.find(c => c.title === title).opts.map(o => o.name);
+  for (const n of names.slice(0, 5)) { if (await page.locator('#play').isHidden()) break; await guess(page, n); }
   await expect(page.locator('#play')).toBeHidden();
   await expect(page.locator('#sPlayed')).toHaveText('0');
   await expect(page.locator('#ptally')).toContainText('Practice: 1 played');
