@@ -268,7 +268,7 @@ Add a `privacy.html` page, linked in the footer. It must state:
   - suggestions: until reviewed, plus 90 days if dismissed
 - No ads, no cookies and no third-party trackers. Processor: Supabase (US).
 - Rankings may blend estimates with real votes.
-- **Deletion requests:** the contact email (open item O-3). The owner can delete a player's rows by player ID; the player finds their ID in a "Your data" note in the footer.
+- **Deletion requests:** info@intellismartstaffing.com (O-3). The owner can delete a player's rows by player ID; the player finds their ID in a "Your data" note in the footer.
 
 **Nightly cleanup:** a `pg_cron` job enforces the retention periods above.
 
@@ -410,7 +410,7 @@ Backend changes ship **before** the client code that depends on them. The client
 |---|---|---|---|
 | O-1 | Review and approve this document | ChatGPT, then Peter | (blocks the build) |
 | O-2 | Puzzle #1 launch date (`config.launch_date`) | Peter | The first day after step 5 passes |
-| O-3 | Contact email for privacy, deletion and corrections | Peter | (blocks `privacy.html`) |
-| O-4 | Enable GitHub Pages: Settings → Pages → `main`, `/` root | Peter or ChatGPT | (blocks going live) |
+| O-3 | Contact email for privacy, deletion and corrections | Peter | **Done 2026-11-25:** info@intellismartstaffing.com |
+| O-4 | Enable GitHub Pages: Settings → Pages → `main`, `/` root | Peter or ChatGPT | **Done 2026-11-25:** live at https://eaglecoug2026.github.io/guess-the-goat/ (Peter asked to go live early, ahead of steps 2–4) |
 | O-5 | Deliver ChatGPT's `categories.json` (36 categories) into the repo or chat | Peter | (blocks step 3) |
 | O-6 | Optional custom domain | Peter | The github.io address |
