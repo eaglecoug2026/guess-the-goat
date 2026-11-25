@@ -1,0 +1,1250 @@
+[
+  {
+    "id": "thanksgiving-side",
+    "label": "Thanksgiving side",
+    "title": "GOAT Thanksgiving side dish",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Stuffing",
+        24
+      ],
+      [
+        "Mashed potatoes",
+        19
+      ],
+      [
+        "Mac and cheese",
+        12
+      ],
+      [
+        "Sweet potato casserole",
+        9
+      ],
+      [
+        "Green bean casserole",
+        8
+      ],
+      [
+        "Cranberry sauce",
+        7
+      ],
+      [
+        "Dinner rolls",
+        6
+      ],
+      [
+        "Cornbread",
+        4
+      ],
+      [
+        "Gravy",
+        3
+      ],
+      [
+        "Corn pudding",
+        2
+      ],
+      [
+        "Brussels sprouts",
+        0
+      ],
+      [
+        "Collard greens",
+        0
+      ],
+      [
+        "Deviled eggs",
+        0
+      ],
+      [
+        "Roasted carrots",
+        0
+      ],
+      [
+        "Squash casserole",
+        0
+      ],
+      [
+        "Waldorf salad",
+        0
+      ]
+    ],
+    "clues": {
+      "Stuffing": [
+        "Carb-forward and usually savory.",
+        "Bread is the backbone.",
+        "Celery, onion and sage are classic add-ins.",
+        "Plenty of families call it dressing."
+      ],
+      "Mashed potatoes": [
+        "Usually the starchiest thing on the plate.",
+        "Butter and milk or cream get worked in.",
+        "Best made with russets or Yukon Golds.",
+        "Whipped smooth or left a little lumpy, then scooped."
+      ],
+      "Mac and cheese": [
+        "A Southern holiday must-have, baked in a casserole dish.",
+        "Often finished with a crunchy, browned top.",
+        "Starts with elbow-shaped pasta.",
+        "Smothered in a sharp cheddar sauce."
+      ]
+    },
+    "sources": {
+      "Stuffing": [
+        "https://en.wikipedia.org/wiki/Stuffing"
+      ],
+      "Mashed potatoes": [
+        "https://en.wikipedia.org/wiki/Mashed_potato"
+      ],
+      "Mac and cheese": [
+        "https://en.wikipedia.org/wiki/Macaroni_and_cheese"
+      ]
+    }
+  },
+  {
+    "id": "nba-player",
+    "label": "NBA player",
+    "title": "GOAT NBA player",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Michael Jordan",
+        38
+      ],
+      [
+        "LeBron James",
+        29
+      ],
+      [
+        "Kareem Abdul-Jabbar",
+        9
+      ],
+      [
+        "Magic Johnson",
+        6
+      ],
+      [
+        "Kobe Bryant",
+        5
+      ],
+      [
+        "Bill Russell",
+        3
+      ],
+      [
+        "Larry Bird",
+        3
+      ],
+      [
+        "Wilt Chamberlain",
+        2
+      ],
+      [
+        "Tim Duncan",
+        2
+      ],
+      [
+        "Stephen Curry",
+        2
+      ],
+      [
+        "Shaquille O'Neal",
+        0
+      ],
+      [
+        "Hakeem Olajuwon",
+        0
+      ],
+      [
+        "Kevin Durant",
+        0
+      ],
+      [
+        "Nikola Jokić",
+        0
+      ],
+      [
+        "Giannis Antetokounmpo",
+        0
+      ],
+      [
+        "Kevin Garnett",
+        0
+      ]
+    ],
+    "clues": {
+      "Michael Jordan": [
+        "Did most of his damage in the 1980s and 1990s.",
+        "Six titles, and never lost in the Finals.",
+        "Finals MVP every time he got there.",
+        "Spent most of his career in Chicago."
+      ],
+      "LeBron James": [
+        "Went straight to the NBA from high school in 2003.",
+        "Won titles with three different franchises.",
+        "Became the NBA's all-time leading scorer in 2023.",
+        "Grew up in Akron, Ohio, and was called the Chosen One as a teen."
+      ],
+      "Kareem Abdul-Jabbar": [
+        "Changed his name in 1971, the year he won his first title.",
+        "Won three straight college titles at UCLA.",
+        "Won six titles: one in Milwaukee, five with the Lakers.",
+        "Famous for an unstoppable shot called the skyhook."
+      ]
+    },
+    "sources": {
+      "Michael Jordan": [
+        "https://en.wikipedia.org/wiki/Michael_Jordan"
+      ],
+      "LeBron James": [
+        "https://en.wikipedia.org/wiki/LeBron_James"
+      ],
+      "Kareem Abdul-Jabbar": [
+        "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar"
+      ]
+    }
+  },
+  {
+    "id": "rapper",
+    "label": "Rapper",
+    "title": "GOAT rapper",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Tupac Shakur",
+        17
+      ],
+      [
+        "Jay-Z",
+        16
+      ],
+      [
+        "The Notorious B.I.G.",
+        15
+      ],
+      [
+        "Eminem",
+        14
+      ],
+      [
+        "Kendrick Lamar",
+        13
+      ],
+      [
+        "Nas",
+        7
+      ],
+      [
+        "Lil Wayne",
+        5
+      ],
+      [
+        "Drake",
+        4
+      ],
+      [
+        "André 3000",
+        3
+      ],
+      [
+        "Snoop Dogg",
+        2
+      ],
+      [
+        "Rakim",
+        0
+      ],
+      [
+        "Ice Cube",
+        0
+      ],
+      [
+        "Nicki Minaj",
+        0
+      ],
+      [
+        "Missy Elliott",
+        0
+      ],
+      [
+        "J. Cole",
+        0
+      ],
+      [
+        "Lauryn Hill",
+        0
+      ]
+    ],
+    "clues": {
+      "Tupac Shakur": [
+        "Broke through in the early 1990s.",
+        "Repped the West Coast, though born in New York.",
+        "Also acted, starring in Juice.",
+        "Dropped All Eyez on Me in 1996."
+      ],
+      "Jay-Z": [
+        "Grew up in the Marcy Houses in Brooklyn.",
+        "Co-founded Roc-A-Fella Records.",
+        "His debut album, Reasonable Doubt, came out in 1996.",
+        "Married to Beyoncé."
+      ],
+      "The Notorious B.I.G.": [
+        "Signed to Sean Combs's Bad Boy Records.",
+        "His debut album, Ready to Die, came out in 1994.",
+        "Killed in Los Angeles in 1997, at age 24.",
+        "Had hits with Juicy and Hypnotize."
+      ]
+    },
+    "sources": {
+      "Tupac Shakur": [
+        "https://en.wikipedia.org/wiki/Tupac_Shakur"
+      ],
+      "Jay-Z": [
+        "https://en.wikipedia.org/wiki/Jay-Z"
+      ],
+      "The Notorious B.I.G.": [
+        "https://en.wikipedia.org/wiki/The_Notorious_B.I.G."
+      ]
+    }
+  },
+  {
+    "id": "movie-villain",
+    "label": "Movie villain",
+    "title": "GOAT movie villain",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Darth Vader",
+        26
+      ],
+      [
+        "The Joker",
+        20
+      ],
+      [
+        "Hannibal Lecter",
+        14
+      ],
+      [
+        "Thanos",
+        8
+      ],
+      [
+        "Hans Gruber",
+        7
+      ],
+      [
+        "Anton Chigurh",
+        6
+      ],
+      [
+        "Nurse Ratched",
+        5
+      ],
+      [
+        "The Wicked Witch of the West",
+        4
+      ],
+      [
+        "Agent Smith",
+        3
+      ],
+      [
+        "Lord Voldemort",
+        3
+      ],
+      [
+        "Freddy Krueger",
+        0
+      ],
+      [
+        "HAL 9000",
+        0
+      ],
+      [
+        "Annie Wilkes",
+        0
+      ],
+      [
+        "Michael Myers",
+        0
+      ],
+      [
+        "Bane",
+        0
+      ],
+      [
+        "Scar",
+        0
+      ]
+    ],
+    "clues": {
+      "Darth Vader": [
+        "First hit the screen in the 1970s.",
+        "His breathing is as famous as his voice.",
+        "Voiced by James Earl Jones.",
+        "Has the most famous family twist in film."
+      ],
+      "The Joker": [
+        "First appeared in comics in 1940.",
+        "Played on film by Jack Nicholson, Joaquin Phoenix and others.",
+        "Heath Ledger won a posthumous Oscar for the role.",
+        "Batman's grinning arch-enemy."
+      ],
+      "Hannibal Lecter": [
+        "Created by novelist Thomas Harris.",
+        "A brilliant psychiatrist who is also a cannibal.",
+        "Talks through glass with FBI trainee Clarice Starling.",
+        "Anthony Hopkins won an Oscar playing him."
+      ]
+    },
+    "sources": {
+      "Darth Vader": [
+        "https://en.wikipedia.org/wiki/Darth_Vader"
+      ],
+      "The Joker": [
+        "https://en.wikipedia.org/wiki/Joker_(character)"
+      ],
+      "Hannibal Lecter": [
+        "https://en.wikipedia.org/wiki/Hannibal_Lecter"
+      ]
+    }
+  },
+  {
+    "id": "pizza-topping",
+    "label": "Pizza topping",
+    "title": "GOAT pizza topping",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Pepperoni",
+        36
+      ],
+      [
+        "Sausage",
+        13
+      ],
+      [
+        "Mushrooms",
+        11
+      ],
+      [
+        "Extra cheese",
+        8
+      ],
+      [
+        "Bacon",
+        7
+      ],
+      [
+        "Onions",
+        5
+      ],
+      [
+        "Pineapple",
+        5
+      ],
+      [
+        "Green peppers",
+        4
+      ],
+      [
+        "Black olives",
+        3
+      ],
+      [
+        "Jalapeños",
+        3
+      ],
+      [
+        "Ham",
+        0
+      ],
+      [
+        "Spinach",
+        0
+      ],
+      [
+        "Anchovies",
+        0
+      ],
+      [
+        "Chicken",
+        0
+      ],
+      [
+        "Fresh basil",
+        0
+      ],
+      [
+        "Hot honey",
+        0
+      ]
+    ],
+    "clues": {
+      "Pepperoni": [
+        "It is a meat.",
+        "Cured, a little smoky, a little spicy.",
+        "Curls into tiny cups in a hot oven.",
+        "America's most-ordered topping by a mile."
+      ],
+      "Sausage": [
+        "It's a meat.",
+        "Often Italian-style, seasoned with fennel.",
+        "Usually crumbled on, not sliced.",
+        "Seasoned ground pork, sometimes sold in links."
+      ],
+      "Mushrooms": [
+        "Not a meat, and not a plant either.",
+        "Usually white button or cremini.",
+        "Sliced thin, they shrink and turn earthy in the oven.",
+        "It's a fungus."
+      ]
+    },
+    "sources": {
+      "Pepperoni": [
+        "https://en.wikipedia.org/wiki/Pepperoni"
+      ],
+      "Sausage": [
+        "https://en.wikipedia.org/wiki/Italian_sausage"
+      ],
+      "Mushrooms": [
+        "https://en.wikipedia.org/wiki/Edible_mushroom"
+      ]
+    }
+  },
+  {
+    "id": "sitcom",
+    "label": "Sitcom",
+    "title": "GOAT sitcom",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Seinfeld",
+        22
+      ],
+      [
+        "The Office",
+        21
+      ],
+      [
+        "Friends",
+        15
+      ],
+      [
+        "Parks and Recreation",
+        8
+      ],
+      [
+        "The Simpsons",
+        7
+      ],
+      [
+        "Cheers",
+        6
+      ],
+      [
+        "Curb Your Enthusiasm",
+        5
+      ],
+      [
+        "It's Always Sunny in Philadelphia",
+        5
+      ],
+      [
+        "Arrested Development",
+        4
+      ],
+      [
+        "M*A*S*H",
+        3
+      ],
+      [
+        "Frasier",
+        0
+      ],
+      [
+        "The Fresh Prince of Bel-Air",
+        0
+      ],
+      [
+        "Brooklyn Nine-Nine",
+        0
+      ],
+      [
+        "Modern Family",
+        0
+      ],
+      [
+        "Abbott Elementary",
+        0
+      ],
+      [
+        "Schitt’s Creek",
+        0
+      ]
+    ],
+    "clues": {
+      "Seinfeld": [
+        "Ran for nine seasons in the 1990s.",
+        "Pitched as a show about nothing.",
+        "Lives mostly in a New York apartment and a diner.",
+        "Its finale sent the whole gang to jail."
+      ],
+      "The Office": [
+        "An American remake of a British show.",
+        "Ran on NBC from 2005 to 2013.",
+        "Shot like a documentary, with talking-head interviews.",
+        "Set at a paper company in Scranton, Pennsylvania."
+      ],
+      "Friends": [
+        "Ran on NBC from 1994 to 2004.",
+        "Six main cast members, all in their twenties at the start.",
+        "They hang out at a coffee shop called Central Perk.",
+        "Ross and Rachel were on a break."
+      ]
+    },
+    "sources": {
+      "Seinfeld": [
+        "https://en.wikipedia.org/wiki/Seinfeld"
+      ],
+      "The Office": [
+        "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)"
+      ],
+      "Friends": [
+        "https://en.wikipedia.org/wiki/Friends"
+      ]
+    }
+  },
+  {
+    "id": "video-game",
+    "label": "Video game",
+    "title": "GOAT video game",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Zelda: Ocarina of Time",
+        18
+      ],
+      [
+        "Super Mario Bros.",
+        16
+      ],
+      [
+        "Tetris",
+        14
+      ],
+      [
+        "Minecraft",
+        12
+      ],
+      [
+        "The Witcher 3",
+        7
+      ],
+      [
+        "Red Dead Redemption 2",
+        7
+      ],
+      [
+        "Grand Theft Auto V",
+        6
+      ],
+      [
+        "Elden Ring",
+        5
+      ],
+      [
+        "Super Mario 64",
+        5
+      ],
+      [
+        "Halo: Combat Evolved",
+        4
+      ],
+      [
+        "Pac-Man",
+        0
+      ],
+      [
+        "Street Fighter II",
+        0
+      ],
+      [
+        "Skyrim",
+        0
+      ],
+      [
+        "Half-Life 2",
+        0
+      ],
+      [
+        "Pokémon Red and Blue",
+        0
+      ],
+      [
+        "The Last of Us",
+        0
+      ]
+    ],
+    "clues": {
+      "Zelda: Ocarina of Time": [
+        "Released in 1998.",
+        "A fantasy adventure on the Nintendo 64.",
+        "You jump seven years ahead to save a kingdom.",
+        "Starring a hero named Link."
+      ],
+      "Super Mario Bros.": [
+        "Released in Japan in 1985.",
+        "Came bundled with many NES consoles.",
+        "World 1-1 is one of the most famous levels ever made.",
+        "A plumber rescues Princess Toadstool from Bowser."
+      ],
+      "Tetris": [
+        "Created in the Soviet Union in 1984.",
+        "Came bundled with the original Game Boy.",
+        "No characters and no story, just falling shapes.",
+        "Clear lines by fitting four-block pieces together."
+      ]
+    },
+    "sources": {
+      "Zelda: Ocarina of Time": [
+        "https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Ocarina_of_Time"
+      ],
+      "Super Mario Bros.": [
+        "https://en.wikipedia.org/wiki/Super_Mario_Bros."
+      ],
+      "Tetris": [
+        "https://en.wikipedia.org/wiki/Tetris"
+      ]
+    }
+  },
+  {
+    "id": "fast-food-fries",
+    "label": "Fast food fries",
+    "title": "GOAT fast food fries",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "McDonald's",
+        34
+      ],
+      [
+        "Chick-fil-A",
+        15
+      ],
+      [
+        "Five Guys",
+        11
+      ],
+      [
+        "Arby's curly fries",
+        10
+      ],
+      [
+        "In-N-Out",
+        6
+      ],
+      [
+        "Popeyes Cajun fries",
+        6
+      ],
+      [
+        "Wendy's",
+        5
+      ],
+      [
+        "Burger King",
+        4
+      ],
+      [
+        "Shake Shack",
+        4
+      ],
+      [
+        "Jack in the Box",
+        3
+      ],
+      [
+        "Checkers",
+        0
+      ],
+      [
+        "Culver's",
+        0
+      ],
+      [
+        "Whataburger",
+        0
+      ],
+      [
+        "Sonic",
+        0
+      ],
+      [
+        "Taco Bell Nacho Fries",
+        0
+      ],
+      [
+        "Carl’s Jr.",
+        0
+      ]
+    ],
+    "clues": {
+      "McDonald's": [
+        "Thin and crispy, shoestring style.",
+        "At their best in the first five minutes.",
+        "Served in a red carton.",
+        "Sold under the golden arches."
+      ],
+      "Chick-fil-A": [
+        "Cooked in canola oil.",
+        "Cut in a crisscross grid pattern.",
+        "Waffle fries, with lots of crispy edges.",
+        "The chain is closed on Sundays."
+      ],
+      "Five Guys": [
+        "Cut fresh in the restaurant from whole potatoes.",
+        "Comes Cajun or regular.",
+        "Cooked in peanut oil.",
+        "An extra scoop gets dumped into the bag."
+      ]
+    },
+    "sources": {
+      "McDonald's": [
+        "https://en.wikipedia.org/wiki/McDonald%27s"
+      ],
+      "Chick-fil-A": [
+        "https://en.wikipedia.org/wiki/Chick-fil-A"
+      ],
+      "Five Guys": [
+        "https://en.wikipedia.org/wiki/Five_Guys"
+      ]
+    }
+  },
+  {
+    "id": "breakfast-cereal",
+    "label": "Breakfast cereal",
+    "title": "GOAT breakfast cereal",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Cinnamon Toast Crunch",
+        20
+      ],
+      [
+        "Frosted Flakes",
+        14
+      ],
+      [
+        "Honey Nut Cheerios",
+        13
+      ],
+      [
+        "Lucky Charms",
+        11
+      ],
+      [
+        "Froot Loops",
+        9
+      ],
+      [
+        "Cap'n Crunch",
+        8
+      ],
+      [
+        "Reese's Puffs",
+        7
+      ],
+      [
+        "Cocoa Puffs",
+        5
+      ],
+      [
+        "Frosted Mini-Wheats",
+        4
+      ],
+      [
+        "Rice Krispies",
+        3
+      ],
+      [
+        "Corn Flakes",
+        0
+      ],
+      [
+        "Raisin Bran",
+        0
+      ],
+      [
+        "Fruity Pebbles",
+        0
+      ],
+      [
+        "Apple Jacks",
+        0
+      ],
+      [
+        "Honey Bunches of Oats",
+        0
+      ],
+      [
+        "Special K",
+        0
+      ]
+    ],
+    "clues": {
+      "Cinnamon Toast Crunch": [
+        "Sweet, and it changes the milk.",
+        "Little squares, not flakes or loops.",
+        "Leaves a sugary dust at the bottom of the bowl.",
+        "Every square is dusted with sugar and spice."
+      ],
+      "Frosted Flakes": [
+        "Introduced in 1952.",
+        "Made by Kellogg's.",
+        "Sugar-coated corn.",
+        "Tony the Tiger says they're great."
+      ],
+      "Honey Nut Cheerios": [
+        "Introduced in 1979.",
+        "Made by General Mills.",
+        "A sweeter take on a classic oat cereal.",
+        "Its mascot is a bee named Buzz."
+      ]
+    },
+    "sources": {
+      "Cinnamon Toast Crunch": [
+        "https://en.wikipedia.org/wiki/Cinnamon_Toast_Crunch"
+      ],
+      "Frosted Flakes": [
+        "https://en.wikipedia.org/wiki/Frosted_Flakes"
+      ],
+      "Honey Nut Cheerios": [
+        "https://en.wikipedia.org/wiki/Cheerios"
+      ]
+    }
+  },
+  {
+    "id": "tennis-player",
+    "label": "Tennis player",
+    "title": "GOAT tennis player",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Novak Djokovic",
+        30
+      ],
+      [
+        "Serena Williams",
+        24
+      ],
+      [
+        "Roger Federer",
+        20
+      ],
+      [
+        "Rafael Nadal",
+        12
+      ],
+      [
+        "Steffi Graf",
+        4
+      ],
+      [
+        "Martina Navratilova",
+        3
+      ],
+      [
+        "Rod Laver",
+        2
+      ],
+      [
+        "Pete Sampras",
+        2
+      ],
+      [
+        "Björn Borg",
+        1
+      ],
+      [
+        "Billie Jean King",
+        1
+      ],
+      [
+        "Andre Agassi",
+        0
+      ],
+      [
+        "Chris Evert",
+        0
+      ],
+      [
+        "Carlos Alcaraz",
+        0
+      ],
+      [
+        "Jannik Sinner",
+        0
+      ],
+      [
+        "Venus Williams",
+        0
+      ],
+      [
+        "Monica Seles",
+        0
+      ]
+    ],
+    "clues": {
+      "Novak Djokovic": [
+        "Turned pro in 2003.",
+        "Famous for sliding into the splits on hard courts.",
+        "Holds the men's record for Grand Slam singles titles.",
+        "Born in Belgrade, Serbia."
+      ],
+      "Serena Williams": [
+        "Turned pro in 1995.",
+        "Won the 2017 Australian Open while pregnant.",
+        "Won 23 Grand Slam singles titles.",
+        "Often played doubles with her sister Venus."
+      ],
+      "Roger Federer": [
+        "Born in Basel in 1981.",
+        "Played his last match at the 2022 Laver Cup.",
+        "Won eight Wimbledon singles titles.",
+        "Swiss, with a famous one-handed backhand."
+      ]
+    },
+    "sources": {
+      "Novak Djokovic": [
+        "https://en.wikipedia.org/wiki/Novak_Djokovic"
+      ],
+      "Serena Williams": [
+        "https://en.wikipedia.org/wiki/Serena_Williams"
+      ],
+      "Roger Federer": [
+        "https://en.wikipedia.org/wiki/Roger_Federer"
+      ]
+    }
+  },
+  {
+    "id": "candy-bar",
+    "label": "Candy bar",
+    "title": "GOAT candy bar",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Reese's Peanut Butter Cups",
+        22
+      ],
+      [
+        "Snickers",
+        20
+      ],
+      [
+        "Kit Kat",
+        15
+      ],
+      [
+        "Twix",
+        12
+      ],
+      [
+        "Milky Way",
+        6
+      ],
+      [
+        "3 Musketeers",
+        5
+      ],
+      [
+        "Butterfinger",
+        5
+      ],
+      [
+        "Hershey's Milk Chocolate",
+        4
+      ],
+      [
+        "Almond Joy",
+        3
+      ],
+      [
+        "Baby Ruth",
+        2
+      ],
+      [
+        "Mounds",
+        0
+      ],
+      [
+        "PayDay",
+        0
+      ],
+      [
+        "Crunch",
+        0
+      ],
+      [
+        "Heath",
+        0
+      ],
+      [
+        "Whatchamacallit",
+        0
+      ],
+      [
+        "Mr. Goodbar",
+        0
+      ]
+    ],
+    "clues": {
+      "Reese's Peanut Butter Cups": [
+        "Chocolate on the outside.",
+        "Not technically a bar at all.",
+        "Comes two to a pack in fluted paper liners.",
+        "Orange wrapper, salty-sweet filling, made by Hershey."
+      ],
+      "Snickers": [
+        "Introduced by Mars in 1930.",
+        "Named after a horse the Mars family owned.",
+        "Nougat, caramel and peanuts in milk chocolate.",
+        "Its ads say you're not you when you're hungry."
+      ],
+      "Kit Kat": [
+        "First sold in England in 1935.",
+        "Made by Hershey in the United States.",
+        "Crisp wafer fingers covered in chocolate.",
+        "Its slogan tells you to have a break."
+      ]
+    },
+    "sources": {
+      "Reese's Peanut Butter Cups": [
+        "https://en.wikipedia.org/wiki/Reese%27s_Peanut_Butter_Cups"
+      ],
+      "Snickers": [
+        "https://en.wikipedia.org/wiki/Snickers"
+      ],
+      "Kit Kat": [
+        "https://en.wikipedia.org/wiki/Kit_Kat"
+      ]
+    }
+  },
+  {
+    "id": "boxer",
+    "label": "Boxer",
+    "title": "GOAT boxer",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Muhammad Ali",
+        41
+      ],
+      [
+        "Mike Tyson",
+        14
+      ],
+      [
+        "Floyd Mayweather Jr.",
+        11
+      ],
+      [
+        "Sugar Ray Robinson",
+        10
+      ],
+      [
+        "Manny Pacquiao",
+        6
+      ],
+      [
+        "Joe Louis",
+        5
+      ],
+      [
+        "Sugar Ray Leonard",
+        4
+      ],
+      [
+        "Rocky Marciano",
+        3
+      ],
+      [
+        "Canelo Álvarez",
+        2
+      ],
+      [
+        "Roberto Durán",
+        2
+      ],
+      [
+        "George Foreman",
+        0
+      ],
+      [
+        "Joe Frazier",
+        0
+      ],
+      [
+        "Evander Holyfield",
+        0
+      ],
+      [
+        "Lennox Lewis",
+        0
+      ],
+      [
+        "Jack Dempsey",
+        0
+      ],
+      [
+        "Terence Crawford",
+        0
+      ]
+    ],
+    "clues": {
+      "Muhammad Ali": [
+        "A heavyweight of the 1960s and 70s.",
+        "Won Olympic gold in Rome in 1960.",
+        "Changed his name in 1964.",
+        "Fought the Rumble in the Jungle and the Thrilla in Manila."
+      ],
+      "Mike Tyson": [
+        "Trained as a teenager by Cus D'Amato.",
+        "Became the youngest heavyweight champion, at 20.",
+        "Lost to Buster Douglas in Tokyo in 1990.",
+        "Bit an opponent's ear in a 1997 title fight."
+      ],
+      "Floyd Mayweather Jr.": [
+        "Won a bronze medal at the 1996 Olympics.",
+        "Beat Conor McGregor in a 2017 boxing match.",
+        "Retired with a 50-0 professional record.",
+        "Nicknamed Money."
+      ]
+    },
+    "sources": {
+      "Muhammad Ali": [
+        "https://en.wikipedia.org/wiki/Muhammad_Ali"
+      ],
+      "Mike Tyson": [
+        "https://en.wikipedia.org/wiki/Mike_Tyson"
+      ],
+      "Floyd Mayweather Jr.": [
+        "https://en.wikipedia.org/wiki/Floyd_Mayweather_Jr."
+      ]
+    }
+  }
+]

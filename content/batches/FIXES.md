@@ -11,3 +11,11 @@ The batch files are kept exactly as ChatGPT sent them. Changes are made in the c
 
 ## Batch 2
 - cartoon-series / Looney Tunes, clue 2: Warner Bros. released the original shorts; Leon Schlesinger's studio made them until Warner bought it in 1944. Use: "Warner Bros. released the original theatrical cartoons."
+
+## Batch 3
+- bbq-food / Baby Back Ribs, clue 4: "spareribs" contains "ribs", a word from the answer (the checker caught it). Use: "Cut from the loin, its bones are shorter than the belly-side cut."
+
+## The 12 originals (originals.json)
+- Converted from the old built-in list: estimates to whole percents, same order.
+- Claude wrote the #2 and #3 clue sets (HANDOFF §12) and Wikipedia sources for every clued contender. ChatGPT reviews them.
+- Three old #1 clues broke the name rule and were reworded: Zelda clue 3 ("time"), Cinnamon Toast Crunch clue 4 ("cinnamon"), Reese's clues 3-4 ("cups", "peanut", "butter").

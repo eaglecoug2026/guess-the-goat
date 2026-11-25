@@ -5,7 +5,9 @@
   "scripts": {
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "node --test \"tests/unit/*.test.mjs\"",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "check:content": "node tools/validate-categories.mjs",
+    "build:content": "node tools/catalog-to-sql.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.1",
