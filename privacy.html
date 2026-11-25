@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · The GOAT</title>
+<meta name="description" content="What The GOAT keeps on your device, what it sends, how long it is kept and how to have it deleted.">
+<meta name="theme-color" content="#f6c519">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#f6c519;--ink:#141210;--card:#fffdf6;--mute:#5a4a14}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+a{color:var(--ink);text-decoration-thickness:2px;text-underline-offset:3px}
+a:focus-visible{outline:3px solid #e5372b;outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:16px 20px 40px}
+.top{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:18px}
+.top img{width:52px;height:52px}
+.top span{font:36px/1 Anton,Impact,sans-serif}
+h1{font:44px/1.05 Anton,Impact,sans-serif;margin:0 0 6px;letter-spacing:.01em}
+.updated{margin:0 0 20px;color:var(--mute);font-size:14px;font-weight:600}
+.card{background:var(--card);border:3px solid var(--ink);border-radius:16px;padding:6px 22px 18px;margin-bottom:16px}
+h2{font:26px/1.15 Anton,Impact,sans-serif;margin:16px 0 6px;letter-spacing:.01em}
+ul{margin:6px 0;padding-left:20px}
+li{margin:4px 0}
+p{margin:8px 0}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:2px solid #e8dfc4;vertical-align:top}
+th{font-weight:800}
+tr:last-child td{border-bottom:0}
+.lead{font-size:18px;font-weight:600}
+.back{display:inline-block;margin-top:8px;font-weight:800}
+@media(max-width:600px){h1{font-size:36px}.top span{font-size:30px}.top img{width:44px;height:44px}.card{padding:4px 16px 14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="top" href="./"><img src="logo.png" width="52" height="52" alt=""><span>THE GOAT</span></a>
+  <h1>Privacy</h1>
+  <p class="updated">Last updated November 25, 2026</p>
+
+  <section class="card">
+    <p class="lead">The GOAT has no accounts, no ads, no cookies and no third-party trackers. We never sell your data.</p>
+    <p>You play under a random, anonymous player ID that the game makes on your device. We don't ask for your name, email or anything else about you.</p>
+  </section>
+
+  <section class="card">
+    <h2>Kept on your device</h2>
+    <p>These stay in your browser's local storage and are never sent to us on their own:</p>
+    <ul>
+      <li>Your anonymous player ID</li>
+      <li>Your referral code, used in links you share</li>
+      <li>Your game progress for the day</li>
+      <li>Your stats: streak, games played and win rate</li>
+    </ul>
+    <p>Clearing your browser's site data removes all of it and gives you a new player ID.</p>
+  </section>
+
+  <section class="card">
+    <h2>Sent to us</h2>
+    <p>Each of these is stored with your anonymous player ID:</p>
+    <ul>
+      <li><b>Picks and votes</b>: who you think is the GOAT in each category.</li>
+      <li><b>Suggestions</b>: categories you suggest. They stay private until we review them.</li>
+      <li><b>Game events</b>: visits, games started and finished, shares and similar actions, so we can see what people enjoy and fix what breaks. We don't record anything you type except suggestions.</li>
+    </ul>
+    <p><b>IP addresses</b> are used only to stop spam and abuse through rate limits. We store a salted, one-way hash of your IP address, never the address itself.</p>
+  </section>
+
+  <section class="card">
+    <h2>How long we keep it</h2>
+    <table>
+      <tr><th>Data</th><th>Kept for</th></tr>
+      <tr><td>Game events</td><td>13 months</td></tr>
+      <tr><td>Hashed IP addresses (rate limits)</td><td>48 hours</td></tr>
+      <tr><td>Picks and votes</td><td>As long as the category exists</td></tr>
+      <tr><td>Suggestions</td><td>Until we review them. Dismissed suggestions are deleted 90 days after review.</td></tr>
+    </table>
+    <p>A nightly job deletes data as soon as it reaches these limits.</p>
+  </section>
+
+  <section class="card">
+    <h2>Who handles it</h2>
+    <p>Game data is stored by <b>Supabase</b>, our database provider, in the United States. The site is hosted on <b>GitHub Pages</b> and loads its fonts from <b>Google Fonts</b>. Like any website, those services see your IP address when your browser requests a page or font.</p>
+  </section>
+
+  <section class="card">
+    <h2>How the rankings work</h2>
+    <p>Each category starts from our own estimated ranking. As real votes come in, the crowd's votes count for more and more, until the ranking is driven by the community. Each ranking shows which stage it's at.</p>
+  </section>
+
+  <section class="card">
+    <h2>Content and corrections</h2>
+    <ul>
+      <li>Suggested categories are private until we approve them. Offensive content is removed right away.</li>
+      <li>Debates about private individuals aren't allowed.</li>
+      <li>If a puzzle has a factual error, we fix the category. A daily puzzle that's already out is never changed; instead, a correction note is shown under it.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Delete your data or contact us</h2>
+    <p>Email <a href="mailto:info@intellismartstaffing.com">info@intellismartstaffing.com</a> to have your data deleted, to report a mistake, or with any privacy question.</p>
+    <p>For deletion, include your player ID, shown in the "Your data" note at the bottom of the game page. Because the ID is anonymous, it's the only way we can find your records.</p>
+  </section>
+
+  <a class="back" href="./">← Back to the game</a>
+</main>
+</body>
+</html>
