@@ -42,9 +42,9 @@ select pg_temp.ok('empty array -> bad_input', pg_temp.err($q$select public.track
 select pg_temp.ok('51 events -> bad_input', pg_temp.err(format('select public.track(%L)', (select jsonb_agg(pg_temp.ev('visit')) from generate_series(1, 51))))) = 'bad_input');
 select pg_temp.ok('client time within 7 days is kept, older is replaced',
   public.track(jsonb_build_array(
-    pg_temp.ev('offline', jsonb_build_object('event_id', '22222222-2222-4222-8222-222222222222', 'props', '{"what":"daily"}',
+    pg_temp.ev('offline', jsonb_build_object('event_id', '22222222-2222-4222-8222-222222222222', 'props', '{"what":"daily"}'::jsonb,
                'at', to_char((now() - interval '2 days') at time zone 'utc', 'YYYY-MM-DD"T"HH24:MI:SS"Z"'))),
-    pg_temp.ev('offline', jsonb_build_object('event_id', '33333333-3333-4333-8333-333333333333', 'props', '{"what":"vote"}',
+    pg_temp.ev('offline', jsonb_build_object('event_id', '33333333-3333-4333-8333-333333333333', 'props', '{"what":"vote"}'::jsonb,
                'at', '2000-01-01T00:00:00Z')))) = 2);
 reset role;
 select pg_temp.ok('stored once, with player, ref and props', (select count(*) from public.events where event_id = '11111111-1111-4111-8111-111111111111' and ref = 'myref001' and props ->> 'ref' = 'abcd1234') = 1);
