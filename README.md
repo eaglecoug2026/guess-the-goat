@@ -4,6 +4,13 @@ Guess the crowd's greatest of all time.
 
 **Play:** https://eaglecoug2026.github.io/guess-the-goat/
 
+## Project docs
+
+- [docs/PRODUCT.md](docs/PRODUCT.md): what the game is and its current state
+- [docs/HANDOFF.md](docs/HANDOFF.md): MVP implementation spec (authoritative)
+- [docs/ROADMAP.md](docs/ROADMAP.md): phases and deferred features
+- [docs/DECISIONS.md](docs/DECISIONS.md): decision log
+
 ## How it plays
 
 - **Daily GOAT**: one category a day. You get 5 guesses to find the crowd's #1. Each miss shows where your guess ranks in the crowd's top 10 (red hot, warm or cold) and unlocks a clue.
