@@ -148,7 +148,7 @@ Each migration is a file in `supabase/migrations/`, applied in order and **commi
    - `owner_logout` revokes one session; `owner_revoke_all` revokes all of them.
    - The client stores the token in **sessionStorage only**. The passphrase is never stored and never sent anywhere except `owner_login`.
 4. **IP handling:**
-   - Use the first entry of `x-forwarded-for` from `current_setting('request.headers', true)`.
+   - Use `cf-connecting-ip` from `current_setting('request.headers', true)`, which Cloudflare sets and clients can't override. If it's missing, use the **last** entry of `x-forwarded-for`. The first entry is client-controlled (D-25).
    - Store it only as `encode(sha256(ip_salt || ip), 'hex')`.
    - If the IP is missing, use bucket `ip:unknown` with the same limits.
 5. **Rate limits** (in `config`, generous because of shared IPs):
