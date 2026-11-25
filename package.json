@@ -1,0 +1,14 @@
+{
+  "name": "guess-the-goat",
+  "private": true,
+  "description": "Tests only. The site itself is static and has no build step.",
+  "scripts": {
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "node --test \"tests/unit/*.test.mjs\"",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.1",
+    "@playwright/test": "^1.49.0"
+  }
+}
