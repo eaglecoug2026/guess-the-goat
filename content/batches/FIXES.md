@@ -6,6 +6,7 @@ The batch files are kept exactly as ChatGPT sent them. Changes are made in the c
 - Titles: lowercase after "GOAT" unless it's a proper noun, to match the existing 12 (e.g. "GOAT rock band", "GOAT NFL quarterback", "GOAT Disney animated movie").
 
 ## Batch 1
+- nfl-quarterback: Peter 2026-11-25: Joe Montana is the clear #1. Swap the top two: Joe Montana 39, Tom Brady 17 (Montana listed first). Everyone else unchanged, so the top 3 with clues are still Montana, Brady, Mahomes.
 - comedy-actor / Robin Williams, clue 3: "Good Hunting" is wrong; the film is Good Will Hunting. ("Will" is allowed: the rule bans words from the contender's own name, and "Williams" isn't "Will".) Use: "Won an Oscar for Good Will Hunting, directed by Gus Van Sant."
 
 ## Batch 2
