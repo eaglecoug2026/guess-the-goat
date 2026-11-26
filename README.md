@@ -37,6 +37,8 @@ Guess the crowd's greatest of all time.
 
 Use **Owner sign-in** at the bottom of the page. A signed-in session lasts 12 hours and is kept only in that browser tab. The owner panel has the review queue, live categories, the needs-clues list, the 30-day schedule, today's stats, corrections, player data deletion, and sign out everywhere.
 
+Day-by-day numbers are on the **Site Stats** page on proctorpilot.com (The GOAT tab): new visitors, people who played and daily games finished. They come from `site_stats_daily` (migration 0008), which returns counts only and needs a token that only the ProctorPilot server holds.
+
 To change the passphrase, run this in the Supabase SQL editor:
 
 ```sql
