@@ -515,3 +515,36 @@ test('the debate: hidden until the round ends, then typed picks, write-ins and b
   await expect(page.locator('#tName')).toHaveValue('Tester T');
   await expect.poll(() => b.eventsNamed('take_post').length).toBe(2);
 });
+
+test('the debate shows 5 takes at a time, then Show more', async ({ page }) => {
+  const b = createBackend();
+  const slug = b.puzzleFor(TODAY).slug;
+  for (let i = 1; i <= 11; i++) b.takes.push({ id: b.nextId++, slug, player: 'player-x-' + String(i).padStart(4, '0'), author: 'Fan ' + i, pick: 'Somebody', reason: `Reason number ${i}.`, seed: false, hidden: false, at: `2027-01-05T12:${String(i).padStart(2, '0')}:00Z` });
+  await open(page, { backend: b });
+  await playToEnd(page, b, true);
+  const items = page.locator('#takeList li');
+  await expect(items).toHaveCount(5);
+  await expect(items.first()).toContainText('Reason number 11.');
+  await expect(page.locator('#tCount')).toHaveText('(12)');
+  await expect(page.locator('#takeMore')).toContainText('Showing 5 of 12');
+  await page.getByRole('button', { name: 'Show more takes' }).click();
+  await expect(items).toHaveCount(10);
+  await expect(page.locator('#takeMore')).toContainText('Showing 10 of 12');
+  b.failNext.take_page = 1;
+  await page.getByRole('button', { name: 'Show more takes' }).click();
+  await expect(page.locator('#takeMore')).toContainText('Couldn’t load more.');
+  await expect(items).toHaveCount(10);
+  await page.getByRole('button', { name: 'Try again' }).click();
+  await expect(items).toHaveCount(12);
+  await expect(items.last()).toContainText('Starter take');
+  await expect(page.locator('#takeMore')).toBeHidden();
+  const texts = await items.allTextContents();
+  expect(new Set(texts).size).toBe(12);
+  // Posting puts your take on top without reloading the pages already shown.
+  await page.locator('#tPick').fill('Somebody Else');
+  await page.locator('#tWhy').fill('Mine goes on top.');
+  await page.getByRole('button', { name: 'Post my take' }).click();
+  await expect(items).toHaveCount(13);
+  await expect(items.first()).toHaveClass(/me/);
+  await expect(page.locator('#tCount')).toHaveText('(13)');
+});

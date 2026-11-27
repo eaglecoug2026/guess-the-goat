@@ -84,6 +84,7 @@ h1{font:clamp(28px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 6px;text-
 .talk h3{font:22px/1.1 Anton,Impact,sans-serif;margin:0 0 6px}
 .takes{list-style:none;margin:6px 0 0;padding:0}
 .takes li{border-top:2px solid #14121014;padding:12px 0;display:grid;gap:4px}
+.tmore{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:2px solid #14121014;padding-top:12px;font-size:14px}
 .takes li.me{background:#fff3c4;border-radius:10px;padding:12px;border-top:0;margin-bottom:6px}
 .tkh{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;color:#4a4130}
 .tkh b{color:var(--ink);font-size:16px}
@@ -969,7 +970,8 @@ function renderMore() {
 // ---------------------------------------------------------------- the debate (takes, D-31)
 // After a round (or on a crowd vote), players name their own GOAT, typed or picked, and say why.
 // Hidden until the round is over, since other players' picks would give the answer away.
-var takes = {};          // slug -> { state: 'loading' | 'ok' | 'error', list, total }
+var takes = {};          // slug -> { state: 'loading' | 'ok' | 'error', list, total, more, mine, paging }
+var TAKE_PAGE = 5;       // the board shows 5 takes at a time, then "Show more"
 var talkSlugShown = null, posting = false;
 function talkCat() {
   if (view.type === 'vote') { var c = findCat(view.slug); return c ? { slug: c.slug, title: c.title, opts: c.opts.map(function (o) { return o.name; }) } : null; }
@@ -978,14 +980,34 @@ function talkCat() {
   return { slug: cur.r.slug, title: cur.r.title, opts: alpha(cur.r), pick: cur.g.pick };
 }
 function loadTakes(slug) {
-  if (!takes[slug]) takes[slug] = { state: 'loading', list: [], total: 0 };
-  return rpc('get_takes', { p_slug: slug, p_player: player }).then(function (res) {
-    takes[slug] = { state: 'ok', list: (res && Array.isArray(res.takes)) ? res.takes : [], total: (res && res.total) || 0 };
+  if (!takes[slug]) takes[slug] = { state: 'loading', list: [], total: 0, more: false, mine: null };
+  return rpc('take_page', { p_slug: slug, p_player: player, p_limit: TAKE_PAGE }).then(function (res) {
+    takes[slug] = { state: 'ok', list: (res && Array.isArray(res.takes)) ? res.takes : [], total: (res && res.total) || 0,
+                    more: !!(res && res.more), mine: (res && res.mine) || null };
     renderTakeList(slug);
   }, function () {
-    takes[slug] = { state: 'error', list: takes[slug] ? takes[slug].list : [], total: 0 };
+    var t = takes[slug];
+    takes[slug] = { state: 'error', list: t ? t.list : [], total: 0, more: false, mine: t ? t.mine : null };
     renderTakeList(slug);
   });
+}
+// The next page starts after the last take shown, so takes posted meanwhile don't repeat or push any out.
+function moreTakes(slug) {
+  var t = takes[slug];
+  if (!t || t.paging || !t.more || !t.list.length) return;
+  var last = t.list[t.list.length - 1], hadFocus = document.activeElement && document.activeElement.id === 'takesMore';
+  t.paging = true; t.pageErr = false; renderTakeList(slug);
+  rpc('take_page', { p_slug: slug, p_player: player, p_limit: TAKE_PAGE, p_after_seed: !!last.seed, p_after_at: last.at, p_after_id: last.id }).then(function (res) {
+    var seen = {}; t.list.forEach(function (x) { seen[x.id] = true; });
+    (res && Array.isArray(res.takes) ? res.takes : []).forEach(function (x) { if (!seen[x.id]) t.list.push(x); });
+    t.more = !!(res && res.more); t.total = (res && res.total) || t.total; t.paging = false;
+    renderTakeList(slug); keepMoreFocus(hadFocus);
+  }, function () { t.paging = false; t.pageErr = true; renderTakeList(slug); keepMoreFocus(hadFocus); });
+}
+// The button is redrawn after each page; keep keyboard focus on it so the reader doesn't lose their place.
+function keepMoreFocus(had) {
+  var b = $('takesMore');
+  if (had && b && (document.activeElement === document.body || !document.activeElement)) b.focus({ preventScroll: true });
 }
 function ago(at) {
   var s = (Date.now() - new Date(at).getTime()) / 1000;
@@ -996,7 +1018,7 @@ function ago(at) {
   var d = Math.round(s / 86400);
   return d === 1 ? 'yesterday' : d + ' days ago';
 }
-function mineTake(slug) { var t = takes[slug]; return t ? t.list.filter(function (x) { return x.mine; })[0] || null : null; }
+function mineTake(slug) { var t = takes[slug]; return t ? t.mine : null; }
 function renderTalk() {
   var t = talkCat(), sec = $('talk');
   if (!t) { sec.hidden = true; talkSlugShown = null; return; }
@@ -1016,7 +1038,7 @@ function renderTalk() {
     '<label class="fld"><span>Your name <small>optional, shown with your take</small></span><input id="tName" maxlength="24" autocomplete="nickname"></label>' +
     '<button class="btn" id="tBtn" type="submit">Post my take</button><p class="msg" id="tMsg" role="status" aria-live="polite"></p>' +
     '<p class="note">Picking one of the names here also counts as your vote. Anyone else goes on the board as a write-in. Be civil: links and some words are blocked.</p>' +
-    '</form></div><div class="panel"><h3>What players are saying <span id="tCount"></span></h3><ul class="takes" id="takeList"></ul></div></div>';
+    '</form></div><div class="panel"><h3>What players are saying <span id="tCount"></span></h3><ul class="takes" id="takeList"></ul><div class="tmore" id="takeMore" hidden></div></div></div>';
   var savedName = store.get('goat-take-name');
   if (savedName) $('tName').value = savedName;
   if (t.pick) { $('tPick').value = t.pick; $('tPick').dataset.auto = '1'; }
@@ -1028,7 +1050,7 @@ function renderTakeList(slug) {
   if (talkSlugShown !== slug) return;
   var t = takes[slug] || { state: 'loading', list: [] }, ul = $('takeList');
   if (!ul) return;
-  var mine = t.list.filter(function (x) { return x.mine; })[0];
+  var mine = t.mine;
   if (mine) {
     var ip = $('tPick'), iw = $('tWhy');
     if (!ip.value || ip.dataset.auto) { ip.value = mine.pick; ip.dataset.auto = '1'; }
@@ -1037,15 +1059,22 @@ function renderTakeList(slug) {
     $('tBtn').textContent = 'Update my take';
   }
   $('tCount').textContent = t.state === 'ok' ? '(' + t.total + ')' : '';
+  var foot = $('takeMore'); foot.hidden = true; foot.innerHTML = '';
   if (t.state === 'loading' && !t.list.length) { ul.innerHTML = '<li><span class="tkr">Loading the debate…</span></li>'; return; }
   if (t.state === 'error' && !t.list.length) { ul.innerHTML = '<li><span class="tkr">The debate can’t load right now. <button class="sm" id="takesRetry">Try again</button></span></li>'; return; }
-  var list = mine ? [mine].concat(t.list.filter(function (x) { return !x.mine; })) : t.list;
+  var list = mine ? [mine].concat(t.list) : t.list;
   ul.innerHTML = list.length ? list.map(function (x) {
     return '<li' + (x.mine ? ' class="me"' : '') + '><div class="tkh"><b>' + esc(x.author || 'A fan') + '</b>' +
       (x.mine ? '<span class="tkt you">You</span>' : '') + (x.seed ? '<span class="tkt">Starter take</span>' : '<span>' + esc(ago(x.at)) + '</span>') +
       (x.mine && x.hidden ? '<span>Hidden by the moderator</span>' : '') + '</div>' +
       '<p class="tkp">GOAT: <b>' + esc(x.pick) + '</b></p><p class="tkr">' + esc(x.reason) + '</p></li>';
   }).join('') : '<li><span class="tkr">No takes yet. Be the first.</span></li>';
+  var shown = t.list.length + (mine && !mine.hidden ? 1 : 0);
+  if (t.state !== 'ok' || (!t.more && !t.pageErr)) return;
+  foot.hidden = false;
+  foot.innerHTML = '<span>Showing ' + shown + ' of ' + t.total + '</span>' +
+    (t.pageErr ? '<span class="tkr">Couldn’t load more.</span>' : '') +
+    '<button class="sm" id="takesMore" type="button"' + (t.paging ? ' disabled' : '') + '>' + (t.paging ? 'Loading…' : t.pageErr ? 'Try again' : 'Show more takes') + '</button>';
 }
 function postTake() {
   var t = talkCat(); if (!t || posting) return;
@@ -1070,10 +1099,9 @@ function postTake() {
       loadCatalog();
     }
     if (res && res.take) {
-      var tk = takes[t.slug] || { state: 'ok', list: [], total: 0 };
-      var had = tk.list.some(function (x) { return x.mine; });
-      tk.list = [res.take].concat(tk.list.filter(function (x) { return !x.mine; }));
-      if (!had && tk.state === 'ok') tk.total++;
+      var tk = takes[t.slug] || { state: 'ok', list: [], total: 0, more: false, mine: null };
+      if (!tk.mine && tk.state === 'ok') tk.total++;
+      tk.mine = res.take;
       takes[t.slug] = tk;
       renderTakeList(t.slug);
     }
@@ -1215,6 +1243,7 @@ document.addEventListener('click', function (ev) {
     case 'hintBtn': useHint(); return;
     case 'giveUp': giveUp(); return;
     case 'toTalk': var tp = $('tPick'); if (tp) { tp.focus({ preventScroll: true }); tp.select(); } $('talk').scrollIntoView({ behavior: smooth(), block: 'start' }); return;
+    case 'takesMore': var tm = talkCat(); if (tm) moreTakes(tm.slug); return;
     case 'takesRetry': var ts = talkCat(); if (ts) { takes[ts.slug] = null; loadTakes(ts.slug); renderTakeList(ts.slug); } return;
     case 'toDaily': case 'toDaily2': view = { type: 'daily' }; render(); scrollToBoard(); return;
     case 'practiceNow': var n = nextPractice(); if (n) { view = { type: 'practice', slug: n.slug }; render(); } return;

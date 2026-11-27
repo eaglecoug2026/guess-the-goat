@@ -68,6 +68,16 @@ export function createBackend(opts = {}) {
       vis.sort((a, b) => (a.seed - b.seed) || (b.at < a.at ? -1 : b.at > a.at ? 1 : b.id - a.id));
       return { takes: vis.slice(0, 60).map(t => takeJson(t, p_player)), total: s.takes.filter(t => t.slug === p_slug && !t.hidden).length };
     },
+    take_page: ({ p_slug, p_player, p_limit, p_after_seed, p_after_at, p_after_id }) => {
+      s.pageCalls = (s.pageCalls || 0) + 1;
+      const n = Math.min(Math.max(p_limit || 5, 1), 20);
+      const cmp = (a, b) => (a.seed - b.seed) || (b.at < a.at ? -1 : b.at > a.at ? 1 : b.id - a.id);
+      const after = p_after_id == null ? null : { seed: !!p_after_seed, at: p_after_at, id: p_after_id };
+      const vis = s.takes.filter(t => t.slug === p_slug && !t.hidden && !(p_player && t.player === p_player) && (!after || cmp(after, t) < 0)).sort(cmp);
+      const mine = p_player && after == null ? s.takes.find(t => t.slug === p_slug && t.player === p_player) : null;
+      return { takes: vis.slice(0, n).map(t => takeJson(t, p_player)), more: vis.length > n,
+               total: s.takes.filter(t => t.slug === p_slug && !t.hidden).length, mine: mine ? takeJson(mine, p_player) : null };
+    },
     post_take: ({ p_player, p_slug, p_pick, p_reason, p_author }) => {
       if (s.config.takes_enabled === false) throw err('disabled');
       const clean = v => (v == null ? '' : String(v)).trim().replace(/\s+/g, ' ');
