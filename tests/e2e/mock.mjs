@@ -86,7 +86,13 @@ export function createBackend(opts = {}) {
       const c = s.catalog.find(x => x.slug === p_slug && x.active); if (!c) throw err('bad_input');
       const bad = v => /(https?:\/\/|www\.)/i.test(v) || s.blocked.some(w => new RegExp('\\b' + w + '\\b', 'i').test(v));
       if (bad(pick) || bad(reason) || (author && bad(author))) throw err('blocked');
-      const o = c.opts.find(x => x.name.toLowerCase() === pick.toLowerCase());
+      // Mirrors public.match_pick (0011): exact name first, then a last name only one contender has.
+      const lp = pick.toLowerCase();
+      let o = c.opts.find(x => x.name.toLowerCase() === lp);
+      if (!o && !/\s/.test(lp) && /\p{L}/u.test(lp)) {
+        const hits = c.opts.filter(x => { const b = x.name.trim().replace(/,?\s+(jr\.?|sr\.?|ii|iii|iv)$/i, ''); return /\s/.test(b) && b.replace(/^.*\s/, '').toLowerCase() === lp; });
+        if (hits.length === 1) o = hits[0];
+      }
       let voted = false;
       if (o && s.config.voting_enabled !== false) { (s.votes[p_slug] ||= {})[p_player] = o.name; voted = true; }
       let t = s.takes.find(x => x.slug === p_slug && x.player === p_player);
