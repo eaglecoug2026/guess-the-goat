@@ -1,0 +1,252 @@
+[
+  {
+    "id": "nfl-tight-end",
+    "label": "NFL tight end",
+    "title": "GOAT NFL tight end",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Rob Gronkowski", 34],
+      ["Tony Gonzalez", 24],
+      ["Travis Kelce", 15],
+      ["Shannon Sharpe", 7],
+      ["Antonio Gates", 5],
+      ["Mike Ditka", 4],
+      ["Kellen Winslow", 3],
+      ["John Mackey", 2],
+      ["George Kittle", 2],
+      ["Jason Witten", 2],
+      ["Ozzie Newsome", 0],
+      ["Dave Casper", 0],
+      ["Jimmy Graham", 0],
+      ["Greg Olsen", 0],
+      ["Vernon Davis", 0],
+      ["Jackie Smith", 0]
+    ],
+    "clues": {
+      "Rob Gronkowski": [
+        "Played college football at the University of Arizona.",
+        "Caught 17 touchdown passes in 2011, a single-season record for a tight end.",
+        "Won four Super Bowls: three with New England and one with Tampa Bay.",
+        "Wore number 87 and was famous for his ball-spiking celebrations."
+      ],
+      "Tony Gonzalez": [
+        "Played both football and basketball at Cal.",
+        "Was selected 13th overall by Kansas City in the 1997 NFL draft.",
+        "Spent 12 seasons with Kansas City before finishing his career in Atlanta.",
+        "Retired in 2013 with more catches than any tight end in NFL history."
+      ],
+      "Travis Kelce": [
+        "Played college football at the University of Cincinnati.",
+        "Won three Super Bowls with Kansas City.",
+        "His older brother was a longtime center for the Philadelphia Eagles.",
+        "Co-hosts the New Heights podcast with his brother."
+      ]
+    },
+    "sources": {
+      "Rob Gronkowski": ["https://en.wikipedia.org/wiki/Rob_Gronkowski"],
+      "Tony Gonzalez": ["https://en.wikipedia.org/wiki/Tony_Gonzalez"],
+      "Travis Kelce": ["https://en.wikipedia.org/wiki/Travis_Kelce"]
+    }
+  },
+  {
+    "id": "nfl-offensive-lineman",
+    "label": "NFL offensive lineman",
+    "title": "GOAT NFL offensive lineman",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Anthony Muñoz", 22],
+      ["Larry Allen", 15],
+      ["Jonathan Ogden", 12],
+      ["Bruce Matthews", 10],
+      ["Joe Thomas", 8],
+      ["John Hannah", 6],
+      ["Jason Kelce", 5],
+      ["Walter Jones", 4],
+      ["Mike Webster", 3],
+      ["Orlando Pace", 3],
+      ["Forrest Gregg", 0],
+      ["Jim Otto", 0],
+      ["Art Shell", 0],
+      ["Gene Upshaw", 0],
+      ["Randall McDaniel", 0],
+      ["Trent Williams", 0]
+    ],
+    "clues": {
+      "Anthony Muñoz": [
+        "Played college football at USC.",
+        "Was selected third overall by Cincinnati in the 1980 NFL draft.",
+        "A left tackle who was picked for 11 Pro Bowls.",
+        "Played in two Super Bowls, losing both to San Francisco."
+      ],
+      "Larry Allen": [
+        "Played college football at Sonoma State, a Division II school.",
+        "Was drafted by Dallas in the second round in 1994.",
+        "Won a Super Bowl ring with Dallas after the 1995 season.",
+        "Remembered as one of the strongest men ever to play the game."
+      ],
+      "Jonathan Ogden": [
+        "Played college football at UCLA, where he also threw the shot put.",
+        "Was the first draft pick in Baltimore Ravens history, in 1996.",
+        "Won a Super Bowl with Baltimore after the 2000 season.",
+        "A 6-foot-9 left tackle who spent his whole career with one team."
+      ]
+    },
+    "sources": {
+      "Anthony Muñoz": ["https://en.wikipedia.org/wiki/Anthony_Mu%C3%B1oz"],
+      "Larry Allen": ["https://en.wikipedia.org/wiki/Larry_Allen"],
+      "Jonathan Ogden": ["https://en.wikipedia.org/wiki/Jonathan_Ogden"]
+    }
+  },
+  {
+    "id": "nfl-defensive-lineman",
+    "label": "NFL defensive lineman",
+    "title": "GOAT NFL defensive lineman",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Reggie White", 32],
+      ["Aaron Donald", 26],
+      ["J.J. Watt", 10],
+      ["Deacon Jones", 7],
+      ["Bruce Smith", 6],
+      ["Joe Greene", 4],
+      ["Michael Strahan", 4],
+      ["Warren Sapp", 3],
+      ["Merlin Olsen", 2],
+      ["Alan Page", 2],
+      ["Randy White", 0],
+      ["Julius Peppers", 0],
+      ["Jack Youngblood", 0],
+      ["Howie Long", 0],
+      ["John Randle", 0],
+      ["Myles Garrett", 0]
+    ],
+    "clues": {
+      "Reggie White": [
+        "Nicknamed the Minister of Defense.",
+        "Played college football at the University of Tennessee.",
+        "Starred for Philadelphia before a landmark free-agent move.",
+        "Won a Super Bowl with Green Bay after the 1996 season."
+      ],
+      "Aaron Donald": [
+        "Played college football at the University of Pittsburgh.",
+        "Spent his whole career with the Rams, in St. Louis and Los Angeles.",
+        "Won NFL Defensive Player of the Year three times.",
+        "His late pressure on fourth down sealed the Super Bowl LVI win."
+      ],
+      "J.J. Watt": [
+        "Walked on at Wisconsin after starting his college career at Central Michigan.",
+        "Was selected 11th overall by Houston in the 2011 NFL draft.",
+        "Had two seasons with 20 or more sacks.",
+        "Raised tens of millions of dollars for Hurricane Harvey relief."
+      ]
+    },
+    "sources": {
+      "Reggie White": ["https://en.wikipedia.org/wiki/Reggie_White"],
+      "Aaron Donald": ["https://en.wikipedia.org/wiki/Aaron_Donald"],
+      "J.J. Watt": ["https://en.wikipedia.org/wiki/J._J._Watt"]
+    }
+  },
+  {
+    "id": "nfl-linebacker",
+    "label": "NFL linebacker",
+    "title": "GOAT NFL linebacker",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Lawrence Taylor", 36],
+      ["Ray Lewis", 24],
+      ["Dick Butkus", 10],
+      ["Derrick Thomas", 6],
+      ["Junior Seau", 5],
+      ["Jack Lambert", 4],
+      ["Mike Singletary", 4],
+      ["Brian Urlacher", 3],
+      ["Luke Kuechly", 2],
+      ["Ray Nitschke", 2],
+      ["Jack Ham", 0],
+      ["Derrick Brooks", 0],
+      ["Bobby Wagner", 0],
+      ["Von Miller", 0],
+      ["Chuck Bednarik", 0],
+      ["Patrick Willis", 0]
+    ],
+    "clues": {
+      "Lawrence Taylor": [
+        "Played college football at North Carolina.",
+        "Was selected second overall in the 1981 NFL draft.",
+        "Won two Super Bowls with the New York Giants.",
+        "Was named NFL MVP in 1986, a rare honor for a defender."
+      ],
+      "Ray Lewis": [
+        "Played college football at the University of Miami.",
+        "Spent all 17 of his seasons with the Baltimore Ravens.",
+        "Was named MVP of Super Bowl XXXV.",
+        "Won a second Super Bowl in his final season."
+      ],
+      "Dick Butkus": [
+        "Played college football at the University of Illinois.",
+        "A Chicago native who spent his whole career with the hometown Bears.",
+        "College football's award for the top linebacker is named after him.",
+        "Wore number 51 in the NFL."
+      ]
+    },
+    "sources": {
+      "Lawrence Taylor": ["https://en.wikipedia.org/wiki/Lawrence_Taylor"],
+      "Ray Lewis": ["https://en.wikipedia.org/wiki/Ray_Lewis"],
+      "Dick Butkus": ["https://en.wikipedia.org/wiki/Dick_Butkus"]
+    }
+  },
+  {
+    "id": "nfl-defensive-back",
+    "label": "NFL defensive back",
+    "title": "GOAT NFL defensive back",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      ["Deion Sanders", 30],
+      ["Ed Reed", 18],
+      ["Ronnie Lott", 14],
+      ["Rod Woodson", 9],
+      ["Charles Woodson", 7],
+      ["Darrelle Revis", 5],
+      ["Troy Polamalu", 5],
+      ["Night Train Lane", 3],
+      ["Champ Bailey", 3],
+      ["Mel Blount", 2],
+      ["Brian Dawkins", 0],
+      ["Sean Taylor", 0],
+      ["Ty Law", 0],
+      ["Paul Krause", 0],
+      ["Richard Sherman", 0],
+      ["Herb Adderley", 0]
+    ],
+    "clues": {
+      "Deion Sanders": [
+        "Nicknamed Prime Time.",
+        "Played college football at Florida State.",
+        "Won Super Bowls with San Francisco and Dallas.",
+        "Also played Major League Baseball during his NFL career."
+      ],
+      "Ed Reed": [
+        "Played college football at the University of Miami.",
+        "A ballhawking safety who spent most of his career in Baltimore.",
+        "Was named NFL Defensive Player of the Year in 2004.",
+        "Won a Super Bowl with Baltimore after the 2012 season."
+      ],
+      "Ronnie Lott": [
+        "Played college football at USC.",
+        "Won four Super Bowls with San Francisco.",
+        "Started at cornerback, then moved to safety.",
+        "Had the tip of a finger amputated rather than miss playing time."
+      ]
+    },
+    "sources": {
+      "Deion Sanders": ["https://en.wikipedia.org/wiki/Deion_Sanders"],
+      "Ed Reed": ["https://en.wikipedia.org/wiki/Ed_Reed"],
+      "Ronnie Lott": ["https://en.wikipedia.org/wiki/Ronnie_Lott"]
+    }
+  }
+]

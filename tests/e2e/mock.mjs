@@ -7,11 +7,13 @@ const err = (message, status = 400) => ({ status, body: { code: 'P0001', message
 
 export function createBackend(opts = {}) {
   const s = {
-    config: { k: 100, launch_date: '2027-01-01', blend_tiers: [1, 500], voting_enabled: true, suggestions_enabled: true, analytics_enabled: true, ...(opts.config || {}) },
+    config: { k: 100, launch_date: '2027-01-01', blend_tiers: [1, 500], voting_enabled: true, suggestions_enabled: true, analytics_enabled: true, takes_enabled: true, ...(opts.config || {}) },
     catalog: bundled.map(c => ({ ...c, kind: 'daily', active: true, needs_clues: false })).concat(opts.extraCatalog || [
       { slug: 'community-board01', name: 'Board game', title: 'GOAT board game', kind: 'vote', active: true, opts: ['Catan', 'Chess', 'Monopoly', 'Scrabble'].map(name => ({ name, est: 0 })), clues: {} }
     ]),
     votes: {},          // slug -> { player: pick }
+    takes: [],          // { id, slug, player, author, pick, reason, seed, hidden, at }
+    blocked: ['zzbadword'],
     puzzles: {},        // date -> snapshot
     suggestions: [],
     events: new Map(),  // event_id -> event
@@ -50,13 +52,40 @@ export function createBackend(opts = {}) {
   s.wrongFor = (date, n) => s.puzzleFor(date).ranking.slice(1).map(e => e.name).slice(0, n);
   s.eventsNamed = name => [...s.events.values()].filter(e => e.event === name);
 
+  const takeJson = (t, player) => ({ id: t.id, author: t.author, pick: t.pick, reason: t.reason, seed: t.seed, mine: !!player && t.player === player, hidden: t.hidden, at: t.at });
+  // One starter take per category, picking its #2 (D-31).
+  for (const c of s.catalog) if (c.opts.length > 1) s.takes.push({ id: s.nextId++, slug: c.slug, player: null, author: 'Starter ' + c.slug.slice(0, 10), pick: c.opts[1].name, reason: 'A starter take for ' + c.name + '.', seed: true, hidden: false, at: '2027-01-01T00:00:00Z' });
+
   const owner = token => {
     const x = s.sessions[token];
     if (!x || x.revoked || x.expires < Date.now()) throw err('not_owner');
   };
 
   const fns = {
-    get_catalog: () => s.catalog.filter(c => c.active).map(c => ({ slug: c.slug, name: c.name, title: c.title, kind: c.kind, season: null, source: 'builtin', opts: c.opts, clues: c.clues, ...ranked(c) })),
+    get_catalog: () => s.catalog.filter(c => c.active).map(c => ({ slug: c.slug, name: c.name, title: c.title, kind: c.kind, season: null, source: 'builtin', grp: c.grp || null, sub: c.sub || null, opts: c.opts, clues: c.clues, ...ranked(c) })),
+    get_takes: ({ p_slug, p_player }) => {
+      const vis = s.takes.filter(t => t.slug === p_slug && (!t.hidden || (p_player && t.player === p_player)));
+      vis.sort((a, b) => (a.seed - b.seed) || (b.at < a.at ? -1 : b.at > a.at ? 1 : b.id - a.id));
+      return { takes: vis.slice(0, 60).map(t => takeJson(t, p_player)), total: s.takes.filter(t => t.slug === p_slug && !t.hidden).length };
+    },
+    post_take: ({ p_player, p_slug, p_pick, p_reason, p_author }) => {
+      if (s.config.takes_enabled === false) throw err('disabled');
+      const clean = v => (v == null ? '' : String(v)).trim().replace(/\s+/g, ' ');
+      const pick = clean(p_pick), reason = clean(p_reason), author = clean(p_author) || null;
+      if (!p_player || p_player.length < 8 || !pick || pick.length > 40 || reason.length < 2 || reason.length > 280 || (author && author.length > 24)) throw err('bad_input');
+      const c = s.catalog.find(x => x.slug === p_slug && x.active); if (!c) throw err('bad_input');
+      const bad = v => /(https?:\/\/|www\.)/i.test(v) || s.blocked.some(w => new RegExp('\\b' + w + '\\b', 'i').test(v));
+      if (bad(pick) || bad(reason) || (author && bad(author))) throw err('blocked');
+      const o = c.opts.find(x => x.name.toLowerCase() === pick.toLowerCase());
+      let voted = false;
+      if (o && s.config.voting_enabled !== false) { (s.votes[p_slug] ||= {})[p_player] = o.name; voted = true; }
+      let t = s.takes.find(x => x.slug === p_slug && x.player === p_player);
+      if (!t) { t = { id: s.nextId++, slug: p_slug, player: p_player, seed: false, hidden: false, at: new Date().toISOString() }; s.takes.push(t); }
+      Object.assign(t, { author, pick: o ? o.name : pick, reason });
+      return { take: takeJson(t, p_player), voted, pick: o ? o.name : null };
+    },
+    owner_takes: ({ p_token }) => { owner(p_token); return s.takes.filter(t => !t.seed).map(t => ({ ...takeJson(t, null), slug: t.slug })); },
+    owner_hide_take: ({ p_token, p_id, p_hidden }) => { owner(p_token); const t = s.takes.find(x => x.id === p_id); if (!t) throw err('bad_input'); t.hidden = p_hidden !== false; return null; },
     get_daily: ({ p_date }) => s.puzzleFor(p_date),
     cast_vote: ({ p_player, p_slug, p_pick }) => {
       if (s.config.voting_enabled === false) throw err('disabled');
@@ -78,7 +107,7 @@ export function createBackend(opts = {}) {
     track: ({ p_events }) => {
       if (!Array.isArray(p_events) || !p_events.length || p_events.length > 50) throw err('bad_input');
       for (const e of p_events) {
-        if (!/^[0-9a-f-]{36}$/.test(e.event_id) || !['visit', 'game_start', 'game_complete', 'pick_vote', 'share', 'practice_start', 'suggest', 'vote_error', 'offline'].includes(e.event)) throw err('bad_input');
+        if (!/^[0-9a-f-]{36}$/.test(e.event_id) || !['visit', 'game_start', 'game_complete', 'pick_vote', 'share', 'practice_start', 'suggest', 'vote_error', 'offline', 'hint', 'give_up', 'take_post'].includes(e.event)) throw err('bad_input');
         if (e.ref != null && (e.ref.length < 8 || e.ref.length > 64)) throw err('bad_input');
       }
       let n = 0; for (const e of p_events) if (!s.events.has(e.event_id)) { s.events.set(e.event_id, e); n++; }
@@ -111,7 +140,7 @@ export function createBackend(opts = {}) {
     owner_remove_category: ({ p_token, p_slug }) => { owner(p_token); const c = s.catalog.find(x => x.slug === p_slug && x.active); if (!c) throw err('bad_input'); c.active = false; return null; },
     owner_set_schedule: ({ p_token }) => { owner(p_token); return null; },
     owner_set_correction: ({ p_token, p_date, p_note }) => { owner(p_token); const p = s.puzzles[p_date]; if (!p) throw err('bad_input'); p.correction_note = p_note || null; return null; },
-    owner_delete_player: ({ p_token }) => { owner(p_token); return { votes: 0, suggestions: 0, events: 0 }; }
+    owner_delete_player: ({ p_token }) => { owner(p_token); return { votes: 0, suggestions: 0, events: 0, takes: 0 }; }
   };
 
   s.install = async (target) => {

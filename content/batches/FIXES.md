@@ -19,3 +19,7 @@ The batch files are kept exactly as ChatGPT sent them. Changes are made in the c
 - Converted from the old built-in list: estimates to whole percents, same order.
 - Claude wrote the #2 and #3 clue sets (HANDOFF §12) and Wikipedia sources for every clued contender. ChatGPT reviews them.
 - Three old #1 clues broke the name rule and were reworded: Zelda clue 3 ("time"), Cinnamon Toast Crunch clue 4 ("cinnamon"), Reese's clues 3-4 ("cups", "peanut", "butter").
+
+## NFL positions (nfl-positions.json, 2026-11-27)
+- Written by Claude at Peter's request ("NFL then sub QB WR DB Oline D Line, RB"), not by ChatGPT. Kept as written except one J.J. Watt clue, softened from "the only player with two seasons of 20 or more sacks" to "Had two seasons with 20 or more sacks" (the "only" may not hold after 2025).
+- Starter takes (`content/takes.json`) were also written by Claude: 159 takes, 9 of them write-ins.
