@@ -13,9 +13,11 @@ Guess the crowd's greatest of all time.
 
 ## How it plays
 
-- **Daily GOAT**: one category a day. You get 5 guesses to find the crowd's #1. Each miss shows where your guess ranks in the crowd's top 10 (red hot, warm or cold). No clues are shown. Names appear only once you type 2 letters, and you pick one from the list.
+- **Daily GOAT**: one category a day. You get 5 guesses to find the crowd's #1. Each miss shows where your guess ranks in the crowd's top 10 (red hot, warm or cold). Names appear only once you type 2 letters, and you pick one from the list.
+- **Hint and Give up**: Hint shows one clue at a time, up to 4. Give up (tap twice) ends the round and shows the answer; on the daily it counts as a loss. The share line says how many hints you used.
 - **Hot Take Score**: after the reveal, you name your own GOAT. The score runs 0–100 by how far your pick is from the crowd. Results copy out as an emoji grid for sharing.
-- **Team GOAT**: 8 random categories dealt from the pool, with a Shuffle button.
+- **The debate**: after the reveal, each category has a message board. You type your GOAT (any name; one of the 16 also counts as your vote), say why, and read everyone else's take. One take per player per category; posting again replaces it. Links and blocked words are refused, and the owner can hide any take. Each category starts with 3 starter takes, labeled as such.
+- **More GOATs**: broad groups (NFL, Sports, Movies, TV, Music, Food, and so on), then the categories in each group, like NFL → QB, RB, WR, TE, O-line, D-line, LB, DB. Player-suggested crowd votes are under Crowd votes.
 - **Player suggestions**: anyone can suggest a category. The owner reviews them and can add them to the game as live crowd votes.
 
 ## How it's built
@@ -27,15 +29,16 @@ Guess the crowd's greatest of all time.
 
 ## Categories
 
-- The content lives in `content/categories.json`: 48 categories, each with 16 contenders, estimated percents for the top 10, and 4 clues for each of the top 3.
+- The content lives in `content/categories.json`: 53 categories, each with a `group` and a short `sub` name, 16 contenders, estimated percents for the top 10, and 4 clues for each of the top 3. Within a group, categories show in file order.
+- Starter takes live in `content/takes.json` (3 per category).
 - `npm run check:content` runs the checker (format, percents, clue length, and no clue that uses a word from its answer).
-- `npm run build:content` regenerates `supabase/seed/catalog.sql` and the bundled catalog in `index.html`. Run the SQL file in the Supabase SQL editor to load the changes. It updates categories by id, never changes a published puzzle, and retires (never deletes) a category removed from the file.
+- `npm run build:content` regenerates `supabase/seed/catalog.sql`, `supabase/seed/takes.sql` and the bundled catalog in `index.html`. Run the SQL file in the Supabase SQL editor to load the changes. It updates categories by id, never changes a published puzzle, and retires (never deletes) a category removed from the file.
 - Seasonal categories (Super Bowl snack, horror movie, Christmas movie) only run as the daily when they're scheduled in the owner panel.
 - `content/FACT-CHECK.md` tracks the person check of every clue. `content/batches/` keeps ChatGPT's batches as sent, and `FIXES.md` lists every change made to them.
 
 ## Owner tools
 
-Use **Owner sign-in** at the bottom of the page. A signed-in session lasts 12 hours and is kept only in that browser tab. The owner panel has the review queue, live categories, the needs-clues list, the 30-day schedule, today's stats, corrections, player data deletion, and sign out everywhere.
+Use **Owner sign-in** at the bottom of the page. A signed-in session lasts 12 hours and is kept only in that browser tab. The owner panel has the review queue, the latest takes (with Hide), live categories, the needs-clues list, the 30-day schedule, today's stats, corrections, player data deletion, and sign out everywhere.
 
 To change the passphrase, run this in the Supabase SQL editor:
 

@@ -67,7 +67,8 @@ Deferred work is listed in §18.
   - #4–6 = **Warm**
   - #7–10 = **Cold**
   - otherwise **Not top 10**
-- **Clues:** ~~clue 1 is visible at the start. Each miss unlocks the next, up to 4.~~ Removed from the game 2026-11-25 (D-28): no clues are shown. The snapshot and catalog still carry them.
+- **Clues:** ~~clue 1 is visible at the start. Each miss unlocks the next, up to 4.~~ Removed 2026-11-25 (D-28), back 2026-11-27 as on-demand hints (D-31): nothing shows until the player taps Hint.
+- **Hints and give up (D-31):** a Hint button shows the answer's clues one at a time, up to 4; used hints stay on the board and show in the share line. Give up (two taps within 5 seconds) ends the round and shows the answer; a daily give-up counts as a loss.
 - **Guess box (D-28):** no contender names show until the player types 2 letters. Then up to 5 names that have a word starting with those letters drop down; tap one, or use the arrow keys and Enter. A name that isn't a contender, or was already guessed, uses no guess.
 - **Estimated share** `e` = whole-percent estimate ÷ 100. Contenders outside the top 10 have `e = 0`.
 - **Blended share:** `b = (v + k·e) / (V + k)`, where `v` = the contender's real votes, `V` = the category's total real votes, and `k = config.k` (default 100). Ranks are sorted by `b` descending. Ties are broken by `e` descending, then by name.

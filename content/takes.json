@@ -1,0 +1,267 @@
+{
+  "thanksgiving-side": [
+    {"author": "Dana from Tulsa", "pick": "Stuffing", "reason": "Stuffing is the whole reason the turkey exists. Crispy edges, soft middle, a little sage. Nothing else on the table comes close."},
+    {"author": "carb_queen_kel", "pick": "Mac and cheese", "reason": "Baked mac with the crunchy top is the first dish to disappear at my family's dinner every single year. That's the real vote."},
+    {"author": "Hollis P.", "pick": "Mashed potatoes", "reason": "Mashed potatoes are the foundation. Without them, where does the gravy even go?"}
+  ],
+  "nba-player": [
+    {"author": "hoopsdad_76", "pick": "Michael Jordan", "reason": "Six Finals, six rings, and never even needed a Game 7 to win one. Nobody made losing feel impossible the way he did."},
+    {"author": "Keisha in Akron", "pick": "LeBron James", "reason": "Longevity is greatness too. Two decades at the top and he's the all-time leading scorer. I'm tired of pretending that doesn't count."},
+    {"author": "skyhook_sam", "pick": "Kareem Abdul-Jabbar", "reason": "Six MVPs and a shot nobody could block for twenty years. People skip him because he was quiet about it."}
+  ],
+  "rapper": [
+    {"author": "bars_by_bree", "pick": "Kendrick Lamar", "reason": "Every album is its own world, and he won a Pulitzer for a rap record. Case closed for me."},
+    {"author": "Nate from Queens", "pick": "Nas", "reason": "Illmatic alone puts him in the conversation. Pure writing, every line means something."},
+    {"author": "westcoast_lena", "pick": "Tupac Shakur", "reason": "Nobody made you feel more. Angry, tender and funny on the same album, and it still hits today."}
+  ],
+  "movie-villain": [
+    {"author": "Priya K.", "pick": "Darth Vader", "reason": "The breathing, the music, the reveal. He's terrifying for two movies and then breaks your heart in the third."},
+    {"author": "midnight_matinee", "pick": "The Joker", "reason": "Every era gets its own Joker and most of them are great. That's how strong the character is."},
+    {"author": "Gus from Boise", "pick": "Hans Gruber", "reason": "Charming, calm and in a great suit. He's the reason Die Hard works, and no action villain since has topped him."}
+  ],
+  "pizza-topping": [
+    {"author": "slice_life_jen", "pick": "Pepperoni", "reason": "Those little cups that crisp up and hold the grease are perfect. Pepperoni is undefeated for a reason."},
+    {"author": "Marco T.", "pick": "Mushrooms", "reason": "Mushrooms soak up everything good on the pie. Underrated, and they go with any other topping you throw on."},
+    {"author": "pineapple_truther", "pick": "Pineapple", "reason": "Sweet with salty works everywhere else in food. I will die on this hill, with ham right next to me."}
+  ],
+  "sitcom": [
+    {"author": "Ellie from Scranton", "pick": "The Office", "reason": "I've rewatched it more times than I can count and it still gets me. The cringe, the heart, the slow-burn romance. Perfect."},
+    {"author": "yadayada_dev", "pick": "Seinfeld", "reason": "Four dumb little stories that all crash together at the end. The writing is basically clockwork."},
+    {"author": "Beth R.", "pick": "The Golden Girls", "reason": "Golden Girls holds up better than almost anything from the 80s. Four legends trading one-liners on a couch."}
+  ],
+  "video-game": [
+    {"author": "triforce_tom", "pick": "Zelda: Ocarina of Time", "reason": "It taught every 3D adventure game how to work. Lock-on targeting alone changed everything."},
+    {"author": "blockparty_ana", "pick": "Minecraft", "reason": "My kids play it, I play it, my dad played it. No game has reached that many people for that long."},
+    {"author": "retro_rhea", "pick": "Tetris", "reason": "Simple enough for anyone, deep enough to play forever. Tetris is the purest game ever made."}
+  ],
+  "fast-food-fries": [
+    {"author": "frybaby_nina", "pick": "McDonald's", "reason": "Hot McDonald's fries eaten straight out of the bag on the drive home. Nothing beats it and nothing ever will."},
+    {"author": "waffle_fry_wes", "pick": "Chick-fil-A", "reason": "Waffle fries are built different. More surface, more crunch, and they hold sauce better than any shoestring."},
+    {"author": "Rosa from Fresno", "pick": "Arby's curly fries", "reason": "Curly fries are fun to eat and actually seasoned. Arby's understood the assignment years ago."}
+  ],
+  "breakfast-cereal": [
+    {"author": "cereal_after_dark", "pick": "Cinnamon Toast Crunch", "reason": "The milk at the end is the best part of any breakfast. Sweet cinnamon-sugar milk, come on."},
+    {"author": "Jules M.", "pick": "Honey Nut Cheerios", "reason": "The one cereal you never get tired of. Good dry, good with milk, good at 2 a.m."},
+    {"author": "Big Lou", "pick": "Lucky Charms", "reason": "The marshmallows make it. Kid me and adult me both agree on this one."}
+  ],
+  "tennis-player": [
+    {"author": "baseline_bo", "pick": "Novak Djokovic", "reason": "Most Grand Slam titles in men's tennis and a winning record against his two big rivals. The numbers just say it."},
+    {"author": "Marguerite L.", "pick": "Serena Williams", "reason": "Twenty-three Grand Slam singles titles, and she changed what power tennis looks like for everyone after her."},
+    {"author": "drop_shot_dee", "pick": "Roger Federer", "reason": "Nobody has ever made it look so easy. Watching him was like watching ballet with a racket."}
+  ],
+  "candy-bar": [
+    {"author": "sweettooth_sal", "pick": "Reese's Peanut Butter Cups", "reason": "Chocolate and peanut butter is the best combo in candy, and nobody does it better. Easy call."},
+    {"author": "Harper from Omaha", "pick": "Snickers", "reason": "It actually fills you up. Nougat, caramel, peanuts, chocolate. It's basically a meal."},
+    {"author": "Tess the Taster", "pick": "Kit Kat", "reason": "That snap when you break a piece off is half the fun. Light, crispy, never too sweet."}
+  ],
+  "boxer": [
+    {"author": "ringside_renee", "pick": "Muhammad Ali", "reason": "Best in the ring and bigger than the sport outside of it. Nobody else comes close on both counts."},
+    {"author": "Frankie D.", "pick": "Sugar Ray Robinson", "reason": "Ask the old trainers and they all say Robinson. Pound for pound, the most complete fighter who ever lived."},
+    {"author": "kayo_kev", "pick": "Mike Tyson", "reason": "Prime Tyson was the scariest thing in sports. Fights were over before people found their seats."}
+  ],
+  "nfl-quarterback": [
+    {"author": "Coach Barb", "pick": "Joe Montana", "reason": "Four Super Bowls, zero interceptions in any of them, and ice in his veins on the last drive. That's the guy."},
+    {"author": "patsfan_paulie", "pick": "Tom Brady", "reason": "Seven rings. More than any single franchise has. I don't know what else a quarterback is supposed to do."},
+    {"author": "Darnell from KC", "pick": "Patrick Mahomes", "reason": "Give him ten more years. He already does things on the field I've never seen anyone even try."}
+  ],
+  "rock-band": [
+    {"author": "vinyl_vera", "pick": "The Beatles", "reason": "They basically invented the modern album in under a decade, and every band since owes them something."},
+    {"author": "Gail from Leeds", "pick": "Queen", "reason": "Four people who could each write a hit, plus the best live frontman of all time. Queen for me."},
+    {"author": "riff_raff_ryan", "pick": "Led Zeppelin", "reason": "Heaviest band of their era, and they could still play a folk song that makes you tear up. Range and power."}
+  ],
+  "burger-chain": [
+    {"author": "animalstyle_amy", "pick": "In-N-Out", "reason": "Fresh, cheap and the same every single time. A Double-Double animal style is the best fast food order in the country."},
+    {"author": "Hank B.", "pick": "Whataburger", "reason": "Texas will tell you, and Texas is right. Big burgers, spicy ketchup, open all night."},
+    {"author": "Midwest Mel", "pick": "Culver's", "reason": "ButterBurgers and the custard of the day. If you've never been to a Culver's, you're missing out."}
+  ],
+  "superhero": [
+    {"author": "gotham_gabe", "pick": "Batman", "reason": "No powers, just stubbornness and a lot of planning. He's the best because he's human."},
+    {"author": "Wen in Queens", "pick": "Spider-Man", "reason": "He's a kid worried about rent who still saves the city. Most relatable hero ever made, and the jokes are great."},
+    {"author": "capeless_cora", "pick": "Superman", "reason": "He's the original and the standard every other hero gets measured against. Being good isn't boring."}
+  ],
+  "movie-franchise": [
+    {"author": "Lena from Ohio", "pick": "Star Wars", "reason": "I grew up with it and now my kids are growing up with it. No other series has been part of so many lives."},
+    {"author": "second_breakfast", "pick": "The Lord of the Rings", "reason": "Three movies shot back to back that hold up perfectly today. Nobody has pulled off anything like it since."},
+    {"author": "007_nights", "pick": "James Bond", "reason": "Sixty years of the same character and it still works. Every generation gets their own Bond."}
+  ],
+  "ice-cream-flavor": [
+    {"author": "scoop_dog_sid", "pick": "Cookies and Cream", "reason": "Best of both worlds, with cookie chunks in every bite. It's what I order when I can't decide."},
+    {"author": "Nana Bea", "pick": "Moose Tracks", "reason": "Moose Tracks has fudge swirls and little peanut butter cups in it. Every good thing at once. How is it not on the list?"},
+    {"author": "plain_jane_v", "pick": "Vanilla", "reason": "Vanilla goes with every pie, every cobbler, every cone. It's not boring, it's the foundation."}
+  ],
+  "soccer-player": [
+    {"author": "Ines in Lisbon", "pick": "Cristiano Ronaldo", "reason": "The hardest-working athlete I've ever seen, and he scored everywhere he played. A total machine."},
+    {"author": "nutmeg_nico", "pick": "Lionel Messi", "reason": "He finally won the World Cup and that ended the debate for me. Nobody has made the ball listen like that."},
+    {"author": "Grandpa Teo", "pick": "Pelé", "reason": "Three World Cups. I watched him as a boy and I've never seen that kind of joy on a field again."}
+  ],
+  "soft-drink": [
+    {"author": "fizz_fanatic", "pick": "Dr Pepper", "reason": "It doesn't taste like anything else on the shelf. Dr Pepper is in a class by itself."},
+    {"author": "Carla S.", "pick": "Coca-Cola", "reason": "An ice-cold Coke in a glass bottle. That's it, that's the post."},
+    {"author": "carolina_cass", "pick": "Cheerwine", "reason": "Cheerwine is a North Carolina treasure. Cherry soda with real bite, and it's amazing with barbecue."}
+  ],
+  "gaming-console": [
+    {"author": "ps2_forever", "pick": "PlayStation 2", "reason": "The game library is unreal, and it was also my DVD player for five years. Nothing else came close for me."},
+    {"author": "Marisol R.", "pick": "Super Nintendo", "reason": "The SNES had the best 2D games ever made. Every cartridge on my shelf was a classic."},
+    {"author": "couch_coop_kai", "pick": "Nintendo 64", "reason": "Four controller ports changed my childhood. GoldenEye and Mario Kart with friends on one TV."}
+  ],
+  "comedy-actor": [
+    {"author": "Todd in Tucson", "pick": "Jim Carrey", "reason": "Nobody uses their whole body like him. Ace Ventura made me laugh so hard I cried as a kid."},
+    {"author": "Ana Lucia", "pick": "Robin Williams", "reason": "The funniest man alive in any interview, and he could break your heart in a drama. That range is the GOAT."},
+    {"author": "sandlerverse", "pick": "Adam Sandler", "reason": "My friends and I quote his movies every week. Comfort comedy king, no contest."}
+  ],
+  "board-game": [
+    {"author": "Meeple Megan", "pick": "Catan", "reason": "Trading, luck and strategy all at once, and every game plays differently. It got my whole friend group into board games."},
+    {"author": "checkmate_chen", "pick": "Chess", "reason": "Centuries old and people are still finding new ideas. Nothing else even competes."},
+    {"author": "Rich from Reno", "pick": "Monopoly", "reason": "It's the one every family owns. Yes, it ruins friendships. That's the point."}
+  ],
+  "disney-animated-movie": [
+    {"author": "hakuna_holly", "pick": "The Lion King", "reason": "The opening sunrise still gives me chills. Great songs, a great villain, and it makes me cry every time."},
+    {"author": "Dev P.", "pick": "Aladdin", "reason": "The Genie carries that movie and it's the funniest Disney ever got. Plus Friend Like Me is a banger."},
+    {"author": "Mei-Lin T.", "pick": "Mulan", "reason": "A hero who saves China her own way, with the best soundtrack of the bunch. That training montage song is unbeatable."}
+  ],
+  "nfl-wide-receiver": [
+    {"author": "Niner Nancy", "pick": "Jerry Rice", "reason": "He holds basically every receiving record that matters and outworked everyone. It's not close."},
+    {"author": "deep_ball_desmond", "pick": "Randy Moss", "reason": "Nobody has ever been more dangerous going deep. You just threw it up and he came down with it."},
+    {"author": "Ty from Detroit", "pick": "Calvin Johnson", "reason": "Megatron was a cheat code. Huge, fast, and he caught anything thrown anywhere near him."}
+  ],
+  "potato-chip": [
+    {"author": "crunchtime_cass", "pick": "Lay's Classic", "reason": "Just potato and salt, done perfectly. Every other chip is trying to be this one."},
+    {"author": "Wade H.", "pick": "Ruffles Cheddar & Sour Cream", "reason": "The ridges hold all that cheddar powder. Best chip for movie night, every time."},
+    {"author": "dill_with_it", "pick": "Lay's Dill Pickle", "reason": "Dill pickle is the most underrated flavor in the chip aisle. Tangy, salty, and the bag is gone in one sitting."}
+  ],
+  "guitarist": [
+    {"author": "fuzz_pedal_phil", "pick": "Jimi Hendrix", "reason": "He played the guitar like it was a whole new instrument. More than fifty years later, people are still catching up."},
+    {"author": "Lucia from Austin", "pick": "Stevie Ray Vaughan", "reason": "Nobody played the blues with more fire. Texas Flood still sounds like it's about to burn the speakers."},
+    {"author": "two_hand_tap_tim", "pick": "Eddie Van Halen", "reason": "Eruption changed the life of every teenager who heard it. He reinvented how people play."}
+  ],
+  "car-brand": [
+    {"author": "Gearhead Greta", "pick": "Porsche", "reason": "The 911 has been around for decades and it's still the benchmark. Every drive feels like an event."},
+    {"author": "Sam from Dayton", "pick": "Toyota", "reason": "Mine has 280,000 miles on it and still starts every morning. Reliability is the whole game."},
+    {"author": "trail_rated_tia", "pick": "Jeep", "reason": "Nothing else lets you take the doors off and go anywhere. Jeep people wave at each other for a reason."}
+  ],
+  "steak-cut": [
+    {"author": "grillmaster_gwen", "pick": "Ribeye", "reason": "All that marbling means flavor in every bite. Ribeye wins and it isn't even close."},
+    {"author": "Mr. Okafor", "pick": "Filet Mignon", "reason": "Tender enough to cut with a fork. My special-occasion steak forever."},
+    {"author": "fogo_fan_fran", "pick": "Picanha", "reason": "Once you've had picanha with the fat cap crisped up on a skewer, you get it. Brazil figured this out."}
+  ],
+  "tv-drama": [
+    {"author": "blue_sky_billy", "pick": "Breaking Bad", "reason": "Every season is better than the one before, and the ending actually sticks the landing. Almost no show does that."},
+    {"author": "Joanne from Jersey", "pick": "The Sopranos", "reason": "Everything good on TV after it owes something to this show. It's the blueprint."},
+    {"author": "clear_eyes_cody", "pick": "Friday Night Lights", "reason": "The most honest show about family and small towns ever made. Coach and Mrs. Taylor are the best TV marriage, period."}
+  ],
+  "olympic-athlete": [
+    {"author": "lane_four_lou", "pick": "Michael Phelps", "reason": "Twenty-three gold medals. That number is so big it doesn't even look real."},
+    {"author": "Kiara from Kingston", "pick": "Usain Bolt", "reason": "He made the 100 meters look like a jog and smiled the whole way. And he still holds the world records."},
+    {"author": "flip_it_frankie", "pick": "Simone Biles", "reason": "She has skills named after her that almost nobody else will even attempt. That's GOAT stuff."}
+  ],
+  "breakfast-food": [
+    {"author": "sizzle_suzie", "pick": "Bacon", "reason": "Bacon makes every other breakfast item better. That's the definition of the GOAT."},
+    {"author": "Ramon G.", "pick": "Breakfast Burrito", "reason": "Eggs, potatoes, cheese and salsa, all wrapped up so you can eat it in the car. Peak breakfast engineering."},
+    {"author": "shortstack_sue", "pick": "Chilaquiles", "reason": "Chilaquiles should be on this list. Crispy tortillas, salsa, a fried egg on top. Nothing better on a Sunday."}
+  ],
+  "action-movie-star": [
+    {"author": "terminator_tina", "pick": "Arnold Schwarzenegger", "reason": "Terminator 2, Predator, Commando. He defined the action hero for a whole generation."},
+    {"author": "stunt_reel_raj", "pick": "Jackie Chan", "reason": "He does his own stunts and makes them funny. Watch the outtakes over the credits and tell me anyone else is close."},
+    {"author": "Brenda K.", "pick": "Tom Cruise", "reason": "He's in his sixties and still hanging off real airplanes. Nobody has ever been this committed."}
+  ],
+  "golfer": [
+    {"author": "fore_fiona", "pick": "Tiger Woods", "reason": "He changed who watches golf. The 2019 Masters had me crying in my living room."},
+    {"author": "Walt from Columbus", "pick": "Jack Nicklaus", "reason": "Eighteen majors. Until somebody beats that, the Golden Bear is the answer."},
+    {"author": "nineteenth_hole_ned", "pick": "Arnold Palmer", "reason": "He made golf cool for regular people. Arnie's Army was real, and he earned every one of those fans."}
+  ],
+  "cookie": [
+    {"author": "Maddie Bakes", "pick": "Chocolate Chip", "reason": "Warm, gooey, just out of the oven. Chocolate chip is the cookie every other cookie wants to be."},
+    {"author": "dunk_squad_dan", "pick": "Oreo", "reason": "Twist, lick, dunk. It's a whole ritual, and no other cookie has one."},
+    {"author": "Auntie Joy", "pick": "Thin Mints", "reason": "Thin Mints straight from the freezer. Girl Scout cookie season is the best few weeks of the year."}
+  ],
+  "cartoon-series": [
+    {"author": "springfield_stan", "pick": "The Simpsons", "reason": "The golden-era seasons are still the funniest TV ever made. It's been on so long it predicted half of real life."},
+    {"author": "bikinibottom_bri", "pick": "SpongeBob SquarePants", "reason": "Every meme I send is SpongeBob. Funny for kids, even funnier for adults."},
+    {"author": "Theo from Portland", "pick": "Avatar: The Last Airbender", "reason": "The best story ever told in a cartoon, with real character growth. Zuko's arc alone wins it."}
+  ],
+  "sneaker-brand": [
+    {"author": "sole_collector_cj", "pick": "Jordan", "reason": "The 1s and the 11s are art. Nothing else has that history or that hype."},
+    {"author": "Pam the Runner", "pick": "New Balance", "reason": "Comfortable, good-looking, and they last forever. The dads were right all along."},
+    {"author": "Swoosh Steph", "pick": "Nike", "reason": "Running, basketball, soccer, everyday. Nike makes a top shoe in every single category."}
+  ],
+  "nfl-running-back": [
+    {"author": "lions_lifer_lyle", "pick": "Barry Sanders", "reason": "Every carry was a highlight. He'd go backwards twenty yards to gain five and you couldn't look away."},
+    {"author": "Sheila from Chicago", "pick": "Walter Payton", "reason": "He never ran out of bounds if he could hit somebody instead. Toughest player I ever watched."},
+    {"author": "brownsbacker_bert", "pick": "Jim Brown", "reason": "Led the league almost every year and walked away at the top. Most dominant player the sport has ever seen."}
+  ],
+  "pasta-dish": [
+    {"author": "Nonna Carmela", "pick": "Lasagna", "reason": "Layers of sauce, cheese and pasta, baked low and slow. Sunday lasagna is my love language."},
+    {"author": "al_dente_dave", "pick": "Carbonara", "reason": "Eggs, cheese, guanciale and black pepper. A handful of ingredients and it's perfect. No cream, please."},
+    {"author": "Kristy W.", "pick": "Fettuccine Alfredo", "reason": "Creamy, cheesy, comforting. I'm not ashamed. It's what I order at every Italian place."}
+  ],
+  "plot-twist-movie": [
+    {"author": "spoiler_alert_ali", "pick": "The Sixth Sense", "reason": "I saw it in theaters with zero spoilers and my jaw hit the floor. Then you rewatch and the clues were all right there."},
+    {"author": "Owen in Denver", "pick": "The Usual Suspects", "reason": "Those last five minutes. Best ending in movie history, and I still think about that coffee mug."},
+    {"author": "rule_one_rita", "pick": "Fight Club", "reason": "The twist works on the first watch and changes everything on the second. The rewatch value is insane."}
+  ],
+  "superpower": [
+    {"author": "Zoe from Phoenix", "pick": "Teleportation", "reason": "No traffic, no flights. Breakfast in Paris and lunch in Tokyo. Teleportation is the most useful power by far."},
+    {"author": "up_up_ursula", "pick": "Flight", "reason": "Flying is the dream everyone has as a kid. Pure freedom is the best superpower there is."},
+    {"author": "chrono_cal", "pick": "Time Travel", "reason": "Fix your mistakes, see history, peek at the future. Time travel beats everything else on this list."}
+  ],
+  "fictional-character": [
+    {"author": "Bookworm Bettina", "pick": "Sherlock Holmes", "reason": "Over a century old and still the template for every detective on TV. That's staying power."},
+    {"author": "donut_derek", "pick": "Homer Simpson", "reason": "The funniest character ever written. I quote him more than any real person I know."},
+    {"author": "Gina from Mesa", "pick": "Atticus Finch", "reason": "Atticus Finch belongs on here. Quiet courage, doing the right thing when the whole town is against you."}
+  ],
+  "best-picture-winner": [
+    {"author": "film_buff_fernando", "pick": "The Godfather", "reason": "Every scene is perfect. Fifty years later it's still the movie other directors study."},
+    {"author": "Paula from Erie", "pick": "Forrest Gump", "reason": "It makes me laugh and cry in the same scene. My comfort movie, and it took home Best Picture."},
+    {"author": "subtitle_sun", "pick": "Parasite", "reason": "The first non-English-language film to win Best Picture, and it earned it. Tense, funny and shocking."}
+  ],
+  "bbq-food": [
+    {"author": "pitmaster_paco", "pick": "Smoked Brisket", "reason": "Twelve hours on the smoker, that bark, the jiggle when you slice it. Brisket is the king of barbecue."},
+    {"author": "Dottie from Memphis", "pick": "Baby Back Ribs", "reason": "Dry-rub ribs and a cold drink on a hot day. That's barbecue to me."},
+    {"author": "kc_bbq_kenny", "pick": "Burnt Ends", "reason": "Kansas City took the best bite of the brisket and made a whole dish out of it. Meat candy."}
+  ],
+  "romantic-movie": [
+    {"author": "Rachel M.", "pick": "The Notebook", "reason": "The rain scene! I've seen it twenty times and I still cry at the end every time."},
+    {"author": "cinema_sofia", "pick": "When Harry Met Sally", "reason": "Funny, smart, and the most believable romance on film. The New Year's Eve speech is perfect."},
+    {"author": "Grace from Bath", "pick": "Pride & Prejudice", "reason": "The hand flex scene alone wins it. Every frame is gorgeous and the slow burn is perfect."}
+  ],
+  "super-bowl-snack": [
+    {"author": "wing_king_wally", "pick": "Buffalo Wings", "reason": "Super Bowl Sunday is wing day. Blue cheese, celery, extra napkins. Done."},
+    {"author": "Tasha from Tampa", "pick": "Nachos", "reason": "One giant tray of nachos in the middle of the room feeds everybody. Best party food ever."},
+    {"author": "dip_diva_deb", "pick": "Buffalo Chicken Dip", "reason": "At every party I go to, the dip is gone by halftime. That tells you everything."}
+  ],
+  "horror-movie": [
+    {"author": "Victor N.", "pick": "The Exorcist", "reason": "Decades later it's still the one people are scared to watch alone. Pure dread from start to finish."},
+    {"author": "haddonfield_hugo", "pick": "Halloween", "reason": "That theme music alone is terrifying. It made the slasher movie what it is."},
+    {"author": "Ivy from Salem", "pick": "Jaws", "reason": "Jaws is a horror movie and the best one ever made. It kept people out of the ocean for a whole summer."}
+  ],
+  "christmas-movie": [
+    {"author": "Merry Maria", "pick": "Home Alone", "reason": "My family watches it every year and we still laugh at the paint cans. The perfect Christmas movie."},
+    {"author": "nakatomi_nate", "pick": "Die Hard", "reason": "Yes, it's a Christmas movie. It takes place on Christmas Eve at an office party. Best one ever."},
+    {"author": "griswold_gary", "pick": "National Lampoon's Christmas Vacation", "reason": "Cousin Eddie, the lights, the squirrel. Every December I quote this movie nonstop."}
+  ],
+  "nfl-tight-end": [
+    {"author": "gridiron_greg", "pick": "Rob Gronkowski", "reason": "Best blocker and best receiver at the same time. In his prime you couldn't cover him with one guy."},
+    {"author": "Chiefs Kingdom Kat", "pick": "Travis Kelce", "reason": "Watch the playoffs. He's always open when it matters most, and he's been doing it for a decade."},
+    {"author": "Pete from Pasadena", "pick": "Tony Gonzalez", "reason": "Seventeen seasons and he caught everything. The model for every pass-catching tight end since."}
+  ],
+  "nfl-offensive-lineman": [
+    {"author": "trench_warfare_tj", "pick": "Anthony Muñoz", "reason": "Ask anyone who watched those 80s Bengals. Big, quick feet, and nobody ever seemed to beat him."},
+    {"author": "Bev from Garland", "pick": "Larry Allen", "reason": "The strongest man I ever saw on a football field. Defensive linemen did not want to line up across from him."},
+    {"author": "o_line_ollie", "pick": "Joe Thomas", "reason": "Didn't miss a snap for over ten years, on some rough Browns teams. Pure consistency deserves the crown."}
+  ],
+  "nfl-defensive-lineman": [
+    {"author": "sackmaster_sonya", "pick": "Reggie White", "reason": "The Minister of Defense could throw anybody aside with that hump move. Strong as an ox and relentless."},
+    {"author": "Rams House Ricky", "pick": "Aaron Donald", "reason": "Double-teamed every play and still wrecked games. Never seen an interior lineman like him."},
+    {"author": "Gerald in Gary", "pick": "Deacon Jones", "reason": "He gave us the word sack, and his head slap was so good they banned it. The original."}
+  ],
+  "nfl-linebacker": [
+    {"author": "blitz_betty", "pick": "Lawrence Taylor", "reason": "He changed how offenses blocked. Teams built whole game plans around stopping one guy."},
+    {"author": "Kendra from Towson", "pick": "Ray Lewis", "reason": "The heart of one of the best defenses ever, and he did it for seventeen years. Total intensity."},
+    {"author": "monsters_midway_mo", "pick": "Dick Butkus", "reason": "The most ferocious tackler who ever played. Running backs felt him for a week after."}
+  ],
+  "nfl-defensive-back": [
+    {"author": "pick_six_pat", "pick": "Deion Sanders", "reason": "Quarterbacks just stopped throwing his way. Half the field was closed the second he lined up."},
+    {"author": "Lorraine B.", "pick": "Ed Reed", "reason": "He read quarterbacks better than they read him. Every pick felt like he knew the play first."},
+    {"author": "safety_first_sean", "pick": "Ronnie Lott", "reason": "Had a fingertip cut off so he wouldn't miss time, hit like a truck, and won four rings. Toughest DB ever."}
+  ]
+}

@@ -55,3 +55,13 @@ Sources for each clued contender are in `content/categories.json` under `sources
 | 46 | GOAT Super Bowl snack (super-bowl) | Buffalo Wings, Nachos, Pizza | 2026-11-25 | | |
 | 47 | GOAT horror movie (halloween) | The Exorcist, Halloween, The Shining | 2026-11-25 | | |
 | 48 | GOAT Christmas movie (christmas) | Home Alone, Elf, National Lampoon's Christmas Vacation | 2026-11-25 | | |
+
+## Added 2026-11-27 (NFL positions, written by Claude)
+
+| # | Category | Clued (#1, #2, #3) | Claude first read | Person checked | Date |
+|---|---|---|---|---|---|
+| 49 | GOAT NFL tight end | Rob Gronkowski, Tony Gonzalez, Travis Kelce | 2026-11-27 | | |
+| 50 | GOAT NFL offensive lineman | Anthony Muñoz, Larry Allen, Jonathan Ogden | 2026-11-27 | | |
+| 51 | GOAT NFL defensive lineman | Reggie White, Aaron Donald, J.J. Watt | 2026-11-27 | | |
+| 52 | GOAT NFL linebacker | Lawrence Taylor, Ray Lewis, Dick Butkus | 2026-11-27 | | |
+| 53 | GOAT NFL defensive back | Deion Sanders, Ed Reed, Ronnie Lott | 2026-11-27 | | |
