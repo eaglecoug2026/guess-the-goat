@@ -200,6 +200,7 @@ test('owner: sign in, review, session expiry and sign out everywhere; nothing in
   await page.locator('#oQueue').getByRole('button', { name: 'Add…' }).click();
   await page.locator('#oQueue').getByRole('button', { name: 'Add to game' }).click();
   await expect(page.locator('#ownerMsg')).toHaveText('Added to the game as a crowd vote.');
+  await page.locator('#grps').getByRole('button', { name: 'Crowd votes' }).click();
   await expect(page.locator('#cats')).toContainText('Pasta shape');
   // expire every session server-side; the next owner action returns to sign-in with a notice
   for (const x of Object.values(b.sessions)) x.expires = 0;
@@ -341,8 +342,11 @@ test('analytics blocked: gameplay unaffected, events stay queued', async ({ page
 
 test('crowd vote category: cast and switch', async ({ page }) => {
   const { backend: b } = await open(page);
+  await page.locator('#grps').getByRole('button', { name: 'Crowd votes' }).click();
   await page.locator('#cats [data-votecat]').first().click();
   await expect(page.locator('#tag')).toHaveText('Crowd vote');
+  await expect(page.locator('#talk')).toBeVisible();
+  await expect(page.locator('#takeList li').first()).toContainText('Starter take');
   await page.locator('#vote').getByRole('button', { name: 'Chess', exact: true }).click();
   await expect(page.locator('#vote .mine')).toContainText('Your vote: Chess');
   await page.locator('#vote').getByRole('button', { name: 'Catan', exact: true }).click();
@@ -402,17 +406,112 @@ test('accessibility: axe finds no serious issues on the main states', async ({ p
 test("today's category is never offered as a practice round", async ({ page }) => {
   const { backend: b } = await open(page);
   await expect(page.locator('#tag')).toContainText('Daily GOAT #10');
-  await expect(page.locator(`#cats [data-practice="${b.puzzles[TODAY].slug}"]`)).toHaveCount(0);
-  await expect(page.locator('#cats [data-practice]')).toHaveCount(8);
+  const slug = b.puzzles[TODAY].slug;
+  const groups = await page.locator('#grps .grp').allTextContents();
+  expect(groups.length).toBeGreaterThan(5);
+  for (const g of groups) {
+    await page.locator('#grps').getByRole('button', { name: g, exact: true }).click();
+    await expect(page.locator('#grps .grp[aria-pressed=true]')).toHaveText(g);
+    await expect(page.locator(`#cats [data-practice="${slug}"]`)).toHaveCount(0);
+  }
 });
 
-test('practice deck re-deals from the server list once it arrives', async ({ page }) => {
-  // The server has every bundled category plus 200 more, and answers late, so the first deck comes from the bundle.
-  const extra = Array.from({ length: 200 }, (_, i) => ({ ...bundled[1], slug: `srv-${i}`, name: `Server ${i}`, title: `GOAT server ${i}`, kind: 'daily', active: true, needs_clues: false }));
+test('more GOATs: groups first, then the categories in a group; new server groups appear', async ({ page }) => {
+  const extra = [{ ...bundled[1], slug: 'srv-extra', name: 'Server extra', title: 'GOAT server extra', grp: 'Testing', sub: 'Extra one', kind: 'daily', active: true, needs_clues: false }];
   const backend = createBackend({ extraCatalog: extra, delay: { get_catalog: 1500 } });
   await open(page, { backend });
-  await expect(page.locator('#cats [data-practice]')).toHaveCount(8);
-  await expect(page.locator('#cats [data-practice^="srv-"]')).toHaveCount(0);
-  await expect(page.locator('#cats [data-practice^="srv-"]').first()).toBeVisible({ timeout: 5000 });
-  await expect(page.locator('#cats [data-practice]')).toHaveCount(8);
+  await expect(page.locator('#grps .grp').first()).toHaveText('NFL');
+  await expect(page.locator('#grps .grp').first()).toHaveAttribute('aria-pressed', 'true');
+  const subs = (await page.locator('#cats .cat').allTextContents()).map(t => t.replace(/(Practice|Solved|Missed)$/, ''));
+  expect(subs.filter(x => ['QB', 'RB', 'WR', 'TE', 'O-line', 'D-line', 'LB', 'DB'].includes(x)).length).toBeGreaterThanOrEqual(7);
+  await page.locator('#grps').getByRole('button', { name: 'Food', exact: true }).click();
+  await expect(page.locator('#cats')).toContainText('Pizza topping');
+  await expect(page.locator('#cats')).not.toContainText('QB');
+  await expect(page.locator('#grps').getByRole('button', { name: 'Testing' })).toBeVisible({ timeout: 5000 });
+  await page.locator('#grps').getByRole('button', { name: 'Testing' }).click();
+  await page.locator('#cats').getByRole('button', { name: /Extra one/ }).click();
+  await expect(page.locator('#title')).toHaveText('GOAT server extra');
+  await expect(page.locator('#tag')).toHaveText('Practice round');
+});
+
+test('hints one at a time, then give up shows the answer and counts as a loss', async ({ page }) => {
+  const { backend: b } = await open(page, { storage: { 'goat-stats': { played: 2, wins: 2, streak: 2, maxStreak: 2, lastWin: '2027-01-09', lastPlayed: '2027-01-09' } } });
+  const clues = b.puzzleFor(TODAY).clues;
+  await expect(page.locator('#hints')).toBeHidden();
+  await page.getByRole('button', { name: 'Hint', exact: true }).click();
+  await expect(page.locator('#hints li')).toHaveCount(1);
+  await expect(page.locator('#hints li').first()).toContainText(clues[0]);
+  await expect(page.locator('#hintBtn')).toHaveText('Another hint (3 left)');
+  for (let i = 0; i < 3; i++) await page.locator('#hintBtn').click();
+  await expect(page.locator('#hints li')).toHaveCount(4);
+  await expect(page.locator('#hintBtn')).toHaveText('No hints left');
+  await expect(page.locator('#hintBtn')).toBeDisabled();
+  await guess(page, b.wrongFor(TODAY, 1)[0]);
+  await page.locator('#giveUp').click();
+  await expect(page.locator('#giveUp')).toHaveText('Tap again to give up');
+  await expect(page.locator('#play')).toBeVisible();
+  await page.locator('#giveUp').click();
+  await expect(page.locator('#play')).toBeHidden();
+  await expect(page.locator('#side h2').first()).toHaveText(`The GOAT was ${b.answerFor(TODAY)}`);
+  await expect(page.locator('#side p').first()).toContainText('You gave up.');
+  await expect(page.locator('#side p').first()).toContainText('You used 4 hints.');
+  await expect(page.locator('#hints li')).toHaveCount(4);
+  await expect(page.locator('#sStreak')).toHaveText('0');
+  await expect(page.locator('#sPlayed')).toHaveText('3');
+  await expect.poll(() => b.eventsNamed('give_up').length).toBe(1);
+  expect(b.eventsNamed('hint')).toHaveLength(4);
+  expect(b.eventsNamed('game_complete')[0]).toMatchObject({ props: { won: false, guesses: 1, hints: 4, gave_up: true } });
+  await page.reload();
+  await expect(page.locator('#side h2').first()).toHaveText(`The GOAT was ${b.answerFor(TODAY)}`);
+  await expect(page.locator('#hints li')).toHaveCount(4);
+});
+
+test('give up needs a second tap, and the first tap wears off', async ({ page }) => {
+  await open(page);
+  await page.locator('#giveUp').click();
+  await expect(page.locator('#giveUp')).toHaveText('Tap again to give up');
+  await page.clock.fastForward(6000);
+  await expect(page.locator('#giveUp')).toHaveText('Give up');
+  await expect(page.locator('#play')).toBeVisible();
+});
+
+test('the debate: hidden until the round ends, then typed picks, write-ins and blocked words', async ({ page }) => {
+  const { backend: b } = await open(page);
+  const slug = b.puzzleFor(TODAY).slug, answer = b.answerFor(TODAY);
+  await expect(page.locator('#talk')).toBeHidden();
+  await playToEnd(page, b, true);
+  await expect(page.locator('#talk')).toBeVisible();
+  await expect(page.locator('#talkTitle')).toContainText(b.puzzleFor(TODAY).title);
+  await expect(page.locator('#takeList li').first()).toContainText('Starter take');
+  await page.locator('#side').getByRole('button', { name: 'Type your GOAT and say why' }).click();
+  await expect(page.locator('#tPick')).toBeFocused();
+  await page.locator('#tPick').fill(answer.toUpperCase());
+  await page.locator('#tWhy').fill('Nobody else is close.');
+  await page.locator('#tName').fill('Tester T');
+  await page.getByRole('button', { name: 'Post my take' }).click();
+  await expect(page.locator('#tMsg')).toHaveText(`Posted. It also counts as your vote for ${answer}.`);
+  expect(Object.values(b.votes[slug] || {})).toEqual([answer]);
+  await expect(page.locator('#side .big')).toBeVisible();
+  await expect(page.locator('#takeList li.me')).toHaveCount(1);
+  await expect(page.locator('#takeList li.me')).toContainText('Tester T');
+  await expect(page.locator('#takeList li.me')).toContainText('Nobody else is close.');
+  await expect(page.locator('#tCount')).toHaveText('(2)');
+  await page.locator('#tPick').fill('Somebody Totally New');
+  await page.locator('#tWhy').fill('My own pick.');
+  await page.getByRole('button', { name: 'Update my take' }).click();
+  await expect(page.locator('#tMsg')).toContainText('write-in');
+  await expect(page.locator('#takeList li.me')).toHaveCount(1);
+  await expect(page.locator('#takeList li.me')).toContainText('Somebody Totally New');
+  expect(b.takes.filter(t => !t.seed)).toHaveLength(1);
+  await page.locator('#tWhy').fill('what a zzbadword pick');
+  await page.getByRole('button', { name: 'Update my take' }).click();
+  await expect(page.locator('#tMsg')).toHaveText('Links and some words aren’t allowed. Try wording it another way.');
+  await page.locator('#tWhy').fill('');
+  await page.getByRole('button', { name: 'Update my take' }).click();
+  await expect(page.locator('#tMsg')).toHaveText('Tell everyone why.');
+  await page.reload();
+  await expect(page.locator('#takeList li.me')).toContainText('Somebody Totally New');
+  await expect(page.locator('#tPick')).toHaveValue('Somebody Totally New');
+  await expect(page.locator('#tName')).toHaveValue('Tester T');
+  await expect.poll(() => b.eventsNamed('take_post').length).toBe(2);
 });

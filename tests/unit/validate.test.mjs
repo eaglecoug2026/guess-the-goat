@@ -7,8 +7,9 @@ const all = JSON.parse(readFileSync(new URL('../../content/categories.json', imp
 const one = () => structuredClone(all.find(c => c.id === 'nfl-quarterback'));
 const errs = c => validate([c]).errors;
 
-test('content/categories.json passes: 48 categories, unique ids', () => {
-  assert.equal(all.length, 48);
+test('content/categories.json passes: 53 categories, unique ids, every one grouped', () => {
+  assert.equal(all.length, 53);
+  for (const c of all) assert.ok(c.group && c.sub, c.id + ' has a group and sub');
   assert.deepEqual(validate(all).errors, []);
 });
 
