@@ -65,8 +65,8 @@ Sources for each clued contender are in `content/categories.json` under `sources
 | 51 | GOAT NFL defensive lineman | Reggie White, Aaron Donald, J.J. Watt | 2026-11-27 | | |
 | 52 | GOAT NFL linebacker | Lawrence Taylor, Ray Lewis, Dick Butkus | 2026-11-27 | | |
 | 53 | GOAT NFL defensive back | Deion Sanders, Ed Reed, Ronnie Lott | 2026-11-27 | | |
-| 54 | GOAT Pop singer | Michael Jackson, Madonna, Whitney Houston | 2026-11-27: written for Peter's new list | | |
-| 55 | GOAT Grunge band | Pearl Jam, Nirvana, Soundgarden | 2026-11-27: written for Peter's new list | | |
+| 54 | GOAT pop singer | Michael Jackson, Madonna, Whitney Houston | 2026-11-27: written for Peter's new list | | |
+| 55 | GOAT grunge band | Pearl Jam, Nirvana, Soundgarden | 2026-11-27: written for Peter's new list | | |
 | 56 | GOAT drummer | John Bonham, Neil Peart, Keith Moon | 2026-11-27: written for Peter's new list | | |
 | 57 | GOAT NFL team | San Francisco 49ers, Pittsburgh Steelers, New England Patriots | 2026-11-27: written for Peter's new list | | |
 | 58 | GOAT NFL player | Jerry Rice, Tom Brady, Lawrence Taylor | 2026-11-27: written for Peter's new list | | |
