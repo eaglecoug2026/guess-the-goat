@@ -1040,7 +1040,7 @@ function renderTalk() {
     '<label class="fld"><span>Why?</span><textarea id="tWhy" maxlength="280" placeholder="Make your case"></textarea></label>' +
     '<label class="fld"><span>Your name <small>optional, shown with your take</small></span><input id="tName" maxlength="24" autocomplete="nickname"></label>' +
     '<button class="btn" id="tBtn" type="submit">Post my take</button><p class="msg" id="tMsg" role="status" aria-live="polite"></p>' +
-    '<p class="note">Picking one of the names here also counts as your vote. Anyone else goes on the board as a write-in. Be civil: links and some words are blocked.</p>' +
+    '<p class="note">Picking one of the names here (a last name is enough) also counts as your vote. Anyone else goes on the board as a write-in. Be civil: links and some words are blocked.</p>' +
     '</form></div><div class="panel"><h3>What players are saying <span id="tCount"></span></h3><ul class="takes" id="takeList"></ul><div class="tmore" id="takeMore" hidden></div></div></div>';
   var savedName = store.get('goat-take-name');
   if (savedName) $('tName').value = savedName;
@@ -1092,7 +1092,7 @@ function postTake() {
     store.set('goat-take-name', name || null);
     var matched = res && res.pick;
     msg.className = 'msg ok';
-    msg.textContent = matched ? (res.voted ? 'Posted. It also counts as your vote for ' + matched + '.' : 'Posted.')
+    msg.textContent = matched ? (res.voted ? 'Posted. It also counts as your vote for ' + matched + (/\.$/.test(matched) ? '' : '.') : 'Posted.')
       : 'Posted. ' + pick + ' isn’t one of the names in this category, so it’s a write-in: on the board, not in the ranking.';
     track('take_post', { slug: t.slug, write_in: !matched });
     if (matched && res.voted) {

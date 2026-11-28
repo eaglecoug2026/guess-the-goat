@@ -516,6 +516,26 @@ test('the debate: hidden until the round ends, then typed picks, write-ins and b
   await expect.poll(() => b.eventsNamed('take_post').length).toBe(2);
 });
 
+test('the debate: a last name alone counts as that contender, unless two share it', async ({ page }) => {
+  const b = createBackend();
+  const slug = b.puzzleFor(TODAY).slug;
+  b.catalog.find(c => c.slug === slug).opts.push({ name: 'Testy Uniquename Jr.', est: 0 }, { name: 'Ann Samename', est: 0 }, { name: 'Bob Samename', est: 0 });
+  await open(page, { backend: b });
+  await playToEnd(page, b, true);
+  await page.locator('#tPick').fill('uniquename');
+  await page.locator('#tWhy').fill('Last name is enough.');
+  await page.getByRole('button', { name: 'Post my take' }).click();
+  await expect(page.locator('#tMsg')).toHaveText('Posted. It also counts as your vote for Testy Uniquename Jr.');
+  await expect(page.locator('#takeList li.me')).toContainText('Testy Uniquename Jr.');
+  expect(Object.values(b.votes[slug])).toEqual(['Testy Uniquename Jr.']);
+  await page.locator('#tPick').fill('Samename');
+  await page.locator('#tWhy').fill('Which one though.');
+  await page.getByRole('button', { name: 'Update my take' }).click();
+  await expect(page.locator('#tMsg')).toContainText('Samename isn’t one of the names in this category');
+  await expect(page.locator('#takeList li.me')).toContainText('Samename');
+  expect(Object.values(b.votes[slug])).toEqual(['Testy Uniquename Jr.']);
+});
+
 test('the debate shows 5 takes at a time, then Show more', async ({ page }) => {
   const b = createBackend();
   const slug = b.puzzleFor(TODAY).slug;
