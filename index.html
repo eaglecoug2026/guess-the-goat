@@ -95,6 +95,12 @@ h1{font:clamp(28px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 6px;text-
 .tkt.you{background:var(--ink);color:var(--card)}
 .tkp{margin:0;font-size:15px}
 .tkr{margin:0;font-size:16px;overflow-wrap:anywhere}
+.tka{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.takes .reps{list-style:none;margin:8px 0 0;padding:0 0 0 14px;border-left:3px solid #14121026;display:grid;gap:12px}
+.takes .reps li{border:0;padding:0;margin:0;background:none;border-radius:0;display:grid;gap:4px}
+.rform{display:grid;gap:8px;margin-top:8px}
+.rform textarea{width:100%;font:16px/1.4 Inter,sans-serif;padding:10px 12px;border-radius:10px;border:2px solid var(--ink);background:#fff;color:var(--ink);min-height:72px;resize:vertical}
+.rform .tka{margin:0}.rform .msg,.rform .note{margin:0}
 .grps{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .grp{min-height:44px;padding:8px 16px;border-radius:12px;border:2px solid var(--ink);background:var(--card);font:18px/1 Anton,Impact,sans-serif;letter-spacing:.02em}
 .grp[aria-pressed=true]{background:var(--ink);color:var(--card)}
@@ -275,6 +281,7 @@ h1{font:clamp(28px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 6px;text-
       <button class="sm go" data-own="correct">Save correction</button>
     </div>
     <div class="panel"><h2>Latest takes</h2><p class="note">Newest player takes in the debate. Hide anything that shouldn’t be public.</p><ul class="sg" id="oTakes"></ul>
+      <h2 class="mt">Latest replies</h2><p class="note">Newest replies under takes. Hide anything that shouldn’t be public.</p><ul class="sg" id="oReplies"></ul>
       <h2 class="mt">Live categories</h2><ul class="sg" id="oLive"></ul>
       <h2 class="mt">Schedule, next 30 days</h2><ul class="sg" id="oSched"></ul>
       <h2 class="mt">Delete a player’s data</h2>
@@ -516,7 +523,8 @@ var ERR = {
   not_owner: 'Your owner session expired. Sign in again.',
   network: "Can’t reach the server. Check your connection and try again.",
   missing: "This isn’t available yet.",
-  blocked: "Links and some words aren’t allowed. Try wording it another way."
+  blocked: "Links and some words aren’t allowed. Try wording it another way.",
+  not_found: "That message isn’t there anymore."
 };
 function errText(e) { return ERR[e && e.code] || "That didn’t go through. Try again in a moment."; }
 
@@ -976,6 +984,11 @@ function renderMore() {
 var takes = {};          // slug -> { state: 'loading' | 'ok' | 'error', list, total, more, mine, paging }
 var TAKE_PAGE = 5;       // the board shows 5 takes at a time, then "Show more"
 var talkSlugShown = null, posting = false;
+// Replies (D-36): one level under each take, 5 at a time, oldest first.
+var threads = {};        // take id -> { open, state, list, added, total, more, paging, pageErr }
+var REPLY_PAGE = 5;
+var replyTo = null, replyDraft = '', replyBusy = false, replyMsg = null;   // the reply being written
+var editRep = null, editDraft = '', editBusy = false, editMsg = null;      // the reply being edited
 function talkCat() {
   if (view.type === 'vote') { var c = findCat(view.slug); return c ? { slug: c.slug, title: c.title, opts: c.opts.map(function (o) { return o.name; }) } : null; }
   var cur = current();
@@ -1014,8 +1027,8 @@ function keepMoreFocus(had) {
 }
 function ago(at) {
   var s = (Date.now() - new Date(at).getTime()) / 1000;
-  if (!(s >= 0)) return '';
-  if (s < 90) return 'just now';
+  if (isNaN(s)) return '';
+  if (s < 90) return 'just now';   // also when the server clock is a little ahead of this device's
   if (s < 3600) return Math.round(s / 60) + ' min ago';
   if (s < 86400) return Math.round(s / 3600) + ' h ago';
   var d = Math.round(s / 86400);
@@ -1066,18 +1079,165 @@ function renderTakeList(slug) {
   if (t.state === 'loading' && !t.list.length) { ul.innerHTML = '<li><span class="tkr">Loading the debate…</span></li>'; return; }
   if (t.state === 'error' && !t.list.length) { ul.innerHTML = '<li><span class="tkr">The debate can’t load right now. <button class="sm" id="takesRetry">Try again</button></span></li>'; return; }
   var list = mine ? [mine].concat(t.list) : t.list;
+  var ae = document.activeElement, aeKey = null, aeSel = null;
+  if (ae && ul.contains(ae)) {
+    aeKey = ae.id ? '#' + ae.id : ae.dataset && ae.dataset.tk ? '[data-tk="' + ae.dataset.tk + '"][data-id="' + ae.dataset.id + '"]' : null;
+    if (ae.tagName === 'TEXTAREA') aeSel = [ae.selectionStart, ae.selectionEnd];
+  }
   ul.innerHTML = list.length ? list.map(function (x) {
     return '<li' + (x.mine ? ' class="me"' : '') + '><div class="tkh"><b>' + esc(x.author || 'A fan') + '</b>' +
       (x.mine ? '<span class="tkt you">You</span>' : '') + (x.seed ? '<span class="tkt">Starter take</span>' : '<span>' + esc(ago(x.at)) + '</span>') +
-      (x.mine && x.hidden ? '<span>Hidden by the moderator</span>' : '') + '</div>' +
-      '<p class="tkp">GOAT: <b>' + esc(x.pick) + '</b></p><p class="tkr">' + esc(x.reason) + '</p></li>';
+      (x.edited ? '<span>edited</span>' : '') + (x.mine && x.hidden ? '<span>Hidden by the moderator</span>' : '') + '</div>' +
+      '<p class="tkp">GOAT: <b>' + esc(x.pick) + '</b></p><p class="tkr">' + esc(x.reason) + '</p>' + takeActions(x) + threadHtml(x) + '</li>';
   }).join('') : '<li><span class="tkr">No takes yet. Be the first.</span></li>';
+  if (aeKey) { var back = ul.querySelector(aeKey); if (back) { back.focus({ preventScroll: true }); if (aeSel) back.setSelectionRange(aeSel[0], aeSel[1]); } }
   var shown = t.list.length + (mine && !mine.hidden ? 1 : 0);
   if (t.state !== 'ok' || (!t.more && !t.pageErr)) return;
   foot.hidden = false;
   foot.innerHTML = '<span>Showing ' + shown + ' of ' + t.total + '</span>' +
     (t.pageErr ? '<span class="tkr">Couldn’t load more.</span>' : '') +
     '<button class="sm" id="takesMore" type="button"' + (t.paging ? ' disabled' : '') + '>' + (t.paging ? 'Loading…' : t.pageErr ? 'Try again' : 'Show more takes') + '</button>';
+}
+function findTake(id) {
+  var t = takes[talkSlugShown]; if (!t) return null;
+  if (t.mine && t.mine.id === id) return t.mine;
+  for (var i = 0; i < t.list.length; i++) if (t.list[i].id === id) return t.list[i];
+  return null;
+}
+function threadList(th) { return th.list.concat(th.added); }
+function findReply(id) {
+  for (var k in threads) { var th = threads[k]; if (!th) continue; var l = threadList(th); for (var i = 0; i < l.length; i++) if (l[i].id === id) return l[i]; }
+  return null;
+}
+function takeActions(x) {
+  var th = threads[x.id], n = th && th.state === 'ok' ? th.total : (x.replies || 0), open = th && th.open;
+  var h = x.hidden ? '' : '<button class="sm" type="button" data-tk="reply" data-id="' + x.id + '">Reply</button>' +
+    (n ? '<button class="sm" type="button" data-tk="thread" data-id="' + x.id + '" aria-expanded="' + !!open + '">' + (open ? 'Hide replies' : n + (n === 1 ? ' reply' : ' replies')) + '</button>' : '');
+  if (x.mine) h += '<button class="sm" type="button" data-tk="edittake" data-id="' + x.id + '">Edit</button>';
+  return h ? '<div class="tka">' + h + '</div>' : '';
+}
+function replyForm(id, val, label, act, key, busy, msg, hint, note) {
+  return '<div class="rform"><textarea id="' + id + '" maxlength="280" aria-label="' + hint + '" placeholder="' + hint + '">' + esc(val) + '</textarea>' +
+    '<div class="tka"><button class="sm go" type="button" data-tk="' + act + '" data-id="' + key + '"' + (busy ? ' disabled' : '') + '>' + (busy ? 'Saving…' : label) + '</button>' +
+    '<button class="sm" type="button" data-tk="' + act + '-cancel" data-id="' + key + '">Cancel</button></div>' +
+    (note ? '<p class="note">' + note + '</p>' : '') +
+    '<p class="msg' + (msg && msg.bad ? ' bad' : '') + '" role="status" aria-live="polite">' + esc(msg ? msg.text : '') + '</p></div>';
+}
+function replyName() { var n = $('tName'); return (n && n.value.trim()) || store.get('goat-take-name') || ''; }
+function replyHtml(r) {
+  var ed = editRep === r.id;
+  return '<li' + (r.mine ? ' class="me"' : '') + '><div class="tkh"><b>' + esc(r.author || 'A fan') + '</b>' + (r.mine ? '<span class="tkt you">You</span>' : '') +
+    '<span>' + esc(ago(r.at)) + '</span>' + (r.edited ? '<span>edited</span>' : '') + (r.mine && r.hidden ? '<span>Hidden by the moderator</span>' : '') + '</div>' +
+    (ed ? replyForm('erep-' + r.id, editDraft, 'Save', 'editsave', r.id, editBusy, editMsg, 'Edit your reply', '')
+        : '<p class="tkr">' + esc(r.body) + '</p>' + (r.mine ? '<div class="tka"><button class="sm" type="button" data-tk="editrep" data-id="' + r.id + '">Edit</button></div>' : '')) + '</li>';
+}
+function threadHtml(x) {
+  var th = threads[x.id], h = '';
+  if (th && th.open) {
+    var l = threadList(th);
+    if (th.state === 'loading' && !l.length) h += '<p class="note">Loading replies…</p>';
+    if (th.state === 'error' && !l.length) h += '<div class="tka"><span class="tkr">Replies can’t load right now.</span><button class="sm" type="button" data-tk="thread-retry" data-id="' + x.id + '">Try again</button></div>';
+    if (l.length) h += '<ul class="reps">' + l.map(replyHtml).join('') + '</ul>';
+    if (th.state === 'ok' && (th.more || th.pageErr)) h += '<div class="tka">' + (th.pageErr ? '<span class="tkr">Couldn’t load more.</span>' : '') +
+      '<button class="sm" type="button" data-tk="repmore" data-id="' + x.id + '"' + (th.paging ? ' disabled' : '') + '>' + (th.paging ? 'Loading…' : th.pageErr ? 'Try again' : 'Show more replies') + '</button></div>';
+  }
+  if (replyTo === x.id) {
+    var nm = replyName();
+    h += replyForm('rep-' + x.id, replyDraft, 'Post reply', 'repsend', x.id, replyBusy, replyMsg, 'Write a reply',
+      'Shown as <b>' + esc(nm || 'A fan') + '</b>. Your name comes from Your take. Be civil: links and some words are blocked.');
+  }
+  return h;
+}
+function loadReplies(id) {
+  var th = threads[id];
+  th.state = th.list.length ? th.state : 'loading';
+  rpc('reply_page', { p_take: id, p_player: player, p_limit: REPLY_PAGE }).then(function (res) {
+    th.list = res && Array.isArray(res.replies) ? res.replies : [];
+    var seen = {}; th.list.forEach(function (r) { seen[r.id] = true; });
+    th.added = th.added.filter(function (r) { return !seen[r.id]; });
+    th.total = (res && res.total) || 0; th.more = !!(res && res.more); th.state = 'ok';
+    var tk = findTake(id); if (tk) tk.replies = th.total;
+    renderTakeList(talkSlugShown);
+  }, function () { th.state = 'error'; renderTakeList(talkSlugShown); });
+}
+function openThread(id) {
+  var th = threads[id], tk = findTake(id);
+  if (!th) th = threads[id] = { open: true, state: 'ok', list: [], added: [], total: tk ? tk.replies || 0 : 0, more: false };
+  th.open = true;
+  if (th.total && !th.list.length && th.state !== 'loading') loadReplies(id);
+  renderTakeList(talkSlugShown);
+}
+// Like the takes, the next page starts after the last reply shown, so new replies don't repeat or push any out.
+function moreReplies(id) {
+  var th = threads[id];
+  if (!th || th.paging || !th.list.length) return;
+  var last = th.list[th.list.length - 1];
+  th.paging = true; th.pageErr = false; renderTakeList(talkSlugShown);
+  rpc('reply_page', { p_take: id, p_player: player, p_limit: REPLY_PAGE, p_after_at: last.at, p_after_id: last.id }).then(function (res) {
+    var seen = {}; th.list.forEach(function (r) { seen[r.id] = true; });
+    (res && Array.isArray(res.replies) ? res.replies : []).forEach(function (r) { if (!seen[r.id]) { th.list.push(r); seen[r.id] = true; } });
+    th.added = th.added.filter(function (r) { return !seen[r.id]; });
+    th.more = !!(res && res.more); th.total = (res && res.total) || th.total; th.paging = false;
+    renderTakeList(talkSlugShown);
+  }, function () { th.paging = false; th.pageErr = true; renderTakeList(talkSlugShown); });
+}
+function focusBox(id) { setTimeout(function () { var b = $(id); if (b) { b.focus({ preventScroll: false }); b.setSelectionRange(b.value.length, b.value.length); } }, 0); }
+function sendReply(id) {
+  var box = $('rep-' + id), body = (box ? box.value : replyDraft).trim();
+  if (replyBusy) return;
+  if (body.length < 2) { replyMsg = { bad: true, text: 'Write your reply first.' }; renderTakeList(talkSlugShown); focusBox('rep-' + id); return; }
+  if (config.takes_enabled === false) { replyMsg = { bad: true, text: 'The debate is paused for the moment.' }; renderTakeList(talkSlugShown); return; }
+  replyDraft = body; replyBusy = true; replyMsg = { text: 'Posting…' }; renderTakeList(talkSlugShown);
+  var name = replyName();
+  rpc('post_reply', { p_player: player, p_take: id, p_body: body, p_author: name || null }).then(function (r) {
+    replyBusy = false; replyTo = null; replyDraft = ''; replyMsg = null;
+    if (name) store.set('goat-take-name', name);
+    var th = threads[id] || (threads[id] = { open: true, state: 'ok', list: [], added: [], total: 0, more: false });
+    th.open = true;
+    if (r && r.id) { th.added.push(r); th.total++; var tk = findTake(id); if (tk) tk.replies = (tk.replies || 0) + 1; }
+    renderTakeList(talkSlugShown); announce('Reply posted.');
+    var btn = document.querySelector('[data-tk="reply"][data-id="' + id + '"]'); if (btn) btn.focus({ preventScroll: true });
+  }, function (e) { replyBusy = false; replyMsg = { bad: true, text: errText(e) }; renderTakeList(talkSlugShown); });
+}
+function saveReply(id) {
+  var box = $('erep-' + id), body = (box ? box.value : editDraft).trim();
+  if (editBusy) return;
+  if (body.length < 2) { editMsg = { bad: true, text: 'A reply needs at least 2 characters.' }; renderTakeList(talkSlugShown); focusBox('erep-' + id); return; }
+  editDraft = body; editBusy = true; editMsg = { text: 'Saving…' }; renderTakeList(talkSlugShown);
+  rpc('edit_reply', { p_player: player, p_id: id, p_body: body }).then(function (r) {
+    editBusy = false; editRep = null; editMsg = null;
+    var old = findReply(id); if (old && r) Object.assign(old, r);
+    renderTakeList(talkSlugShown); announce('Reply saved.');
+    var btn = document.querySelector('[data-tk="editrep"][data-id="' + id + '"]'); if (btn) btn.focus({ preventScroll: true });
+  }, function (e) { editBusy = false; editMsg = { bad: true, text: errText(e) }; renderTakeList(talkSlugShown); });
+}
+function takeAction(act, id) {
+  id = Number(id);
+  switch (act) {
+    case 'reply':
+      if (replyTo !== id) { replyTo = id; replyDraft = ''; replyMsg = null; }
+      openThread(id); focusBox('rep-' + id); return;
+    case 'thread':
+      var th = threads[id];
+      if (th && th.open) { th.open = false; renderTakeList(talkSlugShown); } else openThread(id); return;
+    case 'thread-retry': threads[id].state = 'ok'; threads[id].list = []; openThread(id); return;
+    case 'repmore': moreReplies(id); return;
+    case 'repsend': sendReply(id); return;
+    case 'repsend-cancel':
+      replyTo = null; replyDraft = ''; replyMsg = null; renderTakeList(talkSlugShown);
+      var rb = document.querySelector('[data-tk="reply"][data-id="' + id + '"]'); if (rb) rb.focus({ preventScroll: true }); return;
+    case 'editrep': var r = findReply(id); editRep = id; editDraft = r ? r.body : ''; editMsg = null; renderTakeList(talkSlugShown); focusBox('erep-' + id); return;
+    case 'editsave': saveReply(id); return;
+    case 'editsave-cancel':
+      editRep = null; editMsg = null; renderTakeList(talkSlugShown);
+      var eb = document.querySelector('[data-tk="editrep"][data-id="' + id + '"]'); if (eb) eb.focus({ preventScroll: true }); return;
+    case 'edittake':
+      var form = $('takeForm'), why = $('tWhy'), msg = $('tMsg');
+      if (form) form.scrollIntoView({ behavior: smooth(), block: 'start' });
+      if (why) { why.focus({ preventScroll: true }); why.setSelectionRange(why.value.length, why.value.length); }
+      if (msg) { msg.className = 'msg'; msg.textContent = 'Change your take, then tap Update my take.'; }
+      return;
+  }
 }
 function postTake() {
   var t = talkCat(); if (!t || posting) return;
@@ -1242,6 +1402,7 @@ document.addEventListener('click', function (ev) {
   if (d.vote !== undefined) { castVote(view.slug, d.vote); return; }
   if (d.own !== undefined) { ownerAction(d.own, d.k, t); return; }
   if (d.grp !== undefined) { group = d.grp; renderMore(); return; }
+  if (d.tk !== undefined) { takeAction(d.tk, d.id); return; }
   switch (t.id) {
     case 'hintBtn': useHint(); return;
     case 'giveUp': giveUp(); return;
@@ -1260,6 +1421,11 @@ document.addEventListener('click', function (ev) {
     case 'ownerOpen': ownerForm = true; renderOwnerBox(); setTimeout(function () { var i = $('oPass'); if (i) i.focus(); }, 0); return;
     case 'ownerCancel': ownerForm = false; renderOwnerBox(); return;
   }
+});
+document.addEventListener('input', function (ev) {
+  var id = ev.target.id || '';
+  if (id.indexOf('rep-') === 0) replyDraft = ev.target.value;
+  else if (id.indexOf('erep-') === 0) editDraft = ev.target.value;
 });
 document.addEventListener('change', function (ev) {
   if (ev.target.id === 'incPick') { includePick = ev.target.checked; var b = $('shareBox'); if (b) b.hidden = true; }
@@ -1315,7 +1481,7 @@ $('sForm').addEventListener('submit', function (e) {
 
 // ---------------------------------------------------------------- owner (§6.3, §7): token in sessionStorage only
 var OWNER_KEY = 'goat-owner-token', ownerForm = false, ownerNotice = '';
-var ownerData = { queue: [], needs: [], schedule: [], stats: null, takes: [] }, editing = null, ownerBusy = false;
+var ownerData = { queue: [], needs: [], schedule: [], stats: null, takes: [], replies: [] }, editing = null, ownerBusy = false;
 function token() { return sess.get(OWNER_KEY); }
 function renderOwnerBox() {
   var box = $('ownerBox');
@@ -1354,8 +1520,8 @@ function expireOwner() {
 }
 function loadOwner() {
   if (!token()) { $('ownerPanel').hidden = true; return; }
-  Promise.all([ownerCall('owner_queue'), ownerCall('owner_needs_clues'), ownerCall('owner_schedule'), ownerCall('owner_stats'), ownerCall('owner_takes')]).then(function (res) {
-    ownerData = { queue: res[0] || [], needs: res[1] || [], schedule: res[2] || [], stats: res[3] || null, takes: res[4] || [] };
+  Promise.all([ownerCall('owner_queue'), ownerCall('owner_needs_clues'), ownerCall('owner_schedule'), ownerCall('owner_stats'), ownerCall('owner_takes'), ownerCall('owner_replies')]).then(function (res) {
+    ownerData = { queue: res[0] || [], needs: res[1] || [], schedule: res[2] || [], stats: res[3] || null, takes: res[4] || [], replies: res[5] || [] };
     renderOwner();
   }, function (e) { if (e.code !== 'not_owner') { $('ownerPanel').hidden = false; $('ownerMsg').textContent = errText(e); } });
 }
@@ -1379,6 +1545,13 @@ function renderOwner() {
                 : '<button class="sm" data-own="hidetake" data-k="' + esc(t.id) + '">Hide</button>') +
       '</div><span class="op">GOAT: ' + esc(t.pick) + '. ' + esc(t.reason) + '</span></li>';
   }).join('') : '<li><span class="op">No player takes yet.</span></li>';
+  $('oReplies').innerHTML = ownerData.replies.length ? ownerData.replies.map(function (r) {
+    var c = findCat(r.slug);
+    return '<li><div class="hd"><span class="nm">' + esc(r.author || 'A fan') + ' · ' + esc(c ? c.name : r.slug) + '</span>' +
+      (r.hidden ? '<span class="st dismissed">Hidden</span><button class="sm" data-own="showrep" data-k="' + esc(r.id) + '">Show</button>'
+                : '<button class="sm" data-own="hiderep" data-k="' + esc(r.id) + '">Hide</button>') +
+      '</div><span class="op">Replying to ' + esc(r.take_author || 'A fan') + ' (' + esc(r.take_pick) + '): ' + esc(r.body) + '</span></li>';
+  }).join('') : '<li><span class="op">No replies yet.</span></li>';
   var live = (serverCatalog || []);
   $('oLive').innerHTML = live.length ? live.map(function (c) {
     return '<li><div class="hd"><span class="nm">' + esc(c.name) + '</span><span class="st added">' + (c.kind === 'vote' ? 'Vote' : 'Daily') + '</span><button class="sm" data-own="remove" data-k="' + esc(c.slug) + '">Remove</button></div></li>';
@@ -1422,10 +1595,12 @@ function ownerAction(act, key, btn) {
     case 'delplayer':
       var id = $('oPlayer').value.trim();
       if (id.length < 8 || id.length > 64) { msg.className = 'msg bad'; msg.textContent = 'Paste the player ID from the request.'; return; }
-      if (!window.confirm('Delete all votes, suggestions and events for this player ID? This can’t be undone.')) return;
-      run(ownerCall('owner_delete_player', { p_player: id }), 'Deleted.').then(function (o) { var r = o.ok && o.res; if (r) { msg.textContent = 'Deleted ' + (r.votes || 0) + ' votes, ' + (r.suggestions || 0) + ' suggestions and ' + (r.events || 0) + ' events.'; $('oPlayer').value = ''; } }); return;
+      if (!window.confirm('Delete all votes, suggestions, events, takes and replies for this player ID? This can’t be undone.')) return;
+      run(ownerCall('owner_delete_player', { p_player: id }), 'Deleted.').then(function (o) { var r = o.ok && o.res; if (r) { msg.textContent = 'Deleted ' + (r.votes || 0) + ' votes, ' + (r.suggestions || 0) + ' suggestions, ' + (r.events || 0) + ' events, ' + (r.takes || 0) + ' takes and ' + (r.replies || 0) + ' replies.'; $('oPlayer').value = ''; } }); return;
     case 'hidetake': case 'showtake':
-      run(ownerCall('owner_hide_take', { p_id: Number(key), p_hidden: act === 'hidetake' }), act === 'hidetake' ? 'Hidden.' : 'Shown again.').then(function () { takes = {}; talkSlugShown = null; render(); }); return;
+      run(ownerCall('owner_hide_take', { p_id: Number(key), p_hidden: act === 'hidetake' }), act === 'hidetake' ? 'Hidden.' : 'Shown again.').then(function () { takes = {}; threads = {}; talkSlugShown = null; render(); }); return;
+    case 'hiderep': case 'showrep':
+      run(ownerCall('owner_hide_reply', { p_id: Number(key), p_hidden: act === 'hiderep' }), act === 'hiderep' ? 'Hidden.' : 'Shown again.').then(function () { takes = {}; threads = {}; talkSlugShown = null; render(); }); return;
     case 'signout':
       var t = token(); sess.del(OWNER_KEY); ownerNotice = ''; $('ownerPanel').hidden = true; renderOwnerBox();
       if (t) rpc('owner_logout', { p_token: t }).catch(function () {}); return;
