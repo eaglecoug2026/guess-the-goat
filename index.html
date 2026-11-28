@@ -87,7 +87,9 @@ h1{font:clamp(28px,4.4vw,46px)/1.05 Anton,Impact,sans-serif;margin:0 0 6px;text-
 .talk h3{font:22px/1.1 Anton,Impact,sans-serif;margin:0 0 6px}
 .takes{list-style:none;margin:6px 0 0;padding:0}
 .takes li{border-top:2px solid #14121014;padding:12px 0;display:grid;gap:4px}
-.tmore{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:2px solid #14121014;padding-top:12px;font-size:14px}
+.lnk{background:none;border:0;padding:0 2px;min-height:44px;font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.lnk:disabled{text-decoration:none;cursor:default;opacity:.7}
+.tmore{display:flex;align-items:center;justify-content:flex-start;gap:10px;flex-wrap:wrap;border-top:2px solid #14121014;padding-top:12px;font-size:14px}
 .takes li.me{background:#fff3c4;border-radius:10px;padding:12px;border-top:0;margin-bottom:6px}
 .tkh{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;color:#4a4130}
 .tkh b{color:var(--ink);font-size:16px}
@@ -1006,11 +1008,12 @@ function renderMore() {
 // After a round (or on a crowd vote), players name their own GOAT, typed or picked, and say why.
 // Hidden until the round is over, since other players' picks would give the answer away.
 var takes = {};          // slug -> { state: 'loading' | 'ok' | 'error', list, total, more, mine, paging }
-var TAKE_PAGE = 5;       // the board shows 5 takes at a time, then "Show more"
+var TAKE_PAGE = 1;       // the board shows one take, then a "Show all" link (D-41)
+var ALL_PAGE = 20;       // "Show all" loads the rest 20 at a time (the server's largest page) until there are none left
 var talkSlugShown = null, posting = false;
-// Replies (D-36): one level under each take, 5 at a time, oldest first.
+// Replies (D-36): one level under each take, oldest first. Opening them shows them all (D-41).
 var threads = {};        // take id -> { open, state, list, added, total, more, paging, pageErr }
-var REPLY_PAGE = 5;
+var REPLY_PAGE = 20;
 var replyTo = null, replyDraft = '', replyBusy = false, replyMsg = null;   // the reply being written
 var editRep = null, editDraft = '', editBusy = false, editMsg = null;      // the reply being edited
 function talkCat() {
@@ -1022,25 +1025,38 @@ function talkCat() {
 function loadTakes(slug) {
   if (!takes[slug]) takes[slug] = { state: 'loading', list: [], total: 0, more: false, mine: null };
   return rpc('take_page', { p_slug: slug, p_player: player, p_limit: TAKE_PAGE }).then(function (res) {
+    var open = !!(takes[slug] && takes[slug].open);
     takes[slug] = { state: 'ok', list: (res && Array.isArray(res.takes)) ? res.takes : [], total: (res && res.total) || 0,
-                    more: !!(res && res.more), mine: (res && res.mine) || null };
+                    more: !!(res && res.more), mine: (res && res.mine) || null, open: open };
     renderTakeList(slug);
+    if (open && takes[slug].more) moreTakes(slug);
   }, function () {
     var t = takes[slug];
     takes[slug] = { state: 'error', list: t ? t.list : [], total: 0, more: false, mine: t ? t.mine : null };
     renderTakeList(slug);
   });
 }
-// The next page starts after the last take shown, so takes posted meanwhile don't repeat or push any out.
-function moreTakes(slug) {
+// "Show all" opens every take; once they're all shown, the same link reads "Show less" and goes back to one.
+function toggleTakes(slug) {
+  var t = takes[slug];
+  if (!t || t.paging) return;
+  var hadFocus = document.activeElement && document.activeElement.id === 'takesMore';
+  if (t.open && !t.more && !t.pageErr) { t.open = false; renderTakeList(slug); keepMoreFocus(hadFocus); return; }
+  t.open = true; t.pageErr = false;
+  if (t.more) moreTakes(slug, hadFocus); else { renderTakeList(slug); keepMoreFocus(hadFocus); }
+}
+// Each page starts after the last take shown, so takes posted meanwhile don't repeat or push any out.
+function moreTakes(slug, hadFocus) {
   var t = takes[slug];
   if (!t || t.paging || !t.more || !t.list.length) return;
-  var last = t.list[t.list.length - 1], hadFocus = document.activeElement && document.activeElement.id === 'takesMore';
+  if (hadFocus === undefined) hadFocus = document.activeElement && document.activeElement.id === 'takesMore';
+  var last = t.list[t.list.length - 1];
   t.paging = true; t.pageErr = false; renderTakeList(slug);
-  rpc('take_page', { p_slug: slug, p_player: player, p_limit: TAKE_PAGE, p_after_seed: !!last.seed, p_after_at: last.at, p_after_id: last.id }).then(function (res) {
+  rpc('take_page', { p_slug: slug, p_player: player, p_limit: ALL_PAGE, p_after_seed: !!last.seed, p_after_at: last.at, p_after_id: last.id }).then(function (res) {
     var seen = {}; t.list.forEach(function (x) { seen[x.id] = true; });
     (res && Array.isArray(res.takes) ? res.takes : []).forEach(function (x) { if (!seen[x.id]) t.list.push(x); });
     t.more = !!(res && res.more); t.total = (res && res.total) || t.total; t.paging = false;
+    if (t.more && t.open) { moreTakes(slug, hadFocus); return; }
     renderTakeList(slug); keepMoreFocus(hadFocus);
   }, function () { t.paging = false; t.pageErr = true; renderTakeList(slug); keepMoreFocus(hadFocus); });
 }
@@ -1102,7 +1118,8 @@ function renderTakeList(slug) {
   var foot = $('takeMore'); foot.hidden = true; foot.innerHTML = '';
   if (t.state === 'loading' && !t.list.length) { ul.innerHTML = '<li><span class="tkr">Loading the debate…</span></li>'; return; }
   if (t.state === 'error' && !t.list.length) { ul.innerHTML = '<li><span class="tkr">The debate can’t load right now. <button class="sm" id="takesRetry">Try again</button></span></li>'; return; }
-  var list = mine ? [mine].concat(t.list) : t.list;
+  var showing = t.open ? t.list : t.list.slice(0, TAKE_PAGE);
+  var list = mine ? [mine].concat(showing) : showing;
   var ae = document.activeElement, aeKey = null, aeSel = null;
   if (ae && ul.contains(ae)) {
     aeKey = ae.id ? '#' + ae.id : ae.dataset && ae.dataset.tk ? '[data-tk="' + ae.dataset.tk + '"][data-id="' + ae.dataset.id + '"]' : null;
@@ -1115,12 +1132,16 @@ function renderTakeList(slug) {
       '<p class="tkp">GOAT: <b>' + esc(x.pick) + '</b></p><p class="tkr">' + esc(x.reason) + '</p>' + takeActions(x) + threadHtml(x) + '</li>';
   }).join('') : '<li><span class="tkr">No takes yet. Be the first.</span></li>';
   if (aeKey) { var back = ul.querySelector(aeKey); if (back) { back.focus({ preventScroll: true }); if (aeSel) back.setSelectionRange(aeSel[0], aeSel[1]); } }
-  var shown = t.list.length + (mine && !mine.hidden ? 1 : 0);
-  if (t.state !== 'ok' || (!t.more && !t.pageErr)) return;
+  if (t.state !== 'ok') return;
+  var hasMore = t.more || t.list.length > TAKE_PAGE, label;
+  if (t.paging) label = 'Loading…';
+  else if (t.pageErr) label = 'Try again';
+  else if (t.open && !t.more) label = hasMore ? 'Show less' : null;
+  else label = hasMore ? 'Show all ' + t.total + ' takes' : null;
+  if (!label) return;
   foot.hidden = false;
-  foot.innerHTML = '<span>Showing ' + shown + ' of ' + t.total + '</span>' +
-    (t.pageErr ? '<span class="tkr">Couldn’t load more.</span>' : '') +
-    '<button class="sm" id="takesMore" type="button"' + (t.paging ? ' disabled' : '') + '>' + (t.paging ? 'Loading…' : t.pageErr ? 'Try again' : 'Show more takes') + '</button>';
+  foot.innerHTML = (t.pageErr ? '<span class="tkr">Couldn’t load them all.</span>' : '') +
+    '<button class="lnk" id="takesMore" type="button" aria-expanded="' + !!(t.open && !t.more) + '"' + (t.paging ? ' disabled' : '') + '>' + label + '</button>';
 }
 function findTake(id) {
   var t = takes[talkSlugShown]; if (!t) return null;
@@ -1163,7 +1184,7 @@ function threadHtml(x) {
     if (th.state === 'error' && !l.length) h += '<div class="tka"><span class="tkr">Replies can’t load right now.</span><button class="sm" type="button" data-tk="thread-retry" data-id="' + x.id + '">Try again</button></div>';
     if (l.length) h += '<ul class="reps">' + l.map(replyHtml).join('') + '</ul>';
     if (th.state === 'ok' && (th.more || th.pageErr)) h += '<div class="tka">' + (th.pageErr ? '<span class="tkr">Couldn’t load more.</span>' : '') +
-      '<button class="sm" type="button" data-tk="repmore" data-id="' + x.id + '"' + (th.paging ? ' disabled' : '') + '>' + (th.paging ? 'Loading…' : th.pageErr ? 'Try again' : 'Show more replies') + '</button></div>';
+      '<button class="sm" type="button" data-tk="repmore" data-id="' + x.id + '"' + (th.paging ? ' disabled' : '') + '>' + (th.paging ? 'Loading…' : th.pageErr ? 'Try again' : 'Show all replies') + '</button></div>';
   }
   if (replyTo === x.id) {
     var nm = replyName();
@@ -1182,6 +1203,7 @@ function loadReplies(id) {
     th.total = (res && res.total) || 0; th.more = !!(res && res.more); th.state = 'ok';
     var tk = findTake(id); if (tk) tk.replies = th.total;
     renderTakeList(talkSlugShown);
+    if (th.more) moreReplies(id);
   }, function () { th.state = 'error'; renderTakeList(talkSlugShown); });
 }
 function openThread(id) {
@@ -1202,6 +1224,7 @@ function moreReplies(id) {
     (res && Array.isArray(res.replies) ? res.replies : []).forEach(function (r) { if (!seen[r.id]) { th.list.push(r); seen[r.id] = true; } });
     th.added = th.added.filter(function (r) { return !seen[r.id]; });
     th.more = !!(res && res.more); th.total = (res && res.total) || th.total; th.paging = false;
+    if (th.more) { moreReplies(id); return; }
     renderTakeList(talkSlugShown);
   }, function () { th.paging = false; th.pageErr = true; renderTakeList(talkSlugShown); });
 }
@@ -1437,7 +1460,7 @@ document.addEventListener('click', function (ev) {
     case 'hintBtn': useHint(); return;
     case 'giveUp': giveUp(); return;
     case 'toTalk': var tp = $('tPick'); if (tp) { tp.focus({ preventScroll: true }); tp.select(); } $('talk').scrollIntoView({ behavior: smooth(), block: 'start' }); return;
-    case 'takesMore': var tm = talkCat(); if (tm) moreTakes(tm.slug); return;
+    case 'takesMore': var tm = talkCat(); if (tm) toggleTakes(tm.slug); return;
     case 'takesRetry': var ts = talkCat(); if (ts) { takes[ts.slug] = null; loadTakes(ts.slug); renderTakeList(ts.slug); } return;
     case 'toDaily': case 'toDaily2': view = { type: 'daily' }; render(); scrollToBoard(); return;
     case 'practiceNow': var n = nextPractice(); if (n) { view = { type: 'practice', slug: n.slug }; render(); } return;

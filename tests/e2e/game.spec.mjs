@@ -564,37 +564,62 @@ test('the debate: a last name alone counts as that contender, unless two share i
   expect(Object.values(b.votes[slug])).toEqual(['Testy Uniquename Jr.']);
 });
 
-test('the debate shows 5 takes at a time, then Show more', async ({ page }) => {
+test('the debate shows one take, then Show all opens every take and Show less closes them (D-41)', async ({ page }) => {
   const b = createBackend();
   const slug = b.puzzleFor(TODAY).slug;
-  for (let i = 1; i <= 11; i++) b.takes.push({ id: b.nextId++, slug, player: 'player-x-' + String(i).padStart(4, '0'), author: 'Fan ' + i, pick: 'Somebody', reason: `Reason number ${i}.`, seed: false, hidden: false, at: `2027-01-05T12:${String(i).padStart(2, '0')}:00Z` });
+  for (let i = 1; i <= 44; i++) b.takes.push({ id: b.nextId++, slug, player: 'player-x-' + String(i).padStart(4, '0'), author: 'Fan ' + i, pick: 'Somebody', reason: `Reason number ${i}.`, seed: false, hidden: false, at: `2027-01-05T12:${String(i).padStart(2, '0')}:00Z` });
   await open(page, { backend: b });
   await playToEnd(page, b, true);
   const items = page.locator('#takeList li');
-  await expect(items).toHaveCount(5);
-  await expect(items.first()).toContainText('Reason number 11.');
-  await expect(page.locator('#tCount')).toHaveText('(12)');
-  await expect(page.locator('#takeMore')).toContainText('Showing 5 of 12');
-  await page.getByRole('button', { name: 'Show more takes' }).click();
-  await expect(items).toHaveCount(10);
-  await expect(page.locator('#takeMore')).toContainText('Showing 10 of 12');
+  await expect(items).toHaveCount(1);
+  await expect(items.first()).toContainText('Reason number 44.');
+  await expect(page.locator('#tCount')).toHaveText('(45)');
+  const link = page.locator('#takesMore');
+  await expect(link).toHaveText('Show all 45 takes');
+  await expect(link).toHaveAttribute('aria-expanded', 'false');
+  // A failed page keeps what's shown and offers Try again.
   b.failNext.take_page = 1;
-  await page.getByRole('button', { name: 'Show more takes' }).click();
-  await expect(page.locator('#takeMore')).toContainText('Couldn’t load more.');
-  await expect(items).toHaveCount(10);
-  await page.getByRole('button', { name: 'Try again' }).click();
-  await expect(items).toHaveCount(12);
+  await link.click();
+  await expect(page.locator('#takeMore')).toContainText('Couldn’t load them all.');
+  // From the keyboard, focus stays on the link through loading, Show less and back.
+  await link.focus();
+  await page.keyboard.press('Enter');
+  // 44 player takes + 1 starter take: pages of 20 until there are none left.
+  await expect(items).toHaveCount(45);
   await expect(items.last()).toContainText('Starter take');
-  await expect(page.locator('#takeMore')).toBeHidden();
-  const texts = await items.allTextContents();
-  expect(new Set(texts).size).toBe(12);
-  // Posting puts your take on top without reloading the pages already shown.
+  expect(new Set(await items.allTextContents()).size).toBe(45);
+  await expect(link).toHaveText('Show less');
+  await expect(link).toHaveAttribute('aria-expanded', 'true');
+  await expect(link).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(items).toHaveCount(1);
+  await expect(link).toHaveText('Show all 45 takes');
+  await expect(link).toBeFocused();
+  // Opening again needs no new request: they're all loaded.
+  const calls = b.pageCalls;
+  await link.click();
+  await expect(items).toHaveCount(45);
+  expect(b.pageCalls).toBe(calls);
+  await link.click();
+  // Posting puts your take on top, with the one other take under it.
   await page.locator('#tPick').fill('Somebody Else');
   await page.locator('#tWhy').fill('Mine goes on top.');
   await page.getByRole('button', { name: 'Post my take' }).click();
-  await expect(items).toHaveCount(13);
+  await expect(items).toHaveCount(2);
   await expect(items.first()).toHaveClass(/me/);
-  await expect(page.locator('#tCount')).toHaveText('(13)');
+  await expect(page.locator('#tCount')).toHaveText('(46)');
+  await expect(link).toHaveText('Show all 46 takes');
+});
+
+test('the debate: one take only, no Show all link', async ({ page }) => {
+  const b = createBackend();
+  const slug = b.puzzleFor(TODAY).slug;
+  b.takes = b.takes.filter(t => t.slug !== slug);
+  b.takes.push({ id: b.nextId++, slug, player: 'player-x-0001', author: 'Fan 1', pick: 'Somebody', reason: 'The only take.', seed: false, hidden: false, at: '2027-01-05T12:00:00Z' });
+  await open(page, { backend: b });
+  await playToEnd(page, b, true);
+  await expect(page.locator('#takeList li')).toHaveCount(1);
+  await expect(page.locator('#takeMore')).toBeHidden();
 });
 
 test('visit count for Site Stats: one per page, first visit and first today, no player ID (D-35)', async ({ page }) => {
@@ -739,29 +764,26 @@ test('the debate: reply to a take, see replies, edit your own reply and your own
   await expect(fanA2.locator('.reps li.me .tkh')).toContainText('edited');
 });
 
-test('the debate: replies show 5 at a time, then Show more replies', async ({ page }) => {
+test('the debate: opening replies shows them all, oldest first (D-41)', async ({ page }) => {
   const b = createBackend();
   const slug = b.puzzleFor(TODAY).slug;
-  const t = { id: b.nextId++, slug, player: 'player-other-1', author: 'Fan A', pick: 'Somebody', reason: 'Busy take.', seed: false, hidden: false, at: '2027-01-05T12:00:00Z' };
+  const t = { id: b.nextId++, slug, player: 'player-other-1', author: 'Fan A', pick: 'Somebody', reason: 'Busy take.', seed: false, hidden: false, at: '2027-01-08T12:00:00Z' };
   b.takes.push(t);
-  for (let i = 1; i <= 7; i++) b.replies.push({ id: b.nextId++, take: t.id, player: 'player-rr-' + String(i).padStart(4, '0'), author: 'R' + i, body: 'Reply number ' + i + '.', hidden: false, at: `2027-01-05T13:0${i}:00Z` });
+  for (let i = 1; i <= 27; i++) b.replies.push({ id: b.nextId++, take: t.id, player: 'player-rr-' + String(i).padStart(4, '0'), author: 'R' + i, body: 'Reply number ' + i + '.', hidden: false, at: `2027-01-08T13:${String(i).padStart(2, '0')}:00Z` });
   await open(page, { backend: b });
   await playToEnd(page, b, true);
   const li = page.locator('#takeList > li').filter({ hasText: 'Busy take.' });
-  await li.getByRole('button', { name: '7 replies' }).click();
-  await expect(li.locator('.reps li')).toHaveCount(5);
-  await expect(li.locator('.reps li').first()).toContainText('Reply number 1.');
-  // A reply posted now shows right away, at the end, without skipping the ones not loaded yet.
+  await li.getByRole('button', { name: '27 replies' }).click();
+  await expect(li.locator('.reps li')).toHaveCount(27);
+  const texts = await li.locator('.reps li .tkr').allTextContents();
+  expect(texts).toEqual(Array.from({ length: 27 }, (_, i) => 'Reply number ' + (i + 1) + '.'));
+  await expect(li.getByRole('button', { name: 'Show all replies' })).toHaveCount(0);
+  // A reply posted now shows right away, at the end.
   await li.getByRole('button', { name: 'Reply' }).click();
   await li.getByLabel('Write a reply').fill('Late reply.');
   await li.getByRole('button', { name: 'Post reply' }).click();
-  await expect(li.locator('.reps li')).toHaveCount(6);
+  await expect(li.locator('.reps li')).toHaveCount(28);
   await expect(li.locator('.reps li').last()).toContainText('Late reply.');
-  await li.getByRole('button', { name: 'Show more replies' }).click();
-  await expect(li.locator('.reps li')).toHaveCount(8);
-  const texts = await li.locator('.reps li .tkr').allTextContents();
-  expect(texts).toEqual(['Reply number 1.', 'Reply number 2.', 'Reply number 3.', 'Reply number 4.', 'Reply number 5.', 'Reply number 6.', 'Reply number 7.', 'Late reply.']);
-  await expect(li.getByRole('button', { name: 'Show more replies' })).toHaveCount(0);
 });
 
 test('owner: hide and show a reply', async ({ page }) => {
