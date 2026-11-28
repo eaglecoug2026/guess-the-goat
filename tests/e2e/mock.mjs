@@ -13,7 +13,8 @@ export function createBackend(opts = {}) {
       { slug: 'community-board01', name: 'Board game', title: 'GOAT board game', kind: 'vote', active: true, opts: ['Catan', 'Chess', 'Monopoly', 'Scrabble'].map(name => ({ name, est: 0 })), clues: {} }
     ]),
     votes: {},          // slug -> { player: pick }
-    takes: [],          // { id, slug, player, author, pick, reason, seed, hidden, at }
+    takes: [],          // { id, slug, player, author, pick, reason, seed, hidden, at, edited }
+    replies: [],        // { id, take, player, author, body, hidden, at, edited } (0013)
     blocked: ['zzbadword'],
     puzzles: {},        // date -> snapshot
     suggestions: [],
@@ -55,7 +56,10 @@ export function createBackend(opts = {}) {
   s.wrongFor = (date, n) => s.puzzleFor(date).ranking.slice(1).map(e => e.name).slice(0, n);
   s.eventsNamed = name => [...s.events.values()].filter(e => e.event === name);
 
-  const takeJson = (t, player) => ({ id: t.id, author: t.author, pick: t.pick, reason: t.reason, seed: t.seed, mine: !!player && t.player === player, hidden: t.hidden, at: t.at });
+  const takeJson = (t, player) => ({ id: t.id, author: t.author, pick: t.pick, reason: t.reason, seed: t.seed, mine: !!player && t.player === player, hidden: t.hidden, at: t.at,
+    edited: !!t.edited, replies: s.replies.filter(r => r.take === t.id && !r.hidden).length });
+  const blockedText = v => /(https?:\/\/|www\.)/i.test(v) || s.blocked.some(w => new RegExp('\\b' + w + '\\b', 'i').test(v));
+  const replyJson = (r, player) => ({ id: r.id, take: r.take, author: r.author, body: r.body, mine: !!player && r.player === player, hidden: r.hidden, at: r.at, edited: !!r.edited });
   // One starter take per category, picking its #2 (D-31).
   for (const c of s.catalog) if (c.opts.length > 1) s.takes.push({ id: s.nextId++, slug: c.slug, player: null, author: 'Starter ' + c.slug.slice(0, 10), pick: c.opts[1].name, reason: 'A starter take for ' + c.name + '.', seed: true, hidden: false, at: '2027-01-01T00:00:00Z' });
 
@@ -100,9 +104,48 @@ export function createBackend(opts = {}) {
       if (o && s.config.voting_enabled !== false) { (s.votes[p_slug] ||= {})[p_player] = o.name; voted = true; }
       let t = s.takes.find(x => x.slug === p_slug && x.player === p_player);
       if (!t) { t = { id: s.nextId++, slug: p_slug, player: p_player, seed: false, hidden: false, at: new Date().toISOString() }; s.takes.push(t); }
-      Object.assign(t, { author, pick: o ? o.name : pick, reason });
+      const np = o ? o.name : pick;
+      if (t.pick !== undefined && (t.author !== author || t.pick !== np || t.reason !== reason)) t.edited = true;
+      Object.assign(t, { author, pick: np, reason });
       return { take: takeJson(t, p_player), voted, pick: o ? o.name : null };
     },
+    post_reply: ({ p_player, p_take, p_body, p_author }) => {
+      if (s.config.takes_enabled === false) throw err('disabled');
+      const clean = v => (v == null ? '' : String(v)).trim().replace(/\s+/g, ' ');
+      const body = clean(p_body), author = clean(p_author) || null;
+      if (!p_player || p_player.length < 8 || body.length < 2 || body.length > 280 || (author && author.length > 24)) throw err('bad_input');
+      const t = s.takes.find(x => x.id === p_take && !x.hidden); if (!t) throw err('not_found');
+      if (blockedText(body) || (author && blockedText(author))) throw err('blocked');
+      const r = { id: s.nextId++, take: p_take, player: p_player, author, body, hidden: false, at: new Date().toISOString(), edited: false };
+      s.replies.push(r);
+      return replyJson(r, p_player);
+    },
+    edit_reply: ({ p_player, p_id, p_body }) => {
+      if (s.config.takes_enabled === false) throw err('disabled');
+      const body = (p_body == null ? '' : String(p_body)).trim().replace(/\s+/g, ' ');
+      if (!p_player || p_player.length < 8 || body.length < 2 || body.length > 280) throw err('bad_input');
+      if (blockedText(body)) throw err('blocked');
+      const r = s.replies.find(x => x.id === p_id && x.player === p_player); if (!r) throw err('not_found');
+      if (r.body !== body) r.edited = true;
+      r.body = body;
+      return replyJson(r, p_player);
+    },
+    // Mirrors public.reply_page: oldest first, cursor (at, id), own hidden replies for their author only.
+    reply_page: ({ p_take, p_player, p_limit, p_after_at, p_after_id }) => {
+      (s.replyCalls ||= []).push({ p_take, p_after_id });
+      const n = Math.min(Math.max(p_limit || 5, 1), 20);
+      const t = s.takes.find(x => x.id === p_take && !x.hidden);
+      const cmp = (a, b) => a.at < b.at ? -1 : a.at > b.at ? 1 : a.id - b.id;
+      const after = p_after_id == null ? null : { at: p_after_at, id: p_after_id };
+      const vis = t ? s.replies.filter(r => r.take === p_take && (!r.hidden || (p_player && r.player === p_player)) && (!after || cmp(r, after) > 0)).sort(cmp) : [];
+      return { replies: vis.slice(0, n).map(r => replyJson(r, p_player)), more: vis.length > n,
+               total: t ? s.replies.filter(r => r.take === p_take && !r.hidden).length : 0 };
+    },
+    owner_replies: ({ p_token }) => {
+      owner(p_token);
+      return s.replies.slice().reverse().map(r => { const t = s.takes.find(x => x.id === r.take) || {}; return { ...replyJson(r, null), slug: t.slug, take_author: t.author, take_pick: t.pick }; });
+    },
+    owner_hide_reply: ({ p_token, p_id, p_hidden }) => { owner(p_token); const r = s.replies.find(x => x.id === p_id); if (!r) throw err('bad_input'); r.hidden = p_hidden !== false; return null; },
     owner_takes: ({ p_token }) => { owner(p_token); return s.takes.filter(t => !t.seed).map(t => ({ ...takeJson(t, null), slug: t.slug })); },
     owner_hide_take: ({ p_token, p_id, p_hidden }) => { owner(p_token); const t = s.takes.find(x => x.id === p_id); if (!t) throw err('bad_input'); t.hidden = p_hidden !== false; return null; },
     get_daily: ({ p_date }) => s.puzzleFor(p_date),
@@ -159,7 +202,7 @@ export function createBackend(opts = {}) {
     owner_remove_category: ({ p_token, p_slug }) => { owner(p_token); const c = s.catalog.find(x => x.slug === p_slug && x.active); if (!c) throw err('bad_input'); c.active = false; return null; },
     owner_set_schedule: ({ p_token }) => { owner(p_token); return null; },
     owner_set_correction: ({ p_token, p_date, p_note }) => { owner(p_token); const p = s.puzzles[p_date]; if (!p) throw err('bad_input'); p.correction_note = p_note || null; return null; },
-    owner_delete_player: ({ p_token }) => { owner(p_token); return { votes: 0, suggestions: 0, events: 0, takes: 0 }; },
+    owner_delete_player: ({ p_token }) => { owner(p_token); return { votes: 0, suggestions: 0, events: 0, takes: 0, replies: 0 }; },
     site_stats_leave_me_out: ({ p_code, p_player }) => {
       if (p_code !== LEAVE_OUT_CODE) throw err('not allowed', 403);
       if (typeof p_player !== 'string' || p_player.length < 8 || p_player.length > 64) throw err('bad_input');

@@ -398,6 +398,14 @@ test('accessibility: axe finds no serious issues on the main states', async ({ p
   await page.locator('#side').getByRole('button', { name: b.puzzles[TODAY].ranking[1].name, exact: true }).click();
   await expect(page.locator('#side .big')).toBeVisible();
   expect(await scan()).toEqual([]);
+  // The debate with a reply thread open and a reply being written.
+  const starter = page.locator('#takeList > li').first();
+  b.replies.push({ id: b.nextId++, take: b.takes.find(t => t.seed && t.slug === b.puzzles[TODAY].slug).id, player: 'player-other-9', author: 'Fan Z', body: 'A reply to scan.', hidden: false, at: '2027-01-05T12:00:00Z', edited: true });
+  await page.reload();
+  await starter.getByRole('button', { name: '1 reply' }).click();
+  await starter.getByRole('button', { name: 'Reply' }).click();
+  await expect(starter.getByLabel('Write a reply')).toBeVisible();
+  expect(await scan()).toEqual([]);
   const small = await page.evaluate(() => [...document.querySelectorAll('button, input:not([type=checkbox]), select, textarea')]
     .filter(el => el.offsetParent && el.getBoundingClientRect().height < 44).map(el => el.id || el.textContent.trim()));
   expect(small).toEqual([]);
@@ -596,4 +604,126 @@ test('leave-me-out link: no visit counts from that browser, its player ID goes o
   expect(b.beacons).toEqual([]);
   expect(b.calls.filter(c => c === 'site_stats_leave_me_out')).toHaveLength(1);
   expect(realErrors(errors)).toEqual([]);
+});
+
+test('the debate: reply to a take, see replies, edit your own reply and your own take', async ({ page }) => {
+  const b = createBackend();
+  const slug = b.puzzleFor(TODAY).slug;
+  const other = { id: b.nextId++, slug, player: 'player-other-1', author: 'Fan A', pick: 'Somebody', reason: 'Hot take from Fan A.', seed: false, hidden: false, at: '2027-01-05T12:00:00Z' };
+  b.takes.push(other);
+  b.replies.push({ id: b.nextId++, take: other.id, player: 'player-other-2', author: 'Fan B', body: 'Fan B disagrees.', hidden: false, at: '2027-01-05T12:05:00Z' });
+  await open(page, { backend: b });
+  await playToEnd(page, b, true);
+  const fanA = page.locator('#takeList > li').filter({ hasText: 'Hot take from Fan A.' });
+  // Existing replies are folded up under a count.
+  await expect(fanA.getByRole('button', { name: '1 reply' })).toBeVisible();
+  await expect(fanA).not.toContainText('Fan B disagrees.');
+  await fanA.getByRole('button', { name: '1 reply' }).click();
+  await expect(fanA.locator('.reps li')).toHaveCount(1);
+  await expect(fanA.locator('.reps')).toContainText('Fan B disagrees.');
+  await expect(fanA.getByRole('button', { name: 'Hide replies' })).toHaveAttribute('aria-expanded', 'true');
+  // Reply, with an empty try and a blocked word first.
+  await page.locator('#tName').fill('Tester T');
+  await fanA.getByRole('button', { name: 'Reply' }).click();
+  await expect(fanA.getByLabel('Write a reply')).toBeFocused();
+  await expect(fanA.locator('.rform')).toContainText('Shown as Tester T');
+  await fanA.getByRole('button', { name: 'Post reply' }).click();
+  await expect(fanA.locator('.rform .msg')).toHaveText('Write your reply first.');
+  await fanA.getByLabel('Write a reply').fill('what a zzbadword');
+  await fanA.getByRole('button', { name: 'Post reply' }).click();
+  await expect(fanA.locator('.rform .msg')).toHaveText('Links and some words aren’t allowed. Try wording it another way.');
+  await fanA.getByLabel('Write a reply').fill('I agree   with Fan A.');
+  await fanA.getByRole('button', { name: 'Post reply' }).click();
+  await expect(fanA.locator('.rform')).toHaveCount(0);
+  await expect(fanA.locator('.reps li')).toHaveCount(2);
+  const mine = fanA.locator('.reps li.me');
+  await expect(mine).toContainText('Tester T');
+  await expect(mine).toContainText('I agree with Fan A.');
+  await expect(mine.locator('.tkt.you')).toHaveText('You');
+  expect(b.replies.filter(r => r.player !== 'player-other-2').map(r => [r.take, r.author, r.body])).toEqual([[other.id, 'Tester T', 'I agree with Fan A.']]);
+  // Edit your own reply; other people's replies have no Edit button.
+  await expect(fanA.locator('.reps li').first().getByRole('button', { name: 'Edit' })).toHaveCount(0);
+  await mine.getByRole('button', { name: 'Edit' }).click();
+  await expect(mine.getByLabel('Edit your reply')).toBeFocused();
+  await expect(mine.getByLabel('Edit your reply')).toHaveValue('I agree with Fan A.');
+  await mine.getByLabel('Edit your reply').fill('Actually, I agree with Fan B.');
+  await mine.getByRole('button', { name: 'Save' }).click();
+  await expect(mine).toContainText('Actually, I agree with Fan B.');
+  await expect(mine.locator('.tkh')).toContainText('edited');
+  // Cancel leaves it as it was.
+  await mine.getByRole('button', { name: 'Edit' }).click();
+  await mine.getByLabel('Edit your reply').fill('Never mind.');
+  await mine.getByRole('button', { name: 'Cancel' }).click();
+  await expect(mine).toContainText('Actually, I agree with Fan B.');
+  // Folding the thread keeps the count.
+  await fanA.getByRole('button', { name: 'Hide replies' }).click();
+  await expect(fanA.getByRole('button', { name: '2 replies' })).toBeVisible();
+  // Edit your own take from the board.
+  await page.locator('#tPick').fill('Somebody New');
+  await page.locator('#tWhy').fill('First version.');
+  await page.getByRole('button', { name: 'Post my take' }).click();
+  const meTake = page.locator('#takeList > li.me');
+  await expect(meTake).toContainText('First version.');
+  await expect(meTake.locator('.tkh')).not.toContainText('edited');
+  await meTake.getByRole('button', { name: 'Edit' }).click();
+  await expect(page.locator('#tWhy')).toBeFocused();
+  await expect(page.locator('#tMsg')).toHaveText('Change your take, then tap Update my take.');
+  await page.locator('#tWhy').fill('Second version.');
+  await page.getByRole('button', { name: 'Update my take' }).click();
+  await expect(meTake).toContainText('Second version.');
+  await expect(meTake.locator('.tkh')).toContainText('edited');
+  // After a reload everything is still there.
+  await page.reload();
+  await expect(page.locator('#takeList > li.me .tkh')).toContainText('edited');
+  const fanA2 = page.locator('#takeList > li').filter({ hasText: 'Hot take from Fan A.' });
+  await fanA2.getByRole('button', { name: '2 replies' }).click();
+  await expect(fanA2.locator('.reps li.me')).toContainText('Actually, I agree with Fan B.');
+  await expect(fanA2.locator('.reps li.me .tkh')).toContainText('edited');
+});
+
+test('the debate: replies show 5 at a time, then Show more replies', async ({ page }) => {
+  const b = createBackend();
+  const slug = b.puzzleFor(TODAY).slug;
+  const t = { id: b.nextId++, slug, player: 'player-other-1', author: 'Fan A', pick: 'Somebody', reason: 'Busy take.', seed: false, hidden: false, at: '2027-01-05T12:00:00Z' };
+  b.takes.push(t);
+  for (let i = 1; i <= 7; i++) b.replies.push({ id: b.nextId++, take: t.id, player: 'player-rr-' + String(i).padStart(4, '0'), author: 'R' + i, body: 'Reply number ' + i + '.', hidden: false, at: `2027-01-05T13:0${i}:00Z` });
+  await open(page, { backend: b });
+  await playToEnd(page, b, true);
+  const li = page.locator('#takeList > li').filter({ hasText: 'Busy take.' });
+  await li.getByRole('button', { name: '7 replies' }).click();
+  await expect(li.locator('.reps li')).toHaveCount(5);
+  await expect(li.locator('.reps li').first()).toContainText('Reply number 1.');
+  // A reply posted now shows right away, at the end, without skipping the ones not loaded yet.
+  await li.getByRole('button', { name: 'Reply' }).click();
+  await li.getByLabel('Write a reply').fill('Late reply.');
+  await li.getByRole('button', { name: 'Post reply' }).click();
+  await expect(li.locator('.reps li')).toHaveCount(6);
+  await expect(li.locator('.reps li').last()).toContainText('Late reply.');
+  await li.getByRole('button', { name: 'Show more replies' }).click();
+  await expect(li.locator('.reps li')).toHaveCount(8);
+  const texts = await li.locator('.reps li .tkr').allTextContents();
+  expect(texts).toEqual(['Reply number 1.', 'Reply number 2.', 'Reply number 3.', 'Reply number 4.', 'Reply number 5.', 'Reply number 6.', 'Reply number 7.', 'Late reply.']);
+  await expect(li.getByRole('button', { name: 'Show more replies' })).toHaveCount(0);
+});
+
+test('owner: hide and show a reply', async ({ page }) => {
+  const b = createBackend();
+  const slug = b.puzzleFor(TODAY).slug;
+  const t = { id: b.nextId++, slug, player: 'player-other-1', author: 'Fan A', pick: 'Somebody', reason: 'Take with a bad reply.', seed: false, hidden: false, at: '2027-01-05T12:00:00Z' };
+  b.takes.push(t);
+  b.replies.push({ id: b.nextId++, take: t.id, player: 'player-other-2', author: 'Rude', body: 'Something rude.', hidden: false, at: '2027-01-05T12:05:00Z' });
+  await open(page, { backend: b });
+  await page.getByRole('button', { name: 'Owner sign-in' }).click();
+  await page.getByLabel('Owner passphrase').fill(PASS);
+  await page.getByRole('button', { name: 'Sign in' }).click();
+  await expect(page.locator('#oReplies')).toContainText('Replying to Fan A (Somebody): Something rude.');
+  await page.locator('#oReplies').getByRole('button', { name: 'Hide' }).click();
+  await expect(page.locator('#oReplies')).toContainText('Hidden');
+  expect(b.replies[0].hidden).toBe(true);
+  await playToEnd(page, b, true);
+  const li = page.locator('#takeList > li').filter({ hasText: 'Take with a bad reply.' });
+  await expect(li.getByRole('button', { name: 'Reply' })).toBeVisible();
+  await expect(li.getByRole('button', { name: /repl(y|ies)$/ })).toHaveCount(0);
+  await page.locator('#oReplies').getByRole('button', { name: 'Show' }).click();
+  await expect.poll(() => b.replies[0].hidden).toBe(false);
 });
