@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { createBackend, PASS } from './mock.mjs';
+import { createBackend, PASS, LEAVE_OUT_CODE } from './mock.mjs';
 import { bundled } from '../unit/load-core.mjs';
 
 const NOON = d => new Date(`${d}T12:00:00-08:00`);
@@ -567,4 +567,33 @@ test('the debate shows 5 takes at a time, then Show more', async ({ page }) => {
   await expect(items).toHaveCount(13);
   await expect(items.first()).toHaveClass(/me/);
   await expect(page.locator('#tCount')).toHaveText('(13)');
+});
+
+test('visit count for Site Stats: one per page, first visit and first today, no player ID (D-35)', async ({ page }) => {
+  const { backend: b, errors } = await open(page, { path: '/?r=abcd2345' });
+  await expect.poll(() => b.beacons.length).toBe(1);
+  expect(b.beacons[0]).toMatchObject({ site: 'goat', path: '/', ref: '', utm: '', shared: true, first_today: true, new: true });
+  const player = await page.evaluate(() => JSON.parse(localStorage.getItem('goat-player')));
+  expect(JSON.stringify(b.beacons)).not.toContain(player);
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
+  await page.reload();
+  await expect.poll(() => b.beacons.length).toBe(2);
+  expect(b.beacons[1]).toMatchObject({ site: 'goat', shared: false, first_today: false, new: false });
+  expect(b.leftOut).toEqual([]);
+  expect(realErrors(errors)).toEqual([]);
+});
+
+test('leave-me-out link: no visit counts from that browser, its player ID goes on the left-out list (D-35)', async ({ page }) => {
+  const { backend: b, errors } = await open(page, { path: '/#leave-me-out=' + LEAVE_OUT_CODE });
+  await expect(page.getByRole('status').filter({ hasText: 'left out of your Site Stats' })).toBeVisible();
+  const player = await page.evaluate(() => JSON.parse(localStorage.getItem('goat-player')));
+  await expect.poll(() => b.leftOut).toEqual([player]);
+  expect(await page.evaluate(() => location.hash)).toBe('');
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
+  await page.reload();
+  await expect(page.locator('#yourId')).toHaveText(player);
+  await page.waitForTimeout(300);
+  expect(b.beacons).toEqual([]);
+  expect(b.calls.filter(c => c === 'site_stats_leave_me_out')).toHaveLength(1);
+  expect(realErrors(errors)).toEqual([]);
 });
