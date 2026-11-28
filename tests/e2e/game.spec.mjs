@@ -555,6 +555,7 @@ test('visit count for Site Stats: one per page, first visit and first today, no 
   expect(b.beacons[0]).toMatchObject({ site: 'goat', path: '/', ref: '', utm: '', shared: true, first_today: true, new: true });
   const player = await page.evaluate(() => JSON.parse(localStorage.getItem('goat-player')));
   expect(JSON.stringify(b.beacons)).not.toContain(player);
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
   await page.reload();
   await expect.poll(() => b.beacons.length).toBe(2);
   expect(b.beacons[1]).toMatchObject({ site: 'goat', shared: false, first_today: false, new: false });
@@ -568,6 +569,7 @@ test('leave-me-out link: no visit counts from that browser, its player ID goes o
   const player = await page.evaluate(() => JSON.parse(localStorage.getItem('goat-player')));
   await expect.poll(() => b.leftOut).toEqual([player]);
   expect(await page.evaluate(() => location.hash)).toBe('');
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
   await page.reload();
   await expect(page.locator('#yourId')).toHaveText(player);
   await page.waitForTimeout(300);

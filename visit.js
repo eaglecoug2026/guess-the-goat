@@ -104,7 +104,7 @@
   });
   set(SEEN_KEY, JSON.stringify({ first: (seen && seen.first) || today, last: today }));
   try {
-    if (navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'text/plain' }))) return;
+    if (navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, body)) return; // a string goes as text/plain: no preflight
   } catch (e) {}
   try {
     fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: body })
