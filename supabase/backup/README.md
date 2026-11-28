@@ -15,3 +15,4 @@ To restore after a rollback script: `insert into public.<table> select * from ba
 | 0005 | suggestions |
 | 0006 | none altered (new objects only); catalog_votes copied for the deletion function |
 | 0008 | secrets (a row is added: the Site Stats token hash) |
+| 0012 | secrets (a row is added: the leave-me-out code hash); no existing table is altered |

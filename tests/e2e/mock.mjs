@@ -3,6 +3,7 @@
 import { G, bundled } from '../unit/load-core.mjs';
 
 export const PASS = 'test-owner-pass';
+export const LEAVE_OUT_CODE = 'test-leave-out-code-0123456789';
 const err = (message, status = 400) => ({ status, body: { code: 'P0001', message } });
 
 export function createBackend(opts = {}) {
@@ -20,6 +21,8 @@ export function createBackend(opts = {}) {
     sessions: {},       // token -> { expires, revoked }
     loginAttempts: 0,
     calls: [],
+    beacons: [],        // visit counts sent to proctorpilot.com (D-35), as parsed JSON
+    leftOut: [],        // player IDs put on site_stats_left_out
     offline: false,     // every request fails at the network level
     failNext: {},       // fn -> number of upcoming calls that fail with a network error
     block: new Set(),   // function names that fail at the network level
@@ -150,7 +153,13 @@ export function createBackend(opts = {}) {
     owner_remove_category: ({ p_token, p_slug }) => { owner(p_token); const c = s.catalog.find(x => x.slug === p_slug && x.active); if (!c) throw err('bad_input'); c.active = false; return null; },
     owner_set_schedule: ({ p_token }) => { owner(p_token); return null; },
     owner_set_correction: ({ p_token, p_date, p_note }) => { owner(p_token); const p = s.puzzles[p_date]; if (!p) throw err('bad_input'); p.correction_note = p_note || null; return null; },
-    owner_delete_player: ({ p_token }) => { owner(p_token); return { votes: 0, suggestions: 0, events: 0, takes: 0 }; }
+    owner_delete_player: ({ p_token }) => { owner(p_token); return { votes: 0, suggestions: 0, events: 0, takes: 0 }; },
+    site_stats_leave_me_out: ({ p_code, p_player }) => {
+      if (p_code !== LEAVE_OUT_CODE) throw err('not allowed', 403);
+      if (typeof p_player !== 'string' || p_player.length < 8 || p_player.length > 64) throw err('bad_input');
+      if (!s.leftOut.includes(p_player)) s.leftOut.push(p_player);
+      return { ok: true };
+    }
   };
 
   s.install = async (target) => {
@@ -174,6 +183,11 @@ export function createBackend(opts = {}) {
         if (e && e.status) return route.fulfill({ status: e.status, json: e.body });
         throw e;
       }
+    });
+    // Visit counts for the owner's Site Stats page (visit.js, D-35): recorded, never sent.
+    await target.route('https://proctorpilot.com/api/visit.php', async route => {
+      try { s.beacons.push(JSON.parse(route.request().postData() || 'null')); } catch (e) { s.beacons.push(null); }
+      return route.fulfill({ status: 204, body: '' });
     });
     // Third-party fonts aren't needed for the tests and may be unreachable.
     await target.route(/fonts\.(googleapis|gstatic)\.com/, route => route.fulfill({ status: 200, contentType: 'text/css', body: '' }));
