@@ -425,19 +425,39 @@ test("today's category is never offered as a practice round", async ({ page }) =
 });
 
 test('more GOATs: groups first, then the categories in a group; new server groups appear', async ({ page }) => {
-  const extra = [{ ...bundled[1], slug: 'srv-extra', name: 'Server extra', title: 'GOAT server extra', grp: 'Testing', sub: 'Extra one', kind: 'daily', active: true, needs_clues: false }];
+  const extra = [{ ...bundled[1], slug: 'srv-extra', name: 'Server extra', title: 'GOAT server extra', grp: 'Testing', fam: null, sub: 'Extra one', kind: 'daily', active: true, needs_clues: false }];
   const backend = createBackend({ extraCatalog: extra, delay: { get_catalog: 1500 } });
   await open(page, { backend });
-  await expect(page.locator('#grps .grp').first()).toHaveText('NFL');
+  await expect(page.locator('#grps .grp').first()).toHaveText('Sports');
   await expect(page.locator('#grps .grp').first()).toHaveAttribute('aria-pressed', 'true');
-  const subs = (await page.locator('#cats .cat').allTextContents()).map(t => t.replace(/(Practice|Solved|Missed)$/, ''));
+  await expect(page.locator('#grps').getByRole('button', { name: 'NFL', exact: true })).toHaveCount(0);
+  // Families (D-37): NFL player, NBA player and MLB player are one button each in Sports, opening their positions.
+  const cats = page.locator('#cats');
+  await expect(cats.getByRole('button', { name: /^NFL player/ })).toBeVisible();
+  await expect(cats.getByRole('button', { name: /^NBA player/ })).toBeVisible();
+  await expect(cats.getByRole('button', { name: /^MLB player/ })).toBeVisible();
+  await expect(cats).not.toContainText('QB');
+  await cats.getByRole('button', { name: /^NFL player/ }).click();
+  await expect(cats.getByRole('button', { name: 'Back to Sports' })).toBeFocused();
+  await expect(cats.locator('.famhd')).toHaveText('NFL player');
+  const subs = (await cats.locator('.cat:not(.back)').allTextContents()).map(t => t.replace(/(Practice|Solved|Missed)$/, ''));
+  expect(subs[0]).toBe('All');
   expect(subs.filter(x => ['QB', 'RB', 'WR', 'TE', 'O-line', 'D-line', 'LB', 'DB'].includes(x)).length).toBeGreaterThanOrEqual(7);
+  await cats.getByRole('button', { name: 'Back to Sports' }).click();
+  await expect(cats.getByRole('button', { name: /^NFL player/ })).toBeFocused();
+  await expect(cats.getByRole('button', { name: /^Boxer/ })).toBeVisible();
+  // Playing a position keeps its family open, and the menu shows where you are.
+  await cats.getByRole('button', { name: /^MLB player/ }).click();
+  await cats.getByRole('button', { name: /^Pitcher/ }).click();
+  await expect(page.locator('#title')).toHaveText('GOAT MLB pitcher');
+  await expect(cats.locator('.famhd')).toHaveText('MLB player');
+  await expect(cats.getByRole('button', { name: /^Pitcher/ })).toHaveAttribute('aria-pressed', 'true');
   await page.locator('#grps').getByRole('button', { name: 'Food', exact: true }).click();
-  await expect(page.locator('#cats')).toContainText('Pizza topping');
-  await expect(page.locator('#cats')).not.toContainText('QB');
+  await expect(cats).toContainText('Pizza topping');
+  await expect(cats).not.toContainText('Pitcher');
   await expect(page.locator('#grps').getByRole('button', { name: 'Testing' })).toBeVisible({ timeout: 5000 });
   await page.locator('#grps').getByRole('button', { name: 'Testing' }).click();
-  await page.locator('#cats').getByRole('button', { name: /Extra one/ }).click();
+  await cats.getByRole('button', { name: /Extra one/ }).click();
   await expect(page.locator('#title')).toHaveText('GOAT server extra');
   await expect(page.locator('#tag')).toHaveText('Practice round');
 });

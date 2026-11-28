@@ -3,7 +3,8 @@
     "id": "nfl-quarterback",
     "label": "NFL quarterback",
     "title": "GOAT NFL quarterback",
-    "group": "NFL",
+    "group": "Sports",
+    "family": "NFL player",
     "sub": "QB",
     "kind": "daily",
     "season": null,
@@ -112,7 +113,8 @@
     "id": "nfl-running-back",
     "label": "NFL running back",
     "title": "GOAT NFL running back",
-    "group": "NFL",
+    "group": "Sports",
+    "family": "NFL player",
     "sub": "RB",
     "kind": "daily",
     "season": null,
@@ -221,7 +223,8 @@
     "id": "nfl-wide-receiver",
     "label": "NFL wide receiver",
     "title": "GOAT NFL wide receiver",
-    "group": "NFL",
+    "group": "Sports",
+    "family": "NFL player",
     "sub": "WR",
     "kind": "daily",
     "season": null,
@@ -330,7 +333,8 @@
     "id": "nfl-tight-end",
     "label": "NFL tight end",
     "title": "GOAT NFL tight end",
-    "group": "NFL",
+    "group": "Sports",
+    "family": "NFL player",
     "sub": "TE",
     "kind": "daily",
     "season": null,
@@ -436,7 +440,8 @@
     "id": "nfl-offensive-lineman",
     "label": "NFL offensive lineman",
     "title": "GOAT NFL offensive lineman",
-    "group": "NFL",
+    "group": "Sports",
+    "family": "NFL player",
     "sub": "O-line",
     "kind": "daily",
     "season": null,
@@ -542,7 +547,8 @@
     "id": "nfl-defensive-lineman",
     "label": "NFL defensive lineman",
     "title": "GOAT NFL defensive lineman",
-    "group": "NFL",
+    "group": "Sports",
+    "family": "NFL player",
     "sub": "D-line",
     "kind": "daily",
     "season": null,
@@ -648,7 +654,8 @@
     "id": "nfl-linebacker",
     "label": "NFL linebacker",
     "title": "GOAT NFL linebacker",
-    "group": "NFL",
+    "group": "Sports",
+    "family": "NFL player",
     "sub": "LB",
     "kind": "daily",
     "season": null,
@@ -754,7 +761,8 @@
     "id": "nfl-defensive-back",
     "label": "NFL defensive back",
     "title": "GOAT NFL defensive back",
-    "group": "NFL",
+    "group": "Sports",
+    "family": "NFL player",
     "sub": "DB",
     "kind": "daily",
     "season": null,
@@ -861,7 +869,8 @@
     "label": "NBA player",
     "title": "GOAT NBA player",
     "group": "Sports",
-    "sub": "NBA player",
+    "family": "NBA player",
+    "sub": "All",
     "kind": "daily",
     "season": null,
     "opts": [
@@ -5650,6 +5659,1651 @@
       ],
       "Adidas": [
         "https://en.wikipedia.org/wiki/Adidas"
+      ]
+    }
+  },
+  {
+    "id": "pop-singer",
+    "label": "Pop singer",
+    "title": "GOAT Pop singer",
+    "group": "Music",
+    "sub": "Pop singer",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Michael Jackson",
+        32
+      ],
+      [
+        "Madonna",
+        15
+      ],
+      [
+        "Whitney Houston",
+        12
+      ],
+      [
+        "Prince",
+        10
+      ],
+      [
+        "Taylor Swift",
+        9
+      ],
+      [
+        "Beyoncé",
+        7
+      ],
+      [
+        "Elvis Presley",
+        5
+      ],
+      [
+        "Mariah Carey",
+        4
+      ],
+      [
+        "Bruno Mars",
+        3
+      ],
+      [
+        "Lady Gaga",
+        3
+      ],
+      [
+        "Adele",
+        0
+      ],
+      [
+        "Britney Spears",
+        0
+      ],
+      [
+        "Justin Timberlake",
+        0
+      ],
+      [
+        "George Michael",
+        0
+      ],
+      [
+        "Ariana Grande",
+        0
+      ],
+      [
+        "Rihanna",
+        0
+      ]
+    ],
+    "clues": {
+      "Michael Jackson": [
+        "Was born in Gary, Indiana, in 1958.",
+        "Sang lead in a family group that signed with Motown in the late 1960s.",
+        "Performed the moonwalk on TV during Billie Jean in 1983.",
+        "Released Thriller in 1982, the best-selling album of all time."
+      ],
+      "Madonna": [
+        "Was born in Bay City, Michigan, in 1958.",
+        "Moved to New York City in 1978 to pursue a career in dance.",
+        "Won a Golden Globe for playing Eva Perón in the 1996 film Evita.",
+        "Known as the Queen of Pop, she sang Like a Virgin and Vogue."
+      ],
+      "Whitney Houston": [
+        "Was born in Newark, New Jersey, in 1963.",
+        "Her mother, Cissy, was a gospel singer and backing vocalist.",
+        "Starred opposite Kevin Costner in the 1992 film The Bodyguard.",
+        "Her cover of Dolly Parton's I Will Always Love You topped charts in 1992."
+      ]
+    },
+    "sources": {
+      "Michael Jackson": [
+        "https://en.wikipedia.org/wiki/Michael_Jackson",
+        "https://www.rockhall.com/inductees/michael-jackson"
+      ],
+      "Madonna": [
+        "https://en.wikipedia.org/wiki/Madonna",
+        "https://www.rockhall.com/inductees/madonna"
+      ],
+      "Whitney Houston": [
+        "https://en.wikipedia.org/wiki/Whitney_Houston",
+        "https://www.rockhall.com/inductees/whitney-houston"
+      ]
+    }
+  },
+  {
+    "id": "grunge-band",
+    "label": "Grunge band",
+    "title": "GOAT Grunge band",
+    "group": "Music",
+    "sub": "Grunge band",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Pearl Jam",
+        27
+      ],
+      [
+        "Nirvana",
+        25
+      ],
+      [
+        "Soundgarden",
+        17
+      ],
+      [
+        "Alice in Chains",
+        13
+      ],
+      [
+        "Stone Temple Pilots",
+        6
+      ],
+      [
+        "Mudhoney",
+        4
+      ],
+      [
+        "Temple of the Dog",
+        3
+      ],
+      [
+        "Screaming Trees",
+        2
+      ],
+      [
+        "Mother Love Bone",
+        2
+      ],
+      [
+        "Melvins",
+        1
+      ],
+      [
+        "Green River",
+        0
+      ],
+      [
+        "Tad",
+        0
+      ],
+      [
+        "L7",
+        0
+      ],
+      [
+        "Hole",
+        0
+      ],
+      [
+        "Silverchair",
+        0
+      ],
+      [
+        "The Gits",
+        0
+      ]
+    ],
+    "clues": {
+      "Pearl Jam": [
+        "Fought Ticketmaster over ticket service fees in the mid-1990s.",
+        "Formed in Seattle in 1990 by guitarist Stone Gossard and bassist Jeff Ament.",
+        "Released its debut album, Ten, in 1991, featuring Alive and Jeremy.",
+        "Fronted by Eddie Vedder, it was inducted into the Rock Hall in 2017."
+      ],
+      "Nirvana": [
+        "Formed in Aberdeen, Washington, in 1987.",
+        "Released its debut album, Bleach, on Sub Pop in 1989.",
+        "Recorded an MTV Unplugged set in New York in 1993.",
+        "Kurt Cobain's band broke through with Smells Like Teen Spirit from Nevermind."
+      ],
+      "Soundgarden": [
+        "Was the first grunge band to sign with a major label, A&M.",
+        "Formed in Seattle in 1984 with guitarist Kim Thayil.",
+        "Its 1994 album Superunknown debuted at number one in the US.",
+        "Chris Cornell fronted the band, whose hits include Spoonman and Fell on Black Days."
+      ]
+    },
+    "sources": {
+      "Pearl Jam": [
+        "https://en.wikipedia.org/wiki/Pearl_Jam",
+        "https://www.rockhall.com/inductees/pearl-jam"
+      ],
+      "Nirvana": [
+        "https://en.wikipedia.org/wiki/Nirvana_(band)",
+        "https://www.rockhall.com/inductees/nirvana"
+      ],
+      "Soundgarden": [
+        "https://en.wikipedia.org/wiki/Soundgarden"
+      ]
+    }
+  },
+  {
+    "id": "drummer",
+    "label": "Drummer",
+    "title": "GOAT drummer",
+    "group": "Music",
+    "sub": "Drummer",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "John Bonham",
+        30
+      ],
+      [
+        "Neil Peart",
+        18
+      ],
+      [
+        "Keith Moon",
+        12
+      ],
+      [
+        "Buddy Rich",
+        9
+      ],
+      [
+        "Ginger Baker",
+        7
+      ],
+      [
+        "Dave Grohl",
+        6
+      ],
+      [
+        "Ringo Starr",
+        5
+      ],
+      [
+        "Travis Barker",
+        4
+      ],
+      [
+        "Stewart Copeland",
+        3
+      ],
+      [
+        "Phil Collins",
+        2
+      ],
+      [
+        "Lars Ulrich",
+        0
+      ],
+      [
+        "Charlie Watts",
+        0
+      ],
+      [
+        "Max Roach",
+        0
+      ],
+      [
+        "Gene Krupa",
+        0
+      ],
+      [
+        "Tony Williams",
+        0
+      ],
+      [
+        "Taylor Hawkins",
+        0
+      ]
+    ],
+    "clues": {
+      "John Bonham": [
+        "Was born in Redditch, Worcestershire, England, in 1948.",
+        "His son Jason also became a professional rock drummer.",
+        "Played a long drum solo called Moby Dick in concert.",
+        "Played drums for Led Zeppelin until his death in 1980."
+      ],
+      "Neil Peart": [
+        "Was born in Hamilton, Ontario, in 1952.",
+        "Was nicknamed The Professor.",
+        "Wrote most of his band's lyrics as well as playing drums.",
+        "Joined Rush in 1974, replacing original drummer John Rutsey."
+      ],
+      "Keith Moon": [
+        "Grew up in Wembley in north-west London.",
+        "Became notorious for destroying drum kits and hotel rooms.",
+        "Died in 1978 at 32 from an overdose of a drug for alcohol withdrawal.",
+        "Played drums for The Who from 1964 until his death."
+      ]
+    },
+    "sources": {
+      "John Bonham": [
+        "https://en.wikipedia.org/wiki/John_Bonham",
+        "https://www.rockhall.com/inductees/led-zeppelin"
+      ],
+      "Neil Peart": [
+        "https://en.wikipedia.org/wiki/Neil_Peart",
+        "https://www.rockhall.com/inductees/rush"
+      ],
+      "Keith Moon": [
+        "https://en.wikipedia.org/wiki/Keith_Moon",
+        "https://www.rockhall.com/inductees/the-who"
+      ]
+    }
+  },
+  {
+    "id": "nfl-team",
+    "label": "NFL team",
+    "title": "GOAT NFL team",
+    "group": "Sports",
+    "sub": "NFL team",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "San Francisco 49ers",
+        22
+      ],
+      [
+        "Pittsburgh Steelers",
+        19
+      ],
+      [
+        "New England Patriots",
+        15
+      ],
+      [
+        "Dallas Cowboys",
+        12
+      ],
+      [
+        "Green Bay Packers",
+        10
+      ],
+      [
+        "Kansas City Chiefs",
+        7
+      ],
+      [
+        "Philadelphia Eagles",
+        5
+      ],
+      [
+        "New York Giants",
+        4
+      ],
+      [
+        "Chicago Bears",
+        3
+      ],
+      [
+        "Las Vegas Raiders",
+        3
+      ],
+      [
+        "Denver Broncos",
+        0
+      ],
+      [
+        "Baltimore Ravens",
+        0
+      ],
+      [
+        "Miami Dolphins",
+        0
+      ],
+      [
+        "Washington Commanders",
+        0
+      ],
+      [
+        "Buffalo Bills",
+        0
+      ],
+      [
+        "Los Angeles Rams",
+        0
+      ]
+    ],
+    "clues": {
+      "San Francisco 49ers": [
+        "Joined the NFL in 1950 after four seasons in the All-America Football Conference.",
+        "Played home games at Candlestick Park from 1971 to 2013.",
+        "Won five Super Bowls between the 1981 and 1994 seasons.",
+        "Joe Montana and Jerry Rice won titles for this team, now based in Santa Clara."
+      ],
+      "Pittsburgh Steelers": [
+        "Was founded in 1933 by Art Rooney and first called the Pirates.",
+        "Its fans wave yellow Terrible Towels at games.",
+        "Won four Super Bowls in six seasons under coach Chuck Noll in the 1970s.",
+        "Its 1970s defense was the Steel Curtain; it plays at Acrisure Stadium."
+      ],
+      "New England Patriots": [
+        "Began play in 1960 as a charter AFL franchise based in Boston.",
+        "Moved from Foxboro Stadium to Gillette Stadium in 2002.",
+        "Has been owned by Robert Kraft since 1994.",
+        "Won six Super Bowls with coach Bill Belichick and quarterback Tom Brady."
+      ]
+    },
+    "sources": {
+      "San Francisco 49ers": [
+        "https://en.wikipedia.org/wiki/San_Francisco_49ers",
+        "https://www.49ers.com/"
+      ],
+      "Pittsburgh Steelers": [
+        "https://en.wikipedia.org/wiki/Pittsburgh_Steelers",
+        "https://www.steelers.com/"
+      ],
+      "New England Patriots": [
+        "https://en.wikipedia.org/wiki/New_England_Patriots",
+        "https://www.patriots.com/"
+      ]
+    }
+  },
+  {
+    "id": "nfl-player",
+    "label": "NFL player",
+    "title": "GOAT NFL player",
+    "group": "Sports",
+    "family": "NFL player",
+    "sub": "All",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Jerry Rice",
+        25
+      ],
+      [
+        "Tom Brady",
+        23
+      ],
+      [
+        "Lawrence Taylor",
+        12
+      ],
+      [
+        "Jim Brown",
+        10
+      ],
+      [
+        "Walter Payton",
+        8
+      ],
+      [
+        "Barry Sanders",
+        6
+      ],
+      [
+        "Joe Montana",
+        5
+      ],
+      [
+        "Reggie White",
+        4
+      ],
+      [
+        "Peyton Manning",
+        4
+      ],
+      [
+        "Deion Sanders",
+        3
+      ],
+      [
+        "Patrick Mahomes",
+        0
+      ],
+      [
+        "Ray Lewis",
+        0
+      ],
+      [
+        "Aaron Donald",
+        0
+      ],
+      [
+        "Randy Moss",
+        0
+      ],
+      [
+        "Johnny Unitas",
+        0
+      ],
+      [
+        "Emmitt Smith",
+        0
+      ]
+    ],
+    "clues": {
+      "Jerry Rice": [
+        "Played college football at Mississippi Valley State.",
+        "Was drafted 16th overall in 1985.",
+        "Was named MVP of Super Bowl XXIII.",
+        "Holds the NFL career records for receptions, receiving yards and receiving TDs."
+      ],
+      "Tom Brady": [
+        "Played college football at Michigan.",
+        "Was drafted 199th overall, in the sixth round, in 2000.",
+        "Won a Super Bowl with Tampa Bay after leaving New England.",
+        "Won seven Super Bowls, six of them with New England."
+      ],
+      "Lawrence Taylor": [
+        "Played college football at North Carolina.",
+        "Was the second overall pick in the 1981 NFL draft.",
+        "Won NFL MVP in 1986, a rare feat for a defensive player.",
+        "Wore number 56 as a linebacker for the New York Giants."
+      ]
+    },
+    "sources": {
+      "Jerry Rice": [
+        "https://en.wikipedia.org/wiki/Jerry_Rice",
+        "https://www.pro-football-reference.com/players/R/RiceJe00.htm"
+      ],
+      "Tom Brady": [
+        "https://en.wikipedia.org/wiki/Tom_Brady",
+        "https://www.pro-football-reference.com/players/B/BradTo00.htm"
+      ],
+      "Lawrence Taylor": [
+        "https://en.wikipedia.org/wiki/Lawrence_Taylor",
+        "https://www.pro-football-reference.com/players/T/TaylLa00.htm"
+      ]
+    }
+  },
+  {
+    "id": "nba-point-guard",
+    "label": "NBA point guard",
+    "title": "GOAT NBA point guard",
+    "group": "Sports",
+    "family": "NBA player",
+    "sub": "PG",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Magic Johnson",
+        33
+      ],
+      [
+        "Stephen Curry",
+        30
+      ],
+      [
+        "Oscar Robertson",
+        10
+      ],
+      [
+        "Isiah Thomas",
+        7
+      ],
+      [
+        "John Stockton",
+        5
+      ],
+      [
+        "Chris Paul",
+        4
+      ],
+      [
+        "Steve Nash",
+        4
+      ],
+      [
+        "Jason Kidd",
+        3
+      ],
+      [
+        "Allen Iverson",
+        2
+      ],
+      [
+        "Russell Westbrook",
+        2
+      ],
+      [
+        "Gary Payton",
+        0
+      ],
+      [
+        "Bob Cousy",
+        0
+      ],
+      [
+        "Walt Frazier",
+        0
+      ],
+      [
+        "Damian Lillard",
+        0
+      ],
+      [
+        "Kyrie Irving",
+        0
+      ],
+      [
+        "Derrick Rose",
+        0
+      ]
+    ],
+    "clues": {
+      "Magic Johnson": [
+        "Grew up in Lansing, Michigan, and stayed home for college.",
+        "Led Michigan State to the 1979 NCAA title.",
+        "Won Finals MVP as a rookie, starting Game 6 at center.",
+        "Won five titles and three MVPs wearing number 32 for the Lakers."
+      ],
+      "Stephen Curry": [
+        "Played college basketball at Davidson.",
+        "Was the seventh overall pick in the 2009 NBA draft.",
+        "Became the first unanimous MVP in NBA history in 2016.",
+        "Holds the NBA career record for made threes, wearing 30 for Golden State."
+      ],
+      "Oscar Robertson": [
+        "Played college basketball at the University of Cincinnati.",
+        "Was a territorial pick of the Cincinnati Royals in 1960.",
+        "Won his only NBA title with the Milwaukee Bucks in 1971.",
+        "Nicknamed 'The Big O', he averaged a triple-double in 1961-62."
+      ]
+    },
+    "sources": {
+      "Magic Johnson": [
+        "https://en.wikipedia.org/wiki/Magic_Johnson",
+        "https://www.basketball-reference.com/players/j/johnsma02.html"
+      ],
+      "Stephen Curry": [
+        "https://en.wikipedia.org/wiki/Stephen_Curry",
+        "https://www.basketball-reference.com/players/c/curryst01.html"
+      ],
+      "Oscar Robertson": [
+        "https://en.wikipedia.org/wiki/Oscar_Robertson",
+        "https://www.basketball-reference.com/players/r/roberos01.html"
+      ]
+    }
+  },
+  {
+    "id": "nba-shooting-guard",
+    "label": "NBA shooting guard",
+    "title": "GOAT NBA shooting guard",
+    "group": "Sports",
+    "family": "NBA player",
+    "sub": "SG",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Michael Jordan",
+        48
+      ],
+      [
+        "Kobe Bryant",
+        29
+      ],
+      [
+        "Dwyane Wade",
+        8
+      ],
+      [
+        "Jerry West",
+        4
+      ],
+      [
+        "James Harden",
+        3
+      ],
+      [
+        "Clyde Drexler",
+        2
+      ],
+      [
+        "Allen Iverson",
+        2
+      ],
+      [
+        "Reggie Miller",
+        2
+      ],
+      [
+        "Ray Allen",
+        1
+      ],
+      [
+        "Klay Thompson",
+        1
+      ],
+      [
+        "George Gervin",
+        0
+      ],
+      [
+        "Tracy McGrady",
+        0
+      ],
+      [
+        "Manu Ginóbili",
+        0
+      ],
+      [
+        "Vince Carter",
+        0
+      ],
+      [
+        "Joe Dumars",
+        0
+      ],
+      [
+        "Sidney Moncrief",
+        0
+      ]
+    ],
+    "clues": {
+      "Michael Jordan": [
+        "Played college basketball at North Carolina.",
+        "Was the third overall pick in the 1984 NBA draft.",
+        "Finished his career with the Washington Wizards.",
+        "Won six titles and six Finals MVPs wearing 23 for Chicago."
+      ],
+      "Kobe Bryant": [
+        "Went straight to the NBA from Lower Merion High School in Pennsylvania.",
+        "Was drafted 13th overall in 1996 by the Charlotte Hornets.",
+        "Scored 81 points in a game against the Toronto Raptors in 2006.",
+        "Won five titles in 20 seasons with the Lakers, wearing 8 and 24."
+      ],
+      "Dwyane Wade": [
+        "Played college basketball at Marquette.",
+        "Was the fifth overall pick in the 2003 NBA draft.",
+        "Won Finals MVP in 2006 against the Dallas Mavericks.",
+        "Won three titles with the Miami Heat wearing number 3."
+      ]
+    },
+    "sources": {
+      "Michael Jordan": [
+        "https://en.wikipedia.org/wiki/Michael_Jordan",
+        "https://www.basketball-reference.com/players/j/jordami01.html"
+      ],
+      "Kobe Bryant": [
+        "https://en.wikipedia.org/wiki/Kobe_Bryant",
+        "https://www.basketball-reference.com/players/b/bryanko01.html"
+      ],
+      "Dwyane Wade": [
+        "https://en.wikipedia.org/wiki/Dwyane_Wade",
+        "https://www.basketball-reference.com/players/w/wadedw01.html"
+      ]
+    }
+  },
+  {
+    "id": "nba-center",
+    "label": "NBA center",
+    "title": "GOAT NBA center",
+    "group": "Sports",
+    "family": "NBA player",
+    "sub": "C",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Kareem Abdul-Jabbar",
+        27
+      ],
+      [
+        "Shaquille O'Neal",
+        22
+      ],
+      [
+        "Wilt Chamberlain",
+        15
+      ],
+      [
+        "Bill Russell",
+        12
+      ],
+      [
+        "Hakeem Olajuwon",
+        9
+      ],
+      [
+        "Nikola Jokić",
+        6
+      ],
+      [
+        "David Robinson",
+        4
+      ],
+      [
+        "Moses Malone",
+        2
+      ],
+      [
+        "Patrick Ewing",
+        2
+      ],
+      [
+        "Bill Walton",
+        1
+      ],
+      [
+        "George Mikan",
+        0
+      ],
+      [
+        "Dwight Howard",
+        0
+      ],
+      [
+        "Robert Parish",
+        0
+      ],
+      [
+        "Dikembe Mutombo",
+        0
+      ],
+      [
+        "Alonzo Mourning",
+        0
+      ],
+      [
+        "Wes Unseld",
+        0
+      ]
+    ],
+    "clues": {
+      "Kareem Abdul-Jabbar": [
+        "Won three national titles in college at UCLA.",
+        "Was the first overall pick in the 1969 NBA draft by Milwaukee.",
+        "Won six NBA MVP awards, the most in league history.",
+        "Born Lew Alcindor, he was known for his signature skyhook shot."
+      ],
+      "Shaquille O'Neal": [
+        "Played college basketball at LSU.",
+        "Was the first overall pick in the 1992 NBA draft by Orlando.",
+        "Won three straight Finals MVPs from 2000 to 2002.",
+        "Won four titles, three with the Lakers and one with Miami."
+      ],
+      "Wilt Chamberlain": [
+        "Played college basketball at Kansas.",
+        "Toured with the Harlem Globetrotters before joining the NBA.",
+        "Averaged 50.4 points per game in the 1961-62 season.",
+        "Scored 100 points in a single game for Philadelphia in 1962."
+      ]
+    },
+    "sources": {
+      "Kareem Abdul-Jabbar": [
+        "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar",
+        "https://www.basketball-reference.com/players/a/abdulka01.html"
+      ],
+      "Shaquille O'Neal": [
+        "https://en.wikipedia.org/wiki/Shaquille_O%27Neal",
+        "https://www.basketball-reference.com/players/o/onealsh01.html"
+      ],
+      "Wilt Chamberlain": [
+        "https://en.wikipedia.org/wiki/Wilt_Chamberlain",
+        "https://www.basketball-reference.com/players/c/chambwi01.html"
+      ]
+    }
+  },
+  {
+    "id": "nba-small-forward",
+    "label": "NBA small forward",
+    "title": "GOAT NBA small forward",
+    "group": "Sports",
+    "family": "NBA player",
+    "sub": "SF",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "LeBron James",
+        42
+      ],
+      [
+        "Larry Bird",
+        26
+      ],
+      [
+        "Kevin Durant",
+        14
+      ],
+      [
+        "Julius Erving",
+        6
+      ],
+      [
+        "Scottie Pippen",
+        4
+      ],
+      [
+        "Elgin Baylor",
+        2
+      ],
+      [
+        "Kawhi Leonard",
+        2
+      ],
+      [
+        "John Havlicek",
+        2
+      ],
+      [
+        "Dominique Wilkins",
+        1
+      ],
+      [
+        "Rick Barry",
+        1
+      ],
+      [
+        "Paul Pierce",
+        0
+      ],
+      [
+        "Carmelo Anthony",
+        0
+      ],
+      [
+        "James Worthy",
+        0
+      ],
+      [
+        "Bernard King",
+        0
+      ],
+      [
+        "Alex English",
+        0
+      ],
+      [
+        "Paul George",
+        0
+      ]
+    ],
+    "clues": {
+      "LeBron James": [
+        "Went straight to the NBA from St. Vincent-St. Mary High School in Akron.",
+        "Was the first overall pick in the 2003 NBA draft.",
+        "Won titles with Miami, Cleveland and the Lakers.",
+        "Became the NBA's all-time leading scorer in 2023."
+      ],
+      "Larry Bird": [
+        "Grew up in French Lick, Indiana.",
+        "Played college basketball at Indiana State.",
+        "Won three straight NBA MVP awards from 1984 to 1986.",
+        "Won three titles with the Boston Celtics wearing number 33."
+      ],
+      "Kevin Durant": [
+        "Played one college season at Texas.",
+        "Was the second overall pick in the 2007 NBA draft by Seattle.",
+        "Won the 2014 NBA MVP award with Oklahoma City.",
+        "Won back-to-back Finals MVPs with Golden State in 2017 and 2018."
+      ]
+    },
+    "sources": {
+      "LeBron James": [
+        "https://en.wikipedia.org/wiki/LeBron_James",
+        "https://www.basketball-reference.com/players/j/jamesle01.html"
+      ],
+      "Larry Bird": [
+        "https://en.wikipedia.org/wiki/Larry_Bird",
+        "https://www.basketball-reference.com/players/b/birdla01.html"
+      ],
+      "Kevin Durant": [
+        "https://en.wikipedia.org/wiki/Kevin_Durant",
+        "https://www.basketball-reference.com/players/d/duranke01.html"
+      ]
+    }
+  },
+  {
+    "id": "nba-power-forward",
+    "label": "NBA power forward",
+    "title": "GOAT NBA power forward",
+    "group": "Sports",
+    "family": "NBA player",
+    "sub": "PF",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Tim Duncan",
+        35
+      ],
+      [
+        "Karl Malone",
+        19
+      ],
+      [
+        "Kevin Garnett",
+        14
+      ],
+      [
+        "Dirk Nowitzki",
+        10
+      ],
+      [
+        "Charles Barkley",
+        8
+      ],
+      [
+        "Giannis Antetokounmpo",
+        6
+      ],
+      [
+        "Kevin McHale",
+        3
+      ],
+      [
+        "Elvin Hayes",
+        2
+      ],
+      [
+        "Bob Pettit",
+        2
+      ],
+      [
+        "Anthony Davis",
+        1
+      ],
+      [
+        "Dennis Rodman",
+        0
+      ],
+      [
+        "Pau Gasol",
+        0
+      ],
+      [
+        "Chris Webber",
+        0
+      ],
+      [
+        "Shawn Kemp",
+        0
+      ],
+      [
+        "Blake Griffin",
+        0
+      ],
+      [
+        "Amar'e Stoudemire",
+        0
+      ]
+    ],
+    "clues": {
+      "Tim Duncan": [
+        "Was a competitive swimmer in the U.S. Virgin Islands as a youth.",
+        "Played four college seasons at Wake Forest.",
+        "Was the first overall pick in the 1997 NBA draft.",
+        "Won five titles in 19 seasons with the San Antonio Spurs."
+      ],
+      "Karl Malone": [
+        "Played college basketball at Louisiana Tech.",
+        "Was drafted 13th overall in 1985 by Utah.",
+        "Won MVP awards in 1997 and 1999 but never an NBA title.",
+        "Nicknamed 'The Mailman', he spent 18 seasons with the Utah Jazz."
+      ],
+      "Kevin Garnett": [
+        "Went straight to the NBA from Farragut Academy in Chicago.",
+        "Was the fifth overall pick in the 1995 NBA draft by Minnesota.",
+        "Won the 2004 NBA MVP award with the Timberwolves.",
+        "Won the 2008 title with Boston and shouted 'Anything is possible!'"
+      ]
+    },
+    "sources": {
+      "Tim Duncan": [
+        "https://en.wikipedia.org/wiki/Tim_Duncan",
+        "https://www.basketball-reference.com/players/d/duncati01.html"
+      ],
+      "Karl Malone": [
+        "https://en.wikipedia.org/wiki/Karl_Malone",
+        "https://www.basketball-reference.com/players/m/malonka01.html"
+      ],
+      "Kevin Garnett": [
+        "https://en.wikipedia.org/wiki/Kevin_Garnett",
+        "https://www.basketball-reference.com/players/g/garneke01.html"
+      ]
+    }
+  },
+  {
+    "id": "mlb-player",
+    "label": "MLB player",
+    "title": "GOAT MLB player",
+    "group": "Sports",
+    "family": "MLB player",
+    "sub": "All",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Shohei Ohtani",
+        24
+      ],
+      [
+        "Babe Ruth",
+        23
+      ],
+      [
+        "Willie Mays",
+        14
+      ],
+      [
+        "Hank Aaron",
+        10
+      ],
+      [
+        "Barry Bonds",
+        8
+      ],
+      [
+        "Ted Williams",
+        6
+      ],
+      [
+        "Jackie Robinson",
+        5
+      ],
+      [
+        "Lou Gehrig",
+        4
+      ],
+      [
+        "Ty Cobb",
+        3
+      ],
+      [
+        "Mickey Mantle",
+        3
+      ],
+      [
+        "Rickey Henderson",
+        0
+      ],
+      [
+        "Albert Pujols",
+        0
+      ],
+      [
+        "Derek Jeter",
+        0
+      ],
+      [
+        "Mike Trout",
+        0
+      ],
+      [
+        "Nolan Ryan",
+        0
+      ],
+      [
+        "Ken Griffey Jr.",
+        0
+      ]
+    ],
+    "clues": {
+      "Shohei Ohtani": [
+        "Born in Iwate Prefecture, Japan, in 1994.",
+        "Began his pro career with the Hokkaido Nippon-Ham Fighters.",
+        "Won the 2018 AL Rookie of the Year award as both a pitcher and a hitter.",
+        "Wears number 17 and was the first player with 50 homers and 50 steals in a season."
+      ],
+      "Babe Ruth": [
+        "Grew up in Baltimore and learned the game at St. Mary's Industrial School.",
+        "Began his career as a standout left-handed pitcher for the Boston Red Sox.",
+        "Was inducted with the Hall of Fame's first class in 1936.",
+        "The Sultan of Swat, who hit 60 homers in 1927 and 714 in his career."
+      ],
+      "Willie Mays": [
+        "Born in Westfield, Alabama, in 1931.",
+        "Played for the Birmingham Black Barons before reaching the majors.",
+        "Won 12 Gold Gloves and hit 660 career home runs.",
+        "The Say Hey Kid, famed for an over-the-shoulder catch in the 1954 World Series."
+      ]
+    },
+    "sources": {
+      "Shohei Ohtani": [
+        "https://en.wikipedia.org/wiki/Shohei_Ohtani",
+        "https://www.baseball-reference.com/players/o/ohtansh01.shtml"
+      ],
+      "Babe Ruth": [
+        "https://en.wikipedia.org/wiki/Babe_Ruth",
+        "https://www.baseball-reference.com/players/r/ruthba01.shtml"
+      ],
+      "Willie Mays": [
+        "https://en.wikipedia.org/wiki/Willie_Mays",
+        "https://www.baseball-reference.com/players/m/mayswi01.shtml"
+      ]
+    }
+  },
+  {
+    "id": "mlb-outfielder",
+    "label": "MLB outfielder",
+    "title": "GOAT MLB outfielder",
+    "group": "Sports",
+    "family": "MLB player",
+    "sub": "Outfielder",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Willie Mays",
+        25
+      ],
+      [
+        "Babe Ruth",
+        21
+      ],
+      [
+        "Hank Aaron",
+        15
+      ],
+      [
+        "Barry Bonds",
+        12
+      ],
+      [
+        "Ted Williams",
+        8
+      ],
+      [
+        "Ken Griffey Jr.",
+        6
+      ],
+      [
+        "Mickey Mantle",
+        5
+      ],
+      [
+        "Ty Cobb",
+        4
+      ],
+      [
+        "Rickey Henderson",
+        2
+      ],
+      [
+        "Roberto Clemente",
+        2
+      ],
+      [
+        "Mike Trout",
+        0
+      ],
+      [
+        "Joe DiMaggio",
+        0
+      ],
+      [
+        "Stan Musial",
+        0
+      ],
+      [
+        "Frank Robinson",
+        0
+      ],
+      [
+        "Tony Gwynn",
+        0
+      ],
+      [
+        "Ichiro Suzuki",
+        0
+      ]
+    ],
+    "clues": {
+      "Willie Mays": [
+        "Won the 1951 National League Rookie of the Year award.",
+        "Finished his career with the New York Mets in 1973.",
+        "Wore number 24 for the Giants in both New York and San Francisco.",
+        "Nicknamed the Say Hey Kid and famous for The Catch in the 1954 World Series."
+      ],
+      "Babe Ruth": [
+        "Born in Baltimore, Maryland, in 1895.",
+        "Won more than 90 games as a pitcher before moving to the outfield.",
+        "Played his final season with the Boston Braves in 1935.",
+        "His number 3 was retired by the Yankees after he hit 714 career home runs."
+      ],
+      "Hank Aaron": [
+        "Born in Mobile, Alabama, in 1934.",
+        "Played for the Indianapolis Clowns before signing with the Braves.",
+        "Remains the all-time leader in career RBIs and total bases.",
+        "Wore number 44 and hit his record-breaking 715th home run in April 1974."
+      ]
+    },
+    "sources": {
+      "Willie Mays": [
+        "https://en.wikipedia.org/wiki/Willie_Mays",
+        "https://www.baseball-reference.com/players/m/mayswi01.shtml"
+      ],
+      "Babe Ruth": [
+        "https://en.wikipedia.org/wiki/Babe_Ruth",
+        "https://www.baseball-reference.com/players/r/ruthba01.shtml"
+      ],
+      "Hank Aaron": [
+        "https://en.wikipedia.org/wiki/Hank_Aaron",
+        "https://www.baseball-reference.com/players/a/aaronha01.shtml"
+      ]
+    }
+  },
+  {
+    "id": "mlb-infielder",
+    "label": "MLB infielder",
+    "title": "GOAT MLB infielder",
+    "group": "Sports",
+    "family": "MLB player",
+    "sub": "Infielder",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Lou Gehrig",
+        22
+      ],
+      [
+        "Alex Rodriguez",
+        17
+      ],
+      [
+        "Derek Jeter",
+        15
+      ],
+      [
+        "Jackie Robinson",
+        12
+      ],
+      [
+        "Albert Pujols",
+        10
+      ],
+      [
+        "Cal Ripken Jr.",
+        7
+      ],
+      [
+        "Mike Schmidt",
+        6
+      ],
+      [
+        "Honus Wagner",
+        5
+      ],
+      [
+        "Rogers Hornsby",
+        3
+      ],
+      [
+        "Joe Morgan",
+        3
+      ],
+      [
+        "Chipper Jones",
+        0
+      ],
+      [
+        "Ozzie Smith",
+        0
+      ],
+      [
+        "George Brett",
+        0
+      ],
+      [
+        "Brooks Robinson",
+        0
+      ],
+      [
+        "Roberto Alomar",
+        0
+      ],
+      [
+        "Miguel Cabrera",
+        0
+      ]
+    ],
+    "clues": {
+      "Lou Gehrig": [
+        "Born in New York City and played college baseball at Columbia University.",
+        "Won the American League Triple Crown in 1934.",
+        "Had the first uniform number retired in MLB history, number 4.",
+        "The Iron Horse, who played 2,130 straight games and called himself the luckiest man."
+      ],
+      "Alex Rodriguez": [
+        "Born in New York City and raised in the Miami area.",
+        "Was the first overall pick in the 1993 draft, by the Seattle Mariners.",
+        "Signed a then-record $252 million contract with the Texas Rangers.",
+        "Known as A-Rod, he hit 696 home runs and won three AL MVP awards."
+      ],
+      "Derek Jeter": [
+        "Grew up in Kalamazoo, Michigan.",
+        "Won the AL Rookie of the Year award in 1996.",
+        "His 3,000th career hit, in 2011, was a home run.",
+        "Longtime Yankees captain and shortstop who wore number 2 and won five titles."
+      ]
+    },
+    "sources": {
+      "Lou Gehrig": [
+        "https://en.wikipedia.org/wiki/Lou_Gehrig",
+        "https://www.baseball-reference.com/players/g/gehrilo01.shtml"
+      ],
+      "Alex Rodriguez": [
+        "https://en.wikipedia.org/wiki/Alex_Rodriguez",
+        "https://www.baseball-reference.com/players/r/rodrial01.shtml"
+      ],
+      "Derek Jeter": [
+        "https://en.wikipedia.org/wiki/Derek_Jeter",
+        "https://www.baseball-reference.com/players/j/jeterde01.shtml"
+      ]
+    }
+  },
+  {
+    "id": "mlb-catcher",
+    "label": "MLB catcher",
+    "title": "GOAT MLB catcher",
+    "group": "Sports",
+    "family": "MLB player",
+    "sub": "Catcher",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Johnny Bench",
+        29
+      ],
+      [
+        "Yogi Berra",
+        23
+      ],
+      [
+        "Mike Piazza",
+        14
+      ],
+      [
+        "Ivan Rodriguez",
+        10
+      ],
+      [
+        "Carlton Fisk",
+        7
+      ],
+      [
+        "Josh Gibson",
+        5
+      ],
+      [
+        "Buster Posey",
+        4
+      ],
+      [
+        "Yadier Molina",
+        3
+      ],
+      [
+        "Roy Campanella",
+        3
+      ],
+      [
+        "Gary Carter",
+        2
+      ],
+      [
+        "Joe Mauer",
+        0
+      ],
+      [
+        "Thurman Munson",
+        0
+      ],
+      [
+        "Bill Dickey",
+        0
+      ],
+      [
+        "Mickey Cochrane",
+        0
+      ],
+      [
+        "Jorge Posada",
+        0
+      ],
+      [
+        "J.T. Realmuto",
+        0
+      ]
+    ],
+    "clues": {
+      "Johnny Bench": [
+        "Grew up in Binger, Oklahoma.",
+        "Won the National League Rookie of the Year award in 1968.",
+        "Won two NL MVP awards and 10 straight Gold Gloves.",
+        "Wore number 5 behind the plate for Cincinnati's Big Red Machine."
+      ],
+      "Yogi Berra": [
+        "Grew up on The Hill, an Italian neighborhood in St. Louis.",
+        "Served in the U.S. Navy during the D-Day invasion of Normandy.",
+        "Caught Don Larsen's perfect game in the 1956 World Series.",
+        "Yankees catcher with a record 10 titles who said it ain't over till it's over."
+      ],
+      "Mike Piazza": [
+        "Born in Norristown, Pennsylvania, in 1968.",
+        "Was drafted in the 62nd round by the Los Angeles Dodgers in 1988.",
+        "Played only briefly for the Florida Marlins before a 1998 trade to the Mets.",
+        "Hit the most home runs ever by a catcher and wore number 31 for the Mets."
+      ]
+    },
+    "sources": {
+      "Johnny Bench": [
+        "https://en.wikipedia.org/wiki/Johnny_Bench",
+        "https://www.baseball-reference.com/players/b/benchjo01.shtml"
+      ],
+      "Yogi Berra": [
+        "https://en.wikipedia.org/wiki/Yogi_Berra",
+        "https://www.baseball-reference.com/players/b/berrayo01.shtml"
+      ],
+      "Mike Piazza": [
+        "https://en.wikipedia.org/wiki/Mike_Piazza",
+        "https://www.baseball-reference.com/players/p/piazzmi01.shtml"
+      ]
+    }
+  },
+  {
+    "id": "mlb-pitcher",
+    "label": "MLB pitcher",
+    "title": "GOAT MLB pitcher",
+    "group": "Sports",
+    "family": "MLB player",
+    "sub": "Pitcher",
+    "kind": "daily",
+    "season": null,
+    "opts": [
+      [
+        "Nolan Ryan",
+        24
+      ],
+      [
+        "Randy Johnson",
+        17
+      ],
+      [
+        "Greg Maddux",
+        15
+      ],
+      [
+        "Pedro Martínez",
+        12
+      ],
+      [
+        "Sandy Koufax",
+        10
+      ],
+      [
+        "Cy Young",
+        7
+      ],
+      [
+        "Walter Johnson",
+        5
+      ],
+      [
+        "Roger Clemens",
+        4
+      ],
+      [
+        "Bob Gibson",
+        3
+      ],
+      [
+        "Clayton Kershaw",
+        3
+      ],
+      [
+        "Tom Seaver",
+        0
+      ],
+      [
+        "Mariano Rivera",
+        0
+      ],
+      [
+        "Steve Carlton",
+        0
+      ],
+      [
+        "Justin Verlander",
+        0
+      ],
+      [
+        "Satchel Paige",
+        0
+      ],
+      [
+        "Bob Feller",
+        0
+      ]
+    ],
+    "clues": {
+      "Nolan Ryan": [
+        "Grew up in Alvin, Texas.",
+        "Won a World Series ring as a young pitcher with the 1969 Mets.",
+        "Pitched 27 seasons in the majors, retiring at age 46.",
+        "Holds career records with 5,714 strikeouts and seven no-hitters."
+      ],
+      "Randy Johnson": [
+        "Born in Walnut Creek, California, and pitched in college at USC.",
+        "Stood 6 feet 10 inches tall, among the tallest players in MLB history.",
+        "Threw a perfect game in 2004 at age 40 and won 303 games.",
+        "The Big Unit, who shared 2001 World Series MVP honors for Arizona."
+      ],
+      "Greg Maddux": [
+        "Born in San Angelo, Texas, and raised in Las Vegas.",
+        "Won 355 games across 23 seasons.",
+        "Won a record 18 Gold Glove awards as a pitcher.",
+        "Called The Professor, he won the NL top pitching award four years running, 1992-95."
+      ]
+    },
+    "sources": {
+      "Nolan Ryan": [
+        "https://en.wikipedia.org/wiki/Nolan_Ryan",
+        "https://www.baseball-reference.com/players/r/ryanno01.shtml"
+      ],
+      "Randy Johnson": [
+        "https://en.wikipedia.org/wiki/Randy_Johnson",
+        "https://www.baseball-reference.com/players/j/johnsra05.shtml"
+      ],
+      "Greg Maddux": [
+        "https://en.wikipedia.org/wiki/Greg_Maddux",
+        "https://www.baseball-reference.com/players/m/maddugr01.shtml"
       ]
     }
   }

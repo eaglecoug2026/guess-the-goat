@@ -22,7 +22,7 @@ export function validate(cats) {
     const warn = m => warnings.push(`${where}: ${m}`);
     if (!c || typeof c !== 'object' || Array.isArray(c)) return err('not an object');
 
-    const allowed = ['id', 'label', 'title', 'group', 'sub', 'kind', 'season', 'opts', 'clues', 'sources'];
+    const allowed = ['id', 'label', 'title', 'group', 'family', 'sub', 'kind', 'season', 'opts', 'clues', 'sources'];
     for (const k of Object.keys(c)) if (!allowed.includes(k)) err(`unknown field "${k}"`);
 
     if (typeof c.id !== 'string' || !ID_RE.test(c.id)) err('id must be 2-40 lowercase letters, numbers or hyphens');
@@ -30,6 +30,8 @@ export function validate(cats) {
     else ids.set(c.id, i + 1);
     for (const k of ['label', 'title']) if (typeof c[k] !== 'string' || !c[k].trim()) err(`${k} is empty`);
     for (const k of ['group', 'sub']) if (typeof c[k] !== 'string' || !c[k].trim() || c[k].length > 30) err(`${k} must be 1-30 characters (the broad group, e.g. "NFL", and the short name in it, e.g. "QB")`);
+    if (!(c.family === undefined || c.family === null || (typeof c.family === 'string' && c.family.trim() && c.family.length <= 30)))
+      err('family must be null or 1-30 characters (the middle menu level, e.g. "NFL player" between "Sports" and "QB")');
     if (!['daily', 'vote'].includes(c.kind)) err('kind must be "daily" or "vote"');
     if (!(c.season === null || (typeof c.season === 'string' && c.season.trim()))) err('season must be null or a string');
 

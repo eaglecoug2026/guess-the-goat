@@ -263,5 +263,80 @@
     {"author": "pick_six_pat", "pick": "Deion Sanders", "reason": "Quarterbacks just stopped throwing his way. Half the field was closed the second he lined up."},
     {"author": "Lorraine B.", "pick": "Ed Reed", "reason": "He read quarterbacks better than they read him. Every pick felt like he knew the play first."},
     {"author": "safety_first_sean", "pick": "Ronnie Lott", "reason": "Had a fingertip cut off so he wouldn't miss time, hit like a truck, and won four rings. Toughest DB ever."}
+  ],
+  "pop-singer": [
+    {"author": "moonwalk_maria", "pick": "Michael Jackson", "reason": "Thriller is still the best-selling album ever. Nobody else had the voice, the dancing and the videos all at once."},
+    {"author": "Danny in Detroit", "pick": "Madonna", "reason": "She reinvented herself every few years for four decades and kept filling arenas the whole time. That's the Queen of Pop for me."},
+    {"author": "highnote_hannah", "pick": "Whitney Houston", "reason": "That a cappella opening of I Will Always Love You settles it. Pure voice, no tricks, best singer of my lifetime."}
+  ],
+  "grunge-band": [
+    {"author": "flannel_frank", "pick": "Nirvana", "reason": "Nevermind knocked Michael Jackson off the top of the Billboard chart. One album changed what all of radio sounded like."},
+    {"author": "Seattle Steph", "pick": "Pearl Jam", "reason": "Ten is a perfect record and they're still out there touring decades later. Eddie Vedder's voice hasn't lost a thing."},
+    {"author": "badmotorfinger88", "pick": "Soundgarden", "reason": "Chris Cornell had that four-octave range and Kim Thayil's riffs were heavier than anybody's. Superunknown still hits hard."}
+  ],
+  "drummer": [
+    {"author": "bonzo_beats", "pick": "John Bonham", "reason": "Listen to the intro of When the Levee Breaks. That beat has been sampled for decades. Bonzo had the heaviest feel ever."},
+    {"author": "Rush fan Raj", "pick": "Neil Peart", "reason": "He wrote Rush's lyrics and played like a whole orchestra behind that giant kit. Tom Sawyer is a clinic every single time."},
+    {"author": "Mod Squad Mel", "pick": "Keith Moon", "reason": "Total chaos that somehow held The Who together. Nobody played the drums like a lead instrument the way Moon did."}
+  ],
+  "nfl-team": [
+    {"author": "Terrible Towel Tina", "pick": "Pittsburgh Steelers", "reason": "Six Super Bowl rings, tied for the most ever. The Steel Curtain defense of the 70s is still the standard for me."},
+    {"author": "Niner Nate", "pick": "San Francisco 49ers", "reason": "Five rings in fourteen seasons, and that West Coast offense changed how football is played forever."},
+    {"author": "Foxboro Phil", "pick": "New England Patriots", "reason": "Six Super Bowl wins and nine trips in under twenty years. That Brady and Belichick run will never happen again."}
+  ],
+  "nfl-player": [
+    {"author": "slant_route_sal", "pick": "Jerry Rice", "reason": "He holds pretty much every receiving record and most aren't even close. Outworked everyone for 20 seasons."},
+    {"author": "Tammy from Tampa", "pick": "Tom Brady", "reason": "Seven Super Bowl rings, more than any single franchise has. Hard to argue with winning like that."},
+    {"author": "blitz_brandon", "pick": "Lawrence Taylor", "reason": "Teams had to change how they blocked just to deal with him. He won MVP as a defensive player, which almost never happens."}
+  ],
+  "nba-point-guard": [
+    {"author": "Showtime Shirley", "pick": "Magic Johnson", "reason": "Five titles, and he played center as a rookie in the Finals. A 6'9 point guard who made everyone around him better."},
+    {"author": "splash_zone_zach", "pick": "Stephen Curry", "reason": "He changed how the entire league plays. Every kid launching from deep right now is copying Steph."},
+    {"author": "Cincy Carl", "pick": "Oscar Robertson", "reason": "Averaged a triple double for a whole season back in the 60s. It took over fifty years for anyone to do it again."}
+  ],
+  "nba-shooting-guard": [
+    {"author": "Bulls fan Bev", "pick": "Michael Jordan", "reason": "Six Finals, six titles, six Finals MVPs, and never once needed a Game 7. That's the GOAT for me, end of discussion."},
+    {"author": "mamba_marco", "pick": "Kobe Bryant", "reason": "Five rings, 81 points in one game, and that work ethic. Mamba mentality is why I still get up early to shoot."},
+    {"author": "Heat Check Hector", "pick": "Dwyane Wade", "reason": "That 2006 Finals run was one of the best ever. Plus he blocked more shots than any guard his size in league history."}
+  ],
+  "nba-center": [
+    {"author": "Lakers Lou", "pick": "Kareem Abdul-Jabbar", "reason": "Six MVPs, six rings, and a skyhook nobody could stop. He held the career scoring record for almost 40 years."},
+    {"author": "diesel_dana", "pick": "Shaquille O'Neal", "reason": "Three straight Finals MVPs and teams had to invent hack-a-Shaq. Most dominant big man I ever watched."},
+    {"author": "Philly Phyllis", "pick": "Wilt Chamberlain", "reason": "100 points in one game and 50 a night for a full season. Some of his records will never be touched."}
+  ],
+  "nba-small-forward": [
+    {"author": "the_chosen_wun", "pick": "LeBron James", "reason": "All-time leading scorer, four rings with three teams, and still great after 20 years. Nobody's done it this long."},
+    {"author": "Celtic Colleen", "pick": "Larry Bird", "reason": "Three straight MVPs and the best trash talker ever. Larry Legend backed up every word he said."},
+    {"author": "OKC Olivia", "pick": "Kevin Durant", "reason": "Nearly seven feet tall and shoots like a guard. Two Finals MVPs, and he can get a bucket against anyone."}
+  ],
+  "nba-power-forward": [
+    {"author": "Spurs Sue", "pick": "Tim Duncan", "reason": "Five rings across three different decades and never any drama. The Big Fundamental just won, year after year."},
+    {"author": "Mailman Mike", "pick": "Karl Malone", "reason": "Second in career points when he retired and he almost never missed a game. The Mailman always delivered."},
+    {"author": "KG_fan_Kendra", "pick": "Kevin Garnett", "reason": "Nobody played with more fire. MVP, Defensive Player of the Year, and he turned the Celtics into champs in one season."}
+  ],
+  "mlb-player": [
+    {"author": "twoway_tomoko", "pick": "Shohei Ohtani", "reason": "An ace pitcher and an MVP hitter at the same time, plus the first 50 homer, 50 steal season ever. Never seen anything like it."},
+    {"author": "Bambino Bob", "pick": "Babe Ruth", "reason": "Babe was an ace pitcher in Boston, then became the greatest home run hitter alive. He basically invented the modern game."},
+    {"author": "Giants Gina", "pick": "Willie Mays", "reason": "660 homers, 12 Gold Gloves and that catch in the 54 World Series. Willie did everything on a ball field."}
+  ],
+  "mlb-outfielder": [
+    {"author": "centerfield_cal", "pick": "Willie Mays", "reason": "Best center fielder ever and it's not close. He could hit, run, throw and catch better than anyone in his time."},
+    {"author": "Yankee Yolanda", "pick": "Babe Ruth", "reason": "Babe hit 60 homers in 1927 and held the career home run record until 1974. Nobody was further ahead of his era."},
+    {"author": "Braves Bernadette", "pick": "Hank Aaron", "reason": "755 homers with total class through everything he faced chasing Ruth. Still the all-time RBI leader, too."}
+  ],
+  "mlb-infielder": [
+    {"author": "iron_horse_irene", "pick": "Lou Gehrig", "reason": "2,130 straight games and a .340 hitter for his career. The Iron Horse was the toughest player who ever lived."},
+    {"author": "stat_head_stu", "pick": "Alex Rodriguez", "reason": "696 homers, three MVPs, and Gold Glove defense at shortstop. The raw talent was off the charts."},
+    {"author": "Bleacher Bo", "pick": "Derek Jeter", "reason": "Five rings, 3,465 hits and always clutch in October. The Flip Play alone gets my vote."}
+  ],
+  "mlb-catcher": [
+    {"author": "Reds Rhonda", "pick": "Johnny Bench", "reason": "Ten straight Gold Gloves and two MVPs for the Big Red Machine. The total package behind the plate."},
+    {"author": "Queens Quentin", "pick": "Yogi Berra", "reason": "Ten World Series rings as a player, more than anyone in baseball, and Yogi was a three-time MVP too."},
+    {"author": "Mets Maddie", "pick": "Mike Piazza", "reason": "Most home runs ever by a catcher. That homer at Shea after 9/11 still gives me chills."}
+  ],
+  "mlb-pitcher": [
+    {"author": "radar_gun_rosie", "pick": "Nolan Ryan", "reason": "Seven no-hitters and 5,714 strikeouts. Those are two records nobody is ever going to break."},
+    {"author": "Desert Dave", "pick": "Randy Johnson", "reason": "Five Cy Youngs, four of them in a row, and a perfect game at 40. The Big Unit was terrifying to face."},
+    {"author": "Peachtree Paula", "pick": "Greg Maddux", "reason": "Four straight Cy Youngs with a fastball that barely touched 90. Pure control and brains, a true artist."}
   ]
 }

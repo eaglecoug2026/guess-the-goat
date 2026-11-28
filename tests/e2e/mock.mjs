@@ -69,7 +69,7 @@ export function createBackend(opts = {}) {
   };
 
   const fns = {
-    get_catalog: () => s.catalog.filter(c => c.active).map(c => ({ slug: c.slug, name: c.name, title: c.title, kind: c.kind, season: null, source: 'builtin', grp: c.grp || null, sub: c.sub || null, opts: c.opts, clues: c.clues, ...ranked(c) })),
+    get_catalog: () => s.catalog.filter(c => c.active).map(c => ({ slug: c.slug, name: c.name, title: c.title, kind: c.kind, season: null, source: 'builtin', grp: c.grp || null, fam: c.fam || null, sub: c.sub || null, opts: c.opts, clues: c.clues, ...ranked(c) })),
     get_takes: ({ p_slug, p_player }) => {
       const vis = s.takes.filter(t => t.slug === p_slug && (!t.hidden || (p_player && t.player === p_player)));
       vis.sort((a, b) => (a.seed - b.seed) || (b.at < a.at ? -1 : b.at > a.at ? 1 : b.id - a.id));

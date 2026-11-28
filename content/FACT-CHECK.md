@@ -65,3 +65,18 @@ Sources for each clued contender are in `content/categories.json` under `sources
 | 51 | GOAT NFL defensive lineman | Reggie White, Aaron Donald, J.J. Watt | 2026-11-27 | | |
 | 52 | GOAT NFL linebacker | Lawrence Taylor, Ray Lewis, Dick Butkus | 2026-11-27 | | |
 | 53 | GOAT NFL defensive back | Deion Sanders, Ed Reed, Ronnie Lott | 2026-11-27 | | |
+| 54 | GOAT Pop singer | Michael Jackson, Madonna, Whitney Houston | 2026-11-27: written for Peter's new list | | |
+| 55 | GOAT Grunge band | Pearl Jam, Nirvana, Soundgarden | 2026-11-27: written for Peter's new list | | |
+| 56 | GOAT drummer | John Bonham, Neil Peart, Keith Moon | 2026-11-27: written for Peter's new list | | |
+| 57 | GOAT NFL team | San Francisco 49ers, Pittsburgh Steelers, New England Patriots | 2026-11-27: written for Peter's new list | | |
+| 58 | GOAT NFL player | Jerry Rice, Tom Brady, Lawrence Taylor | 2026-11-27: written for Peter's new list | | |
+| 59 | GOAT NBA point guard | Magic Johnson, Stephen Curry, Oscar Robertson | 2026-11-27: written for Peter's new list | | |
+| 60 | GOAT NBA shooting guard | Michael Jordan, Kobe Bryant, Dwyane Wade | 2026-11-27: written for Peter's new list | | |
+| 61 | GOAT NBA center | Kareem Abdul-Jabbar, Shaquille O'Neal, Wilt Chamberlain | 2026-11-27: written for Peter's new list | | |
+| 62 | GOAT NBA small forward | LeBron James, Larry Bird, Kevin Durant | 2026-11-27: written for Peter's new list | | |
+| 63 | GOAT NBA power forward | Tim Duncan, Karl Malone, Kevin Garnett | 2026-11-27: written for Peter's new list | | |
+| 64 | GOAT MLB player | Shohei Ohtani, Babe Ruth, Willie Mays | 2026-11-27: written for Peter's new list | | |
+| 65 | GOAT MLB outfielder | Willie Mays, Babe Ruth, Hank Aaron | 2026-11-27: written for Peter's new list | | |
+| 66 | GOAT MLB infielder | Lou Gehrig, Alex Rodriguez, Derek Jeter | 2026-11-27: written for Peter's new list | | |
+| 67 | GOAT MLB catcher | Johnny Bench, Yogi Berra, Mike Piazza | 2026-11-27: written for Peter's new list | | |
+| 68 | GOAT MLB pitcher | Nolan Ryan, Randy Johnson, Greg Maddux | 2026-11-27: written for Peter's new list | | |
