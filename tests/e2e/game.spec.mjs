@@ -785,3 +785,38 @@ test('owner: hide and show a reply', async ({ page }) => {
   await page.locator('#oReplies').getByRole('button', { name: 'Show' }).click();
   await expect.poll(() => b.replies[0].hidden).toBe(false);
 });
+
+test('new version: the page reloads itself once, never over typed text (D-40)', async ({ page }) => {
+  let newer = false, heads = 0;
+  await page.route(u => new URL(u).pathname === '/', (route, req) => {
+    if (req.method() !== 'HEAD') return route.fallback();
+    heads++;
+    return route.fulfill({ status: 200, headers: newer ? { 'last-modified': 'Wed, 01 Jan 2031 00:00:00 GMT' } : {}, body: '' });
+  });
+  let loads = 0;
+  page.on('load', () => loads++);
+  const { errors } = await open(page);
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
+  const comeBack = () => page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
+  // Same version: nothing happens.
+  await expect.poll(() => heads).toBeGreaterThan(0);
+  await expect.poll(async () => { await comeBack(); return heads; }).toBeGreaterThan(1);
+  // Newer version while a name is being typed: wait.
+  await page.locator('#q').fill('Jo');
+  newer = true;
+  const before = heads;
+  await expect.poll(async () => { await comeBack(); return heads; }).toBeGreaterThan(before);
+  await page.waitForTimeout(300);
+  expect(loads).toBe(1);
+  await expect(page.locator('#q')).toHaveValue('Jo');
+  // Nothing typed: reload into the new version.
+  await page.locator('#q').fill('');
+  await expect.poll(async () => { if (loads < 2) await comeBack().catch(() => {}); return loads; }).toBe(2);
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
+  // Still the old copy after the reload: no loop.
+  const after = heads;
+  await expect.poll(async () => { await comeBack(); return heads; }).toBeGreaterThan(after);
+  await page.waitForTimeout(300);
+  expect(loads).toBe(2);
+  expect(realErrors(errors)).toEqual([]);
+});
