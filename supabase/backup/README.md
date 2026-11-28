@@ -17,3 +17,4 @@ To restore after a rollback script: `insert into public.<table> select * from ba
 | 0008 | secrets (a row is added: the Site Stats token hash) |
 | 0012 | secrets (a row is added: the leave-me-out code hash); no existing table is altered |
 | 0013 | takes (a column is added: edited_at) |
+| 0015 | none altered (a new read-only yes/no function; no table changes) |

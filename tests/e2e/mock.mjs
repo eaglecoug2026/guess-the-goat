@@ -208,7 +208,8 @@ export function createBackend(opts = {}) {
       if (typeof p_player !== 'string' || p_player.length < 8 || p_player.length > 64) throw err('bad_input');
       if (!s.leftOut.includes(p_player)) s.leftOut.push(p_player);
       return { ok: true };
-    }
+    },
+    site_stats_is_left_out: ({ p_player }) => s.leftOut.includes(p_player)   // 0015 (D-38)
   };
 
   s.install = async (target) => {

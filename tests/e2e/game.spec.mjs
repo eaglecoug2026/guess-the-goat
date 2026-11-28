@@ -623,6 +623,44 @@ test('leave-me-out link: no visit counts from that browser, its player ID goes o
   await page.waitForTimeout(300);
   expect(b.beacons).toEqual([]);
   expect(b.calls.filter(c => c === 'site_stats_leave_me_out')).toHaveLength(1);
+  expect(b.calls).not.toContain('site_stats_is_left_out');
+  expect(realErrors(errors)).toEqual([]);
+});
+
+test('a player already on the left-out list (a home-screen icon) stops counting after one check (D-38)', async ({ page }) => {
+  const b = createBackend();
+  b.leftOut.push('player-owner-icon-1');
+  const { errors } = await open(page, { backend: b, storage: { 'goat-player': 'player-owner-icon-1' } });
+  await expect.poll(() => b.calls.filter(c => c === 'site_stats_is_left_out').length).toBe(1);
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('site-stats-listed'))).toBe('1');
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
+  await page.reload();
+  await expect(page.locator('#yourId')).toHaveText('player-owner-icon-1');
+  await page.waitForTimeout(300);
+  expect(b.beacons).toEqual([]);
+  expect(b.calls.filter(c => c === 'site_stats_is_left_out')).toHaveLength(1);
+  expect(realErrors(errors)).toEqual([]);
+});
+
+test('a returning player not on the list is counted, checked once a day; a failed check still counts (D-38)', async ({ page }) => {
+  const b = createBackend();
+  const { errors } = await open(page, { backend: b, storage: { 'goat-player': 'player-regular-1' } });
+  await expect.poll(() => b.beacons.length).toBe(1);
+  expect(b.beacons[0]).toMatchObject({ site: 'goat', first_today: true, new: false });
+  expect(JSON.stringify(b.beacons)).not.toContain('player-regular-1');
+  expect(b.calls.filter(c => c === 'site_stats_is_left_out')).toHaveLength(1);
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
+  await page.reload();
+  await expect.poll(() => b.beacons.length).toBe(2);
+  expect(b.beacons[1]).toMatchObject({ first_today: false, new: false });
+  expect(b.calls.filter(c => c === 'site_stats_is_left_out')).toHaveLength(1);
+  // Next day, the list can't be reached: the visit still counts.
+  await expect(page.locator('#tag')).toHaveText('Daily GOAT #10 · Jan 10');
+  await page.evaluate(() => localStorage.setItem('site-stats-checked', '2000-01-01'));
+  b.block.add('site_stats_is_left_out');
+  await page.reload();
+  await expect.poll(() => b.beacons.length).toBe(3);
+  expect(await page.evaluate(() => localStorage.getItem('site-stats-listed'))).toBeNull();
   expect(realErrors(errors)).toEqual([]);
 });
 
