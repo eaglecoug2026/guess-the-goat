@@ -1651,6 +1651,34 @@ function checkDay() {
   loadDaily(t);
 }
 
+// ---------------------------------------------------------------- new version (D-40)
+// A home-screen icon opens the page with no address bar and no pull-to-refresh, and iOS keeps the old copy.
+// When the page opens or comes back, ask the server when the site last changed; if that's after this copy,
+// reload, unless that would lose something (text being typed, a practice round partway through).
+function copyTime() {
+  var m = /^(\d+)\/(\d+)\/(\d+) (\d+):(\d+):(\d+)$/.exec(document.lastModified || '');
+  return m ? new Date(+m[3], m[1] - 1, +m[2], +m[4], +m[5], +m[6]).getTime() : 0;
+}
+var loadedCopy = copyTime(), updateBusy = false;
+function safeToReload() {
+  var f = document.querySelectorAll('input, textarea');
+  for (var i = 0; i < f.length; i++) if (f[i].type !== 'hidden' && f[i].type !== 'checkbox' && f[i].type !== 'radio' && f[i].value) return false;
+  var cur = view.type === 'practice' ? current() : null;
+  return !(cur && cur.g.guesses.length > 0 && !done(cur));
+}
+function checkUpdate() {
+  if (updateBusy || !loadedCopy || !window.fetch) return;
+  updateBusy = true;
+  fetch(location.pathname, { method: 'HEAD', cache: 'no-store' }).then(function (r) {
+    var lm = r.ok ? Date.parse(r.headers.get('last-modified') || '') : 0;
+    // Reload once per version: if the reload still brings back the old copy, don't loop.
+    if (lm && lm > loadedCopy + 1000 && sess.get('goat-reloaded-for') !== String(lm) && safeToReload()) {
+      sess.set('goat-reloaded-for', String(lm));
+      location.reload();
+    }
+  }).catch(function () {}).then(function () { updateBusy = false; });
+}
+
 // ---------------------------------------------------------------- start
 function start() {
   $('yourId').textContent = player;
@@ -1669,8 +1697,10 @@ function start() {
   loadMine();
   setInterval(function () { if (!document.hidden) { loadCatalog(); } }, 60000);
   setInterval(function () { if (!document.hidden) checkDay(); }, 60000);
-  document.addEventListener('visibilitychange', function () { if (document.hidden) flush(true); else { checkDay(); flush(); } });
-  window.addEventListener('focus', checkDay);
+  document.addEventListener('visibilitychange', function () { if (document.hidden) flush(true); else { checkDay(); flush(); checkUpdate(); } });
+  window.addEventListener('focus', function () { checkDay(); checkUpdate(); });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) checkUpdate(); });
+  checkUpdate();
   window.addEventListener('pagehide', function () { flush(true); });
 }
 start();
