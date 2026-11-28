@@ -7,10 +7,22 @@ const all = JSON.parse(readFileSync(new URL('../../content/categories.json', imp
 const one = () => structuredClone(all.find(c => c.id === 'nfl-quarterback'));
 const errs = c => validate([c]).errors;
 
-test('content/categories.json passes: 53 categories, unique ids, every one grouped', () => {
-  assert.equal(all.length, 53);
+test('content/categories.json passes: 68 categories, unique ids, every one grouped', () => {
+  assert.equal(all.length, 68);
   for (const c of all) assert.ok(c.group && c.sub, c.id + ' has a group and sub');
+  // D-37: each family has exactly one "All" list, and no group is called NFL anymore.
+  const fams = [...new Set(all.filter(c => c.family).map(c => c.family))].sort();
+  assert.deepEqual(fams, ['MLB player', 'NBA player', 'NFL player']);
+  for (const f of fams) assert.equal(all.filter(c => c.family === f && c.sub === 'All').length, 1, f + ' has one All');
+  assert.equal(all.filter(c => c.group === 'NFL').length, 0);
   assert.deepEqual(validate(all).errors, []);
+});
+
+test('family must be null or 1-30 characters', () => {
+  const c = one(); c.family = 'x'.repeat(31);
+  assert.match(errs(c).join(), /family must be/);
+  c.family = 'NFL player'; assert.deepEqual(errs(c), []);
+  c.family = null; assert.deepEqual(errs(c), []);
 });
 
 test('rejects a clue with a word from the answer, accents ignored', () => {

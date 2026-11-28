@@ -17,7 +17,7 @@ Guess the crowd's greatest of all time.
 - **Hint and Give up**: Hint shows one clue at a time, up to 4. Give up (tap twice) ends the round and shows the answer; on the daily it counts as a loss. The share line says how many hints you used.
 - **Hot Take Score**: after the reveal, you name your own GOAT. The score runs 0–100 by how far your pick is from the crowd. Results copy out as an emoji grid for sharing.
 - **The debate**: after the reveal, each category has a message board. You type your GOAT (any name; one of the 16 also counts as your vote, and a last name alone is enough when only one of them has it), say why, and read everyone else's take. One take per player per category; posting again replaces it. Links and blocked words are refused, and the owner can hide any take. Each category starts with 3 starter takes, labeled as such. The board shows 5 takes at a time (yours on top) with a Show more button. Anyone can reply under a take (one level, 5 replies at a time), and you can edit your own take or reply; edited ones say so.
-- **More GOATs**: broad groups (NFL, Sports, Movies, TV, Music, Food, and so on), then the categories in each group, like NFL → QB, RB, WR, TE, O-line, D-line, LB, DB. Player-suggested crowd votes are under Crowd votes.
+- **More GOATs**: broad groups (Sports, Movies, TV, Music, Food, and so on), then the categories in each group. Player positions sit one level deeper: Sports → NFL player → All, QB, RB, WR, TE, O-line, D-line, LB, DB (also NBA player and MLB player). Player-suggested crowd votes are under Crowd votes.
 - **Player suggestions**: anyone can suggest a category. The owner reviews them and can add them to the game as live crowd votes.
 
 ## How it's built
@@ -29,7 +29,7 @@ Guess the crowd's greatest of all time.
 
 ## Categories
 
-- The content lives in `content/categories.json`: 53 categories, each with a `group` and a short `sub` name, 16 contenders, estimated percents for the top 10, and 4 clues for each of the top 3. Within a group, categories show in file order.
+- The content lives in `content/categories.json`: 68 categories, each with a `group`, an optional `family` (the middle level, e.g. NFL player) and a short `sub` name, 16 contenders, estimated percents for the top 10, and 4 clues for each of the top 3. Within a group, categories show in file order.
 - Starter takes live in `content/takes.json` (3 per category).
 - `npm run check:content` runs the checker (format, percents, clue length, and no clue that uses a word from its answer).
 - `npm run build:content` regenerates `supabase/seed/catalog.sql`, `supabase/seed/takes.sql` and the bundled catalog in `index.html`. Run the SQL file in the Supabase SQL editor to load the changes. It updates categories by id, never changes a published puzzle, and retires (never deletes) a category removed from the file.
